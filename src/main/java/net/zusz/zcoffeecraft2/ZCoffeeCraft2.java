@@ -1,6 +1,7 @@
 package net.zusz.zcoffeecraft2;
 
 import net.minecraft.world.item.CreativeModeTabs;
+import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import org.slf4j.Logger;
 
@@ -40,6 +41,7 @@ public class ZCoffeeCraft2
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -56,6 +58,10 @@ public class ZCoffeeCraft2
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.RAW_ARABICA_COFFEE_BEAN);
+        }
+
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept((ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK));
         }
     }
 
