@@ -19,7 +19,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> RAW_ARABICA_COFFEE_BEAN_SACK  = registerBlock("raw_arabica_coffee_bean_sack",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(0.8f).sound(SoundType.WOOL)));
+                    .strength(0.5f).sound(SoundType.WOOL)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

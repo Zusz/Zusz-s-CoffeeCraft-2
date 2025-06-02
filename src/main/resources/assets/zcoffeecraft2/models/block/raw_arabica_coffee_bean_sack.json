@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "top": "zcoffeecraft2:block/raw_arabica_coffee_bean_sack_top",
-    "bottom": "zcoffeecraft2:block/raw_arabica_coffee_bean_sack_bottom",
-    "side": "zcoffeecraft2:block/raw_arabica_coffee_bean_sack_side"
-  }
-}
