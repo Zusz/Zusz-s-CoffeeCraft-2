@@ -2,6 +2,7 @@ package net.zusz.zcoffeecraft2.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -22,10 +23,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         cubeBottomTopBlockWithItem(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK);
-        makeBush(((SweetBerryBushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), "arabica_coffee_bush_stage", "arabica_coffee_Bush_stage");
+        makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), "arabica_coffee_bush_stage", "arabica_coffee_Bush_stage");
     }
 
-    public void makeBush(SweetBerryBushBlock block, String modelName, String textureName) {
+    public void makeBush(BushBlock block, String modelName, String textureName) {
         Function<BlockState, ConfiguredModel[]> function = state -> states(state, "arabica_coffee_bush_stage", "arabica_coffee_bush_stage");
 
         getVariantBuilder(block).forAllStates(function);

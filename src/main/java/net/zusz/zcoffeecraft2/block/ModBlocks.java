@@ -21,7 +21,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RAW_ARABICA_COFFEE_BEAN_SACK  = registerBlock("raw_arabica_coffee_bean_sack",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
-    public static final DeferredBlock<Block> ARABICA_COFFEE_BUSH = BLOCKS.register("arabiaca_coffee_bush",
+    public static final DeferredBlock<Block> ARABICA_COFFEE_BUSH = BLOCKS.register("arabica_coffee_bush",
             () -> new CoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
