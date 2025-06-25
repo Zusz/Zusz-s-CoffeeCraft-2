@@ -31,6 +31,11 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, ZCoffeeCraft2.MOD_ID, existingFileHelper));
 
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
+
+        generator.addProvider(event.includeServer(), new ModDataMapProvider(packOutput, lookupProvider));
+
+        generator.addProvider(event.includeServer(), new ModDatapackProvider(packOutput, lookupProvider));
     }
+
 
 }
