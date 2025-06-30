@@ -41,6 +41,7 @@ public class CoffeeMachineScreen extends AbstractContainerScreen<CoffeeMachineMe
     }
 
 
+
     @Override
     public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);

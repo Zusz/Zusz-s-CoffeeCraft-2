@@ -176,6 +176,4 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
-
-
 }
