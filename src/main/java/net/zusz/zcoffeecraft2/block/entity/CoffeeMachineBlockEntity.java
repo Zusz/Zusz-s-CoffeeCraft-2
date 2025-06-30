@@ -26,7 +26,7 @@ import org.apache.logging.log4j.core.appender.rolling.action.PathSortByModificat
 import org.jetbrains.annotations.Nullable;
 
 public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvider {
-    public final ItemStackHandler itemHandler = new ItemStackHandler(2) {
+    public final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();

@@ -18,7 +18,7 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public CoffeeMachineMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
     }
 
     public CoffeeMachineMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -32,6 +32,7 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
 
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 54, 34));
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 104, 34));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 34, 34));
 
         addDataSlots(data);
 
@@ -60,7 +61,7 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     //amount of slots!!!
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);

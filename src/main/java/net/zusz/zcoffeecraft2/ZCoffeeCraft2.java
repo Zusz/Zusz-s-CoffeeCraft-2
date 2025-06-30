@@ -61,7 +61,7 @@ public class ZCoffeeCraft2
 
     }
 
-    // Add the example block item to the building blocks tab
+    // Add the item to a tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.RAW_ARABICA_COFFEE_BEAN);
