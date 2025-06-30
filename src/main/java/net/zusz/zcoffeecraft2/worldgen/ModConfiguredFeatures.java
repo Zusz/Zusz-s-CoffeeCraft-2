@@ -6,14 +6,13 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
-import net.zusz.zcoffeecraft2.block.CoffeeBushBlock;
+import net.zusz.zcoffeecraft2.block.custom.CoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 
 import java.util.List;

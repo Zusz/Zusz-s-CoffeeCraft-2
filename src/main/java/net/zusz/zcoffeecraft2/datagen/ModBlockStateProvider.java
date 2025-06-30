@@ -3,14 +3,13 @@ package net.zusz.zcoffeecraft2.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
-import net.zusz.zcoffeecraft2.block.CoffeeBushBlock;
+import net.zusz.zcoffeecraft2.block.custom.CoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 
 import java.util.function.Function;
@@ -22,6 +21,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        blockWithItem(ModBlocks.COFFEE_MACHINE);
         cubeBottomTopBlockWithItem(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK);
         makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), "arabica_coffee_bush_stage", "arabica_coffee_Bush_stage");
     }
@@ -48,6 +48,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 blockTexture(deferredBlock, "_bottom"),
                 blockTexture(deferredBlock, "_top")
                 ));
+    }
+
+    private void blockWithItem(DeferredBlock<?> deferredBlock) {
+        simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
     }
 
     private String name(DeferredBlock<?> block) {

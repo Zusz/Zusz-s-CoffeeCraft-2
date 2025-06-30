@@ -1,8 +1,13 @@
 package net.zusz.zcoffeecraft2;
 
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
+import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
 import net.zusz.zcoffeecraft2.item.ModItems;
+import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
+import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -42,6 +47,8 @@ public class ZCoffeeCraft2
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -77,6 +84,11 @@ public class ZCoffeeCraft2
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+        }
+
+        @SubscribeEvent
+        public static void registerScreens( RegisterMenuScreensEvent event) {
+            event.register(ModMenuTypes.COFFEE_MACHINE_MENU.get(), CoffeeMachineScreen::new);
         }
     }
 }
