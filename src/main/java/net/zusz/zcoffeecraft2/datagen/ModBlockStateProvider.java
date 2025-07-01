@@ -22,7 +22,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.COFFEE_MACHINE);
-        cubeBottomTopBlockWithItem(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK);
+        coffeeBeanSack(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK, "raw_arabica_coffee_bean_sack_top");
         makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), "arabica_coffee_bush_stage", "arabica_coffee_Bush_stage");
     }
 
@@ -49,6 +49,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 blockTexture(deferredBlock, "_top")
                 ));
     }
+
+    //this is just a cubebottomtop for coffee bean sacks, because the sides and bottom stay the same
+    private void coffeeBeanSack(DeferredBlock<?> deferredBlock, String topTextureName) {
+        simpleBlockWithItem(deferredBlock.get(), models().cubeBottomTop(
+                name(deferredBlock),
+                modLoc("block/coffee_bean_sack_side"),   // shared side texture
+                modLoc("block/coffee_bean_sack_bottom"), // shared bottom texture
+                modLoc("block/" + topTextureName)        // unique top texture
+        ));
+    }
+
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
         simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
