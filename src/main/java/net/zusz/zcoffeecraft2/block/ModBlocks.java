@@ -23,6 +23,17 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RAW_ARABICA_COFFEE_BEAN_SACK  = registerBlock("raw_arabica_coffee_bean_sack",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK  = registerBlock("light_roasted_arabica_coffee_bean_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK  = registerBlock("medium_roasted_arabica_coffee_bean_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK  = registerBlock("dark_roasted_arabica_coffee_bean_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+
+
     public static final DeferredBlock<Block> ARABICA_COFFEE_BUSH = BLOCKS.register("arabica_coffee_bush",
             () -> new CoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 

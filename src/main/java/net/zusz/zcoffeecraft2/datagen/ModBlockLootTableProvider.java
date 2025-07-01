@@ -33,6 +33,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf((ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK.get()));
+        dropSelf((ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK.get()));
+        dropSelf((ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK.get()));
+        dropSelf((ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK.get()));
+
         this.dropSelf(ModBlocks.COFFEE_MACHINE.get());
 
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
