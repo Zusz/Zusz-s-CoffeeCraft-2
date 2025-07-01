@@ -4,7 +4,6 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
-import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.item.ModItems;
 
 public class ModItemModelProvider extends ItemModelProvider {
@@ -17,7 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.RAW_ARABICA_COFFEE_BEAN.asItem());
         basicItem(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.asItem());
         basicItem(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.asItem());
-        basicItem(ModItems.DARK_ROASTED_COFFEE_BEAN.asItem());
+        basicItem(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.asItem());
         basicItem(ModItems.ARABICA_COFFEE_CHERRY.asItem());
 
     }
