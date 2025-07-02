@@ -20,10 +20,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineMenu;
 import org.apache.logging.log4j.core.appender.rolling.action.PathSortByModificationTime;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler itemHandler = new ItemStackHandler(3) {
@@ -126,11 +129,14 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private void craftItem() {
-        ItemStack output = new ItemStack(ModItems.RAW_ARABICA_COFFEE_BEAN.get(), 1);
+        ItemStack output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
+        output.set(ModDataComponents.ROAST, "dark");
 
         itemHandler.extractItem(INPUT_SLOT, 1, false);
-        itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
-                itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
+        output = new ItemStack(output.getItem(),
+                itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount());
+        output.set(ModDataComponents.ROAST, "dark");
+        itemHandler.setStackInSlot(OUTPUT_SLOT, output);
     }
 
     private void resetProgress() {
@@ -148,14 +154,17 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private boolean hasRecipe() {
-        ItemStack output = new ItemStack(ModItems.RAW_ARABICA_COFFEE_BEAN.get(), 1);
+        ItemStack output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
+        output.set(ModDataComponents.ROAST, "dark");
+
         return itemHandler.getStackInSlot(INPUT_SLOT).is(ModItems.ARABICA_COFFEE_CHERRY) &&
                 canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
         return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
-                itemHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem();
+                itemHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem() ||
+                Objects.equals(itemHandler.getStackInSlot(OUTPUT_SLOT).get(ModDataComponents.ROAST), output.get(ModDataComponents.ROAST));
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {

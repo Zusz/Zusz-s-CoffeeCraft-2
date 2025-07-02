@@ -7,6 +7,8 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
+import net.zusz.zcoffeecraft2.item.custom.CoffeeItem;
+import net.zusz.zcoffeecraft2.item.custom.ModFoodProperties;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ZCoffeeCraft2.MOD_ID);
@@ -21,6 +23,9 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> ARABICA_COFFEE_CHERRY = ITEMS.register("arabica_coffee_cherry",
             () -> new ItemNameBlockItem(ModBlocks.ARABICA_COFFEE_BUSH.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",
+            () -> new CoffeeItem(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
