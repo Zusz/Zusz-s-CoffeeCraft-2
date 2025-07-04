@@ -1,0 +1,20 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "zcoffeecraft2:item/light_coffee_cup"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "zcoffeecraft2:roast": 1.0
+      },
+      "model": "zcoffeecraft2:item/cup_of_coffee_medium"
+    },
+    {
+      "predicate": {
+        "zcoffeecraft2:roast": 2.0
+      },
+      "model": "zcoffeecraft2:item/cup_of_coffee_dark"
+    }
+  ]
+}

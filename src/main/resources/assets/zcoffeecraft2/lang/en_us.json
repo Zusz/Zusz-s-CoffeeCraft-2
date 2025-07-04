@@ -10,7 +10,10 @@
   "block.zcoffeecraft2.medium_roasted_arabica_coffee_bean_sack": "Sack of Medium Roasted Arabica Coffee Beans",
   "block.zcoffeecraft2.dark_roasted_arabica_coffee_bean_sack": "Sack of Dark Roasted Arabica Coffee Beans",
 
+  "block.zcoffeecraft2.arabica_coffee_bush": "Arabica Coffee Bush",
+
   "block.zcoffeecraft2.coffee_machine": "Coffee Machine",
 
-  "block.zcoffeecraft2.arabica_coffee_bush": "Arabica Coffee Bush"
+  "item.zcoffeecraft2.cup_of_coffee": "Cup of Coffee"
+
 }

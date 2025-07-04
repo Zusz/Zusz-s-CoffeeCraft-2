@@ -8,6 +8,7 @@ import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
+import net.zusz.zcoffeecraft2.util.ModItemProperties;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -85,7 +86,7 @@ public class ZCoffeeCraft2
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            ModItemProperties.addCustomItemProperties();
         }
 
         @SubscribeEvent

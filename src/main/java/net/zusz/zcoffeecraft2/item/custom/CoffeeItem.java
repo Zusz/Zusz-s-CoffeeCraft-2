@@ -32,9 +32,16 @@ public class CoffeeItem extends Item {
         if(stack.get(ModDataComponents.ROAST) == null) {
             tooltipComponents.add(Component.literal("NAAAAY"));
         }
+        if(Objects.equals(stack.get(ModDataComponents.ROAST), "light")) {
+            tooltipComponents.add(Component.literal("LIGHT"));
+        }
+        if(Objects.equals(stack.get(ModDataComponents.ROAST), "medium")) {
+            tooltipComponents.add(Component.literal("MEDIUM"));
+        }
         if(Objects.equals(stack.get(ModDataComponents.ROAST), "dark")) {
             tooltipComponents.add(Component.literal("DAAAARK"));
         }
+
         tooltipComponents.add(Component.literal("YEEEEEAH"));
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
