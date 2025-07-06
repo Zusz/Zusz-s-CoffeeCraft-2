@@ -60,6 +60,7 @@ public class CoffeeMachineRecipeCategory implements IRecipeCategory<CoffeeMachin
     }
 
     @Override
+    @SuppressWarnings({"removal"})
     public IDrawable getBackground() {
         return background;
     }
