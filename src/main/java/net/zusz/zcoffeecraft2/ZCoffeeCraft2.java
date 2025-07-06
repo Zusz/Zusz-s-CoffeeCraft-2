@@ -68,11 +68,24 @@ public class ZCoffeeCraft2
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.RAW_ARABICA_COFFEE_BEAN);
+            event.accept(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN);
+            event.accept(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN);
+            event.accept(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN);
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept((ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK));
+            event.accept((ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK));
+            event.accept((ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK));
+            event.accept((ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK));
+
+            event.accept((ModBlocks.COFFEE_MACHINE));
         }
+
+        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept((ModItems.CUP_OF_COFFEE));
+        }
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

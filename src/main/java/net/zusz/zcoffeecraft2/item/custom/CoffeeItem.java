@@ -1,6 +1,7 @@
 package net.zusz.zcoffeecraft2.item.custom;
 
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -30,19 +31,16 @@ public class CoffeeItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
         if(stack.get(ModDataComponents.ROAST) == null) {
-            tooltipComponents.add(Component.literal("NAAAAY"));
-        }
-        if(Objects.equals(stack.get(ModDataComponents.ROAST), "light")) {
-            tooltipComponents.add(Component.literal("LIGHT"));
-        }
-        if(Objects.equals(stack.get(ModDataComponents.ROAST), "medium")) {
-            tooltipComponents.add(Component.literal("MEDIUM"));
-        }
-        if(Objects.equals(stack.get(ModDataComponents.ROAST), "dark")) {
-            tooltipComponents.add(Component.literal("DAAAARK"));
+            //tooltipComponents.add(Component.literal("NAAAAY"));
+        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "light")) {
+            tooltipComponents.add(Component.literal("-Roast: Light").withStyle(ChatFormatting.GRAY));
+        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "medium")) {
+            tooltipComponents.add(Component.literal("-Roast: Medium").withStyle(ChatFormatting.GRAY));
+        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "dark")) {
+            tooltipComponents.add(Component.literal("-Roast: Dark").withStyle(ChatFormatting.GRAY));
         }
 
-        tooltipComponents.add(Component.literal("YEEEEEAH"));
+        //tooltipComponents.add(Component.literal("YEEEEEAH"));
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 

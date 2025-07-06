@@ -18,6 +18,7 @@ import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.compat.CoffeeMachineRecipe;
 import org.jetbrains.annotations.Nullable;
+import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 public class CoffeeMachineRecipeCategory implements IRecipeCategory<CoffeeMachineRecipe> {
     public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(ZCoffeeCraft2.MOD_ID, "coffee_machine");
@@ -38,7 +39,7 @@ public class CoffeeMachineRecipeCategory implements IRecipeCategory<CoffeeMachin
 
     @Override
     public RecipeType<CoffeeMachineRecipe> getRecipeType() {
-        return COFFEE_MACHINE_RECIPE_RECIPE_TYPE
+        return COFFEE_MACHINE_RECIPE_RECIPE_TYPE;
     }
 
     @Override
@@ -54,14 +55,18 @@ public class CoffeeMachineRecipeCategory implements IRecipeCategory<CoffeeMachin
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CoffeeMachineRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 54, 34).addIngredients(recipe.getInput1());
-        builder.addSlot(RecipeIngredientRole.INPUT, 104, 34).addIngredients(recipe.getInput2());
-
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 34, 34).addItemStack(recipe.getOutput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 34, 34).addIngredients(recipe.getInput2());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 104, 34).addItemStack(recipe.getOutput());
     }
 
     @Override
-    public void draw(CoffeeMachineRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        IRecipeCategory.super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
-        background.draw(guiGraphics);
+    public IDrawable getBackground() {
+        return background;
     }
+
+    //@Override
+    //public void draw(CoffeeMachineRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+       // IRecipeCategory.super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+       // background.draw(guiGraphics);
+    //}
 }

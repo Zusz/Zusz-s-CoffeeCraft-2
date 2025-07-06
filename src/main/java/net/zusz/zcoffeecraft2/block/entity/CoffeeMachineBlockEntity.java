@@ -42,8 +42,8 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     };
 
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
-    private static final int CONTAINER_SLOT = 2;
+    private static final int OUTPUT_SLOT = 2;
+    private static final int CONTAINER_SLOT = 1;
 
     protected final ContainerData data;
     private int progress = 0;
