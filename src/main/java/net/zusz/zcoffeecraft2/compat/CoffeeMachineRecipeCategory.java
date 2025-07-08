@@ -23,7 +23,7 @@ import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 public class CoffeeMachineRecipeCategory implements IRecipeCategory<CoffeeMachineRecipe> {
     public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(ZCoffeeCraft2.MOD_ID, "coffee_machine");
     public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(ZCoffeeCraft2.MOD_ID,
-            "textures/gui/coffee_machine/coffee_machine_gui.png");
+            "textures/gui/coffee_machine/coffee_machine_gui_without_inventory.png");
 
     public static final RecipeType<CoffeeMachineRecipe> COFFEE_MACHINE_RECIPE_RECIPE_TYPE =
             new RecipeType<>(UID, CoffeeMachineRecipe.class);
@@ -54,9 +54,9 @@ public class CoffeeMachineRecipeCategory implements IRecipeCategory<CoffeeMachin
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CoffeeMachineRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 54, 34).addIngredients(recipe.getInput1());
-        builder.addSlot(RecipeIngredientRole.INPUT, 34, 34).addIngredients(recipe.getInput2());
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 104, 34).addItemStack(recipe.getOutput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 75, 24).addIngredients(recipe.getInput1());
+        builder.addSlot(RecipeIngredientRole.INPUT, 75, 45).addIngredients(recipe.getInput2());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.getOutput());
     }
 
     @Override

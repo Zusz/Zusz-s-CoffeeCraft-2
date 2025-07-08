@@ -30,9 +30,9 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 54, 34));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 34, 34));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 104, 34));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 75, 24));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 75, 45));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 124, 34));
 
         addDataSlots(data);
 
