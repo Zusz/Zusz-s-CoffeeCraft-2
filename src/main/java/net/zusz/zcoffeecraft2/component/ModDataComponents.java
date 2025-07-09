@@ -1,5 +1,6 @@
 package net.zusz.zcoffeecraft2.component;
 
+import java.util.List;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
 import net.neoforged.bus.api.IEventBus;
@@ -15,6 +16,10 @@ public class ModDataComponents {
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> ROAST = register("roast",
             builder -> builder.persistent(Codec.STRING));
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> BEAN = register("bean",
+            builder -> builder.persistent(Codec.STRING));
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<List<String>>> INGREDIENTS = register("ingredients",
+            builder -> builder.persistent(Codec.STRING.listOf()));
 
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name,
                                                                                           UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
