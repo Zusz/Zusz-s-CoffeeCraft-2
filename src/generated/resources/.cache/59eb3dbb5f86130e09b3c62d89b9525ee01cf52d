@@ -1,3 +1,7 @@
-// 1.21.1	2025-06-06T08:08:32.2815046	Loot Tables
+// 1.21.1	2025-07-04T15:14:24.7396062	Loot Tables
 629a3dac0bcf6b9aa686e78e9aed6e75bc6101ae data/zcoffeecraft2/loot_table/blocks/arabica_coffee_bush.json
+f2a5130ed2feacdfd2346abb1db1481dbc9290bf data/zcoffeecraft2/loot_table/blocks/coffee_machine.json
+f3fdc6ef1bb3f212c49c8f2acf9b609e180805a2 data/zcoffeecraft2/loot_table/blocks/dark_roasted_arabica_coffee_bean_sack.json
+8743ddc554439c3118d4cb1c8f3f005e43829a9a data/zcoffeecraft2/loot_table/blocks/light_roasted_arabica_coffee_bean_sack.json
+336485f36994f55666ea64c5e93e7e058e65fc0c data/zcoffeecraft2/loot_table/blocks/medium_roasted_arabica_coffee_bean_sack.json
 251b382d9a1b172fe2ebf8660a8aa70005f29fe1 data/zcoffeecraft2/loot_table/blocks/raw_arabica_coffee_bean_sack.json
