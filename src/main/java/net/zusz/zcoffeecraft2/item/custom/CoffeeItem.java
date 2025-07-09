@@ -32,6 +32,12 @@ public class CoffeeItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
+        if(stack.get(ModDataComponents.BEAN) == null) {
+            tooltipComponents.add(Component.literal("-Beans: None (Depends on Ingredient)").withStyle(ChatFormatting.GRAY));
+        } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "arabica")) {
+            tooltipComponents.add(Component.literal("-Beans: Arabica").withStyle(ChatFormatting.GRAY));
+        }
+
         if(stack.get(ModDataComponents.ROAST) == null) {
             tooltipComponents.add(Component.literal("-Roast: None (Depends on Ingredients)").withStyle(ChatFormatting.GRAY));
         } else {
@@ -41,6 +47,7 @@ public class CoffeeItem extends Item {
                 case "dark" -> tooltipComponents.add(Component.literal("-Roast: Dark").withStyle(ChatFormatting.GRAY));
             }
         }
+        
 
 
 

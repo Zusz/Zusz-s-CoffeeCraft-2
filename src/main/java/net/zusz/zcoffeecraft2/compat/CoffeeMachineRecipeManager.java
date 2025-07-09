@@ -64,10 +64,13 @@ public class CoffeeMachineRecipeManager {
         ItemStack toReturn = new ItemStack(ModItems.CUP_OF_COFFEE.get());
         if (ingredient2 == ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN) {
             toReturn.set(ModDataComponents.ROAST, "light");
+            toReturn.set(ModDataComponents.BEAN, "arabica");
         } else if (ingredient2 == ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN) {
             toReturn.set(ModDataComponents.ROAST, "medium");
+            toReturn.set(ModDataComponents.BEAN, "arabica");
         } else if (ingredient2 == ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN) {
             toReturn.set(ModDataComponents.ROAST, "dark");
+            toReturn.set(ModDataComponents.BEAN, "arabica");
         }
         return toReturn;
     }

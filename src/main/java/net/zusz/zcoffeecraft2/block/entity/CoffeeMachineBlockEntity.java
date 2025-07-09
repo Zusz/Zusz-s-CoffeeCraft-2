@@ -197,12 +197,15 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
         if (output != null && input != null) {
             if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get()) {
                 output.set(ModDataComponents.ROAST, "light");
+                output.set(ModDataComponents.BEAN, "arabica");
             }
             if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get()) {
                 output.set(ModDataComponents.ROAST, "medium");
+                output.set(ModDataComponents.BEAN, "arabica");
             }
             if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get()) {
                 output.set(ModDataComponents.ROAST, "dark");
+                output.set(ModDataComponents.BEAN, "arabica");
             }
         }
 
