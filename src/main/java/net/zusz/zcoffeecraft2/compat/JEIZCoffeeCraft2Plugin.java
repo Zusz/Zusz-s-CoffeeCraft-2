@@ -43,7 +43,7 @@ public class JEIZCoffeeCraft2Plugin implements IModPlugin {
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-        registration.addRecipeClickArea(CoffeeMachineScreen.class, 74, 30, 22, 20, COFFEE_MACHINE_RECIPE_RECIPE_TYPE);
+        registration.addRecipeClickArea(CoffeeMachineScreen.class, 93, 30, 22, 20, COFFEE_MACHINE_RECIPE_RECIPE_TYPE);
     }
 
     @Override
