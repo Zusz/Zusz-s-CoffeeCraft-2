@@ -2,6 +2,7 @@ package net.zusz.zcoffeecraft2.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -16,6 +17,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,13 +49,13 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
 
     private static final int INPUT_SLOT = 0;
     private static final int CONTAINER_SLOT = 1;
-    private static final int WATER_INPUT_SLOT = 2;
+    private static final int FLUID_INPUT_SLOT = 2;
     private static final int INGREDIENT_SLOT_1 = 3;
     private static final int INGREDIENT_SLOT_2 = 4;
     private static final int INGREDIENT_SLOT_3 = 5;
     private static final int INGREDIENT_SLOT_4 = 6;
     private static final int OUTPUT_SLOT = 7;
-    private static final int WATER_OUTPUT_SLOT = 8;
+    private static final int FLUID_CONTAINER_OUTPUT_SLOT = 8;
 
 
 
@@ -147,33 +151,23 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private void craftItem() {
-        ItemStack output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
+        ItemStack output = getOutput(itemHandler.getStackInSlot(INPUT_SLOT).getItem(), itemHandler.getStackInSlot(CONTAINER_SLOT).getItem(), itemHandler.getStackInSlot(FLUID_INPUT_SLOT).getItem());
+        output = output.copyWithCount(itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + 1);
 
-        output = new ItemStack(output.getItem(),
-                itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount());
-
-        if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get()) {
-            output.set(ModDataComponents.ROAST, "light");
-        }
-        if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get()) {
-            output.set(ModDataComponents.ROAST, "medium");
-        }
-        if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get()) {
-            output.set(ModDataComponents.ROAST, "dark");
-        }
-
+        ItemStack fluidContainerOutput = getContainerForFluidInput(itemHandler.getStackInSlot(FLUID_INPUT_SLOT)).copyWithCount(itemHandler.getStackInSlot(FLUID_CONTAINER_OUTPUT_SLOT).getCount() + 1);
 
         itemHandler.extractItem(INPUT_SLOT, 1, false);
         itemHandler.extractItem(CONTAINER_SLOT, 1, false);
+        itemHandler.extractItem(FLUID_INPUT_SLOT, 1, false);
 
         itemHandler.setStackInSlot(OUTPUT_SLOT, output);
+        itemHandler.setStackInSlot(FLUID_CONTAINER_OUTPUT_SLOT, fluidContainerOutput);
     }
 
     private void resetProgress() {
         progress = 0;
         maxProgress = 20;
     }
-
 
     private boolean hasCraftingFinished() {
         return progress >= this.maxProgress;
@@ -184,43 +178,97 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private boolean hasRecipe() {
-        ItemStack output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
+        ItemStack output = getOutput(itemHandler.getStackInSlot(INPUT_SLOT).getItem(), itemHandler.getStackInSlot(CONTAINER_SLOT).getItem(), itemHandler.getStackInSlot(FLUID_INPUT_SLOT).getItem());
 
+        return  isInputItemValid() &&
+                isContainerItemValid() &&
+                canInsertAmountIntoSlot(output.getCount(), OUTPUT_SLOT) &&
+                canInsertItemIntoSlot(output, OUTPUT_SLOT) &&
+                isFluidValid();
+    }
 
+    private ItemStack getOutput(Item input, Item container, Item fluidInputItem) {
+        ItemStack output;
+        if (container == ModItems.ARABICA_COFFEE_CHERRY.asItem()) {
+            output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
+        } else {
+            output = null;
+        }
+        if (output != null && input != null) {
+            if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get()) {
+                output.set(ModDataComponents.ROAST, "light");
+            }
+            if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get()) {
+                output.set(ModDataComponents.ROAST, "medium");
+            }
+            if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get()) {
+                output.set(ModDataComponents.ROAST, "dark");
+            }
+        }
+
+        return output;
+    }
+
+    private boolean isInputItemValid() {
         List<Item> validIngredients = Arrays.asList(
                 ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get(),
                 ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get(),
                 ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get()
         );
-        if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get()) {
-            output.set(ModDataComponents.ROAST, "light");
-        }
-        if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get()) {
-            output.set(ModDataComponents.ROAST, "medium");
-        }
-        if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get()) {
-            output.set(ModDataComponents.ROAST, "dark");
-        }
 
-        return validIngredients.contains(itemHandler.getStackInSlot(INPUT_SLOT).getItem()) &&
-                itemHandler.getStackInSlot(CONTAINER_SLOT).is(ModItems.ARABICA_COFFEE_CHERRY) &&
-                canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+        return validIngredients.contains(itemHandler.getStackInSlot(INPUT_SLOT).getItem());
+    }
+    private boolean isContainerItemValid() {
+        List<Item> validContainers = Arrays.asList(
+                ModItems.ARABICA_COFFEE_CHERRY.get()
+        );
+
+        return validContainers.contains(itemHandler.getStackInSlot(CONTAINER_SLOT).getItem());
     }
 
-    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
+    private boolean isFluidValid() {
+        ItemStack input = itemHandler.getStackInSlot(FLUID_INPUT_SLOT);
+        ItemStack container;
+        ItemStack waterBottleStack = new ItemStack(Items.POTION);
+        waterBottleStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
 
+        container = getContainerForFluidInput(input);
 
+        if (container != null) {
+            return canInsertItemIntoSlot(container, FLUID_CONTAINER_OUTPUT_SLOT) &&
+                    canInsertAmountIntoSlot(1, FLUID_CONTAINER_OUTPUT_SLOT);
+        } else {
+            return false;
+        }
+    }
 
-        return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
-                itemHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem() &&
-                Objects.equals(itemHandler.getStackInSlot(OUTPUT_SLOT).get(ModDataComponents.ROAST), output.get(ModDataComponents.ROAST));
+    private ItemStack getContainerForFluidInput(ItemStack input) {
+        ItemStack container;
+        ItemStack waterBottleStack = new ItemStack(Items.POTION);
+        waterBottleStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
+
+        if (input.is(waterBottleStack.getItem())) {
+            container = new ItemStack(Items.GLASS_BOTTLE);
+        } else if (input.is(Items.WATER_BUCKET)) {
+            container = new ItemStack(Items.BUCKET);
+        } else {
+            container = null;
+        }
+        return  container;
+    }
+
+    private boolean canInsertItemIntoSlot(ItemStack output, int slotid) {
+
+        return itemHandler.getStackInSlot(slotid).isEmpty() ||
+                itemHandler.getStackInSlot(slotid).getItem() == output.getItem() &&
+                Objects.equals(itemHandler.getStackInSlot(slotid).get(ModDataComponents.ROAST), output.get(ModDataComponents.ROAST));
 
 
     }
 
-    private boolean canInsertAmountIntoOutputSlot(int count) {
-        int maxCount = itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ? 64 : itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
-        int currentCount = itemHandler.getStackInSlot(OUTPUT_SLOT).getCount();
+    private boolean canInsertAmountIntoSlot(int count, int slotid) {
+        int maxCount = itemHandler.getStackInSlot(slotid).isEmpty() ? 64 : itemHandler.getStackInSlot(slotid).getMaxStackSize();
+        int currentCount = itemHandler.getStackInSlot(slotid).getCount();
 
         return maxCount >= currentCount + count;
     }
