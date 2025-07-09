@@ -33,7 +33,7 @@ public class CoffeeItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
         if(stack.get(ModDataComponents.ROAST) == null) {
-            tooltipComponents.add(Component.literal("-Roast: None"));
+            tooltipComponents.add(Component.literal("-Roast: None (Depends on Ingredients)").withStyle(ChatFormatting.GRAY));
         } else {
             switch (stack.get(ModDataComponents.ROAST)) {
                 case "light" -> tooltipComponents.add(Component.literal("-Roast: Light").withStyle(ChatFormatting.GRAY));
