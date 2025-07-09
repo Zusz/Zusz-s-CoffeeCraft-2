@@ -10,6 +10,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
+import org.jetbrains.annotations.NotNull;
+import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -31,14 +33,16 @@ public class CoffeeItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
         if(stack.get(ModDataComponents.ROAST) == null) {
-            //tooltipComponents.add(Component.literal("NAAAAY"));
-        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "light")) {
-            tooltipComponents.add(Component.literal("-Roast: Light").withStyle(ChatFormatting.GRAY));
-        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "medium")) {
-            tooltipComponents.add(Component.literal("-Roast: Medium").withStyle(ChatFormatting.GRAY));
-        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "dark")) {
-            tooltipComponents.add(Component.literal("-Roast: Dark").withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.literal("-Roast: None"));
+        } else {
+            switch (stack.get(ModDataComponents.ROAST)) {
+                case "light" -> tooltipComponents.add(Component.literal("-Roast: Light").withStyle(ChatFormatting.GRAY));
+                case "medium" -> tooltipComponents.add(Component.literal("-Roast: Medium").withStyle(ChatFormatting.GRAY));
+                case "dark" -> tooltipComponents.add(Component.literal("-Roast: Dark").withStyle(ChatFormatting.GRAY));
+            }
         }
+
+
 
         //tooltipComponents.add(Component.literal("YEEEEEAH"));
 
@@ -47,7 +51,7 @@ public class CoffeeItem extends Item {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack stack) {
         return UseAnim.DRINK;
     }
 }
