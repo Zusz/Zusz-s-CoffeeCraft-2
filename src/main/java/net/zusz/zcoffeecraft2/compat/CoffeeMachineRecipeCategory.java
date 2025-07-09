@@ -54,9 +54,16 @@ public class CoffeeMachineRecipeCategory implements IRecipeCategory<CoffeeMachin
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CoffeeMachineRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 75, 24).addIngredients(recipe.getInput1());
-        builder.addSlot(RecipeIngredientRole.INPUT, 75, 45).addIngredients(recipe.getInput2());
+        builder.addSlot(RecipeIngredientRole.INPUT, 75, 24).addIngredients(recipe.getInput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 75, 45).addIngredients(recipe.getContainer());
+        builder.addSlot(RecipeIngredientRole.INPUT, 14, 24).addIngredients(recipe.getFluid());
+        builder.addSlot(RecipeIngredientRole.INPUT, 34, 24).addIngredients(recipe.getIngredient1());
+        builder.addSlot(RecipeIngredientRole.INPUT, 34, 45).addIngredients(recipe.getIngredient2());
+        builder.addSlot(RecipeIngredientRole.INPUT, 54, 24).addIngredients(recipe.getIngredient3());
+        builder.addSlot(RecipeIngredientRole.INPUT, 54, 45).addIngredients(recipe.getIngredient4());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.getOutput());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 14, 45).addItemStack(recipe.getFluidContainerOutput());
+
     }
 
     @Override

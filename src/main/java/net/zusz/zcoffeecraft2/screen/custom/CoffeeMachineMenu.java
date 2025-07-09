@@ -1,5 +1,6 @@
 package net.zusz.zcoffeecraft2.screen.custom;
 
+import net.minecraft.commands.arguments.SlotsArgument;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -7,18 +8,23 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.fml.ISystemReportExtender;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineBlockEntity;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 
 public class CoffeeMachineMenu extends AbstractContainerMenu {
+
     public final CoffeeMachineBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
+
+
     public CoffeeMachineMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
     public CoffeeMachineMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -30,13 +36,22 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 75, 24));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 75, 45));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 124, 34));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 75, 24));//Input
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 75, 45));//container
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 14, 24));//Water IN
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 3, 34, 24));//Ingredient 1
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 4, 34, 45));//Ingredient 2
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 5, 54, 24));//Ingredient 3
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 6, 54, 45));//Ingredient 4
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 7, 124, 34));//Output
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 8, 14, 45));//Water OUT
+
+
+
 
         addDataSlots(data);
 
-
+        System.out.println(blockEntity.itemHandler.getSlots());
     }
 
     public boolean isCrafting() {
@@ -62,7 +77,7 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     //amount of slots!!!
-    private static final int TE_INVENTORY_SLOT_COUNT = 3;
+    private static final int TE_INVENTORY_SLOT_COUNT = 9;
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -115,5 +130,10 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
+    }
+
+    public ItemStackHandler getItemHandler() {
+        System.out.println(blockEntity.itemHandler.getSlots());
+        return blockEntity.itemHandler;
     }
 }

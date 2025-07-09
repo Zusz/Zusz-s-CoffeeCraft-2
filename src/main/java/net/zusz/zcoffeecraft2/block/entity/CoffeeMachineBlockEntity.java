@@ -31,19 +31,30 @@ import java.util.List;
 import java.util.Objects;
 
 public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvider {
-    public final ItemStackHandler itemHandler = new ItemStackHandler(3) {
+    public final ItemStackHandler itemHandler = new ItemStackHandler(9) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
             if(!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 4);
             }
         }
     };
 
+
+
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 2;
     private static final int CONTAINER_SLOT = 1;
+    private static final int WATER_INPUT_SLOT = 2;
+    private static final int INGREDIENT_SLOT_1 = 3;
+    private static final int INGREDIENT_SLOT_2 = 4;
+    private static final int INGREDIENT_SLOT_3 = 5;
+    private static final int INGREDIENT_SLOT_4 = 6;
+    private static final int OUTPUT_SLOT = 7;
+    private static final int WATER_OUTPUT_SLOT = 8;
+
+
+
 
     protected final ContainerData data;
     private int progress = 0;
@@ -53,6 +64,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
 
     public CoffeeMachineBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.COFFEE_MACHINE_BE.get(), pos, blockState);
+
         data = new ContainerData() {
             @Override
             public int get(int i) {
@@ -77,6 +89,8 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
             }
         };
     }
+
+
 
     @Override
     public Component getDisplayName() {
@@ -114,6 +128,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
         itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
         progress = pTag.getInt("coffee_machine.progress");
         maxProgress = pTag.getInt("coffee_machine.max_progress");
+
     }
 
 
@@ -146,6 +161,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
         if (itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get()) {
             output.set(ModDataComponents.ROAST, "dark");
         }
+
 
         itemHandler.extractItem(INPUT_SLOT, 1, false);
         itemHandler.extractItem(CONTAINER_SLOT, 1, false);
@@ -192,8 +208,8 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
-        System.out.println(itemHandler.getStackInSlot(OUTPUT_SLOT).get(ModDataComponents.ROAST));
-        System.out.println(output.get(ModDataComponents.ROAST));
+
+
 
         return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
                 itemHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem() &&
