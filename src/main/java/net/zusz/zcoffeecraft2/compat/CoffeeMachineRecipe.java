@@ -12,27 +12,30 @@ public class CoffeeMachineRecipe {
         private final Ingredient ing3;
         private final Ingredient ing4;
         private final ItemStack output;
-        private final ItemStack fluidContainerOutput;
+        private final Ingredient fluidContainerOutput;
 
-        public CoffeeMachineRecipe(Ingredient input,
-                                   Ingredient container,
-                                   Ingredient fluid,
-                                   Ingredient ing1,
-                                   Ingredient ing2,
-                                   Ingredient ing3,
-                                   Ingredient ing4,
-                                   ItemStack output,
-                                   ItemStack fluidContainerOutput ) {
-            this.input = input;
-            this.container = container;
-            this.fluid = fluid;
-            this.ing1 = ing1;
-            this.ing2 = ing2;
-            this.ing3 = ing3;
-            this.ing4 = ing4;
-            this.output = output;
-            this.fluidContainerOutput = fluidContainerOutput;
-        }
+
+
+    public CoffeeMachineRecipe(Ingredient input,
+                               Ingredient container,
+                               Ingredient fluid,
+                               Ingredient ing1,
+                               Ingredient ing2,
+                               Ingredient ing3,
+                               Ingredient ing4,
+                               ItemStack output,
+                               Ingredient fluidContainerOutput)
+    {
+        this.input = input;
+        this.container = container;
+        this.fluid = fluid;
+        this.ing1 = ing1;
+        this.ing2 = ing2;
+        this.ing3 = ing3;
+        this.ing4 = ing4;
+        this.output = output;
+        this.fluidContainerOutput = fluidContainerOutput;
+    }
 
         public Ingredient getInput() {
             return input;
@@ -66,7 +69,8 @@ public class CoffeeMachineRecipe {
             return output;
         }
 
-        public ItemStack getFluidContainerOutput() {
+        public Ingredient getFluidContainerOutput() {
         return fluidContainerOutput;
     }
+
 }

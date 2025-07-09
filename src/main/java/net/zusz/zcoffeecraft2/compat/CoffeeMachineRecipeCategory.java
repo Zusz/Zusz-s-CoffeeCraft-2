@@ -13,6 +13,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
@@ -62,7 +63,7 @@ public class CoffeeMachineRecipeCategory implements IRecipeCategory<CoffeeMachin
         builder.addSlot(RecipeIngredientRole.INPUT, 54, 24).addIngredients(recipe.getIngredient3());
         builder.addSlot(RecipeIngredientRole.INPUT, 54, 45).addIngredients(recipe.getIngredient4());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.getOutput());
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 14, 45).addItemStack(recipe.getFluidContainerOutput());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 14, 45).addIngredients(recipe.getFluidContainerOutput());
 
     }
 

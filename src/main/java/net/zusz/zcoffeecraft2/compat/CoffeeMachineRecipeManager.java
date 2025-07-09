@@ -19,30 +19,42 @@ public class CoffeeMachineRecipeManager {
     public static List<CoffeeMachineRecipe> getAllRecipes() {
         ItemStack waterBottleStack = new ItemStack(Items.POTION);
         waterBottleStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
-        Ingredient waterBottle = Ingredient.of(waterBottleStack);
+        Ingredient water = Ingredient.of(waterBottleStack, new ItemStack(Items.WATER_BUCKET));
+        Ingredient water_output = Ingredient.of(Items.GLASS_BOTTLE, Items.BUCKET);
         return List.of(
 
                 new CoffeeMachineRecipe(
                         Ingredient.of(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN),
                         Ingredient.of(ModItems.ARABICA_COFFEE_CHERRY),
-                        waterBottle,
+                        water,
                         Ingredient.of(Items.AIR),
                         Ingredient.of(Items.AIR),
                         Ingredient.of(Items.AIR),
                         Ingredient.of(Items.AIR),
                         getResult(ModItems.ARABICA_COFFEE_CHERRY, ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN),
-                        new ItemStack(Items.GLASS_BOTTLE)
+                        water_output
                 ),
                 new CoffeeMachineRecipe(
                         Ingredient.of(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN),
                         Ingredient.of(ModItems.ARABICA_COFFEE_CHERRY),
-                        waterBottle,
+                        water,
                         Ingredient.of(Items.AIR),
                         Ingredient.of(Items.AIR),
                         Ingredient.of(Items.AIR),
                         Ingredient.of(Items.AIR),
                         getResult(ModItems.ARABICA_COFFEE_CHERRY, ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN),
-                        new ItemStack(Items.GLASS_BOTTLE)
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN),
+                        Ingredient.of(ModItems.ARABICA_COFFEE_CHERRY),
+                        water,
+                        Ingredient.of(Items.AIR),
+                        Ingredient.of(Items.AIR),
+                        Ingredient.of(Items.AIR),
+                        Ingredient.of(Items.AIR),
+                        getResult(ModItems.ARABICA_COFFEE_CHERRY, ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN),
+                        water_output
                 )
         );
 
@@ -54,9 +66,9 @@ public class CoffeeMachineRecipeManager {
             toReturn.set(ModDataComponents.ROAST, "light");
         } else if (ingredient2 == ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN) {
             toReturn.set(ModDataComponents.ROAST, "medium");
+        } else if (ingredient2 == ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN) {
+            toReturn.set(ModDataComponents.ROAST, "dark");
         }
-
         return toReturn;
     }
-
 }
