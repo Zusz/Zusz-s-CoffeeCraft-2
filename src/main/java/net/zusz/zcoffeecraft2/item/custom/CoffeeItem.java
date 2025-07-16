@@ -32,22 +32,34 @@ public class CoffeeItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
+        tooltipComponents.add(Component.literal("Beans:").withStyle(ChatFormatting.BLUE));
         if(stack.get(ModDataComponents.BEAN) == null) {
-            tooltipComponents.add(Component.literal("-Beans: None (Depends on Ingredient)").withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.literal("   -None (Depends on Ingredient)").withStyle(ChatFormatting.GRAY));
         } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "arabica")) {
-            tooltipComponents.add(Component.literal("-Beans: Arabica").withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.literal("   -Arabica").withStyle(ChatFormatting.GRAY));
         }
 
+        tooltipComponents.add(Component.literal("Roast:").withStyle(ChatFormatting.BLUE));
         if(stack.get(ModDataComponents.ROAST) == null) {
-            tooltipComponents.add(Component.literal("-Roast: None (Depends on Ingredients)").withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.literal("   -None (Depends on Ingredients)").withStyle(ChatFormatting.GRAY));
         } else {
             switch (stack.get(ModDataComponents.ROAST)) {
-                case "light" -> tooltipComponents.add(Component.literal("-Roast: Light").withStyle(ChatFormatting.GRAY));
-                case "medium" -> tooltipComponents.add(Component.literal("-Roast: Medium").withStyle(ChatFormatting.GRAY));
-                case "dark" -> tooltipComponents.add(Component.literal("-Roast: Dark").withStyle(ChatFormatting.GRAY));
+                case "light" -> tooltipComponents.add(Component.literal("   -Light").withStyle(ChatFormatting.GRAY));
+                case "medium" -> tooltipComponents.add(Component.literal("  -Medium").withStyle(ChatFormatting.GRAY));
+                case "dark" -> tooltipComponents.add(Component.literal("    -Dark").withStyle(ChatFormatting.GRAY));
             }
         }
-        
+
+        if (stack.get(ModDataComponents.INGREDIENTS) == null) {
+        }
+        else if (stack.get(ModDataComponents.INGREDIENTS).isEmpty()) {
+        }
+        else {
+            tooltipComponents.add(Component.literal("Ingredients:").withStyle(ChatFormatting.BLUE));
+            if (stack.get(ModDataComponents.INGREDIENTS).contains("sugar")) {
+                tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
+            }
+        }
 
 
 
