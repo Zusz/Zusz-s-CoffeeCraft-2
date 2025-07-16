@@ -113,7 +113,6 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
         for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
-
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
@@ -295,7 +294,9 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
 
         return itemHandler.getStackInSlot(slotid).isEmpty() ||
                 itemHandler.getStackInSlot(slotid).getItem() == output.getItem() &&
-                Objects.equals(itemHandler.getStackInSlot(slotid).get(ModDataComponents.ROAST), output.get(ModDataComponents.ROAST));
+                Objects.equals(itemHandler.getStackInSlot(slotid).get(ModDataComponents.ROAST), output.get(ModDataComponents.ROAST)) &&
+                        Objects.equals(itemHandler.getStackInSlot(slotid).get(ModDataComponents.BEAN), output.get(ModDataComponents.BEAN)) &&
+                        Objects.equals(itemHandler.getStackInSlot(slotid).get(ModDataComponents.INGREDIENTS), output.get(ModDataComponents.INGREDIENTS));
 
 
     }
