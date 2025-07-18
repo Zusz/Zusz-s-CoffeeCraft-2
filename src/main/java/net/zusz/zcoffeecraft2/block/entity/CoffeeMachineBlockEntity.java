@@ -206,7 +206,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
 
         ItemStack output;
 
-        if (container == ModItems.ARABICA_COFFEE_CHERRY.asItem()) {
+        if (container == ModItems.COFFEE_CUP.asItem()) {
             output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
         } else {
             output = null;

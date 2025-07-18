@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -78,23 +79,23 @@ public class CoffeeItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        if(Screen.hasShiftDown()) {
+        if(Screen.hasShiftDown() || isInJEIContext()) {
 
             tooltipComponents.add(Component.literal("Beans:").withStyle(ChatFormatting.BLUE));
             if(stack.get(ModDataComponents.BEAN) == null) {
-                tooltipComponents.add(Component.literal("   -None (Depends on Ingredient)").withStyle(ChatFormatting.GRAY));
+                tooltipComponents.add(Component.literal("   -Depends on Bean type").withStyle(ChatFormatting.GRAY));
             } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "arabica")) {
                 tooltipComponents.add(Component.literal("   -Arabica").withStyle(ChatFormatting.GRAY));
             }
 
             tooltipComponents.add(Component.literal("Roast:").withStyle(ChatFormatting.BLUE));
             if(stack.get(ModDataComponents.ROAST) == null) {
-                tooltipComponents.add(Component.literal("   -None (Depends on Ingredients)").withStyle(ChatFormatting.GRAY));
+                tooltipComponents.add(Component.literal("   -Depends on Bean roast").withStyle(ChatFormatting.GRAY));
             } else {
                 switch (stack.get(ModDataComponents.ROAST)) {
                     case "light" -> tooltipComponents.add(Component.literal("   -Light").withStyle(ChatFormatting.GRAY));
-                    case "medium" -> tooltipComponents.add(Component.literal("  -Medium").withStyle(ChatFormatting.GRAY));
-                    case "dark" -> tooltipComponents.add(Component.literal("    -Dark").withStyle(ChatFormatting.GRAY));
+                    case "medium" -> tooltipComponents.add(Component.literal("   -Medium").withStyle(ChatFormatting.GRAY));
+                    case "dark" -> tooltipComponents.add(Component.literal("   -Dark").withStyle(ChatFormatting.GRAY));
                 }
             }
 
@@ -118,5 +119,9 @@ public class CoffeeItem extends Item {
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+    private boolean isInJEIContext() {
+        return Arrays.stream(Thread.currentThread().getStackTrace())
+                .anyMatch(element -> element.getClassName().contains("mezz.jei"));
     }
 }

@@ -21,6 +21,9 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DARK_ROASTED_ARABICA_COFFEE_BEAN = ITEMS.register("dark_roasted_arabica_coffee_bean",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COFFEE_CUP = ITEMS.register("coffee_cup",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> ARABICA_COFFEE_CHERRY = ITEMS.register("arabica_coffee_cherry",
             () -> new ItemNameBlockItem(ModBlocks.ARABICA_COFFEE_BUSH.get(), new Item.Properties()));
 
