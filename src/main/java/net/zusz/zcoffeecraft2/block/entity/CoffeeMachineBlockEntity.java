@@ -30,10 +30,7 @@ import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineMenu;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler itemHandler = new ItemStackHandler(9) {
@@ -251,12 +248,27 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
         Item item = itemHandler.getStackInSlot(slot).getItem();
         if(item == Items.SUGAR) {
             ingredients.add("sugar");
+        } else if (item == Items.HONEY_BOTTLE) {
+            ingredients.add("honey");
+        } else if (item == Items.MILK_BUCKET) {
+            ingredients.add("milk");
         }
         return ingredients;
     }
 
     private void decreaseIngredient(int slot) {
+        Item item = itemHandler.getStackInSlot(slot).getItem();
+        ItemStack remaining = null;
+        if (item == Items.HONEY_BOTTLE) {
+            remaining = new ItemStack(Items.GLASS_BOTTLE);
+        } else if (item == Items.MILK_BUCKET) {
+            remaining = new ItemStack(Items.BUCKET);
+        }
+
         itemHandler.extractItem(slot, 1, false);
+        if (remaining != null) {
+            itemHandler.setStackInSlot(slot, remaining);
+        }
     }
 
     private boolean isFluidValid() {

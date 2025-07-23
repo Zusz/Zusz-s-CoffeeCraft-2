@@ -106,8 +106,11 @@ public class CoffeeItem extends Item {
             else {
                 tooltipComponents.add(Component.literal("Ingredients:").withStyle(ChatFormatting.BLUE));
                 for (String item : Objects.requireNonNull(stack.get(ModDataComponents.INGREDIENTS))) {
-                    if (Objects.equals(item, "sugar")) {
-                        tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
+                    switch (item) {
+                        case "sugar" -> tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
+                        case "milk" -> tooltipComponents.add(Component.literal("   -Milk").withStyle(ChatFormatting.GRAY));
+                        case "honey" -> tooltipComponents.add(Component.literal("   -Honey").withStyle(ChatFormatting.GRAY));
+                        case "cocoa" -> tooltipComponents.add(Component.literal("   -Cocoa").withStyle(ChatFormatting.GRAY));
                     }
                 }
             }
