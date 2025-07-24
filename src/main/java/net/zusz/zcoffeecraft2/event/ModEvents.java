@@ -13,6 +13,7 @@ import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 
 import java.util.List;
@@ -38,6 +39,9 @@ public class ModEvents {
         } else if (stack.getItem() == waterBottleStack.getItem()) {
             List<Component> tooltip = event.getToolTip();
             tooltip.add(Component.literal("☕Every type of Coffee needs Water!☕").withStyle(ChatFormatting.GOLD));
+        } else if (stack.getItem() == ModItems.COFFEE_CUP.asItem()){
+            List<Component> tooltip = event.getToolTip();
+            tooltip.add(Component.literal("☕A Cup to put your Coffee into!☕").withStyle(ChatFormatting.GOLD));
         }
     }
 }
