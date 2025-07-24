@@ -71,6 +71,9 @@ public class ZCoffeeCraft2
             event.accept(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN);
             event.accept(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN);
             event.accept(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN);
+            event.accept(ModItems.LIGHT_ARABICA_GROUND_COFFEE);
+            event.accept(ModItems.MEDIUM_ARABICA_GROUND_COFFEE);
+            event.accept(ModItems.DARK_ARABICA_GROUND_COFFEE);
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
@@ -78,6 +81,7 @@ public class ZCoffeeCraft2
             event.accept((ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK));
             event.accept((ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK));
             event.accept((ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK));
+
 
             event.accept((ModBlocks.COFFEE_MACHINE));
         }

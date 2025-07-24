@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "zcoffeecraft2:medium_roasted_arabica_coffee_bean"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BBB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:medium_roasted_arabica_coffee_bean_sack"
+  }
+}

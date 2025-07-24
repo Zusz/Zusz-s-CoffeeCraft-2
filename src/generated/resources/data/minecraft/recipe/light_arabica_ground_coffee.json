@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "zcoffeecraft2:light_roasted_arabica_coffee_bean"
+    },
+    {
+      "item": "zcoffeecraft2:light_roasted_arabica_coffee_bean"
+    },
+    {
+      "item": "zcoffeecraft2:light_roasted_arabica_coffee_bean"
+    },
+    {
+      "item": "zcoffeecraft2:light_roasted_arabica_coffee_bean"
+    },
+    {
+      "item": "zcoffeecraft2:light_roasted_arabica_coffee_bean"
+    },
+    {
+      "item": "zcoffeecraft2:light_roasted_arabica_coffee_bean"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:light_arabica_ground_coffee"
+  }
+}

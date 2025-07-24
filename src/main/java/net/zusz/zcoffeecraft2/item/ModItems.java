@@ -21,6 +21,13 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DARK_ROASTED_ARABICA_COFFEE_BEAN = ITEMS.register("dark_roasted_arabica_coffee_bean",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LIGHT_ARABICA_GROUND_COFFEE = ITEMS.register("light_arabica_ground_coffee",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MEDIUM_ARABICA_GROUND_COFFEE = ITEMS.register("medium_arabica_ground_coffee",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DARK_ARABICA_GROUND_COFFEE = ITEMS.register("dark_arabica_ground_coffee",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> COFFEE_CUP = ITEMS.register("coffee_cup",
             () -> new Item(new Item.Properties()));
 

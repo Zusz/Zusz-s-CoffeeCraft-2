@@ -71,6 +71,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK)
                 .unlockedBy("has_dark_roasted_arabica_coffee_bean_sack", has(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK)).save(recipeOutput, "dark_roasted_arabica_coffee_bean_from_sack");
 
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ARABICA_GROUND_COFFEE.get(), 1)
+                .requires(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN, 6)
+                .unlockedBy("has_light_roasted_arabica_coffee_bean", has(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "light_arabica_ground_coffee");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get(), 1)
+                .requires(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN, 6)
+                .unlockedBy("has_medium_roasted_arabica_coffee_bean", has(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "medium_arabica_ground_coffee");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_ARABICA_GROUND_COFFEE.get(), 1)
+                .requires(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN, 6)
+                .unlockedBy("has_dark_roasted_arabica_coffee_bean", has(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "dark_arabica_ground_coffee");
+
         //Uncomment for smelting
         oreSmelting(recipeOutput, RAW_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
         oreSmelting(recipeOutput, LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");

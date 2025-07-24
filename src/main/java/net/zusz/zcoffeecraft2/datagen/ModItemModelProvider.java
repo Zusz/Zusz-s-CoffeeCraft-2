@@ -17,6 +17,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.asItem());
         basicItem(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.asItem());
         basicItem(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem());
+        basicItem(ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem());
+        basicItem(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem());
         basicItem(ModItems.ARABICA_COFFEE_CHERRY.asItem());
         basicItem(ModItems.COFFEE_CUP.asItem());
 
