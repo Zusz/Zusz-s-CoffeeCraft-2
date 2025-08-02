@@ -4,11 +4,13 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -16,6 +18,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EventBusSubscriber(modid = ZCoffeeCraft2.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
@@ -33,6 +36,12 @@ public class ModEvents {
         ItemStack waterBottleStack = new ItemStack(Items.POTION);
         waterBottleStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
 
+        final List<Item> usedToMakeCoffee = List.of(
+                ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem(),
+                ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem(),
+                ModItems.DARK_ARABICA_GROUND_COFFEE.asItem()
+        );
+
         if (stack.getItem() == Items.WATER_BUCKET) {
             List<Component> tooltip = event.getToolTip();
             tooltip.add(Component.literal("☕Every type of Coffee needs Water!☕").withStyle(ChatFormatting.GOLD));
@@ -42,6 +51,9 @@ public class ModEvents {
         } else if (stack.getItem() == ModItems.COFFEE_CUP.asItem()){
             List<Component> tooltip = event.getToolTip();
             tooltip.add(Component.literal("☕A Cup to put your Coffee into!☕").withStyle(ChatFormatting.GOLD));
+        } else if (usedToMakeCoffee.contains(stack.getItem())){
+            List<Component> tooltip = event.getToolTip();
+            tooltip.add(Component.literal("☕This item can be used to make coffee!☕").withStyle(ChatFormatting.GOLD));
         }
     }
 }
