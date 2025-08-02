@@ -37,6 +37,7 @@ public class ModItems {
     public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",
             () -> new CoffeeItem(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));
 
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
