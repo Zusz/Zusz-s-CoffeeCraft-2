@@ -1,4 +1,4 @@
-package net.zusz.zcoffeecraft2;
+/*package net.zusz.zcoffeecraft2;
 
 import java.util.List;
 import java.util.Set;
@@ -61,3 +61,4 @@ public class Config
                 .collect(Collectors.toSet());
     }
 }
+*/
