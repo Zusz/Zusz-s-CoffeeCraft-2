@@ -22,7 +22,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem());
         basicItem(ModItems.ARABICA_COFFEE_CHERRY.asItem());
         basicItem(ModItems.COFFEE_CUP.asItem());
-
+        basicItem(ModItems.WHISK.asItem());
+        basicItem(ModItems.STEAMED_MILK.asItem());
+        basicItem(ModItems.MILK_FOAM.asItem());
     }
 
 }

@@ -22,7 +22,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         List<ItemLike> RAW_ARABICA_COFFEE_BEAN_SMELT = List.of(ModItems.RAW_ARABICA_COFFEE_BEAN);
         List<ItemLike> LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SMELT = List.of(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN);
         List<ItemLike> MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SMELT = List.of(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN);
+        List<ItemLike> MILK_BUCKET_SMELT = List.of(Items.MILK_BUCKET);
 
+
+        //Arabica Coffee Beans and Sacks
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK.get())
                 .pattern("BBB")
                 .pattern("BBB")
@@ -72,6 +75,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_dark_roasted_arabica_coffee_bean_sack", has(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK)).save(recipeOutput, "dark_roasted_arabica_coffee_bean_from_sack");
 
 
+        //Ground Coffees
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ARABICA_GROUND_COFFEE.get(), 1)
                 .requires(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN, 6)
                 .unlockedBy("has_light_roasted_arabica_coffee_bean", has(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "light_arabica_ground_coffee");
@@ -84,9 +88,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN, 6)
                 .unlockedBy("has_dark_roasted_arabica_coffee_bean", has(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "dark_arabica_ground_coffee");
 
-        //Uncomment for smelting
+        //Whisk
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WHISK.get())
+                .pattern(" I ")
+                .pattern("I I")
+                .pattern(" S ")
+                .define('I', Items.IRON_NUGGET)
+                .define('S', Items.STICK)
+                .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+                .save(recipeOutput);
+
+        //Milk foam
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MILK_FOAM.get(), 1)
+                .requires(ModItems.STEAMED_MILK, 1)
+                .requires(ModItems.WHISK, 1)
+                .unlockedBy("has_whisk", has(ModItems.WHISK)).save(recipeOutput, "milk_foam");
+
+        //Smelting
         oreSmelting(recipeOutput, RAW_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
         oreSmelting(recipeOutput, LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
         oreSmelting(recipeOutput, MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
+        oreSmelting(recipeOutput, MILK_BUCKET_SMELT, RecipeCategory.MISC, ModItems.STEAMED_MILK.get(), 0.25f, 2400, "coffee");
     }
 }

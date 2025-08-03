@@ -9,6 +9,7 @@ import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.item.custom.CoffeeItem;
 import net.zusz.zcoffeecraft2.item.custom.ModFoodProperties;
+import net.zusz.zcoffeecraft2.item.custom.WhiskItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ZCoffeeCraft2.MOD_ID);
@@ -29,6 +30,12 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> COFFEE_CUP = ITEMS.register("coffee_cup",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WHISK = ITEMS.register("whisk",
+            () -> new WhiskItem(new Item.Properties()));
+    public static final DeferredItem<Item> STEAMED_MILK = ITEMS.register("steamed_milk",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MILK_FOAM = ITEMS.register("milk_foam",
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> ARABICA_COFFEE_CHERRY = ITEMS.register("arabica_coffee_cherry",

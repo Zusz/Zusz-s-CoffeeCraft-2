@@ -18,6 +18,9 @@
   "block.zcoffeecraft2.coffee_machine": "Coffee Machine",
 
   "item.zcoffeecraft2.coffee_cup": "Coffee Cup",
-  "item.zcoffeecraft2.cup_of_coffee": "Cup of Coffee"
+  "item.zcoffeecraft2.cup_of_coffee": "Cup of Coffee",
+  "item.zcoffeecraft2.whisk": "Whisk",
+  "item.zcoffeecraft2.steamed_milk": "Steamed Milk",
+  "item.zcoffeecraft2.milk_foam": "Milk Foam"
 
 }

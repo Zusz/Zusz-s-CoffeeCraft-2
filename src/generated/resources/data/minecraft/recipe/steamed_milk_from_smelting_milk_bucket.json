@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 2400,
+  "experience": 0.25,
+  "group": "coffee",
+  "ingredient": {
+    "item": "minecraft:milk_bucket"
+  },
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:steamed_milk"
+  }
+}

@@ -76,6 +76,9 @@ public class ZCoffeeCraft2
             event.accept(ModItems.LIGHT_ARABICA_GROUND_COFFEE);
             event.accept(ModItems.MEDIUM_ARABICA_GROUND_COFFEE);
             event.accept(ModItems.DARK_ARABICA_GROUND_COFFEE);
+            event.accept(ModItems.WHISK);
+            event.accept(ModItems.STEAMED_MILK);
+            event.accept(ModItems.MILK_FOAM);
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
