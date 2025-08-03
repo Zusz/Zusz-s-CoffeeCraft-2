@@ -25,6 +25,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.WHISK.asItem());
         basicItem(ModItems.STEAMED_MILK.asItem());
         basicItem(ModItems.MILK_FOAM.asItem());
+        basicItem(ModItems.WHIPPED_CREAM.asItem());
     }
 
 }

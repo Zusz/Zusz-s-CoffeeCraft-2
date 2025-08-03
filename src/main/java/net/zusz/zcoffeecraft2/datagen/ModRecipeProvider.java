@@ -98,11 +98,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
                 .save(recipeOutput);
 
-        //Milk foam
+        //Milk Foam
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MILK_FOAM.get(), 1)
                 .requires(ModItems.STEAMED_MILK, 1)
                 .requires(ModItems.WHISK, 1)
                 .unlockedBy("has_whisk", has(ModItems.WHISK)).save(recipeOutput, "milk_foam");
+
+        //Whipped Cream
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.WHIPPED_CREAM.get(), 2)
+                .requires(Items.MILK_BUCKET, 1)
+                .requires(ModItems.WHISK, 1)
+                .requires(Items.SUGAR, 1)
+                .unlockedBy("has_whisk", has(ModItems.WHISK)).save(recipeOutput, "whipped_cream");
+
 
         //Smelting
         oreSmelting(recipeOutput, RAW_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");

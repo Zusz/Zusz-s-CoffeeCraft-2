@@ -37,6 +37,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> MILK_FOAM = ITEMS.register("milk_foam",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WHIPPED_CREAM = ITEMS.register("whipped_cream",
+            () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> ARABICA_COFFEE_CHERRY = ITEMS.register("arabica_coffee_cherry",
             () -> new ItemNameBlockItem(ModBlocks.ARABICA_COFFEE_BUSH.get(), new Item.Properties()));

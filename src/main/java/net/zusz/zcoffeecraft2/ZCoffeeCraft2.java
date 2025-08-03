@@ -79,6 +79,7 @@ public class ZCoffeeCraft2
             event.accept(ModItems.WHISK);
             event.accept(ModItems.STEAMED_MILK);
             event.accept(ModItems.MILK_FOAM);
+            event.accept(ModItems.WHIPPED_CREAM);
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
