@@ -8,6 +8,7 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredItem;
+import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineMethods;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -36,7 +37,7 @@ public class CoffeeMachineRecipeManager {
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
-                        getResult(ModItems.COFFEE_CUP, ModItems.LIGHT_ARABICA_GROUND_COFFEE),
+                        getResult(ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, null, null, null, null),
                         water_output
                 ),
                 new CoffeeMachineRecipe(
@@ -47,7 +48,7 @@ public class CoffeeMachineRecipeManager {
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
-                        getResult(ModItems.COFFEE_CUP, ModItems.MEDIUM_ARABICA_GROUND_COFFEE),
+                        getResult(ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, null, null, null, null),
                         water_output
                 ),
                 new CoffeeMachineRecipe(
@@ -58,18 +59,18 @@ public class CoffeeMachineRecipeManager {
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
-                        getResult(ModItems.COFFEE_CUP, ModItems.DARK_ARABICA_GROUND_COFFEE),
+                        getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, null, null, null, null),
                         water_output
                 ),
                 new CoffeeMachineRecipe(
                         allGrounds,
                         Ingredient.of(ModItems.COFFEE_CUP),
                         water,
-                        Ingredient.of(Items.SUGAR),
+                        Ingredient.of(ModItems.MILK_FOAM),
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
-                        getResult(ModItems.COFFEE_CUP, null, Items.SUGAR),
+                        getResult(null, ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
                         water_output
                 )
 
@@ -77,42 +78,63 @@ public class CoffeeMachineRecipeManager {
 
     }
 
-    public static ItemStack getResult(DeferredItem ingredient1, DeferredItem ingredient2, Item ingredient3) {
-        ItemStack toReturn = new ItemStack(ModItems.ARABICA_COFFEE_CHERRY.get());
-        if (ingredient1.is(ModItems.COFFEE_CUP)) {
-            toReturn = new ItemStack(ModItems.CUP_OF_COFFEE.get());
-        }
-        if (ingredient2 == ModItems.LIGHT_ARABICA_GROUND_COFFEE) {
-            toReturn.set(ModDataComponents.ROAST, "light");
-            toReturn.set(ModDataComponents.BEAN, "arabica");
-        } else if (ingredient2 == ModItems.MEDIUM_ARABICA_GROUND_COFFEE) {
-            toReturn.set(ModDataComponents.ROAST, "medium");
-            toReturn.set(ModDataComponents.BEAN, "arabica");
-        } else if (ingredient2 == ModItems.DARK_ARABICA_GROUND_COFFEE) {
-            toReturn.set(ModDataComponents.ROAST, "dark");
-            toReturn.set(ModDataComponents.BEAN, "arabica");
-        }
-        if (ingredient3 == Items.SUGAR) {
-            toReturn.set(ModDataComponents.INGREDIENTS, new ArrayList<String>(Collections.singleton("sugar")));
-        }
-        return toReturn;
+    public static ItemStack getResult(Item input, Item container, Item fluidInputItem, Item ingredient1, Item ingredient2, Item ingredient3, Item ingredient4) {
+        ItemStack output = setOutputItemBasedOnContainer(container);
+
+        output = addBeanAndRoastToOutput(output, input);
+
+        List<String> ingredients = new ArrayList<>(List.of());
+
+        ingredients = addToIngredientsList(ingredients, ingredient1);
+        ingredients = addToIngredientsList(ingredients, ingredient2);
+        ingredients = addToIngredientsList(ingredients, ingredient3);
+        ingredients = addToIngredientsList(ingredients, ingredient4);
+
+        output.set(ModDataComponents.INGREDIENTS, ingredients);
+
+        return output;
     }
 
-    public static ItemStack getResult(DeferredItem ingredient1, DeferredItem ingredient2) {
-        ItemStack toReturn = new ItemStack(ModItems.ARABICA_COFFEE_CHERRY.get());
-        if (ingredient1.is(ModItems.COFFEE_CUP)) {
-            toReturn = new ItemStack(ModItems.CUP_OF_COFFEE.get());
+
+    //methods from CoffeeMachineMethods, slightly modified (now null inputs don't set output to null, just don't do anything)
+    public static List<String> addToIngredientsList(List<String> ingredients, Item item) {
+        if (item == Items.SUGAR) {
+            ingredients.add("sugar");
+        } else if (item == Items.HONEY_BOTTLE) {
+            ingredients.add("honey");
+        } else if (item == Items.MILK_BUCKET) {
+            ingredients.add("milk");
+        } else if (item == Items.COCOA_BEANS) {
+            ingredients.add("cocoa");
+        } else if (item == ModItems.WHIPPED_CREAM.asItem()) {
+            ingredients.add("whipped_cream");
+        } else if (item == ModItems.MILK_FOAM.asItem()) {
+            ingredients.add("milk_foam");
+        } else if (item == ModItems.STEAMED_MILK.asItem()) {
+            ingredients.add("steamed_milk");
         }
-        if (ingredient2 == ModItems.LIGHT_ARABICA_GROUND_COFFEE) {
-            toReturn.set(ModDataComponents.ROAST, "light");
-            toReturn.set(ModDataComponents.BEAN, "arabica");
-        } else if (ingredient2 == ModItems.MEDIUM_ARABICA_GROUND_COFFEE) {
-            toReturn.set(ModDataComponents.ROAST, "medium");
-            toReturn.set(ModDataComponents.BEAN, "arabica");
-        } else if (ingredient2 == ModItems.DARK_ARABICA_GROUND_COFFEE) {
-            toReturn.set(ModDataComponents.ROAST, "dark");
-            toReturn.set(ModDataComponents.BEAN, "arabica");
+        return ingredients;
+    }
+
+    public static ItemStack addBeanAndRoastToOutput(ItemStack output, Item bean) {
+        if (bean == ModItems.LIGHT_ARABICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "light");
+            output.set(ModDataComponents.BEAN, "arabica");
+        } else if (bean == ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "medium");
+            output.set(ModDataComponents.BEAN, "arabica");
+        } else if (bean == ModItems.DARK_ARABICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "dark");
+            output.set(ModDataComponents.BEAN, "arabica");
         }
-        return toReturn;
+        return output;
+    }
+
+    public static ItemStack setOutputItemBasedOnContainer(Item containter) {
+        ItemStack output = null;
+        if (containter == ModItems.COFFEE_CUP.get()){
+            output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
+        }
+        return output;
     }
 }
