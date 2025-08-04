@@ -76,6 +76,36 @@ public class CoffeeItem extends Item {
         return super.finishUsingItem(stack, level, entity);
     }
 
+
+    @Override
+    public Component getName(ItemStack stack) {
+        List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
+        String roast = stack.get(ModDataComponents.ROAST);
+
+        Component coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.notype");
+        Component roastComponent = Component.translatable("coffeeroast.zcoffeecraft2.noroast");
+
+        if (ingredients != null) {
+            if ((ingredients.size() == 0)) {
+                coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.espresso");
+            } else if (ingredients.size() == 1 && ingredients.contains("milk_foam")) {
+                coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.macchiato");
+            }
+        }
+
+        if (roast != null) {
+            if (Objects.equals(roast, "light")) {
+                roastComponent = Component.translatable("coffeeroast.zcoffeecraft2.light");
+            } else if (Objects.equals(roast, "medium")) {
+                roastComponent = Component.translatable("coffeeroast.zcoffeecraft2.medium");
+            } else if (Objects.equals(roast, "dark")) {
+                roastComponent = Component.translatable("coffeeroast.zcoffeecraft2.dark");
+            }
+        }
+
+        return Component.translatable("coffeetype.zcoffeecraft2.base", roastComponent, coffeeComponent);
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
@@ -111,6 +141,9 @@ public class CoffeeItem extends Item {
                         case "milk" -> tooltipComponents.add(Component.literal("   -Milk").withStyle(ChatFormatting.GRAY));
                         case "honey" -> tooltipComponents.add(Component.literal("   -Honey").withStyle(ChatFormatting.GRAY));
                         case "cocoa" -> tooltipComponents.add(Component.literal("   -Cocoa").withStyle(ChatFormatting.GRAY));
+                        case "milk_foam" -> tooltipComponents.add(Component.literal("   -Milk Foam").withStyle(ChatFormatting.GRAY));
+                        case "steamed_milk" -> tooltipComponents.add(Component.literal("   -Steamed Milk").withStyle(ChatFormatting.GRAY));
+                        case "whipped_cream" -> tooltipComponents.add(Component.literal("   -Whipped Cream").withStyle(ChatFormatting.GRAY));
                     }
                 }
             }

@@ -48,13 +48,12 @@ public class CoffeeMachineMethods {
             validIngredients.add(Items.MILK_BUCKET.asItem());
             validIngredients.add(Items.SUGAR.asItem());
             validIngredients.add(Items.HONEY_BOTTLE.asItem());
+            validIngredients.add(Items.COCOA_BEANS.asItem());
         } else if (inputType == "input") {
             validIngredients.add(ModItems.LIGHT_ARABICA_GROUND_COFFEE.get());
             validIngredients.add(ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get());
             validIngredients.add(ModItems.DARK_ARABICA_GROUND_COFFEE.get());
-
         }
-
         return validIngredients.contains(ingredient);
     }
 
@@ -65,6 +64,8 @@ public class CoffeeMachineMethods {
             ingredients.add("honey");
         } else if (item == Items.MILK_BUCKET) {
             ingredients.add("milk");
+        } else if (item == Items.COCOA_BEANS) {
+            ingredients.add("cocoa");
         } else if (item == ModItems.WHIPPED_CREAM.asItem()) {
             ingredients.add("whipped_cream");
         } else if (item == ModItems.MILK_FOAM.asItem()) {
@@ -122,7 +123,7 @@ public class CoffeeMachineMethods {
 
     public static boolean isValidCoffeeCombination(ItemStack output) {
         List<String> ingredients = output.get(ModDataComponents.INGREDIENTS);
-        if (ingredients.size() == 0) {
+        if ((ingredients.size() == 0) || (ingredients.size() == 1 && ingredients.contains("milk_foam"))) {
             return true;
         }
         return false;
