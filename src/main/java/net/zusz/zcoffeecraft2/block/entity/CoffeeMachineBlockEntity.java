@@ -21,6 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.common.Mod;
@@ -34,6 +35,7 @@ import java.io.Console;
 import java.util.*;
 
 public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvider {
+
     public final ItemStackHandler itemHandler = new ItemStackHandler(9) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -42,6 +44,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 4);
             }
         }
+
     };
 
 
@@ -273,6 +276,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
 
         return maxCount >= currentCount + count;
     }
+
 
 
     @Override

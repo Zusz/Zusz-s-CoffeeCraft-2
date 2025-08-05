@@ -21,7 +21,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        blockWithItem(ModBlocks.COFFEE_MACHINE);
 
         coffeeBeanSack(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK, "raw_arabica_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK, "light_roasted_arabica_coffee_bean_sack_top");

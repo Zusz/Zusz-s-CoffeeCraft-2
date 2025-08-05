@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "zcoffeecraft2:block/coffee_machine"
-  }
-}
