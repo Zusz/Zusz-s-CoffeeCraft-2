@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
+import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
 import org.openjdk.nashorn.internal.ir.annotations.Ignore;
@@ -54,12 +55,13 @@ public class CoffeeItem extends Item {
                     delay
             );
             CoffeeEffectData.addEffect(player, ceffect);
+            player.addEffect(new MobEffectInstance(ModEffects.CAFFEINATED_EFFECT, delay, 0));
         }
-        // Check if on server and is a player
+        /* Check if on server and is a player
         if (!level.isClientSide && entity instanceof Player player) {
-            // Give the effect
-            //player.addEffect(new MobEffectInstance(effect, duration, amplifier));
-        }
+             Give the effect
+            player.addEffect(new MobEffectInstance(effect, duration, amplifier));
+        }*/
 
         return super.finishUsingItem(stack, level, entity);
     }

@@ -6,6 +6,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
+import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
@@ -54,6 +55,7 @@ public class ZCoffeeCraft2
         ModMenuTypes.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModDataComponents.register(modEventBus);
+        ModEffects.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
