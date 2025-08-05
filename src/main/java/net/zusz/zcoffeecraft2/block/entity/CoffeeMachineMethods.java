@@ -123,7 +123,15 @@ public class CoffeeMachineMethods {
 
     public static boolean isValidCoffeeCombination(ItemStack output) {
         List<String> ingredients = output.get(ModDataComponents.INGREDIENTS);
-        if ((ingredients.size() == 0) || (ingredients.size() == 1 && ingredients.contains("milk_foam"))) {
+        if ((ingredients.size() == 0) || //Espresso
+                (ingredients.size() == 1 &&ingredients.contains("sugar")) ||
+                (ingredients.size() == 1 && ingredients.contains("milk_foam")) || //Macchiato
+                (ingredients.size() == 2 && ingredients.contains("milk_foam") && ingredients.contains("sugar")) ||
+                (ingredients.size() == 1 && ingredients.contains("whipped_cream")) || //Con Panna
+                (ingredients.size() == 2 && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) ||
+                (ingredients.size() == 1 && ingredients.contains("steamed_milk")) || //Flat White
+                (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar"))
+        ) {
             return true;
         }
         return false;

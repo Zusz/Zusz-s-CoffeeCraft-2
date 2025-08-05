@@ -61,12 +61,16 @@ public class CoffeeItem extends Item {
         Component coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.notype");
         Component roastComponent = Component.translatable("coffeeroast.zcoffeecraft2.noroast");
 
-        if (ingredients != null) {
-            if ((ingredients.size() == 0)) {
-                coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.espresso");
-            } else if (ingredients.size() == 1 && ingredients.contains("milk_foam")) {
-                coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.macchiato");
-            }
+        Holder<MobEffect> effect = getEffect(ingredients);
+
+        if (effect == MobEffects.MOVEMENT_SPEED) {
+            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.espresso");
+        } else if (effect == MobEffects.JUMP) {
+            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.macchiato");
+        } else if (effect == MobEffects.ABSORPTION) {
+            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.con_panna");
+        } else if (effect == MobEffects.DAMAGE_RESISTANCE) {
+            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.flat_white");
         }
 
         if (roast != null) {
@@ -142,14 +146,26 @@ public class CoffeeItem extends Item {
             effectName = Component.translatable("effect.minecraft.speed");
         } else if (effect == MobEffects.JUMP) {
             effectName = Component.translatable("effect.minecraft.jump_boost");
+        } else if (effect == MobEffects.ABSORPTION) {
+            effectName = Component.translatable("effect.minecraft.absorption");
+        } else if (effect == MobEffects.DAMAGE_RESISTANCE) {
+            effectName = Component.translatable("effect.minecraft.resistance");
         }
 
         Component potency = Component.translatable("potion.potency." + amplifier);
 
+        int durationSeconds = duration / 20;
+        int minutes = durationSeconds / 60;
+        int seconds = durationSeconds % 60;
+        String formattedDuration = String.format("%d:%02d", minutes, seconds);
+
+        Component durationComponent = Component.literal(" (" + formattedDuration + ")");
+
         Component full = Component.literal("").withStyle(ChatFormatting.BLUE)
                 .append(effectName).withStyle(ChatFormatting.BLUE)
                 .append(" ").withStyle(ChatFormatting.BLUE)
-                .append(potency).withStyle(ChatFormatting.BLUE);
+                .append(potency).withStyle(ChatFormatting.BLUE)
+                .append(durationComponent).withStyle(ChatFormatting.BLUE);
 
         tooltipComponents.add(full);
 
@@ -163,10 +179,14 @@ public class CoffeeItem extends Item {
     private Holder<MobEffect> getEffect( List<String> ingredients ) {
         Holder<MobEffect> effect = MobEffects.MOVEMENT_SPEED;
         if (ingredients != null) {
-            if ((ingredients.size() == 0)) {
+            if ((ingredients.size() == 0) || ingredients.size() == 1 && ingredients.contains("sugar")) { //Espresso
                 effect = MobEffects.MOVEMENT_SPEED;
-            } else if (ingredients.size() == 1 && ingredients.contains("milk_foam")) {
+            } else if (ingredients.size() == 1 && ingredients.contains("milk_foam") || ingredients.size() == 2 && ingredients.contains("milk_foam)") && ingredients.contains("sugar")) { //Macchiato
                 effect = MobEffects.JUMP;
+            } else if (ingredients.size() == 1 && ingredients.contains("whipped_cream") || ingredients.size() == 2 && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) { //Con Panna
+                effect = MobEffects.ABSORPTION;
+            } else if (ingredients.size() == 1 && ingredients.contains("steamed_milk") || ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar")) { //Flat White
+                effect = MobEffects.DAMAGE_RESISTANCE;
             }
         }
         return effect;

@@ -22,8 +22,8 @@ Time 2 is 4 minutes
 -Espresso:          no extra ingredients,                               Speed effect
 -Macchiato:         extra milk foam,                                    Jump Boost
 -Con Panna:         extra whipped cream,                                Absorption
--Americano:         extra water,                                        Water Breathing
 -Flat White:        extra steamed milk,                                 Resistance
+-Americano:         extra water,                                        Water Breathing
 -Latte:             extra steamed milk and milk foam,                   Regeneration
 -Marocchino:        extra chocolate and milk foam,                      Night Vision
 -Mocha:             extra chocolate, steamed milk and whipped cream,    Strength
