@@ -34,9 +34,9 @@ public class ModItems {
     public static final DeferredItem<Item> WHISK = ITEMS.register("whisk",
             () -> new WhiskItem(new Item.Properties()));
     public static final DeferredItem<Item> STEAMED_MILK = ITEMS.register("steamed_milk",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> MILK_FOAM = ITEMS.register("milk_foam",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> WHIPPED_CREAM = ITEMS.register("whipped_cream",
             () -> new Item(new Item.Properties()));
 

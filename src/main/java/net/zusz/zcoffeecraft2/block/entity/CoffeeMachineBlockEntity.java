@@ -23,6 +23,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.ModItems;
@@ -211,6 +212,10 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
         if (item == Items.HONEY_BOTTLE) {
             remaining = new ItemStack(Items.GLASS_BOTTLE);
         } else if (item == Items.MILK_BUCKET) {
+            remaining = new ItemStack(Items.BUCKET);
+        } else if (item == ModItems.STEAMED_MILK.asItem()) {
+            remaining = new ItemStack(Items.BUCKET);
+        } else if (item == ModItems.MILK_FOAM.asItem()) {
             remaining = new ItemStack(Items.BUCKET);
         }
 
