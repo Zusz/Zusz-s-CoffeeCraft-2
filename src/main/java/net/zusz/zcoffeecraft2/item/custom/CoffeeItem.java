@@ -3,8 +3,10 @@ package net.zusz.zcoffeecraft2.item.custom;
 
 import com.mojang.blaze3d.shaders.Effect;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,6 +19,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
+import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
 import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
@@ -33,39 +36,12 @@ public class CoffeeItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-        Holder<MobEffect> effect = MobEffects.MOVEMENT_SPEED;
-        int duration = 0;
-        int amplifier = 0;
+        List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
 
-        if (stack.get(ModDataComponents.BEAN) == null) {
-            duration = 20;
-            amplifier = 1;
-        } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "arabica")) {
-            duration = 4800;
-            amplifier = 1;
-        }
-
-        if (stack.get(ModDataComponents.ROAST) == null ) {
-            effect = MobEffects.MOVEMENT_SPEED;
-        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "light")) {
-            effect = MobEffects.MOVEMENT_SPEED;
-        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "medium")) {
-            effect = MobEffects.DIG_SPEED;
-        } else if (Objects.equals(stack.get(ModDataComponents.ROAST), "dark")) {
-            effect = MobEffects.DAMAGE_BOOST;
-        }
-
-        if (stack.get(ModDataComponents.INGREDIENTS) == null) {
-        }
-        else if (stack.get(ModDataComponents.INGREDIENTS).isEmpty()) {
-        }
-        else {
-            for (String item : Objects.requireNonNull(stack.get(ModDataComponents.INGREDIENTS))) {
-                if (Objects.equals(item, "sugar")) {
-                  duration = duration + 600;
-                }
-            }
-        }
+        Holder<MobEffect> effect = getEffect(ingredients);
+        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST));
+        int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
+        int delay = 0;
 
         // Check if on server and is a player
         if (!level.isClientSide && entity instanceof Player player) {
@@ -109,7 +85,7 @@ public class CoffeeItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        if(Screen.hasShiftDown() || isInJEIContext()) {
+        if(Screen.hasShiftDown() && Minecraft.getInstance().screen instanceof CoffeeMachineScreen || isInJEIContext()) {
 
             tooltipComponents.add(Component.literal("Beans:").withStyle(ChatFormatting.BLUE));
             if(stack.get(ModDataComponents.BEAN) == null) {
@@ -150,14 +126,103 @@ public class CoffeeItem extends Item {
             //tooltipComponents.add(Component.literal("YEEEEEAH"));
 
 
-        } else {
+        } else if (Minecraft.getInstance().screen instanceof CoffeeMachineScreen ) {
             tooltipComponents.add(Component.translatable("§7Hold §eShift§7 for more Information"));
         }
+
+        //add effect and amplifier, duration yet to be made
+        List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
+        Holder<MobEffect> effect = getEffect(ingredients);
+        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST));
+        int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
+
+        Component effectName = Component.literal("Effect Name Error");
+
+        if (effect == MobEffects.MOVEMENT_SPEED) {
+            effectName = Component.translatable("effect.minecraft.speed");
+        } else if (effect == MobEffects.JUMP) {
+            effectName = Component.translatable("effect.minecraft.jump_boost");
+        }
+
+        Component potency = Component.translatable("potion.potency." + amplifier);
+
+        Component full = Component.literal("").withStyle(ChatFormatting.BLUE)
+                .append(effectName).withStyle(ChatFormatting.BLUE)
+                .append(" ").withStyle(ChatFormatting.BLUE)
+                .append(potency).withStyle(ChatFormatting.BLUE);
+
+        tooltipComponents.add(full);
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
     private boolean isInJEIContext() {
         return Arrays.stream(Thread.currentThread().getStackTrace())
                 .anyMatch(element -> element.getClassName().contains("mezz.jei"));
+    }
+
+    private Holder<MobEffect> getEffect( List<String> ingredients ) {
+        Holder<MobEffect> effect = MobEffects.MOVEMENT_SPEED;
+        if (ingredients != null) {
+            if ((ingredients.size() == 0)) {
+                effect = MobEffects.MOVEMENT_SPEED;
+            } else if (ingredients.size() == 1 && ingredients.contains("milk_foam")) {
+                effect = MobEffects.JUMP;
+            }
+        }
+        return effect;
+    }
+
+    private int getDuration(String bean, String roast) {
+        int duration = 0;
+
+        switch (bean) {
+            case "arabica" -> {
+                duration = 4800;
+            }
+            case "robusta" -> {
+                duration = 3000;
+            }
+
+            case null -> {}
+            default -> throw new IllegalStateException("Unexpected value: " + bean);
+        }
+
+        switch (roast) {
+            case "light" -> duration = duration;
+            case "medium" -> {
+                if (duration == 3000) {
+                    duration = 4800;
+                } else if (duration == 4800) {
+                    duration = 6600;
+                }
+            }
+            case "dark" -> {
+                if (duration == 3000) {
+                    duration = 5400;
+                } else if (duration == 4800) {
+                    duration = 7200;
+                }
+            }
+
+            case null -> {}
+            default -> throw new IllegalStateException("Unexpected value: " + roast);
+        }
+        return duration;
+    }
+
+    private int getAmplifier(String bean) {
+        int amplifier = 0;
+        switch (bean) {
+            case "arabica" -> {
+                amplifier = 1;
+            }
+            case "robusta" -> {
+                amplifier = 2;
+            }
+
+            case null -> {}
+            default -> throw new IllegalStateException("Unexpected value: " + bean);
+        }
+        return amplifier;
     }
 }
