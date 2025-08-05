@@ -32,9 +32,9 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onServerTick(ServerTickEvent.Post event) {
-        ServerLevel level = event.getServer().getLevel(Level.OVERWORLD);
-
-        CoffeeEffectData.tick(level);
+        for (ServerLevel level : event.getServer().getAllLevels()) {
+            CoffeeEffectData.tick(level);
+        }
     }
 
     @SubscribeEvent
