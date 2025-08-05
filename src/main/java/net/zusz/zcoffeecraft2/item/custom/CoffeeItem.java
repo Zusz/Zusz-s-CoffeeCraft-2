@@ -8,6 +8,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -19,6 +20,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
+import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
+import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
 import org.openjdk.nashorn.internal.ir.annotations.Ignore;
@@ -39,14 +42,23 @@ public class CoffeeItem extends Item {
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
 
         Holder<MobEffect> effect = getEffect(ingredients);
-        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST));
+        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
         int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
         int delay = 0;
 
+        if (!level.isClientSide && entity instanceof ServerPlayer player) {
+            CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
+                    effect.value(),
+                    duration,
+                    amplifier,
+                    400                 // delay (20 seconds)
+            );
+            CoffeeEffectData.addEffect(player, ceffect);
+        }
         // Check if on server and is a player
         if (!level.isClientSide && entity instanceof Player player) {
             // Give the effect
-            player.addEffect(new MobEffectInstance(effect, duration, amplifier));
+            //player.addEffect(new MobEffectInstance(effect, duration, amplifier));
         }
 
         return super.finishUsingItem(stack, level, entity);
@@ -137,7 +149,7 @@ public class CoffeeItem extends Item {
         //add effect and amplifier, duration yet to be made
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
         Holder<MobEffect> effect = getEffect(ingredients);
-        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST));
+        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
         int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
 
         Component effectName = Component.literal("Effect Name Error");
@@ -192,7 +204,7 @@ public class CoffeeItem extends Item {
         return effect;
     }
 
-    private int getDuration(String bean, String roast) {
+    private int getDuration(String bean, String roast, List<String> ingredients) {
         int duration = 0;
 
         switch (bean) {
@@ -226,6 +238,9 @@ public class CoffeeItem extends Item {
 
             case null -> {}
             default -> throw new IllegalStateException("Unexpected value: " + roast);
+        }
+        if (ingredients.contains("sugar")) {
+            duration = duration + 1200;
         }
         return duration;
     }

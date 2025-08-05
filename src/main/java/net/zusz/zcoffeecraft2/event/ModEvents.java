@@ -4,17 +4,23 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.dimension.LevelStem;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 
@@ -23,6 +29,13 @@ import java.util.List;
 
 @EventBusSubscriber(modid = ZCoffeeCraft2.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class ModEvents {
+
+    @SubscribeEvent
+    public static void onServerTick(ServerTickEvent.Post event) {
+        ServerLevel level = event.getServer().getLevel(Level.OVERWORLD);
+
+        CoffeeEffectData.tick(level);
+    }
 
     @SubscribeEvent
     public static void onTooltip(ItemTooltipEvent event) {
