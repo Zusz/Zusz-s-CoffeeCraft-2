@@ -1,11 +1,16 @@
 package net.zusz.zcoffeecraft2.screen.custom;
 
 import net.minecraft.commands.arguments.SlotsArgument;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.fml.ISystemReportExtender;
@@ -14,6 +19,10 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineBlockEntity;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
+import net.zusz.zcoffeecraft2.item.ModItems;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CoffeeMachineMenu extends AbstractContainerMenu {
 
@@ -67,6 +76,15 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
     }
 
 
+    private static final int INPUT_SLOT = 0;
+    private static final int CONTAINER_SLOT = 1;
+    private static final int FLUID_INPUT_SLOT = 2;
+    private static final int INGREDIENT_SLOT_1 = 3;
+    private static final int INGREDIENT_SLOT_2 = 4;
+    private static final int INGREDIENT_SLOT_3 = 5;
+    private static final int INGREDIENT_SLOT_4 = 6;
+    private static final int OUTPUT_SLOT = 7;
+    private static final int FLUID_CONTAINER_OUTPUT_SLOT = 8;
 
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
@@ -79,37 +97,94 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
     //amount of slots!!!
     private static final int TE_INVENTORY_SLOT_COUNT = 9;
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
-        Slot sourceSlot = slots.get(pIndex);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+    public ItemStack quickMoveStack(Player playerIn, int index) {
+        Slot sourceSlot = slots.get(index);
+        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;
+
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
-        // Check if the slot clicked is one of the vanilla container slots
-        if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
-            // This is a vanilla container slot so merge the stack into the tile inventory
-            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
-                    + TE_INVENTORY_SLOT_COUNT, false)) {
-                return ItemStack.EMPTY;  // EMPTY_ITEM
+        if (index < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
+            // Moving from player to machine
+            if (isValidForInputSlot(sourceStack)) {
+                if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX + INPUT_SLOT, TE_INVENTORY_FIRST_SLOT_INDEX + INPUT_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (isValidForContainerSlot(sourceStack)) {
+                if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX + CONTAINER_SLOT, TE_INVENTORY_FIRST_SLOT_INDEX + CONTAINER_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (isValidForFluidInputSlot(sourceStack)) {
+                if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX + FLUID_INPUT_SLOT, TE_INVENTORY_FIRST_SLOT_INDEX + FLUID_INPUT_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (isValidForIngredient(sourceStack)) {
+                if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX + INGREDIENT_SLOT_1, TE_INVENTORY_FIRST_SLOT_INDEX + INGREDIENT_SLOT_4 + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else {
+                return ItemStack.EMPTY;
             }
-        } else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
-            // This is a TE slot so merge the stack into the players inventory
+
+        } else if (index < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
+            // Moving from machine to player
             if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
                 return ItemStack.EMPTY;
             }
         } else {
-            System.out.println("Invalid slotIndex:" + pIndex);
+            System.out.println("Invalid slot index: " + index);
             return ItemStack.EMPTY;
         }
-        // If stack size == 0 (the entire stack was moved) set slot contents to null
-        if (sourceStack.getCount() == 0) {
+
+        if (sourceStack.isEmpty()) {
             sourceSlot.set(ItemStack.EMPTY);
         } else {
             sourceSlot.setChanged();
         }
+
         sourceSlot.onTake(playerIn, sourceStack);
         return copyOfSourceStack;
+    }
 
+    private boolean isValidForIngredient(ItemStack sourceStack) {
+        List<Item> validItems = new ArrayList<>(List.of(
+                ModItems.WHIPPED_CREAM.asItem(),
+                ModItems.STEAMED_MILK.asItem(),
+                ModItems.MILK_FOAM.asItem(),
+                Items.SUGAR
+        ));
+
+        return validItems.contains(sourceStack.getItem());
+    }
+
+    private boolean isValidForFluidInputSlot(ItemStack sourceStack) {
+        ItemStack waterBottleStack = new ItemStack(Items.POTION);
+        waterBottleStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
+
+        List<Item> validItems = new ArrayList<>(List.of(
+                Items.WATER_BUCKET,
+                waterBottleStack.getItem()
+        ));
+
+        return validItems.contains(sourceStack.getItem());
+    }
+
+    private boolean isValidForContainerSlot(ItemStack sourceStack) {
+        List<Item> validItems = new ArrayList<>(List.of(
+                ModItems.COFFEE_CUP.asItem()
+        ));
+
+        return validItems.contains(sourceStack.getItem());
+    }
+
+    private boolean isValidForInputSlot(ItemStack sourceStack) {
+        List<Item> validItems = new ArrayList<>(List.of(
+                ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem(),
+                ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem(),
+                ModItems.DARK_ARABICA_GROUND_COFFEE.asItem()
+        ));
+
+        return validItems.contains(sourceStack.getItem());
     }
 
     @Override
