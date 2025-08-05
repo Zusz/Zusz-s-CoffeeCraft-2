@@ -38,20 +38,20 @@ public class CoffeeItem extends Item {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, @NotNull LivingEntity entity) {
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
 
         Holder<MobEffect> effect = getEffect(ingredients);
         int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
         int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
-        int delay = 0;
+        int delay = getDelay(Objects.requireNonNull(stack.get(ModDataComponents.ROAST)));
 
         if (!level.isClientSide && entity instanceof ServerPlayer player) {
             CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
                     effect.value(),
                     duration,
                     amplifier,
-                    400                 // delay (20 seconds)
+                    delay
             );
             CoffeeEffectData.addEffect(player, ceffect);
         }
@@ -66,7 +66,7 @@ public class CoffeeItem extends Item {
 
 
     @Override
-    public Component getName(ItemStack stack) {
+    public @NotNull Component getName(ItemStack stack) {
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
         String roast = stack.get(ModDataComponents.ROAST);
 
@@ -166,18 +166,23 @@ public class CoffeeItem extends Item {
 
         Component potency = Component.translatable("potion.potency." + amplifier);
 
-        int durationSeconds = duration / 20;
-        int minutes = durationSeconds / 60;
-        int seconds = durationSeconds % 60;
-        String formattedDuration = String.format("%d:%02d", minutes, seconds);
+        String formattedDuration = getFormattedDuration(duration);
+        String formattedDelay = getFormattedDuration(getDelay(Objects.requireNonNull(stack.get(ModDataComponents.ROAST))));
 
         Component durationComponent = Component.literal(" (" + formattedDuration + ")");
 
-        Component full = Component.literal("").withStyle(ChatFormatting.BLUE)
-                .append(effectName).withStyle(ChatFormatting.BLUE)
-                .append(" ").withStyle(ChatFormatting.BLUE)
-                .append(potency).withStyle(ChatFormatting.BLUE)
-                .append(durationComponent).withStyle(ChatFormatting.BLUE);
+        Component delayComponent = Component.literal("");
+        if (!Objects.equals(formattedDelay, "")) {
+            delayComponent = Component.literal(" [" + formattedDelay + "]");
+        }
+
+
+        Component full = Component.literal("")
+                .append(effectName.copy().withStyle(ChatFormatting.BLUE))
+                .append(Component.literal(" ").withStyle(ChatFormatting.BLUE))
+                .append(potency.copy().withStyle(ChatFormatting.BLUE))
+                .append(durationComponent.copy().withStyle(ChatFormatting.BLUE))
+                .append(delayComponent.copy().withStyle(ChatFormatting.GOLD));
 
         tooltipComponents.add(full);
 
@@ -186,6 +191,15 @@ public class CoffeeItem extends Item {
     private boolean isInJEIContext() {
         return Arrays.stream(Thread.currentThread().getStackTrace())
                 .anyMatch(element -> element.getClassName().contains("mezz.jei"));
+    }
+
+    private int getDelay(@NotNull String roast) {
+        return switch (roast) {
+            case "light" -> 0;
+            case "medium" -> 200;
+            case "dark" -> 500;
+            default -> 0;
+        };
     }
 
     private Holder<MobEffect> getEffect( List<String> ingredients ) {
@@ -259,5 +273,18 @@ public class CoffeeItem extends Item {
             default -> throw new IllegalStateException("Unexpected value: " + bean);
         }
         return amplifier;
+    }
+
+    private String getFormattedDuration(int duration) {
+        if (duration >= 1) {
+            int durationSeconds = duration / 20;
+            int minutes = durationSeconds / 60;
+            int seconds = durationSeconds % 60;
+            String formattedDuration = String.format("%d:%02d", minutes, seconds);
+            return formattedDuration;
+        }
+        else {
+            return "";
+        }
     }
 }
