@@ -111,6 +111,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Items.SUGAR, 1)
                 .unlockedBy("has_whisk", has(ModItems.WHISK)).save(recipeOutput, "whipped_cream");
 
+        //Coffee Cup
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COFFEE_CUP.get())
+                .pattern("   ")
+                .pattern("G G")
+                .pattern(" G ")
+                .define('G', Items.GLASS_BOTTLE)
+                .unlockedBy("has_iron_nugget", has(Items.GLASS_BOTTLE))
+                .save(recipeOutput);
+
+        //Coffee Machine
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COFFEE_MACHINE.get())
+                .pattern("IRI")
+                .pattern(" C ")
+                .pattern("III")
+                .define('C', ModItems.COFFEE_CUP)
+                .define('I', Items.IRON_INGOT)
+                .define('R', Items.REDSTONE)
+                .unlockedBy("has_coffee_cup", has(ModItems.COFFEE_CUP))
+                .save(recipeOutput);
+
+
 
         //Smelting
         oreSmelting(recipeOutput, RAW_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");

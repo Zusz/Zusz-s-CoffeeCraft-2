@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "zcoffeecraft2:coffee_cup"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "IRI",
+    " C ",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:coffee_machine"
+  }
+}

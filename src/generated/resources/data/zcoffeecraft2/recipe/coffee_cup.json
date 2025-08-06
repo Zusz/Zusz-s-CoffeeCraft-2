@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "pattern": [
+    "   ",
+    "G G",
+    " G "
+  ],
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:coffee_cup"
+  }
+}
