@@ -27,11 +27,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
         coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK, "medium_roasted_arabica_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK, "dark_roasted_arabica_coffee_bean_sack_top");
 
-        makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), "arabica_coffee_bush_stage", "arabica_coffee_Bush_stage");
+        makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), "arabica_coffee_bush_stage", "arabica_coffee_bush_stage");
+        makeBush(((BushBlock) ModBlocks.ROBUSTA_COFFEE_BUSH.get()), "robusta_coffee_bush_stage", "arabica_coffee_bush_stage");
+
     }
 
     public void makeBush(BushBlock block, String modelName, String textureName) {
-        Function<BlockState, ConfiguredModel[]> function = state -> states(state, "arabica_coffee_bush_stage", "arabica_coffee_bush_stage");
+        Function<BlockState, ConfiguredModel[]> function = state -> states(state, modelName, textureName);
 
         getVariantBuilder(block).forAllStates(function);
     }
