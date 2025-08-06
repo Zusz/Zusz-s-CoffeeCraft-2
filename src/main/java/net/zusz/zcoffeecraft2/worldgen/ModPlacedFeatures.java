@@ -15,12 +15,14 @@ import java.util.List;
 public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> ARABICA_COFFEE_BUSH_PLACED_KEY = registerKey("arabica_coffee_bush_placed");
+    public static final ResourceKey<PlacedFeature> ROBUSTA_COFFEE_BUSH_PLACED_KEY = registerKey("robusta_coffee_bush_placed");
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, ARABICA_COFFEE_BUSH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ARABICA_COFFEE_BUSH_KEY),
                 List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-
+        register(context, ROBUSTA_COFFEE_BUSH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ROBUSTA_COFFEE_BUSH_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

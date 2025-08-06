@@ -1,28 +1,28 @@
 {
   "variants": {
     "age=0": {
-      "model": "zcoffeecraft2:block/robusta_coffee_bush_stage0"
+      "model": "zcoffeecraft2:block/arabica_coffee_bush_stage0"
     },
     "age=1": {
-      "model": "zcoffeecraft2:block/robusta_coffee_bush_stage1"
+      "model": "zcoffeecraft2:block/arabica_coffee_bush_stage1"
     },
     "age=2": {
-      "model": "zcoffeecraft2:block/robusta_coffee_bush_stage2"
+      "model": "zcoffeecraft2:block/arabica_coffee_bush_stage2"
     },
     "age=3": {
-      "model": "zcoffeecraft2:block/robusta_coffee_bush_stage3"
+      "model": "zcoffeecraft2:block/arabica_coffee_bush_stage3"
     },
     "age=4": {
-      "model": "zcoffeecraft2:block/robusta_coffee_bush_stage4"
+      "model": "zcoffeecraft2:block/arabica_coffee_bush_stage4"
     },
     "age=5": {
-      "model": "zcoffeecraft2:block/robusta_coffee_bush_stage5"
+      "model": "zcoffeecraft2:block/arabica_coffee_bush_stage5"
     },
     "age=6": {
-      "model": "zcoffeecraft2:block/robusta_coffee_bush_stage6"
+      "model": "zcoffeecraft2:block/arabica_coffee_bush_stage6"
     },
     "age=7": {
-      "model": "zcoffeecraft2:block/robusta_coffee_bush_stage7"
+      "model": "zcoffeecraft2:block/arabica_coffee_bush_stage7"
     }
   }
 }

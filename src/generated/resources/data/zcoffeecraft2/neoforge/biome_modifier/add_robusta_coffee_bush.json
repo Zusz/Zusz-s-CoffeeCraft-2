@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:taiga",
+    "minecraft:old_growth_pine_taiga",
+    "minecraft:old_growth_spruce_taiga"
+  ],
+  "features": "zcoffeecraft2:robusta_coffee_bush_placed",
+  "step": "vegetal_decoration"
+}
