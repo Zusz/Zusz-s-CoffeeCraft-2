@@ -43,19 +43,19 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.zusz.zcoffeecraft2.item.ModItems;
 
-public class CoffeeBushBlock extends BushBlock implements BonemealableBlock {
-    public static final MapCodec<CoffeeBushBlock> CODEC = simpleCodec(CoffeeBushBlock::new);
+public class ArabicaCoffeeBushBlock extends BushBlock implements BonemealableBlock {
+    public static final MapCodec<ArabicaCoffeeBushBlock> CODEC = simpleCodec(ArabicaCoffeeBushBlock::new);
     private static final float HURT_SPEED_THRESHOLD = 0.003F;
     public static final int MAX_AGE = 7;
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 7);
     private static final VoxelShape SAPLING_SHAPE;
     private static final VoxelShape MID_GROWTH_SHAPE;
 
-    public MapCodec<CoffeeBushBlock> codec() {
+    public MapCodec<ArabicaCoffeeBushBlock> codec() {
         return CODEC;
     }
 
-    public CoffeeBushBlock(BlockBehaviour.Properties properties) {
+    public ArabicaCoffeeBushBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(AGE, 0));
     }

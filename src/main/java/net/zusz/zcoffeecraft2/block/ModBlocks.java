@@ -10,7 +10,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
-import net.zusz.zcoffeecraft2.block.custom.CoffeeBushBlock;
+import net.zusz.zcoffeecraft2.block.custom.ArabicaCoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeMachineBlock;
 import net.zusz.zcoffeecraft2.item.ModItems;
 
@@ -35,7 +35,7 @@ public class ModBlocks {
 
 
     public static final DeferredBlock<Block> ARABICA_COFFEE_BUSH = BLOCKS.register("arabica_coffee_bush",
-            () -> new CoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+            () -> new ArabicaCoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
     public static final DeferredBlock<Block> COFFEE_MACHINE = registerBlock("coffee_machine",
             () -> new CoffeeMachineBlock(BlockBehaviour.Properties.of()));

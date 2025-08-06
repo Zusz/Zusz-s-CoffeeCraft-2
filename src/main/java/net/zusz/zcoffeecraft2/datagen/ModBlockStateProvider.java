@@ -9,7 +9,7 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
-import net.zusz.zcoffeecraft2.block.custom.CoffeeBushBlock;
+import net.zusz.zcoffeecraft2.block.custom.ArabicaCoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 
 import java.util.function.Function;
@@ -37,8 +37,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
     private ConfiguredModel[] states(BlockState state, String modelName, String textureName) {
         ConfiguredModel[] models = new ConfiguredModel[1];
-        models[0] = new ConfiguredModel(models().cross(modelName + state.getValue(CoffeeBushBlock.AGE),
-                ResourceLocation.fromNamespaceAndPath(ZCoffeeCraft2.MOD_ID, "block/" + textureName + state.getValue(CoffeeBushBlock.AGE))).renderType("cutout"));
+        models[0] = new ConfiguredModel(models().cross(modelName + state.getValue(ArabicaCoffeeBushBlock.AGE),
+                ResourceLocation.fromNamespaceAndPath(ZCoffeeCraft2.MOD_ID, "block/" + textureName + state.getValue(ArabicaCoffeeBushBlock.AGE))).renderType("cutout"));
 
         return models;
     }

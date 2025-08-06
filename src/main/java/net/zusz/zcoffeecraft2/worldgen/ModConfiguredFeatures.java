@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
-import net.zusz.zcoffeecraft2.block.custom.CoffeeBushBlock;
+import net.zusz.zcoffeecraft2.block.custom.ArabicaCoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class ModConfiguredFeatures {
         register(context, ARABICA_COFFEE_BUSH_KEY, Feature.RANDOM_PATCH,
                 FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ARABICA_COFFEE_BUSH.get()
-                                .defaultBlockState().setValue(CoffeeBushBlock.AGE, Integer.valueOf(6)))
+                                .defaultBlockState().setValue(ArabicaCoffeeBushBlock.AGE, Integer.valueOf(6)))
                         ), List.of(Blocks.GRASS_BLOCK)
                 )
         );
