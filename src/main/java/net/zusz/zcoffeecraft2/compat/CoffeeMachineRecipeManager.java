@@ -25,10 +25,11 @@ public class CoffeeMachineRecipeManager {
         waterBottleStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
         Ingredient water = Ingredient.of(waterBottleStack, new ItemStack(Items.WATER_BUCKET));
         Ingredient water_output = Ingredient.of(Items.GLASS_BOTTLE, Items.BUCKET);
-        Ingredient allGrounds = Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE, ModItems.MEDIUM_ARABICA_GROUND_COFFEE, ModItems.DARK_ARABICA_GROUND_COFFEE);
+        //Ingredient allGrounds = Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE, ModItems.MEDIUM_ARABICA_GROUND_COFFEE, ModItems.DARK_ARABICA_GROUND_COFFEE);
 
         return List.of(
 
+                //Espresso
                 new CoffeeMachineRecipe(
                         Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE),
                         Ingredient.of(ModItems.COFFEE_CUP),
@@ -62,15 +63,109 @@ public class CoffeeMachineRecipeManager {
                         getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, null, null, null, null),
                         water_output
                 ),
+
+                //Macchiato
                 new CoffeeMachineRecipe(
-                        allGrounds,
+                        Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE),
                         Ingredient.of(ModItems.COFFEE_CUP),
                         water,
                         Ingredient.of(ModItems.MILK_FOAM),
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
-                        getResult(null, ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
+                        getResult(ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.MEDIUM_ARABICA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.MILK_FOAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.DARK_ARABICA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.MILK_FOAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
+                        water_output
+                ),
+
+                //Con Panna
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.WHIPPED_CREAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.WHIPPED_CREAM.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.MEDIUM_ARABICA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.WHIPPED_CREAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.WHIPPED_CREAM.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.DARK_ARABICA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.WHIPPED_CREAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.WHIPPED_CREAM.asItem(), null, null, null),
+                        water_output
+                ),
+
+                //Flat White
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.STEAMED_MILK),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.STEAMED_MILK.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.MEDIUM_ARABICA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.STEAMED_MILK),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.STEAMED_MILK.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.DARK_ARABICA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.STEAMED_MILK),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.STEAMED_MILK.asItem(), null, null, null),
                         water_output
                 )
 

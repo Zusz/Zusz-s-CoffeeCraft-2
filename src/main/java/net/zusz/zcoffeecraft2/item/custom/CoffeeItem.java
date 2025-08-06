@@ -148,13 +148,14 @@ public class CoffeeItem extends Item {
             tooltipComponents.add(Component.translatable("§7Hold §eShift§7 for more Information"));
         }
 
-        //add effect and amplifier, duration yet to be made
+        //add effect and amplifier and duration
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
         Holder<MobEffect> effect = getEffect(ingredients);
         int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
         int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
 
-        Component effectName = Component.literal("Effect Name Error");
+        Component effectName = Component.literal("Effect Depends on Ingredients");
+
 
         if (effect == MobEffects.MOVEMENT_SPEED) {
             effectName = Component.translatable("effect.minecraft.speed");
@@ -169,9 +170,12 @@ public class CoffeeItem extends Item {
         Component potency = Component.translatable("potion.potency." + amplifier);
 
         String formattedDuration = getFormattedDuration(duration);
-        String formattedDelay = getFormattedDuration(getDelay(Objects.requireNonNull(stack.get(ModDataComponents.ROAST))));
+        String formattedDelay = getFormattedDuration(getDelay(stack.get(ModDataComponents.ROAST)));
 
-        Component durationComponent = Component.literal(" (" + formattedDuration + ")");
+        Component durationComponent = Component.literal("");
+        if (!Objects.equals(formattedDuration, "")) {
+            durationComponent = Component.literal(" (" + formattedDuration + ")");
+        }
 
         Component delayComponent = Component.literal("");
         if (!Objects.equals(formattedDelay, "")) {
@@ -195,17 +199,18 @@ public class CoffeeItem extends Item {
                 .anyMatch(element -> element.getClassName().contains("mezz.jei"));
     }
 
-    private int getDelay(@NotNull String roast) {
+    private int getDelay(String roast) {
         return switch (roast) {
             case "light" -> 0;
             case "medium" -> 200;
             case "dark" -> 500;
-            default -> 0;
+            case null -> 0;
+            default -> throw new IllegalStateException("Unexpected value: " + roast);
         };
     }
 
     private Holder<MobEffect> getEffect( List<String> ingredients ) {
-        Holder<MobEffect> effect = MobEffects.MOVEMENT_SPEED;
+        Holder<MobEffect> effect = null;
         if (ingredients != null) {
             if ((ingredients.size() == 0) || ingredients.size() == 1 && ingredients.contains("sugar")) { //Espresso
                 effect = MobEffects.MOVEMENT_SPEED;
@@ -220,7 +225,7 @@ public class CoffeeItem extends Item {
         return effect;
     }
 
-    private int getDuration(String bean, String roast, List<String> ingredients) {
+    private int getDuration(@Nullable String bean, @Nullable String roast, @Nullable List<String> ingredients) {
         int duration = 0;
 
         switch (bean) {
@@ -255,8 +260,10 @@ public class CoffeeItem extends Item {
             case null -> {}
             default -> throw new IllegalStateException("Unexpected value: " + roast);
         }
-        if (ingredients.contains("sugar")) {
-            duration = duration + 1200;
+        if (ingredients != null) {
+            if (ingredients.contains("sugar")) {
+                duration = duration + 1200;
+            }
         }
         return duration;
     }
