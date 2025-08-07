@@ -14,7 +14,7 @@ import net.zusz.zcoffeecraft2.item.custom.WhiskItem;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ZCoffeeCraft2.MOD_ID);
 
-    public static final DeferredItem<Item> RAW_ARABICA_COFFEE_BEAN = ITEMS.register("raw_arabica_coffee_bean",
+    public static final DeferredItem<Item> RAW_ARABICA_COFFEE_BEAN = ITEMS.register("raw_arabica_coffee_bean", //arabica
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> LIGHT_ROASTED_ARABICA_COFFEE_BEAN = ITEMS.register("light_roasted_arabica_coffee_bean",
             () -> new Item(new Item.Properties()));
@@ -29,7 +29,22 @@ public class ModItems {
     public static final DeferredItem<Item> DARK_ARABICA_GROUND_COFFEE = ITEMS.register("dark_arabica_ground_coffee",
             () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> COFFEE_CUP = ITEMS.register("coffee_cup",
+    public static final DeferredItem<Item> RAW_ROBUSTA_COFFEE_BEAN = ITEMS.register("raw_robusta_coffee_bean", //robusta
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN = ITEMS.register("light_roasted_robusta_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN = ITEMS.register("medium_roasted_robusta_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DARK_ROASTED_ROBUSTA_COFFEE_BEAN = ITEMS.register("dark_roasted_robusta_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LIGHT_ROBUSTA_GROUND_COFFEE = ITEMS.register("light_robusta_ground_coffee",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MEDIUM_ROBUSTA_GROUND_COFFEE = ITEMS.register("medium_robusta_ground_coffee",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DARK_ROBUSTA_GROUND_COFFEE = ITEMS.register("dark_robusta_ground_coffee",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> COFFEE_CUP = ITEMS.register("coffee_cup",//other items
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> WHISK = ITEMS.register("whisk",
             () -> new WhiskItem(new Item.Properties()));
@@ -40,12 +55,12 @@ public class ModItems {
     public static final DeferredItem<Item> WHIPPED_CREAM = ITEMS.register("whipped_cream",
             () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> ARABICA_COFFEE_CHERRY = ITEMS.register("arabica_coffee_cherry",
+    public static final DeferredItem<Item> ARABICA_COFFEE_CHERRY = ITEMS.register("arabica_coffee_cherry",//cherry items
             () -> new ItemNameBlockItem(ModBlocks.ARABICA_COFFEE_BUSH.get(), new Item.Properties()));
     public static final DeferredItem<Item> ROBUSTA_COFFEE_CHERRY = ITEMS.register("robusta_coffee_cherry",
             () -> new ItemNameBlockItem(ModBlocks.ROBUSTA_COFFEE_BUSH.get(), new Item.Properties()));
 
-    public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",
+    public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",//unique items
             () -> new CoffeeItem(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));
 
 

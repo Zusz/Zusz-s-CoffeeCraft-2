@@ -13,6 +13,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        basicItem(ModItems.ARABICA_COFFEE_CHERRY.asItem());
         basicItem(ModItems.RAW_ARABICA_COFFEE_BEAN.asItem());
         basicItem(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.asItem());
         basicItem(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.asItem());
@@ -20,8 +21,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem());
         basicItem(ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem());
         basicItem(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem());
-        basicItem(ModItems.ARABICA_COFFEE_CHERRY.asItem());
         basicItem(ModItems.ROBUSTA_COFFEE_CHERRY.asItem());
+        basicItem(ModItems.RAW_ROBUSTA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.DARK_ROASTED_ROBUSTA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.asItem());
+        basicItem(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.asItem());
+        basicItem(ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem());
         basicItem(ModItems.COFFEE_CUP.asItem());
         basicItem(ModItems.WHISK.asItem());
         basicItem(ModItems.STEAMED_MILK.asItem());

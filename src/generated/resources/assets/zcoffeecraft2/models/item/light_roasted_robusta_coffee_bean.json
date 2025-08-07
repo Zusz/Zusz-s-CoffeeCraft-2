@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "zcoffeecraft2:item/light_roasted_robusta_coffee_bean"
+  }
+}

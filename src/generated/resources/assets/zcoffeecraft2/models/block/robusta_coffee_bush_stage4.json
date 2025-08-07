@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "zcoffeecraft2:block/arabica_coffee_bush_stage4"
+    "cross": "zcoffeecraft2:block/robusta_coffee_bush_stage4"
   }
 }

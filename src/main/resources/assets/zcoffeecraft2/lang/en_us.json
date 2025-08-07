@@ -9,6 +9,13 @@
   "item.zcoffeecraft2.dark_arabica_ground_coffee": "Dark Arabica Ground Coffee",
 
   "item.zcoffeecraft2.robusta_coffee_cherry": "Robusta Coffee Cherry",
+  "item.zcoffeecraft2.raw_robusta_coffee_bean": "Raw Robusta Coffee Bean",
+  "item.zcoffeecraft2.light_roasted_robusta_coffee_bean": "Light Roasted Robusta Coffee Bean",
+  "item.zcoffeecraft2.medium_roasted_robusta_coffee_bean": "Medium Roasted Robusta Coffee Bean",
+  "item.zcoffeecraft2.dark_roasted_robusta_coffee_bean": "Dark Roasted Robusta Coffee Bean",
+  "item.zcoffeecraft2.light_robusta_ground_coffee": "Light Robusta Ground Coffee",
+  "item.zcoffeecraft2.medium_robusta_ground_coffee": "Medium Robusta Ground Coffee",
+  "item.zcoffeecraft2.dark_robusta_ground_coffee": "Dark Robusta Ground Coffee",
 
   "item.zcoffeecraft2.coffee_cup": "Coffee Cup",
   "item.zcoffeecraft2.cup_of_coffee": "Cup of Coffee",
@@ -21,6 +28,11 @@
   "block.zcoffeecraft2.light_roasted_arabica_coffee_bean_sack": "Sack of Light Roasted Arabica Coffee Beans",
   "block.zcoffeecraft2.medium_roasted_arabica_coffee_bean_sack": "Sack of Medium Roasted Arabica Coffee Beans",
   "block.zcoffeecraft2.dark_roasted_arabica_coffee_bean_sack": "Sack of Dark Roasted Arabica Coffee Beans",
+
+  "block.zcoffeecraft2.raw_robusta_coffee_bean_sack": "Sack of Raw Robusta Coffee Beans",
+  "block.zcoffeecraft2.light_roasted_robusta_coffee_bean_sack": "Sack of Light Roasted Robusta Coffee Beans",
+  "block.zcoffeecraft2.medium_roasted_robusta_coffee_bean_sack": "Sack of Medium Roasted Robusta Coffee Beans",
+  "block.zcoffeecraft2.dark_roasted_robusta_coffee_bean_sack": "Sack of Dark Roasted Robusta Coffee Beans",
 
   "block.zcoffeecraft2.arabica_coffee_bush": "Arabica Coffee Bush",
   "block.zcoffeecraft2.robusta_coffee_bush": "Robusta Coffee Bush",
