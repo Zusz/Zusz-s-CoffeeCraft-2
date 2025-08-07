@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_light_roasted_robusta_coffee_bean_sack": {
+      "conditions": {
+        "items": [
+          {
+            "items": "zcoffeecraft2:light_roasted_robusta_coffee_bean_sack"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:light_roasted_robusta_coffee_bean_from_sack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_light_roasted_robusta_coffee_bean_sack"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:light_roasted_robusta_coffee_bean_from_sack"
+    ]
+  }
+}
