@@ -29,7 +29,7 @@ public class CoffeeMachineRecipeManager {
 
         return List.of(
 
-                //Espresso
+                //Espresso Arabica
                 new CoffeeMachineRecipe(
                         Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE),
                         Ingredient.of(ModItems.COFFEE_CUP),
@@ -63,8 +63,42 @@ public class CoffeeMachineRecipeManager {
                         getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, null, null, null, null),
                         water_output
                 ),
+                //Espresso Robusta
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, null, null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, null, null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.DARK_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, null, null, null, null),
+                        water_output
+                ),
 
-                //Macchiato
+                //Macchiato Arabica
                 new CoffeeMachineRecipe(
                         Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE),
                         Ingredient.of(ModItems.COFFEE_CUP),
@@ -98,8 +132,42 @@ public class CoffeeMachineRecipeManager {
                         getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
                         water_output
                 ),
+                //Macchiato Robusta
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.MILK_FOAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.MILK_FOAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.DARK_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.MILK_FOAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.MILK_FOAM.asItem(), null, null, null),
+                        water_output
+                ),
 
-                //Con Panna
+                //Con Panna Arabica
                 new CoffeeMachineRecipe(
                         Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE),
                         Ingredient.of(ModItems.COFFEE_CUP),
@@ -133,8 +201,42 @@ public class CoffeeMachineRecipeManager {
                         getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.WHIPPED_CREAM.asItem(), null, null, null),
                         water_output
                 ),
+                //Con Panna Robusta
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.WHIPPED_CREAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.WHIPPED_CREAM.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.WHIPPED_CREAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.WHIPPED_CREAM.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.DARK_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.WHIPPED_CREAM),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.WHIPPED_CREAM.asItem(), null, null, null),
+                        water_output
+                ),
 
-                //Flat White
+                //Flat White Arabica
                 new CoffeeMachineRecipe(
                         Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE),
                         Ingredient.of(ModItems.COFFEE_CUP),
@@ -166,6 +268,40 @@ public class CoffeeMachineRecipeManager {
                         Ingredient.EMPTY,
                         Ingredient.EMPTY,
                         getResult(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.STEAMED_MILK.asItem(), null, null, null),
+                        water_output
+                ),
+                //Flat White Robusta
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.STEAMED_MILK),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.STEAMED_MILK.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.STEAMED_MILK),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.STEAMED_MILK.asItem(), null, null, null),
+                        water_output
+                ),
+                new CoffeeMachineRecipe(
+                        Ingredient.of(ModItems.DARK_ROBUSTA_GROUND_COFFEE),
+                        Ingredient.of(ModItems.COFFEE_CUP),
+                        water,
+                        Ingredient.of(ModItems.STEAMED_MILK),
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        Ingredient.EMPTY,
+                        getResult(ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem(), ModItems.COFFEE_CUP.asItem(), null, ModItems.STEAMED_MILK.asItem(), null, null, null),
                         water_output
                 )
 
@@ -221,6 +357,15 @@ public class CoffeeMachineRecipeManager {
         } else if (bean == ModItems.DARK_ARABICA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "dark");
             output.set(ModDataComponents.BEAN, "arabica");
+        } else if (bean == ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "light");
+            output.set(ModDataComponents.BEAN, "robusta");
+        } else if (bean == ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "medium");
+            output.set(ModDataComponents.BEAN, "robusta");
+        }  else if (bean == ModItems.DARK_ROBUSTA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "dark");
+            output.set(ModDataComponents.BEAN, "robusta");
         }
         return output;
     }
