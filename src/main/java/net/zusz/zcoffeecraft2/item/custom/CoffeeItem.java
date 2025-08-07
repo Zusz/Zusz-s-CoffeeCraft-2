@@ -110,6 +110,8 @@ public class CoffeeItem extends Item {
                 tooltipComponents.add(Component.literal("   -Depends on Bean type").withStyle(ChatFormatting.GRAY));
             } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "arabica")) {
                 tooltipComponents.add(Component.literal("   -Arabica").withStyle(ChatFormatting.GRAY));
+            } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "robusta")) {
+                tooltipComponents.add(Component.literal("   -Robusta").withStyle(ChatFormatting.GRAY));
             }
 
             tooltipComponents.add(Component.literal("Roast:").withStyle(ChatFormatting.BLUE));
@@ -272,10 +274,10 @@ public class CoffeeItem extends Item {
         int amplifier = 0;
         switch (bean) {
             case "arabica" -> {
-                amplifier = 1;
+                amplifier = 0;
             }
             case "robusta" -> {
-                amplifier = 2;
+                amplifier = 1;
             }
 
             case null -> {}

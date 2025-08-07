@@ -53,6 +53,9 @@ public class CoffeeMachineMethods {
             validIngredients.add(ModItems.LIGHT_ARABICA_GROUND_COFFEE.get());
             validIngredients.add(ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get());
             validIngredients.add(ModItems.DARK_ARABICA_GROUND_COFFEE.get());
+            validIngredients.add(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get());
+            validIngredients.add(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get());
+            validIngredients.add(ModItems.DARK_ROBUSTA_GROUND_COFFEE.get());
         }
         return validIngredients.contains(ingredient);
     }
@@ -87,6 +90,15 @@ public class CoffeeMachineMethods {
         } else if (bean == ModItems.DARK_ARABICA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "dark");
             output.set(ModDataComponents.BEAN, "arabica");
+        } else if (bean == ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "light");
+            output.set(ModDataComponents.BEAN, "robusta");
+        } else if (bean == ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "medium");
+            output.set(ModDataComponents.BEAN, "robusta");
+        }  else if (bean == ModItems.DARK_ROBUSTA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "dark");
+            output.set(ModDataComponents.BEAN, "robusta");
         } else {
             output = null;
         }
