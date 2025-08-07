@@ -27,7 +27,73 @@ public class CoffeeMachineRecipeManager {
         Ingredient water_output = Ingredient.of(Items.GLASS_BOTTLE, Items.BUCKET);
         //Ingredient allGrounds = Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE, ModItems.MEDIUM_ARABICA_GROUND_COFFEE, ModItems.DARK_ARABICA_GROUND_COFFEE);
 
-        return List.of(
+        List<CoffeeMachineRecipe>CoffeeMachineRecipes = new ArrayList<>();
+        List<ItemLike> groundCoffees = new ArrayList<>(List.of(
+                ModItems.LIGHT_ARABICA_GROUND_COFFEE,
+                ModItems.MEDIUM_ARABICA_GROUND_COFFEE,
+                ModItems.DARK_ARABICA_GROUND_COFFEE,
+                ModItems.LIGHT_ROBUSTA_GROUND_COFFEE,
+                ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE,
+                ModItems.DARK_ROBUSTA_GROUND_COFFEE
+
+        ));
+        List<ItemLike> containers = new ArrayList<>(List.of(
+                ModItems.COFFEE_CUP
+        ));
+        List<Ingredient> fluidItems = new ArrayList<>(List.of(
+                water
+        ));
+        List<List<ItemLike>> ingredientSets = new ArrayList<>(List.of(
+                List.of(),
+                List.of(Items.SUGAR),
+                List.of(ModItems.WHIPPED_CREAM),
+                List.of(ModItems.WHIPPED_CREAM, Items.SUGAR),
+                List.of(ModItems.MILK_FOAM),
+                List.of(ModItems.MILK_FOAM, Items.SUGAR),
+                List.of(ModItems.STEAMED_MILK),
+                List.of(ModItems.STEAMED_MILK, Items.SUGAR)
+        ));
+
+        for(ItemLike ground : groundCoffees){
+            for(ItemLike container : containers) {
+                for(Ingredient fluidItem : fluidItems) {
+                    for (List<ItemLike> ingredients : ingredientSets) {
+                        Ingredient ingredient1 = ingredients.size() > 0 ? Ingredient.of(ingredients.get(0)) : Ingredient.EMPTY;
+                        Ingredient ingredient2 = ingredients.size() > 1 ? Ingredient.of(ingredients.get(1)) : Ingredient.EMPTY;
+                        Ingredient ingredient3 = ingredients.size() > 2 ? Ingredient.of(ingredients.get(2)) : Ingredient.EMPTY;
+                        Ingredient ingredient4 = ingredients.size() > 3 ? Ingredient.of(ingredients.get(3)) : Ingredient.EMPTY;
+                        Item ing1 = ingredients.size() > 0 ? ingredients.get(0).asItem() : null;
+                        Item ing2 = ingredients.size() > 1 ? ingredients.get(1).asItem() : null;
+                        Item ing3 = ingredients.size() > 2 ? ingredients.get(2).asItem() : null;
+                        Item ing4 = ingredients.size() > 3 ? ingredients.get(3).asItem() : null;
+
+                        Ingredient fluidOutput = Ingredient.EMPTY;
+                        if (fluidItem == water) {
+                            fluidOutput = water_output;
+                        }
+
+                        CoffeeMachineRecipes.add(
+                                new CoffeeMachineRecipe(
+                                        Ingredient.of(ground),
+                                        Ingredient.of(container),
+                                        fluidItem,
+                                        ingredient1,
+                                        ingredient2,
+                                        ingredient3,
+                                        ingredient4,
+                                        getResult(ground.asItem(), container.asItem(), null, ing1, ing2, ing3, ing4),
+                                        fluidOutput
+                                )
+                        );
+                    }
+                }
+            }
+        }
+
+
+        return CoffeeMachineRecipes;
+
+        /*List.of(
 
                 //Espresso Arabica
                 new CoffeeMachineRecipe(
@@ -305,7 +371,7 @@ public class CoffeeMachineRecipeManager {
                         water_output
                 )
 
-        );
+        );*/
 
     }
 
