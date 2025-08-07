@@ -181,7 +181,10 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
         List<Item> validItems = new ArrayList<>(List.of(
                 ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem(),
                 ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem(),
-                ModItems.DARK_ARABICA_GROUND_COFFEE.asItem()
+                ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(),
+                ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.asItem(),
+                ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.asItem(),
+                ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem()
         ));
 
         return validItems.contains(sourceStack.getItem());
