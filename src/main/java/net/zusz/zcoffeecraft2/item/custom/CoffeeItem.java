@@ -23,6 +23,7 @@ import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
+import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
 import org.openjdk.nashorn.internal.ir.annotations.Ignore;
@@ -63,7 +64,27 @@ public class CoffeeItem extends Item {
             player.addEffect(new MobEffectInstance(effect, duration, amplifier));
         }*/
 
-        return super.finishUsingItem(stack, level, entity);
+        super.finishUsingItem(stack, level, entity);
+
+        if (entity instanceof Player player) {
+            // If they are not in creative, give them the cup back
+            if (!player.getAbilities().instabuild) {
+                ItemStack cupStack = new ItemStack(ModItems.COFFEE_CUP.asItem());
+
+                if (stack.isEmpty()) {
+                    // If the coffee stack is now empty, just return the cup directly
+                    return cupStack;
+                } else {
+                    // If the stack still exists (e.g., stacked coffee?), try to add cup to inventory
+                    if (!player.getInventory().add(cupStack)) {
+                        // If inventory is full, drop it
+                        player.drop(cupStack, false);
+                    }
+                }
+            }
+        }
+
+        return stack;
     }
 
 
@@ -200,6 +221,12 @@ public class CoffeeItem extends Item {
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.DRINK;
+    }
+
     private boolean isInJEIContext() {
         return Arrays.stream(Thread.currentThread().getStackTrace())
                 .anyMatch(element -> element.getClassName().contains("mezz.jei"));
