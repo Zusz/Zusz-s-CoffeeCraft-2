@@ -85,6 +85,8 @@ public class CoffeeItem extends Item {
             coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.con_panna");
         } else if (effect == MobEffects.DAMAGE_RESISTANCE) {
             coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.flat_white");
+        } else if (effect == MobEffects.REGENERATION) {
+            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.latte");
         }
 
         if (roast != null) {
@@ -167,6 +169,8 @@ public class CoffeeItem extends Item {
             effectName = Component.translatable("effect.minecraft.absorption");
         } else if (effect == MobEffects.DAMAGE_RESISTANCE) {
             effectName = Component.translatable("effect.minecraft.resistance");
+        } else if (effect == MobEffects.REGENERATION) {
+            effectName = Component.translatable("effect.minecraft.regeneration");
         }
 
         Component potency = Component.translatable("potion.potency." + amplifier);
@@ -222,6 +226,8 @@ public class CoffeeItem extends Item {
                 effect = MobEffects.ABSORPTION;
             } else if (ingredients.size() == 1 && ingredients.contains("steamed_milk") || ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar")) { //Flat White
                 effect = MobEffects.DAMAGE_RESISTANCE;
+            } else if (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") || ingredients.size() == 3 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) { //Flat White
+                effect = MobEffects.REGENERATION;
             }
         }
         return effect;

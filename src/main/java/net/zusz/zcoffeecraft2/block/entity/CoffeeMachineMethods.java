@@ -142,7 +142,10 @@ public class CoffeeMachineMethods {
                 (ingredients.size() == 1 && ingredients.contains("whipped_cream")) || //Con Panna
                 (ingredients.size() == 2 && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) ||
                 (ingredients.size() == 1 && ingredients.contains("steamed_milk")) || //Flat White
-                (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar"))
+                (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar")) ||
+                (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam")) || //Latte
+                (ingredients.size() == 3 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") && ingredients.contains("sugar"))
+
         ) {
             return true;
         }

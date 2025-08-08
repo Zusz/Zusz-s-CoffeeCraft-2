@@ -24,7 +24,7 @@ Time 2 is 4 minutes
 -Con Panna:         extra whipped cream,                                Absorption done
 -Flat White:        extra steamed milk,                                 Resistance done
 -Americano:         extra water,                                        Water Breathing
--Latte:             extra steamed milk and milk foam,                   Regeneration
+-Latte:             extra steamed milk and milk foam,                   Regeneration done
 -Marocchino:        extra chocolate and milk foam,                      Night Vision
 -Mocha:             extra chocolate, steamed milk and whipped cream,    Strength
 -Honey Raf:         extra honey and milk foam,                          Health Boost

@@ -51,7 +51,9 @@ public class CoffeeMachineRecipeManager {
                 List.of(ModItems.MILK_FOAM),
                 List.of(ModItems.MILK_FOAM, Items.SUGAR),
                 List.of(ModItems.STEAMED_MILK),
-                List.of(ModItems.STEAMED_MILK, Items.SUGAR)
+                List.of(ModItems.STEAMED_MILK, Items.SUGAR),
+                List.of(ModItems.STEAMED_MILK, ModItems.MILK_FOAM),
+                List.of(ModItems.STEAMED_MILK, ModItems.MILK_FOAM, Items.SUGAR)
         ));
 
         for(ItemLike ground : groundCoffees){
