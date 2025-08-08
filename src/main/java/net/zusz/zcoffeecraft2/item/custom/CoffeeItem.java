@@ -108,6 +108,10 @@ public class CoffeeItem extends Item {
             coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.flat_white");
         } else if (effect == MobEffects.REGENERATION) {
             coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.latte");
+        } else if (effect == MobEffects.HEALTH_BOOST) {
+            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.honey_raf");
+        } else if (effect == MobEffects.DAMAGE_BOOST) {
+            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.mocha");
         }
 
         if (roast != null) {
@@ -159,7 +163,7 @@ public class CoffeeItem extends Item {
                         case "sugar" -> tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
                         case "milk" -> tooltipComponents.add(Component.literal("   -Milk").withStyle(ChatFormatting.GRAY));
                         case "honey" -> tooltipComponents.add(Component.literal("   -Honey").withStyle(ChatFormatting.GRAY));
-                        case "cocoa" -> tooltipComponents.add(Component.literal("   -Cocoa").withStyle(ChatFormatting.GRAY));
+                        case "chocolate" -> tooltipComponents.add(Component.literal("   -Chocolate").withStyle(ChatFormatting.GRAY));
                         case "milk_foam" -> tooltipComponents.add(Component.literal("   -Milk Foam").withStyle(ChatFormatting.GRAY));
                         case "steamed_milk" -> tooltipComponents.add(Component.literal("   -Steamed Milk").withStyle(ChatFormatting.GRAY));
                         case "whipped_cream" -> tooltipComponents.add(Component.literal("   -Whipped Cream").withStyle(ChatFormatting.GRAY));
@@ -192,9 +196,19 @@ public class CoffeeItem extends Item {
             effectName = Component.translatable("effect.minecraft.resistance");
         } else if (effect == MobEffects.REGENERATION) {
             effectName = Component.translatable("effect.minecraft.regeneration");
+        } else if (effect == MobEffects.HEALTH_BOOST) {
+            effectName = Component.translatable("effect.minecraft.health_boost");
+        } else if (effect == MobEffects.DAMAGE_BOOST) {
+            effectName = Component.translatable("effect.minecraft.strength");
         }
 
-        Component potency = Component.translatable("potion.potency." + amplifier);
+        Component potency;
+
+        if (amplifier != 0) {
+            potency = Component.translatable("potion.potency." + amplifier);
+        } else {
+            potency = Component.literal("I");
+        }
 
         String formattedDuration = getFormattedDuration(duration);
         String formattedDelay = getFormattedDuration(getDelay(stack.get(ModDataComponents.ROAST)));
@@ -247,14 +261,24 @@ public class CoffeeItem extends Item {
         if (ingredients != null) {
             if ((ingredients.size() == 0) || ingredients.size() == 1 && ingredients.contains("sugar")) { //Espresso
                 effect = MobEffects.MOVEMENT_SPEED;
-            } else if (ingredients.size() == 1 && ingredients.contains("milk_foam") || ingredients.size() == 2 && ingredients.contains("milk_foam)") && ingredients.contains("sugar")) { //Macchiato
+            } else if (ingredients.size() == 1 && ingredients.contains("milk_foam") ||
+                    ingredients.size() == 2 && ingredients.contains("milk_foam)") && ingredients.contains("sugar")) { //Macchiato
                 effect = MobEffects.JUMP;
-            } else if (ingredients.size() == 1 && ingredients.contains("whipped_cream") || ingredients.size() == 2 && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) { //Con Panna
+            } else if (ingredients.size() == 1 && ingredients.contains("whipped_cream") ||
+                    ingredients.size() == 2 && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) { //Con Panna
                 effect = MobEffects.ABSORPTION;
-            } else if (ingredients.size() == 1 && ingredients.contains("steamed_milk") || ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar")) { //Flat White
+            } else if (ingredients.size() == 1 && ingredients.contains("steamed_milk") ||
+                    ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar")) { //Flat White
                 effect = MobEffects.DAMAGE_RESISTANCE;
-            } else if (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") || ingredients.size() == 3 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) { //Flat White
+            } else if (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") ||
+                    ingredients.size() == 3 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) { //Flat White
                 effect = MobEffects.REGENERATION;
+            } else if (ingredients.size() == 2 && ingredients.contains("honey") && ingredients.contains("milk_foam") ||
+                    ingredients.size() == 3 && ingredients.contains("honey") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) { //Honey Raf
+                effect = MobEffects.HEALTH_BOOST;
+            } else if (ingredients.size() == 3 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream") ||
+                    ingredients.size() == 4 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) {
+                effect = MobEffects.DAMAGE_BOOST;
             }
         }
         return effect;

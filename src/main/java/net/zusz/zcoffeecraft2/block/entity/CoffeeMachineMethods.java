@@ -68,7 +68,7 @@ public class CoffeeMachineMethods {
         } else if (item == Items.MILK_BUCKET) {
             ingredients.add("milk");
         } else if (item == Items.COCOA_BEANS) {
-            ingredients.add("cocoa");
+            ingredients.add("chocolate");
         } else if (item == ModItems.WHIPPED_CREAM.asItem()) {
             ingredients.add("whipped_cream");
         } else if (item == ModItems.MILK_FOAM.asItem()) {
@@ -144,8 +144,11 @@ public class CoffeeMachineMethods {
                 (ingredients.size() == 1 && ingredients.contains("steamed_milk")) || //Flat White
                 (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar")) ||
                 (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam")) || //Latte
-                (ingredients.size() == 3 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") && ingredients.contains("sugar"))
-
+                (ingredients.size() == 3 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) ||
+                (ingredients.size() == 2 && ingredients.contains("honey") && ingredients.contains("milk_foam")) || //Honey Raf
+                (ingredients.size() == 3 && ingredients.contains("honey") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) ||
+                (ingredients.size() == 3 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream")) || //Mocha
+                (ingredients.size() == 4 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream") && ingredients.contains("sugar"))
         ) {
             return true;
         }

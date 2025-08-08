@@ -53,7 +53,11 @@ public class CoffeeMachineRecipeManager {
                 List.of(ModItems.STEAMED_MILK),
                 List.of(ModItems.STEAMED_MILK, Items.SUGAR),
                 List.of(ModItems.STEAMED_MILK, ModItems.MILK_FOAM),
-                List.of(ModItems.STEAMED_MILK, ModItems.MILK_FOAM, Items.SUGAR)
+                List.of(ModItems.STEAMED_MILK, ModItems.MILK_FOAM, Items.SUGAR),
+                List.of(Items.HONEY_BOTTLE, ModItems.MILK_FOAM),
+                List.of(Items.HONEY_BOTTLE, ModItems.MILK_FOAM, Items.SUGAR),
+                List.of(Items.COCOA_BEANS, ModItems.STEAMED_MILK, ModItems.WHIPPED_CREAM),
+                List.of(Items.COCOA_BEANS, ModItems.STEAMED_MILK, ModItems.WHIPPED_CREAM, Items.SUGAR)
         ));
 
         for(ItemLike ground : groundCoffees){
@@ -404,7 +408,7 @@ public class CoffeeMachineRecipeManager {
         } else if (item == Items.MILK_BUCKET) {
             ingredients.add("milk");
         } else if (item == Items.COCOA_BEANS) {
-            ingredients.add("cocoa");
+            ingredients.add("chocolate");
         } else if (item == ModItems.WHIPPED_CREAM.asItem()) {
             ingredients.add("whipped_cream");
         } else if (item == ModItems.MILK_FOAM.asItem()) {
