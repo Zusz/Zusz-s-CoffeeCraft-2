@@ -7,6 +7,7 @@ import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
+import net.zusz.zcoffeecraft2.item.ModCreativeModeTabs;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
@@ -50,6 +51,8 @@ public class ZCoffeeCraft2
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModMenuTypes.register(modEventBus);
@@ -71,31 +74,15 @@ public class ZCoffeeCraft2
     // Add the item to a tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.RAW_ARABICA_COFFEE_BEAN);
-            event.accept(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN);
-            event.accept(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN);
-            event.accept(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN);
-            event.accept(ModItems.LIGHT_ARABICA_GROUND_COFFEE);
-            event.accept(ModItems.MEDIUM_ARABICA_GROUND_COFFEE);
-            event.accept(ModItems.DARK_ARABICA_GROUND_COFFEE);
-            event.accept(ModItems.WHISK);
-            event.accept(ModItems.STEAMED_MILK);
-            event.accept(ModItems.MILK_FOAM);
-            event.accept(ModItems.WHIPPED_CREAM);
+
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept((ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK));
-            event.accept((ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK));
-            event.accept((ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK));
-            event.accept((ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK));
 
-
-            event.accept((ModBlocks.COFFEE_MACHINE));
         }
 
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            event.accept((ModItems.CUP_OF_COFFEE));
+
         }
 
     }
