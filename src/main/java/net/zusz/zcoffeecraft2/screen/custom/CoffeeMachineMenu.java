@@ -151,7 +151,9 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
                 ModItems.WHIPPED_CREAM.asItem(),
                 ModItems.STEAMED_MILK.asItem(),
                 ModItems.MILK_FOAM.asItem(),
-                Items.SUGAR
+                Items.SUGAR,
+                Items.HONEY_BOTTLE,
+                Items.COCOA_BEANS
         ));
 
         return validItems.contains(sourceStack.getItem());
