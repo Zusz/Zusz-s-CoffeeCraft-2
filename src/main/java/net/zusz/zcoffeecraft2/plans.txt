@@ -1,5 +1,5 @@
 -Whisk + Sugar + Milk Bucket = Whipped Cream done
--Cooking Milk Bucket = Steamed Milk dome
+-Cooking Milk Bucket = Steamed Milk done
 -Steamed Milk + Whisk = Milk Foam done
 
 New Roast and Coffee system
