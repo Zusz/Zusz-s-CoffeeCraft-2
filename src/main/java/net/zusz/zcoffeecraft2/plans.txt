@@ -30,3 +30,9 @@ Time 2 is 4 minutes
 -Honey Raf:         extra honey and milk foam,                          Health Boost done
 -Capuccino Freddo:  extra ice, steamed milk and whipped cream,          Dolphins Grace
 -Espresso Laccino:  extra ice,                                          Haste
+
+-Advancements
+-Villager trades
+-Loot tables
+-Little coffee structure from V.1.0.0
+-Introduction Book

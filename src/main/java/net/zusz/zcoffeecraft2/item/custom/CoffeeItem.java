@@ -46,7 +46,7 @@ public class CoffeeItem extends Item {
         Holder<MobEffect> effect = getEffect(ingredients);
         int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
         int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
-        int delay = getDelay(Objects.requireNonNull(stack.get(ModDataComponents.ROAST)));
+        int delay = getDelay(stack.get(ModDataComponents.ROAST));
 
         if (!level.isClientSide && entity instanceof ServerPlayer player) {
             CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
