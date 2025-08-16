@@ -10,6 +10,7 @@ import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.item.custom.CoffeeItem;
 import net.zusz.zcoffeecraft2.item.custom.ModFoodProperties;
 import net.zusz.zcoffeecraft2.item.custom.WhiskItem;
+import net.zusz.zcoffeecraft2.item.custom.guidebook.GuideBookItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ZCoffeeCraft2.MOD_ID);
@@ -62,6 +63,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",//unique items
             () -> new CoffeeItem(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));
+
+    public static final DeferredItem<Item> GUIDE_BOOK = ITEMS.register("guide_book",
+            () -> new GuideBookItem(new Item.Properties().stacksTo(1)));
 
 
     public static void register(IEventBus eventBus) {
