@@ -49,14 +49,16 @@ public class CoffeeItem extends Item {
         int delay = getDelay(stack.get(ModDataComponents.ROAST));
 
         if (!level.isClientSide && entity instanceof ServerPlayer player) {
-            CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
-                    effect.value(),
-                    duration,
-                    amplifier,
-                    delay
-            );
-            CoffeeEffectData.addEffect(player, ceffect);
-            player.addEffect(new MobEffectInstance(ModEffects.CAFFEINATED_EFFECT, delay, 0));
+            if (effect != null) {
+                CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
+                        effect.value(),
+                        duration,
+                        amplifier,
+                        delay
+                );
+                CoffeeEffectData.addEffect(player, ceffect);
+                player.addEffect(new MobEffectInstance(ModEffects.CAFFEINATED_EFFECT, delay, 0));
+            }
         }
         /* Check if on server and is a player
         if (!level.isClientSide && entity instanceof Player player) {
