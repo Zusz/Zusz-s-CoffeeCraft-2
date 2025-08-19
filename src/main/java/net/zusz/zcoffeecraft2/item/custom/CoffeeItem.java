@@ -114,6 +114,8 @@ public class CoffeeItem extends Item {
             coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.honey_raf");
         } else if (effect == MobEffects.DAMAGE_BOOST) {
             coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.mocha");
+        } else if (effect == MobEffects.NIGHT_VISION) {
+            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.marocchino");
         }
 
         if (roast != null) {
@@ -202,6 +204,8 @@ public class CoffeeItem extends Item {
             effectName = Component.translatable("effect.minecraft.health_boost");
         } else if (effect == MobEffects.DAMAGE_BOOST) {
             effectName = Component.translatable("effect.minecraft.strength");
+        } else if (effect == MobEffects.NIGHT_VISION) {
+            effectName = Component.translatable("effect.minecraft.night_vision");
         }
 
         Component potency;
@@ -278,9 +282,12 @@ public class CoffeeItem extends Item {
             } else if (ingredients.size() == 2 && ingredients.contains("honey") && ingredients.contains("milk_foam") ||
                     ingredients.size() == 3 && ingredients.contains("honey") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) { //Honey Raf
                 effect = MobEffects.HEALTH_BOOST;
-            } else if (ingredients.size() == 3 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream") ||
+            } else if (ingredients.size() == 3 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream") || //Mocha
                     ingredients.size() == 4 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) {
                 effect = MobEffects.DAMAGE_BOOST;
+            } else if (ingredients.size() == 2 && ingredients.contains("chocolate") && ingredients.contains("milk_foam") ||
+                    ingredients.size() == 3 && ingredients.contains("chocolate") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) {  //Marocchino
+                effect = MobEffects.NIGHT_VISION;
             }
         }
         return effect;

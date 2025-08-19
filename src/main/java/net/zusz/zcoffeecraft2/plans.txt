@@ -25,7 +25,7 @@ Time 2 is 4 minutes
 -Flat White:        extra steamed milk,                                 Resistance done
 -Americano:         extra water,                                        Water Breathing
 -Latte:             extra steamed milk and milk foam,                   Regeneration done
--Marocchino:        extra chocolate and milk foam,                      Night Vision
+-Marocchino:        extra chocolate and milk foam,                      Night Vision done
 -Mocha:             extra chocolate, steamed milk and whipped cream,    Strength done
 -Honey Raf:         extra honey and milk foam,                          Health Boost done
 -Capuccino Freddo:  extra ice, steamed milk and whipped cream,          Dolphins Grace
