@@ -14,7 +14,7 @@ import net.zusz.zcoffeecraft2.item.ModItems;
 
 public class GuideBookScreen extends Screen {
     public int currentPage = 0;
-    private int maxPage = 2; //actually 1 less than the last page
+    private int maxPage = 4; //actually 1 less than the last page
     private static final ResourceLocation BACKGROUND_TEXTURE =
             ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/gui/guidebook_bg.png");
 
@@ -52,37 +52,50 @@ public class GuideBookScreen extends Screen {
         // --- Render background ---
         graphics.blit(BACKGROUND_TEXTURE, x, y, 0, 0, bgWidth, bgHeight, bgWidth, bgHeight);
 
-        ItemStack stack1 = new ItemStack(ModItems.CUP_OF_COFFEE.asItem());
+        ItemStack stack1 = null;
+        ItemStack stack2 = null;
         ResourceLocation textureToDraw = null;
         switch (currentPage) {
             case 0 -> {
                 stack1 = new ItemStack(ModItems.CUP_OF_COFFEE.asItem());
             }
             case 1 -> {
+                stack1 = new ItemStack(ModBlocks.COFFEE_MACHINE.asItem());
+                stack2 = new ItemStack(ModItems.COFFEE_CUP.asItem());
+            } case 2 -> {
+            } case 3 -> {
                 stack1 = new ItemStack(ModItems.ARABICA_COFFEE_CHERRY.asItem());
                 textureToDraw = ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/block/arabica_coffee_bush_stage7.png");
+            } case 4 -> {
+                stack1 = new ItemStack(ModItems.ROBUSTA_COFFEE_CHERRY.asItem());
+                textureToDraw = ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/block/robusta_coffee_bush_stage7.png");
             }
         }
+        if (stack1 != null) {
+            drawItemStack(graphics, stack1, x + 25, y + 20);
+        }
 
-        drawItemStack(graphics, stack1, x + 25, y + 20);
-        if (textureToDraw == null) {
+        if (textureToDraw == null && stack1 != null && stack2 == null) {
             drawItemStack(graphics, stack1, x + bgWidth - 25 - 32, y + 20);
-        } else {
+        } else if (textureToDraw == null && stack2 != null) {
+            drawItemStack(graphics, stack2, x + bgWidth - 25 - 32, y + 20);
+        } else if (textureToDraw != null && stack2 == null) {
             graphics.blit(textureToDraw, x + bgWidth - 25 - 32, y + 20, 0, 0, 32, 32, 32, 32);
         }
 
         // --- Title ---
-        //Its important to add linebreaks when the text wont fit, otherwise this method breaks
-        drawLargeText(graphics, Component.translatable("guide.zcoffeecraft2.title"), this.width / 2, y + 30);
+        //It's important to add linebreaks when the text won't fit, otherwise this method breaks
+        drawLargeText(graphics, Component.translatable("guide.zcoffeecraft2.title" + (currentPage + 1)), this.width / 2, y + 30);
 
         // --- Content ---
         Component content = Component.translatable("guide.zcoffeecraft2.page" + (currentPage + 1));
         drawContent(graphics, content, x, y, bgWidth - 50);
 
-        graphics.drawWordWrap(this.font, content, x + 25, y + 70, bgWidth - 50, 0xE0E0E0);
+        //graphics.drawWordWrap(this.font, content, x + 25, y + 70, bgWidth - 50, 0x000000);
 
+        //Page
         Component indicator = Component.literal((currentPage + 1) + " / " + (maxPage + 1));
-        drawCenteredStringNoShadow(graphics, this.font, indicator, this.width / 2, y + bgHeight - 40, 0xAAAAAA);
+        drawCenteredStringNoShadow(graphics, this.font, indicator, this.width / 2, y + bgHeight - 40, 0x000000);
     }
 
     @Override
@@ -109,7 +122,7 @@ public class GuideBookScreen extends Screen {
         graphics.pose().pushPose();
         graphics.pose().translate(x, y, 35); // move to where to draw
         graphics.pose().scale(1.5f, 1.5f, 1.0f); // 1.5x size
-        drawCenteredStringNoShadow(graphics, this.font, toDisplay, 0, 0, 0xAAAAAA); //render at 0,0 inside scaled space
+        drawCenteredStringNoShadow(graphics, this.font, toDisplay, 0, 0, 0x000000); //render at 0,0 inside scaled space
         graphics.pose().popPose();
     }
 
@@ -122,7 +135,7 @@ public class GuideBookScreen extends Screen {
         // Draw each line manually
         int lineHeight = this.font.lineHeight;
         for (int i = 0; i < lines.length; i++) {
-            graphics.drawWordWrap(this.font, Component.literal(lines[i]), x + 25, y + 70 + i * lineHeight, lineWidth, 0xE0E0E0);
+            graphics.drawWordWrap(this.font, Component.literal(lines[i]), x + 25, y + 70 + i * lineHeight, lineWidth, 0x000000);
         }
 
     }

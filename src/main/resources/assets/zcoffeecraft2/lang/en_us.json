@@ -60,8 +60,14 @@
   "coffeeroast.zcoffeecraft2.medium": "Medium",
   "coffeeroast.zcoffeecraft2.dark": "Dark",
 
-  "guide.zcoffeecraft2.title": "The Coffee Guide",
+  "guide.zcoffeecraft2.title1": "The Coffee Guide",
+  "guide.zcoffeecraft2.title2": "Table of Contents",
+  "guide.zcoffeecraft2.title3": "What's needed for Coffee?",
+  "guide.zcoffeecraft2.title4": "Arabica",
+  "guide.zcoffeecraft2.title5": "Robusta",
   "guide.zcoffeecraft2.page1": "Welcome to The Coffee Guide!\n \nThis book will teach you how to make\ncoffee with Zusz's CoffeeCraft2!",
-  "guide.zcoffeecraft2.page2": "Use the coffee machine to combine ingredients for different effects.",
-  "guide.zcoffeecraft2.page3": "Enjoy your coffee and explore new recipes!"
+  "guide.zcoffeecraft2.page2": "2 -Table of Contents\n3 -What's needed for Coffee?\n4 -Arabica\n5 -Robusta\n",
+  "guide.zcoffeecraft2.page3": "To make Coffee you need:\n\n-A Coffee Machine\n-A Cup\n-Some Ground Coffee\n-A bit of Water\n-And optionally some extra Ingredients",
+  "guide.zcoffeecraft2.page4": "Where to find?\n\n-§3Arabica §0Coffee Bushes are found in \n§aPlains §0and §aJungle §0Biomes\n\n§0Provides:\n\n-§64§0/§c5,5§0/§46 §0minutes of level §11 §0effect",
+  "guide.zcoffeecraft2.page5": "Where to find?\n\n-§3Robusta §0Coffee Bushes are found in \n§9Taigas§0, §9Old Growth Pine Taigas§0 and \n§9Old Growth Spruce Taigas\n\n§0Provides:\n\n-§62,5§0/§c4§0/§44,5 §0minutes of level §12 §0effect"
 }
