@@ -14,7 +14,7 @@ import net.zusz.zcoffeecraft2.item.ModItems;
 
 public class GuideBookScreen extends Screen {
     public int currentPage = 0;
-    private int maxPage = 4; //actually 1 less than the last page
+    private int maxPage = 5; //actually 1 less than the last page
     private static final ResourceLocation BACKGROUND_TEXTURE =
             ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/gui/guidebook_bg.png");
 
@@ -63,10 +63,15 @@ public class GuideBookScreen extends Screen {
                 stack1 = new ItemStack(ModBlocks.COFFEE_MACHINE.asItem());
                 stack2 = new ItemStack(ModItems.COFFEE_CUP.asItem());
             } case 2 -> {
+                stack1 = new ItemStack(ModItems.ARABICA_COFFEE_CHERRY.asItem());
+                stack2 = new ItemStack(ModItems.RAW_ARABICA_COFFEE_BEAN.asItem());
             } case 3 -> {
+                stack1 = new ItemStack(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.asItem());
+                stack2 = new ItemStack(ModItems.DARK_ARABICA_GROUND_COFFEE.asItem());
+            } case 4 -> {
                 stack1 = new ItemStack(ModItems.ARABICA_COFFEE_CHERRY.asItem());
                 textureToDraw = ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/block/arabica_coffee_bush_stage7.png");
-            } case 4 -> {
+            } case 5 -> {
                 stack1 = new ItemStack(ModItems.ROBUSTA_COFFEE_CHERRY.asItem());
                 textureToDraw = ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/block/robusta_coffee_bush_stage7.png");
             }
