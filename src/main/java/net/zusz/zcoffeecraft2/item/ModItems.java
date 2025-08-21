@@ -64,7 +64,7 @@ public class ModItems {
     public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",//unique items
             () -> new CoffeeItem(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));
 
-    public static final DeferredItem<Item> GUIDE_BOOK = ITEMS.register("guide_book",
+    public static final DeferredItem<Item> COFFEE_GUIDE = ITEMS.register("coffee_guide_book",
             () -> new GuideBookItem(new Item.Properties().stacksTo(1)));
 
 
