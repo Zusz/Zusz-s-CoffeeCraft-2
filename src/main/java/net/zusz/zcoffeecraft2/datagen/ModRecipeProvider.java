@@ -195,6 +195,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_coffee_cup", has(ModItems.COFFEE_CUP))
                 .save(recipeOutput);
 
+        //Guide book
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.COFFEE_GUIDE.get(), 1)
+                .requires(Items.BOOK, 1)
+                .requires(ModItems.COFFEE_CUP, 1)
+                .unlockedBy("has_coffee_cup", has(ModItems.COFFEE_CUP)).save(recipeOutput, "coffee_guide");
+
 
 
         //Smelting

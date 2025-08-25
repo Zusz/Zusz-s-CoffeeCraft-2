@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "zcoffeecraft2:coffee_cup"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:coffee_guide_book"
+  }
+}
