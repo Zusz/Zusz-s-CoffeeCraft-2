@@ -210,10 +210,13 @@ public class CoffeeItem extends Item {
 
         Component potency;
 
+
         if (amplifier != 0) {
             potency = Component.translatable("potion.potency." + amplifier);
-        } else {
+        } else if (effect != null){ //this is so the ones with no effect don't have a level
             potency = Component.literal("I");
+        } else {
+            potency = Component.literal("");
         }
 
         String formattedDuration = getFormattedDuration(duration);
