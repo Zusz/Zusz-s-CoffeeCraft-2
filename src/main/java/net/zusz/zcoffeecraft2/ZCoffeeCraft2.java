@@ -9,6 +9,7 @@ import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModCreativeModeTabs;
 import net.zusz.zcoffeecraft2.item.ModItems;
+import net.zusz.zcoffeecraft2.loot.ModLootModifiers;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import net.zusz.zcoffeecraft2.util.ModItemProperties;
@@ -59,6 +60,7 @@ public class ZCoffeeCraft2
         ModBlockEntities.register(modEventBus);
         ModDataComponents.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
