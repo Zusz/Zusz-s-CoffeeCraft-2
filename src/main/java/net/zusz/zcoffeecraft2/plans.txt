@@ -35,4 +35,4 @@ Time 2 is 4 minutes
 -Villager trades
 -Loot tables
 -Little coffee structure from V.1.0.0
--Introduction Book
+-Introduction Book done / should be updated when new things are added
