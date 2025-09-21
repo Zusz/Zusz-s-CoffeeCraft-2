@@ -139,6 +139,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if(hasRecipe()) {
+            //System.out.println("HASRECIPE");
            increaseCraftingProgress();
            setChanged(level, blockPos, blockState);
 

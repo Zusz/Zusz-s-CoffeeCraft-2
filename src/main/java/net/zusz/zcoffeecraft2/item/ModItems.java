@@ -45,6 +45,21 @@ public class ModItems {
     public static final DeferredItem<Item> DARK_ROBUSTA_GROUND_COFFEE = ITEMS.register("dark_robusta_ground_coffee",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> RAW_LIBERICA_COFFEE_BEAN = ITEMS.register("raw_liberica_coffee_bean", //robusta
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LIGHT_ROASTED_LIBERICA_COFFEE_BEAN = ITEMS.register("light_roasted_liberica_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN = ITEMS.register("medium_roasted_liberica_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DARK_ROASTED_LIBERICA_COFFEE_BEAN = ITEMS.register("dark_roasted_liberica_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LIGHT_LIBERICA_GROUND_COFFEE = ITEMS.register("light_liberica_ground_coffee",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MEDIUM_LIBERICA_GROUND_COFFEE = ITEMS.register("medium_liberica_ground_coffee",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DARK_LIBERICA_GROUND_COFFEE = ITEMS.register("dark_liberica_ground_coffee",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> COFFEE_CUP = ITEMS.register("coffee_cup",//other items
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> WHISK = ITEMS.register("whisk",

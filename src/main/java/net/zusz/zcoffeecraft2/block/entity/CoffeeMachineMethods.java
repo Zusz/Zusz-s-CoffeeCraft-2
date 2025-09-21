@@ -99,7 +99,17 @@ public class CoffeeMachineMethods {
         }  else if (bean == ModItems.DARK_ROBUSTA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "dark");
             output.set(ModDataComponents.BEAN, "robusta");
+        } else if (bean == ModItems.LIGHT_LIBERICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "light");
+            output.set(ModDataComponents.BEAN, "liberica");
+        } else if (bean == ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "medium");
+            output.set(ModDataComponents.BEAN, "liberica");
+        } else if (bean == ModItems.DARK_LIBERICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "dark");
+            output.set(ModDataComponents.BEAN, "liberica");
         } else {
+            //System.out.println("OUtput nulled at bean");
             output = null;
         }
         return output;
@@ -127,7 +137,9 @@ public class CoffeeMachineMethods {
 
             if(output != null) {
                 output.set(ModDataComponents.INGREDIENTS, ingredients);
-            }
+            } /*else {
+                System.out.println("Output null at assigning ingredients");
+            } */
         }
 
         return output;
@@ -135,7 +147,7 @@ public class CoffeeMachineMethods {
 
     public static boolean isValidCoffeeCombination(ItemStack output) {
         List<String> ingredients = output.get(ModDataComponents.INGREDIENTS);
-        if ((ingredients.size() == 0) || //Espresso
+        if ((ingredients.isEmpty()) || //Espresso
                 (ingredients.size() == 1 &&ingredients.contains("sugar")) ||
                 (ingredients.size() == 1 && ingredients.contains("milk_foam")) || //Macchiato
                 (ingredients.size() == 2 && ingredients.contains("milk_foam") && ingredients.contains("sugar")) ||

@@ -12,14 +12,15 @@ import java.util.*;
 
 public class CoffeeEffectData {
     private static final Map<UUID, List<CoffeeEffectInstance>> queuedEffects = new HashMap<>();
-    //ABSOLUTE MAGIC DONT TOUCH!!!
+
+    // Queue a new coffee effect for a player
     public static void addEffect(ServerPlayer player, CoffeeEffectInstance instance) {
         queuedEffects
                 .computeIfAbsent(player.getUUID(), uuid -> new ArrayList<>())
                 .add(instance);
     }
 
-    //ABSOLUTE MAGIC DONT TOUCH!!!
+    // Tick queued effects every server tick
     public static void tick(ServerLevel level) {
         var mobEffectRegistry = level.registryAccess().registryOrThrow(Registries.MOB_EFFECT);
 
@@ -33,20 +34,33 @@ public class CoffeeEffectData {
                 effect.ticksUntilApply--;
 
                 if (effect.ticksUntilApply <= 0) {
-                    Optional<ResourceKey<MobEffect>> keyOpt = mobEffectRegistry.getResourceKey(effect.effect);
-                    if (keyOpt.isEmpty()) {
-                        throw new IllegalStateException("Effect not registered: " + effect.effect);
+                    // Apply primary effect safely
+                    if (effect.effect != null) {
+                        Optional<ResourceKey<MobEffect>> keyOpt = mobEffectRegistry.getResourceKey(effect.effect);
+                        if (keyOpt.isEmpty()) {
+                            throw new IllegalStateException("Effect not registered: " + effect.effect);
+                        }
+                        ResourceKey<MobEffect> effectKey = keyOpt.get();
+                        Holder<MobEffect> effectHolder = mobEffectRegistry.getHolder(effectKey)
+                                .orElseThrow(() -> new IllegalStateException("Holder not found for effect key: " + effectKey));
+
+                        player.addEffect(new MobEffectInstance(effectHolder, effect.duration, effect.amplifier));
                     }
-                    ResourceKey<MobEffect> effectKey = keyOpt.get();
 
-                    Holder<MobEffect> effectHolder = mobEffectRegistry.getHolder(effectKey)
-                            .orElseThrow(() -> new IllegalStateException("Holder not found for effect key: " + effectKey));
+                    // Apply secondary effect safely
+                    if (effect.secondaryEffect != null && effect.secondaryEffectDuration > 0) {
+                        player.addEffect(new MobEffectInstance(
+                                effect.secondaryEffect,
+                                effect.secondaryEffectDuration,
+                                effect.secondaryEffectAmplifier
+                        ));
+                    }
 
-                    player.addEffect(new MobEffectInstance(effectHolder, effect.duration, effect.amplifier));
-                    iterator.remove();
+                    iterator.remove(); // remove from queue after applying
                 }
             }
 
+            // Clean up empty queues
             if (queue.isEmpty()) {
                 queuedEffects.remove(player.getUUID());
             }

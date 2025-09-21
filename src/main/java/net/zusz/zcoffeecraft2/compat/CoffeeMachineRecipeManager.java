@@ -34,7 +34,10 @@ public class CoffeeMachineRecipeManager {
                 ModItems.DARK_ARABICA_GROUND_COFFEE,
                 ModItems.LIGHT_ROBUSTA_GROUND_COFFEE,
                 ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE,
-                ModItems.DARK_ROBUSTA_GROUND_COFFEE
+                ModItems.DARK_ROBUSTA_GROUND_COFFEE,
+                ModItems.LIGHT_LIBERICA_GROUND_COFFEE,
+                ModItems.MEDIUM_LIBERICA_GROUND_COFFEE,
+                ModItems.DARK_LIBERICA_GROUND_COFFEE
 
         ));
         List<ItemLike> containers = new ArrayList<>(List.of(
@@ -161,6 +164,15 @@ public class CoffeeMachineRecipeManager {
         }  else if (bean == ModItems.DARK_ROBUSTA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "dark");
             output.set(ModDataComponents.BEAN, "robusta");
+        } else if (bean == ModItems.LIGHT_LIBERICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "light");
+            output.set(ModDataComponents.BEAN, "liberica");
+        } else if (bean == ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "medium");
+            output.set(ModDataComponents.BEAN, "liberica");
+        } else if (bean == ModItems.DARK_LIBERICA_GROUND_COFFEE.get()) {
+            output.set(ModDataComponents.ROAST, "dark");
+            output.set(ModDataComponents.BEAN, "liberica");
         }
         return output;
     }

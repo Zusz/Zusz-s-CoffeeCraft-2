@@ -47,6 +47,9 @@ public class CoffeeItem extends Item {
         int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
         int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
         int delay = getDelay(stack.get(ModDataComponents.ROAST));
+        Holder<MobEffect> secondaryEffect = getSecodaryEffect(stack.get(ModDataComponents.BEAN), ingredients);
+        //System.out.println(secondaryEffect.value());
+        int secondaryEffectDuration = getSecodaryEffectDuration(secondaryEffect.value(), ingredients);
 
         if (!level.isClientSide && entity instanceof ServerPlayer player) {
             if (effect != null) {
@@ -54,11 +57,15 @@ public class CoffeeItem extends Item {
                         effect.value(),
                         duration,
                         amplifier,
-                        delay
+                        delay,
+                        secondaryEffect,
+                        secondaryEffectDuration,
+                        0
                 );
                 CoffeeEffectData.addEffect(player, ceffect);
                 player.addEffect(new MobEffectInstance(ModEffects.CAFFEINATED_EFFECT, delay, 0));
             }
+
         }
         /* Check if on server and is a player
         if (!level.isClientSide && entity instanceof Player player) {
@@ -87,6 +94,27 @@ public class CoffeeItem extends Item {
         }
 
         return stack;
+    }
+
+    private Holder<MobEffect> getSecodaryEffect(String bean, List<String> ingredients) {
+        if (Objects.equals(bean, "liberica")) {
+            //System.out.println("Isliberica");
+            if (((ingredients.size() == 0) || ingredients.size() == 1 && ingredients.contains("sugar"))) {
+                //System.out.println("ISMOVEMENTSPEED");
+                return MobEffects.JUMP;
+            } else {
+                //System.out.println("ISNTMOVEMENTSPEED");
+                return MobEffects.MOVEMENT_SPEED;
+            }
+        }
+        return null;
+    }
+
+    private int getSecodaryEffectDuration(MobEffect secondaryEffect, List<String> ingredients) {
+        if (secondaryEffect == MobEffects.MOVEMENT_SPEED) {
+            return 1200;
+        }
+        else return 2400;
     }
 
 
@@ -131,119 +159,7 @@ public class CoffeeItem extends Item {
         return Component.translatable("coffeetype.zcoffeecraft2.base", roastComponent, coffeeComponent);
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        if(Screen.hasShiftDown() && Minecraft.getInstance().screen instanceof CoffeeMachineScreen || isInJEIContext()) {
-
-            tooltipComponents.add(Component.literal("Beans:").withStyle(ChatFormatting.BLUE));
-            if(stack.get(ModDataComponents.BEAN) == null) {
-                tooltipComponents.add(Component.literal("   -Depends on Bean type").withStyle(ChatFormatting.GRAY));
-            } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "arabica")) {
-                tooltipComponents.add(Component.literal("   -Arabica").withStyle(ChatFormatting.GRAY));
-            } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "robusta")) {
-                tooltipComponents.add(Component.literal("   -Robusta").withStyle(ChatFormatting.GRAY));
-            }
-
-            tooltipComponents.add(Component.literal("Roast:").withStyle(ChatFormatting.BLUE));
-            if(stack.get(ModDataComponents.ROAST) == null) {
-                tooltipComponents.add(Component.literal("   -Depends on Bean roast").withStyle(ChatFormatting.GRAY));
-            } else {
-                switch (stack.get(ModDataComponents.ROAST)) {
-                    case "light" -> tooltipComponents.add(Component.literal("   -Light").withStyle(ChatFormatting.GRAY));
-                    case "medium" -> tooltipComponents.add(Component.literal("   -Medium").withStyle(ChatFormatting.GRAY));
-                    case "dark" -> tooltipComponents.add(Component.literal("   -Dark").withStyle(ChatFormatting.GRAY));
-                }
-            }
-
-            if (stack.get(ModDataComponents.INGREDIENTS) == null) {
-            }
-            else if (stack.get(ModDataComponents.INGREDIENTS).isEmpty()) {
-            }
-            else {
-                tooltipComponents.add(Component.literal("Ingredients:").withStyle(ChatFormatting.BLUE));
-                for (String item : Objects.requireNonNull(stack.get(ModDataComponents.INGREDIENTS))) {
-                    switch (item) {
-                        case "sugar" -> tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
-                        case "milk" -> tooltipComponents.add(Component.literal("   -Milk").withStyle(ChatFormatting.GRAY));
-                        case "honey" -> tooltipComponents.add(Component.literal("   -Honey").withStyle(ChatFormatting.GRAY));
-                        case "chocolate" -> tooltipComponents.add(Component.literal("   -Chocolate").withStyle(ChatFormatting.GRAY));
-                        case "milk_foam" -> tooltipComponents.add(Component.literal("   -Milk Foam").withStyle(ChatFormatting.GRAY));
-                        case "steamed_milk" -> tooltipComponents.add(Component.literal("   -Steamed Milk").withStyle(ChatFormatting.GRAY));
-                        case "whipped_cream" -> tooltipComponents.add(Component.literal("   -Whipped Cream").withStyle(ChatFormatting.GRAY));
-                    }
-                }
-            }
-            //tooltipComponents.add(Component.literal("YEEEEEAH"));
-
-
-        } else if (Minecraft.getInstance().screen instanceof CoffeeMachineScreen ) {
-            tooltipComponents.add(Component.translatable("§7Hold §eShift§7 for more Information"));
-        }
-
-        //add effect and amplifier and duration
-        List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
-        Holder<MobEffect> effect = getEffect(ingredients);
-        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
-        int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
-
-        Component effectName = Component.literal("Effect Depends on Ingredients");
-
-
-        if (effect == MobEffects.MOVEMENT_SPEED) {
-            effectName = Component.translatable("effect.minecraft.speed");
-        } else if (effect == MobEffects.JUMP) {
-            effectName = Component.translatable("effect.minecraft.jump_boost");
-        } else if (effect == MobEffects.ABSORPTION) {
-            effectName = Component.translatable("effect.minecraft.absorption");
-        } else if (effect == MobEffects.DAMAGE_RESISTANCE) {
-            effectName = Component.translatable("effect.minecraft.resistance");
-        } else if (effect == MobEffects.REGENERATION) {
-            effectName = Component.translatable("effect.minecraft.regeneration");
-        } else if (effect == MobEffects.HEALTH_BOOST) {
-            effectName = Component.translatable("effect.minecraft.health_boost");
-        } else if (effect == MobEffects.DAMAGE_BOOST) {
-            effectName = Component.translatable("effect.minecraft.strength");
-        } else if (effect == MobEffects.NIGHT_VISION) {
-            effectName = Component.translatable("effect.minecraft.night_vision");
-        }
-
-        Component potency;
-
-
-        if (amplifier != 0) {
-            potency = Component.translatable("potion.potency." + amplifier);
-        } else if (effect != null){ //this is so the ones with no effect don't have a level
-            potency = Component.literal("I");
-        } else {
-            potency = Component.literal("");
-        }
-
-        String formattedDuration = getFormattedDuration(duration);
-        String formattedDelay = getFormattedDuration(getDelay(stack.get(ModDataComponents.ROAST)));
-
-        Component durationComponent = Component.literal("");
-        if (!Objects.equals(formattedDuration, "")) {
-            durationComponent = Component.literal(" (" + formattedDuration + ")");
-        }
-
-        Component delayComponent = Component.literal("");
-        if (!Objects.equals(formattedDelay, "")) {
-            delayComponent = Component.literal(" [" + formattedDelay + "]");
-        }
-
-
-        Component full = Component.literal("")
-                .append(effectName.copy().withStyle(ChatFormatting.BLUE))
-                .append(Component.literal(" ").withStyle(ChatFormatting.BLUE))
-                .append(potency.copy().withStyle(ChatFormatting.BLUE))
-                .append(durationComponent.copy().withStyle(ChatFormatting.BLUE))
-                .append(delayComponent.copy().withStyle(ChatFormatting.GOLD));
-
-        tooltipComponents.add(full);
-
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    }
 
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
@@ -263,6 +179,117 @@ public class CoffeeItem extends Item {
             case null -> 0;
             default -> throw new IllegalStateException("Unexpected value: " + roast);
         };
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+
+        // Show detailed info if Shift is held or in JEI
+        if (Screen.hasShiftDown() && Minecraft.getInstance().screen instanceof CoffeeMachineScreen || isInJEIContext()) {
+            if(Screen.hasShiftDown() && Minecraft.getInstance().screen instanceof CoffeeMachineScreen || isInJEIContext()) {
+
+                tooltipComponents.add(Component.literal("Beans:").withStyle(ChatFormatting.BLUE));
+                if(stack.get(ModDataComponents.BEAN) == null) {
+                    tooltipComponents.add(Component.literal("   -Depends on Bean type").withStyle(ChatFormatting.GRAY));
+                } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "arabica")) {
+                    tooltipComponents.add(Component.literal("   -Arabica").withStyle(ChatFormatting.GRAY));
+                } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "robusta")) {
+                    tooltipComponents.add(Component.literal("   -Robusta").withStyle(ChatFormatting.GRAY));
+                } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "liberica")) {
+                    tooltipComponents.add(Component.literal("   -Liberica").withStyle(ChatFormatting.GRAY));
+                }
+
+                tooltipComponents.add(Component.literal("Roast:").withStyle(ChatFormatting.BLUE));
+                if(stack.get(ModDataComponents.ROAST) == null) {
+                    tooltipComponents.add(Component.literal("   -Depends on Bean roast").withStyle(ChatFormatting.GRAY));
+                } else {
+                    switch (stack.get(ModDataComponents.ROAST)) {
+                        case "light" -> tooltipComponents.add(Component.literal("   -Light").withStyle(ChatFormatting.GRAY));
+                        case "medium" -> tooltipComponents.add(Component.literal("   -Medium").withStyle(ChatFormatting.GRAY));
+                        case "dark" -> tooltipComponents.add(Component.literal("   -Dark").withStyle(ChatFormatting.GRAY));
+                    }
+                }
+
+                if (stack.get(ModDataComponents.INGREDIENTS) == null) {
+                }
+                else if (stack.get(ModDataComponents.INGREDIENTS).isEmpty()) {
+                }
+                else {
+                    tooltipComponents.add(Component.literal("Ingredients:").withStyle(ChatFormatting.BLUE));
+                    for (String item : Objects.requireNonNull(stack.get(ModDataComponents.INGREDIENTS))) {
+                        switch (item) {
+                            case "sugar" -> tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
+                            case "milk" -> tooltipComponents.add(Component.literal("   -Milk").withStyle(ChatFormatting.GRAY));
+                            case "honey" -> tooltipComponents.add(Component.literal("   -Honey").withStyle(ChatFormatting.GRAY));
+                            case "chocolate" -> tooltipComponents.add(Component.literal("   -Chocolate").withStyle(ChatFormatting.GRAY));
+                            case "milk_foam" -> tooltipComponents.add(Component.literal("   -Milk Foam").withStyle(ChatFormatting.GRAY));
+                            case "steamed_milk" -> tooltipComponents.add(Component.literal("   -Steamed Milk").withStyle(ChatFormatting.GRAY));
+                            case "whipped_cream" -> tooltipComponents.add(Component.literal("   -Whipped Cream").withStyle(ChatFormatting.GRAY));
+                        }
+                    }
+                }
+                //tooltipComponents.add(Component.literal("YEEEEEAH"));
+
+
+            } else if (Minecraft.getInstance().screen instanceof CoffeeMachineScreen ) {
+                tooltipComponents.add(Component.translatable("§7Hold §eShift§7 for more Information"));
+            }
+        } else if (Minecraft.getInstance().screen instanceof CoffeeMachineScreen) {
+            tooltipComponents.add(Component.translatable("§7Hold §eShift§7 for more Information"));
+        }
+
+        List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
+        Holder<MobEffect> effect = getEffect(ingredients);
+        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
+        int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
+        int delay = getDelay(stack.get(ModDataComponents.ROAST));
+
+        // Main effect tooltip
+        Component effectName = getEffectNameComponent(effect);
+        Component potency = amplifier != 0 ? Component.translatable("potion.potency." + amplifier) : effect != null ? Component.literal("I") : Component.literal("");
+        Component durationComponent = !getFormattedDuration(duration).isEmpty() ? Component.literal(" (" + getFormattedDuration(duration) + ")") : Component.literal("");
+        Component delayComponent = !getFormattedDuration(delay).isEmpty() ? Component.literal(" [" + getFormattedDuration(delay) + "]") : Component.literal("");
+
+        tooltipComponents.add(Component.literal("")
+                .append(effectName.copy().withStyle(ChatFormatting.BLUE))
+                .append(Component.literal(" ").withStyle(ChatFormatting.BLUE))
+                .append(potency.copy().withStyle(ChatFormatting.BLUE))
+                .append(durationComponent.copy().withStyle(ChatFormatting.BLUE))
+                .append(delayComponent.copy().withStyle(ChatFormatting.GOLD))
+        );
+
+        // Secondary effect tooltip (safe null check)
+        Holder<MobEffect> sEffect = getSecodaryEffect(stack.get(ModDataComponents.BEAN), ingredients);
+        if (sEffect != null) {
+            String sFormattedDuration = getFormattedDuration(getSecodaryEffectDuration(sEffect.value(), ingredients));
+            Component sDurationComponent = !sFormattedDuration.isEmpty() ? Component.literal(" (" + sFormattedDuration + ")") : Component.literal("");
+            Component sPotency = Component.literal("I");
+            Component sEffectName = getEffectNameComponent(sEffect);
+
+            tooltipComponents.add(Component.literal("")
+                    .append(sEffectName.copy().withStyle(ChatFormatting.BLUE))
+                    .append(Component.literal(" ").withStyle(ChatFormatting.BLUE))
+                    .append(sPotency.copy().withStyle(ChatFormatting.BLUE))
+                    .append(sDurationComponent.copy().withStyle(ChatFormatting.BLUE))
+                    .append(delayComponent.copy().withStyle(ChatFormatting.GOLD))
+            );
+        }
+
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+
+    // Helper to get effect name
+    private Component getEffectNameComponent(Holder<MobEffect> effect) {
+        if (effect == null) return Component.literal("");
+        if (effect == MobEffects.MOVEMENT_SPEED) return Component.translatable("effect.minecraft.speed");
+        if (effect == MobEffects.JUMP) return Component.translatable("effect.minecraft.jump_boost");
+        if (effect == MobEffects.ABSORPTION) return Component.translatable("effect.minecraft.absorption");
+        if (effect == MobEffects.DAMAGE_RESISTANCE) return Component.translatable("effect.minecraft.resistance");
+        if (effect == MobEffects.REGENERATION) return Component.translatable("effect.minecraft.regeneration");
+        if (effect == MobEffects.HEALTH_BOOST) return Component.translatable("effect.minecraft.health_boost");
+        if (effect == MobEffects.DAMAGE_BOOST) return Component.translatable("effect.minecraft.strength");
+        if (effect == MobEffects.NIGHT_VISION) return Component.translatable("effect.minecraft.night_vision");
+        return Component.literal("");
     }
 
     private Holder<MobEffect> getEffect( List<String> ingredients ) {
@@ -305,6 +332,8 @@ public class CoffeeItem extends Item {
             }
             case "robusta" -> {
                 duration = 3000;
+            } case "liberica" -> {
+                duration = 2400;
             }
 
             case null -> {}
@@ -318,6 +347,8 @@ public class CoffeeItem extends Item {
                     duration = 4800;
                 } else if (duration == 4800) {
                     duration = 6600;
+                } else if (duration == 2400) {
+                    duration = 3600;
                 }
             }
             case "dark" -> {
@@ -325,6 +356,8 @@ public class CoffeeItem extends Item {
                     duration = 5400;
                 } else if (duration == 4800) {
                     duration = 7200;
+                } else if (duration == 2400) {
+                    duration = 4800;
                 }
             }
 
@@ -347,6 +380,9 @@ public class CoffeeItem extends Item {
             }
             case "robusta" -> {
                 amplifier = 1;
+            }
+            case "liberica" -> {
+                amplifier = 0;
             }
 
             case null -> {}

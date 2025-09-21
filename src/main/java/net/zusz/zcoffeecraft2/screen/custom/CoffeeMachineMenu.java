@@ -186,7 +186,10 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
                 ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(),
                 ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.asItem(),
                 ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.asItem(),
-                ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem()
+                ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem(),
+                ModItems.LIGHT_LIBERICA_GROUND_COFFEE.asItem(),
+                ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.asItem(),
+                ModItems.DARK_LIBERICA_GROUND_COFFEE.asItem()
         ));
 
         return validItems.contains(sourceStack.getItem());
