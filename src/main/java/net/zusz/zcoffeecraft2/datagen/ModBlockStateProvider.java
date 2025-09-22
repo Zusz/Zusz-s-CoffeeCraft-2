@@ -33,6 +33,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "light_roasted_robusta_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "medium_roasted_robusta_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.DARK_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "dark_roasted_robusta_coffee_bean_sack_top");
+        coffeeBeanSack(ModBlocks.RAW_LIBERICA_COFFEE_BEAN_SACK, "raw_liberica_coffee_bean_sack_top");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "light_roasted_liberica_coffee_bean_sack_top");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "medium_roasted_liberica_coffee_bean_sack_top");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "dark_roasted_liberica_coffee_bean_sack_top");
 
         makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), ArabicaCoffeeBushBlock.AGE, "arabica_coffee_bush_stage", "arabica_coffee_bush_stage");
         makeBush(((BushBlock) ModBlocks.ROBUSTA_COFFEE_BUSH.get()), RobustaCoffeeBushBlock.AGE, "robusta_coffee_bush_stage", "robusta_coffee_bush_stage");

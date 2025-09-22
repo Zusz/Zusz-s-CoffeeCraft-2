@@ -30,7 +30,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK);
 
-
                         output.accept(ModItems.ROBUSTA_COFFEE_CHERRY);
                         output.accept(ModItems.RAW_ROBUSTA_COFFEE_BEAN);
                         output.accept(ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN);
@@ -40,6 +39,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.DARK_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
+
+                        output.accept(ModItems.LIBERICA_COFFEE_CHERRY);
+                        output.accept(ModItems.RAW_LIBERICA_COFFEE_BEAN);
+                        output.accept(ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN);
+                        output.accept(ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN);
+                        output.accept(ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN);
+                        output.accept(ModBlocks.RAW_LIBERICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
 
                         output.accept(ModBlocks.COFFEE_MACHINE);
 

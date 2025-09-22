@@ -25,6 +25,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         List<ItemLike> RAW_ROBUSTA_COFFEE_BEAN_SMELT = List.of(ModItems.RAW_ROBUSTA_COFFEE_BEAN);
         List<ItemLike> LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SMELT = List.of(ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN);
         List<ItemLike> MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SMELT = List.of(ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN);
+        List<ItemLike> RAW_LIBERICA_COFFEE_BEAN_SMELT = List.of(ModItems.RAW_LIBERICA_COFFEE_BEAN);
+        List<ItemLike> LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SMELT = List.of(ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN);
+        List<ItemLike> MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SMELT = List.of(ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN);
+
         List<ItemLike> MILK_BUCKET_SMELT = List.of(Items.MILK_BUCKET);
 
 
@@ -210,6 +214,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(recipeOutput, RAW_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
         oreSmelting(recipeOutput, LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
         oreSmelting(recipeOutput, MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
+        oreSmelting(recipeOutput, RAW_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
+        oreSmelting(recipeOutput, LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
+        oreSmelting(recipeOutput, MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
         oreSmelting(recipeOutput, MILK_BUCKET_SMELT, RecipeCategory.MISC, ModItems.STEAMED_MILK.get(), 0.25f, 2400, "coffee");
     }
 }
