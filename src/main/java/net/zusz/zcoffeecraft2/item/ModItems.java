@@ -75,6 +75,8 @@ public class ModItems {
             () -> new ItemNameBlockItem(ModBlocks.ARABICA_COFFEE_BUSH.get(), new Item.Properties()));
     public static final DeferredItem<Item> ROBUSTA_COFFEE_CHERRY = ITEMS.register("robusta_coffee_cherry",
             () -> new ItemNameBlockItem(ModBlocks.ROBUSTA_COFFEE_BUSH.get(), new Item.Properties()));
+    public static final DeferredItem<Item> LIBERICA_COFFEE_CHERRY = ITEMS.register("liberica_coffee_cherry",
+            () -> new ItemNameBlockItem(ModBlocks.LIBERICA_COFFEE_BUSH.get(), new Item.Properties()));
 
     public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",//unique items
             () -> new CoffeeItem(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));

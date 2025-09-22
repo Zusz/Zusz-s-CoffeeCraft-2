@@ -12,6 +12,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.zusz.zcoffeecraft2.block.custom.ArabicaCoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
+import net.zusz.zcoffeecraft2.block.custom.LibericaCoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.custom.RobustaCoffeeBushBlock;
 
 import java.util.function.Function;
@@ -35,6 +36,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), ArabicaCoffeeBushBlock.AGE, "arabica_coffee_bush_stage", "arabica_coffee_bush_stage");
         makeBush(((BushBlock) ModBlocks.ROBUSTA_COFFEE_BUSH.get()), RobustaCoffeeBushBlock.AGE, "robusta_coffee_bush_stage", "robusta_coffee_bush_stage");
+        makeBush(((BushBlock) ModBlocks.LIBERICA_COFFEE_BUSH.get()), LibericaCoffeeBushBlock.AGE, "liberica_coffee_bush_stage", "liberica_coffee_bush_stage");
 
     }
 

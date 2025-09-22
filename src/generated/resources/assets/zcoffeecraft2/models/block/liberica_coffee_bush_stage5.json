@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "zcoffeecraft2:block/liberica_coffee_bush_stage5"
+  }
+}
