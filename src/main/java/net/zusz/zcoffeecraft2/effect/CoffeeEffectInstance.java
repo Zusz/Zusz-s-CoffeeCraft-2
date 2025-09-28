@@ -3,6 +3,8 @@ package net.zusz.zcoffeecraft2.effect;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 
+import javax.annotation.Nullable;
+
 public class CoffeeEffectInstance {
     public final MobEffect effect;
     public final int duration;
@@ -18,7 +20,7 @@ public class CoffeeEffectInstance {
             int duration,
             int amplifier,
             int delayTicks,
-            Holder<MobEffect> secondaryEffect,
+            @Nullable Holder<MobEffect> secondaryEffect,
             int secondaryEffectDuration,
             int secondaryEffectAmplifier
     ) {

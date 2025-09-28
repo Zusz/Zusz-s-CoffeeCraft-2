@@ -49,8 +49,10 @@ public class CoffeeItem extends Item {
         int delay = getDelay(stack.get(ModDataComponents.ROAST));
         Holder<MobEffect> secondaryEffect = getSecodaryEffect(stack.get(ModDataComponents.BEAN), ingredients);
         //System.out.println(secondaryEffect.value());
-        int secondaryEffectDuration = getSecodaryEffectDuration(secondaryEffect.value(), ingredients);
-
+        int secondaryEffectDuration = 0;
+        if (secondaryEffect != null) {
+            secondaryEffectDuration = getSecodaryEffectDuration(secondaryEffect.value(), ingredients);
+        }
         if (!level.isClientSide && entity instanceof ServerPlayer player) {
             if (effect != null) {
                 CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
@@ -63,7 +65,9 @@ public class CoffeeItem extends Item {
                         0
                 );
                 CoffeeEffectData.addEffect(player, ceffect);
-                player.addEffect(new MobEffectInstance(ModEffects.CAFFEINATED_EFFECT, delay, 0));
+                if (delay != 0) {
+                    player.addEffect(new MobEffectInstance(ModEffects.CAFFEINATED_EFFECT, delay, 0));
+                }
             }
 
         }
