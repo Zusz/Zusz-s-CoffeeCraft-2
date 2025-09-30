@@ -58,6 +58,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE);
                         output.accept(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE);
                         output.accept(ModItems.DARK_ROBUSTA_GROUND_COFFEE);
+                        output.accept(ModItems.LIGHT_LIBERICA_GROUND_COFFEE);
+                        output.accept(ModItems.MEDIUM_LIBERICA_GROUND_COFFEE);
+                        output.accept(ModItems.DARK_LIBERICA_GROUND_COFFEE);
 
                         output.accept(ModItems.WHISK);
 

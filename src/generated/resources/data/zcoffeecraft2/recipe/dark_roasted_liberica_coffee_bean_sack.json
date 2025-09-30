@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "zcoffeecraft2:dark_roasted_liberica_coffee_bean"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BBB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:dark_roasted_liberica_coffee_bean_sack"
+  }
+}

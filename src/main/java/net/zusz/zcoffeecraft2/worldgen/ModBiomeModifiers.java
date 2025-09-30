@@ -17,6 +17,7 @@ public class ModBiomeModifiers {
 
     public static final ResourceKey<BiomeModifier> ADD_ARABICA_COFFEE_BUSH = registerKey("add_arabica_coffee_bush");
     public static final ResourceKey<BiomeModifier> ADD_ROBUSTA_COFFEE_BUSH = registerKey("add_robusta_coffee_bush");
+    public static final ResourceKey<BiomeModifier> ADD_LIBERICA_COFFEE_BUSH = registerKey("add_liberica_coffee_bush");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -30,6 +31,11 @@ public class ModBiomeModifiers {
         context.register(ADD_ROBUSTA_COFFEE_BUSH, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.TAIGA), biomes.getOrThrow(Biomes.OLD_GROWTH_PINE_TAIGA), biomes.getOrThrow(Biomes.OLD_GROWTH_SPRUCE_TAIGA)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ROBUSTA_COFFEE_BUSH_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_LIBERICA_COFFEE_BUSH, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.SAVANNA), biomes.getOrThrow(Biomes.WINDSWEPT_SAVANNA), biomes.getOrThrow(Biomes.SAVANNA_PLATEAU)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LIBERICA_COFFEE_BUSH_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
     }
