@@ -2,7 +2,10 @@
   "entries": [
     "zcoffeecraft2:arabica_coffee_cherry_to_jungle_leaves",
     "zcoffeecraft2:robusta_coffee_cherry_to_jungle_leaves",
-    "zcoffeecraft2:arabica_coffee_cherry_from_jungle_temple"
+    "zcoffeecraft2:liberica_coffee_cherry_to_jungle_leaves",
+    "zcoffeecraft2:arabica_coffee_cherry_from_jungle_temple",
+    "zcoffeecraft2:robusta_coffee_cherry_from_jungle_temple",
+    "zcoffeecraft2:liberica_coffee_cherry_from_jungle_temple"
   ],
   "replace": false
 }

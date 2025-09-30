@@ -30,12 +30,26 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
                 new AddItemModifier(new LootItemCondition[]{
                         LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.JUNGLE_LEAVES).build(),
                         LootItemRandomChanceCondition.randomChance(0.01f).build() }, ModItems.ROBUSTA_COFFEE_CHERRY.get()));
+        this.add("liberica_coffee_cherry_to_jungle_leaves",
+                new AddItemModifier(new LootItemCondition[]{
+                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.JUNGLE_LEAVES).build(),
+                        LootItemRandomChanceCondition.randomChance(0.01f).build() }, ModItems.LIBERICA_COFFEE_CHERRY.get()));
 
         this.add("arabica_coffee_cherry_from_jungle_temple",
                 new AddItemModifier(new LootItemCondition[]{
                     new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/jungle_temple")).build(),
                         LootItemRandomChanceCondition.randomChance(0.1f).build()
                 }, ModItems.ARABICA_COFFEE_CHERRY.get()));
+        this.add("robusta_coffee_cherry_from_jungle_temple",
+                new AddItemModifier(new LootItemCondition[]{
+                        new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/jungle_temple")).build(),
+                        LootItemRandomChanceCondition.randomChance(0.1f).build()
+                }, ModItems.ROBUSTA_COFFEE_CHERRY.get()));
+        this.add("liberica_coffee_cherry_from_jungle_temple",
+                new AddItemModifier(new LootItemCondition[]{
+                        new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/jungle_temple")).build(),
+                        LootItemRandomChanceCondition.randomChance(0.1f).build()
+                }, ModItems.LIBERICA_COFFEE_CHERRY.get()));
 
     }
 }
