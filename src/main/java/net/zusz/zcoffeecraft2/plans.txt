@@ -4,8 +4,8 @@
 
 New Roast and Coffee system
 -Arabica: time 2 strength 1 done
--Robusta time 1 strength 2
--Liberica time 1 strength 1 extra 1
+-Robusta time 1 strength 2 done
+-Liberica time 1 strength 1 extra 1 done
 -Excelsa time 2 strength 2 negative 1
 
 Time 1 is 2.5 minutes
@@ -33,6 +33,6 @@ Time 2 is 4 minutes
 
 -Advancements
 -Villager trades
--Loot tables
+-Loot tables done/to be improved
 -Little coffee structure from V.1.0.0
 -Introduction Book done / should be updated when new things are added
