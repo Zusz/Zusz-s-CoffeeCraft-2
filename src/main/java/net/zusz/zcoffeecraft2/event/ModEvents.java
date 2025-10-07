@@ -10,12 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -52,7 +48,22 @@ public class ModEvents {
         final List<Item> usedToMakeCoffee = List.of(
                 ModItems.LIGHT_ARABICA_GROUND_COFFEE.asItem(),
                 ModItems.MEDIUM_ARABICA_GROUND_COFFEE.asItem(),
-                ModItems.DARK_ARABICA_GROUND_COFFEE.asItem()
+                ModItems.DARK_ARABICA_GROUND_COFFEE.asItem(),
+
+                ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.asItem(),
+                ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.asItem(),
+                ModItems.DARK_ROBUSTA_GROUND_COFFEE.asItem(),
+
+                ModItems.LIGHT_LIBERICA_GROUND_COFFEE.asItem(),
+                ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.asItem(),
+                ModItems.DARK_LIBERICA_GROUND_COFFEE.asItem(),
+
+                ModItems.MILK_FOAM.asItem(),
+                ModItems.WHIPPED_CREAM.asItem(),
+                ModItems.STEAMED_MILK.asItem(),
+
+                Items.HONEY_BOTTLE.asItem(),
+                Items.COCOA_BEANS.asItem()
         );
 
         if (stack.getItem() == Items.WATER_BUCKET) {
