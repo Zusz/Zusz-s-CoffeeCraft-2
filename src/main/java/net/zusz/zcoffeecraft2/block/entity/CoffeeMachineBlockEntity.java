@@ -1,6 +1,7 @@
 package net.zusz.zcoffeecraft2.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.zusz.zcoffeecraft2.block.custom.CoffeeMachineBlock;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineMenu;
@@ -288,5 +290,21 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+
+    private float rotation;
+    public float getRenderingRotation() {
+        if (level == null) return 0f;
+
+        Direction facing = getBlockState().getValue(CoffeeMachineBlock.FACING);
+
+        return switch (facing) {
+            case NORTH -> 180f;
+            case SOUTH -> 0f;
+            case WEST  -> 90f;
+            case EAST  -> -90f;
+            default -> 0f;
+        };
     }
 }

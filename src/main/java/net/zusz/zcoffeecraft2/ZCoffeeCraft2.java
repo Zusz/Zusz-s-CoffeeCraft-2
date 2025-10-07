@@ -1,10 +1,12 @@
 package net.zusz.zcoffeecraft2;
 
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
+import net.zusz.zcoffeecraft2.block.entity.renderer.CoffeeMachineBlockEntityRenderer;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModCreativeModeTabs;
@@ -106,6 +108,11 @@ public class ZCoffeeCraft2
         @SubscribeEvent
         public static void registerScreens( RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.COFFEE_MACHINE_MENU.get(), CoffeeMachineScreen::new);
+        }
+
+        @SubscribeEvent
+        public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.COFFEE_MACHINE_BE.get(), CoffeeMachineBlockEntityRenderer::new);
         }
     }
 }
