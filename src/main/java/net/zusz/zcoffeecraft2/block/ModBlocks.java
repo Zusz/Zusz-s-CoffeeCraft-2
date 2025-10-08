@@ -10,10 +10,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
-import net.zusz.zcoffeecraft2.block.custom.ArabicaCoffeeBushBlock;
-import net.zusz.zcoffeecraft2.block.custom.CoffeeMachineBlock;
-import net.zusz.zcoffeecraft2.block.custom.LibericaCoffeeBushBlock;
-import net.zusz.zcoffeecraft2.block.custom.RobustaCoffeeBushBlock;
+import net.zusz.zcoffeecraft2.block.custom.*;
 import net.zusz.zcoffeecraft2.item.ModItems;
 
 import java.util.function.Supplier;
@@ -72,6 +69,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> COFFEE_MACHINE = registerBlock("coffee_machine",
             () -> new CoffeeMachineBlock(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<Block> COFFEE_CUP_BLOCK = registerBlock("coffee_cup_block",
+            () -> new CoffeeCupBlock(BlockBehaviour.Properties.of()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

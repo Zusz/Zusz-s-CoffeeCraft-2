@@ -17,6 +17,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("coffee_machine_be", () -> BlockEntityType.Builder.of(
                     CoffeeMachineBlockEntity::new, ModBlocks.COFFEE_MACHINE.get()).build(null));
 
+    public static final Supplier<BlockEntityType<CoffeeCupBlockEntity>> COFFEE_CUP_BE =
+            BLOCK_ENTITIES.register("coffee_cup_be", () -> BlockEntityType.Builder.of(
+                    CoffeeCupBlockEntity::new, ModBlocks.COFFEE_CUP_BLOCK.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

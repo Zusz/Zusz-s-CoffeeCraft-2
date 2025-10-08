@@ -1,14 +1,16 @@
 package net.zusz.zcoffeecraft2.item.custom;
 
 
-import com.mojang.blaze3d.shaders.Effect;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -18,7 +20,16 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.zusz.zcoffeecraft2.block.ModBlocks;
+import net.zusz.zcoffeecraft2.block.custom.CoffeeCupBlock;
+import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
+import net.zusz.zcoffeecraft2.block.entity.CoffeeCupBlockEntity;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
@@ -26,7 +37,6 @@ import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
-import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -407,4 +417,61 @@ public class CoffeeItem extends Item {
             return "";
         }
     }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        Player player = context.getPlayer();
+        Level level = context.getLevel();
+        BlockPos clickedPos = context.getClickedPos();
+        InteractionHand hand = context.getHand();
+        ItemStack stack = context.getItemInHand();
+
+        // Only place when sneaking
+        if (player == null || !player.isShiftKeyDown()) {
+            return InteractionResult.PASS;
+        }
+
+        BlockPos placePos = clickedPos.relative(context.getClickedFace());
+
+        //Check if block can be placed
+        BlockState existingState = level.getBlockState(placePos);
+        if (!existingState.canBeReplaced()) {
+            return InteractionResult.FAIL;
+        }
+
+        BlockState state = ModBlocks.COFFEE_CUP_BLOCK.get().defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, player.getDirection().getOpposite());
+        String roast = stack.get(ModDataComponents.ROAST);
+        if (roast != null) {
+            switch (roast) {
+                case "medium" -> state = state.setValue(CoffeeCupBlock.ROAST, RoastType.MEDIUM);
+                case "dark" -> state = state.setValue(CoffeeCupBlock.ROAST, RoastType.DARK);
+                default -> state = state.setValue(CoffeeCupBlock.ROAST, RoastType.LIGHT);
+            }
+        }
+        //System.out.println(state.getValue(CoffeeCupBlock.ROAST));
+
+
+        // Place the block
+        if (!level.isClientSide) {
+            level.setBlock(placePos, state, Block.UPDATE_ALL_IMMEDIATE);
+
+            if (!player.isCreative()) {
+                stack.shrink(1);
+            }
+        }
+
+        if (level.getBlockEntity(placePos) instanceof CoffeeCupBlockEntity cupEntity) {
+            ItemStack toSet = new ItemStack(stack.getItem());
+            toSet.set(ModDataComponents.ROAST, stack.get(ModDataComponents.ROAST));
+            toSet.set(ModDataComponents.BEAN, stack.get(ModDataComponents.BEAN));
+            toSet.set(ModDataComponents.INGREDIENTS, stack.get(ModDataComponents.INGREDIENTS));
+
+            cupEntity.setCoffeeStack(toSet);
+        }
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+
 }
