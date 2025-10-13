@@ -5,12 +5,16 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
+import org.antlr.v4.runtime.atn.SemanticContext;
 import org.jetbrains.annotations.NotNull;
 
 public class CoffeeCupBlockEntity extends BlockEntity {
@@ -25,8 +29,6 @@ public class CoffeeCupBlockEntity extends BlockEntity {
         }
 
     };
-
-
 
     private ItemStack coffeeStack = ItemStack.EMPTY;
 
@@ -68,4 +70,9 @@ public class CoffeeCupBlockEntity extends BlockEntity {
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
+
+    public void decreaseCoffeeStack(int i) {
+        itemHandler.setStackInSlot(0, new ItemStack(itemHandler.getStackInSlot(0).getItem(), itemHandler.getStackInSlot(0).getCount()-1));
+        coffeeStack = itemHandler.getStackInSlot(0);
+    }
 }
