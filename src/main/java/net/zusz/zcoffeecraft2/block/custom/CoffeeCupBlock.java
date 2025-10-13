@@ -3,6 +3,7 @@ package net.zusz.zcoffeecraft2.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
@@ -10,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -22,6 +24,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.MutableDataComponentHolder;
 import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeCupBlockEntity;
 import net.minecraft.core.Direction;
@@ -35,6 +38,8 @@ public class CoffeeCupBlock extends BaseEntityBlock {
     private static final MapCodec<CoffeeCupBlock> CODEC = simpleCodec(CoffeeCupBlock::new);
 
     public static final EnumProperty<RoastType> ROAST = EnumProperty.create("roast", RoastType.class);
+
+    private static Component name = Component.literal("");
 
 
     public CoffeeCupBlock(Properties properties) {
@@ -72,7 +77,26 @@ public class CoffeeCupBlock extends BaseEntityBlock {
                 .setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
+    @Override
+    public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
+        if (!level.isClientSide()) {
+            BlockEntity entity = level.getBlockEntity(pos);
+            if (entity instanceof CoffeeCupBlockEntity coffeeCupBlockEntity) {
+                ItemStack coffeeStack = coffeeCupBlockEntity.getCoffeeStack();
+                if (!coffeeStack.isEmpty()) {
+                    name = coffeeStack.getDisplayName(); // literal
+                } else {
+                    name = Component.translatable("block.zcoffeecraft2.coffee_cup_block"); // fallback translatable
+                }
+            }
+        }
+        super.onBlockStateChange(level, pos, oldState, newState);
+    }
 
+    @Override
+    public MutableComponent getName() {
+        return name.copy();
+    }
 
     @Nullable
     @Override
@@ -118,5 +142,4 @@ public class CoffeeCupBlock extends BaseEntityBlock {
 
         return ItemInteractionResult.sidedSuccess(level.isClientSide());
     }
-
 }

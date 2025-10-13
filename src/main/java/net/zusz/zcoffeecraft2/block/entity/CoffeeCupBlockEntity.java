@@ -62,6 +62,8 @@ public class CoffeeCupBlockEntity extends BlockEntity {
 
     }
 
+
+
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
         for (int i = 0; i < itemHandler.getSlots(); i++) {

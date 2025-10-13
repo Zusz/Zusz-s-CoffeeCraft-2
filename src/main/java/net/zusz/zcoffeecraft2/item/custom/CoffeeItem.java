@@ -49,6 +49,9 @@ public class CoffeeItem extends Item {
         super(properties);
     }
 
+
+
+
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, @NotNull LivingEntity entity) {
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
@@ -106,7 +109,8 @@ public class CoffeeItem extends Item {
                 }
             }
         }
-
+        System.out.println(stack.get(ModDataComponents.ROAST));
+        System.out.println();
         return stack;
     }
 
