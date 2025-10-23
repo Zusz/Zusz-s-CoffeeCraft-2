@@ -2,6 +2,7 @@ package net.zusz.zcoffeecraft2.block.entity;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -147,6 +148,11 @@ public class CoffeeMachineMethods {
 
     public static boolean isValidCoffeeCombination(ItemStack output) {
         List<String> ingredients = output.get(ModDataComponents.INGREDIENTS);
+        return CoffeeRecipeRegistry.isValid(ingredients);
+    }
+
+/*    public static boolean isValidCoffeeCombination(ItemStack output) {
+        List<String> ingredients = output.get(ModDataComponents.INGREDIENTS);
         if ((ingredients.isEmpty()) || //Espresso
                 (ingredients.size() == 1 &&ingredients.contains("sugar")) ||
                 (ingredients.size() == 1 && ingredients.contains("milk_foam")) || //Macchiato
@@ -165,5 +171,5 @@ public class CoffeeMachineMethods {
             return true;
         }
         return false;
-    };
+    }; */
 }

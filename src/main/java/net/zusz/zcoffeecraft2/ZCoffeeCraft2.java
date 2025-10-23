@@ -9,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
 import net.zusz.zcoffeecraft2.block.entity.renderer.CoffeeMachineBlockEntityRenderer;
+import net.zusz.zcoffeecraft2.coffeerecipes.DefaultCoffeeRecipes;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModCreativeModeTabs;
@@ -74,7 +75,7 @@ public class ZCoffeeCraft2
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(DefaultCoffeeRecipes::registerCoffeeRecipes);
     }
 
     // Add the item to a tab

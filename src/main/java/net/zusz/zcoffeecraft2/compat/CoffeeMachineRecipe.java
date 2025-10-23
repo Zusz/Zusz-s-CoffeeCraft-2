@@ -3,6 +3,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 //this is in compatibility, because its only needed for JEI, as the Coffee Machine Block Entiy itself uses no recipes
+
 public class CoffeeMachineRecipe {
         private final Ingredient input;
         private final Ingredient container;

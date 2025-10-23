@@ -30,18 +30,24 @@ import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeCupBlock;
 import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeCupBlockEntity;
+import net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipe;
+import net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
+import org.antlr.v4.runtime.atn.SemanticContext;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+
+import static net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipeRegistry.getRecipe;
 
 public class CoffeeItem extends Item {
 
@@ -54,115 +60,78 @@ public class CoffeeItem extends Item {
 
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, @NotNull LivingEntity entity) {
-        List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
+        if (!(entity instanceof ServerPlayer player) || level.isClientSide) return stack;
 
-        Holder<MobEffect> effect = getEffect(ingredients);
-        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
-        int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
-        int delay = getDelay(stack.get(ModDataComponents.ROAST));
-        Holder<MobEffect> secondaryEffect = getSecodaryEffect(stack.get(ModDataComponents.BEAN), ingredients);
-        //System.out.println(secondaryEffect.value());
-        int secondaryEffectDuration = 0;
-        if (secondaryEffect != null) {
-            secondaryEffectDuration = getSecodaryEffectDuration(secondaryEffect.value(), ingredients);
-        }
-        if (!level.isClientSide && entity instanceof ServerPlayer player) {
-            if (effect != null) {
-                CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
-                        effect.value(),
-                        duration,
-                        amplifier,
-                        delay,
-                        secondaryEffect,
-                        secondaryEffectDuration,
-                        0
-                );
-                CoffeeEffectData.addEffect(player, ceffect);
-                if (delay != 0) {
-                    player.addEffect(new MobEffectInstance(ModEffects.CAFFEINATED_EFFECT, delay, 0));
-                }
-            }
+        Optional<CoffeeRecipe> recipeOpt = getRecipe(stack.get(ModDataComponents.INGREDIENTS));
+        if (recipeOpt.isEmpty()) return stack;
 
-        }
-        /* Check if on server and is a player
-        if (!level.isClientSide && entity instanceof Player player) {
-             Give the effect
-            player.addEffect(new MobEffectInstance(effect, duration, amplifier));
-        }*/
+        CoffeeRecipe recipe = recipeOpt.get();
+        String bean = stack.get(ModDataComponents.BEAN);
+        String roast = stack.get(ModDataComponents.ROAST);
 
-        super.finishUsingItem(stack, level, entity);
+        int duration = adjustDuration(recipe.baseDuration(), bean, roast);
+        int amplifier = recipe.baseAmplifier() + getBeanAmplifier(bean);
+        int delay = recipe.baseDelay() + getRoastDelay(roast);
+        Holder<MobEffect> secondaryEffect = null;
+        if (bean.equals("liberica")) {secondaryEffect = recipe.secondaryEffect();}
 
-        if (entity instanceof Player player) {
-            // If they are not in creative, give them the cup back
-            if (!player.getAbilities().instabuild) {
-                ItemStack cupStack = new ItemStack(ModItems.COFFEE_CUP.asItem());
+        CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
+                recipe.effect().value(),
+                duration,
+                amplifier,
+                delay,
+                secondaryEffect,
+                recipe.secondaryDuration(),
+                0
+        );
 
-                if (stack.isEmpty()) {
-                    // If the coffee stack is now empty, just return the cup directly
-                    return cupStack;
-                } else {
-                    // If the stack still exists (e.g., stacked coffee?), try to add cup to inventory
-                    if (!player.getInventory().add(cupStack)) {
-                        // If inventory is full, drop it
-                        player.drop(cupStack, false);
-                    }
-                }
-            }
-        }
-        System.out.println(stack.get(ModDataComponents.ROAST));
-        System.out.println();
-        return stack;
+        CoffeeEffectData.addEffect(player, ceffect);
+        if (delay > 0)
+            player.addEffect(new MobEffectInstance(ModEffects.CAFFEINATED_EFFECT, delay, 0));
+
+        return super.finishUsingItem(stack, level, entity);
     }
 
-    private Holder<MobEffect> getSecodaryEffect(String bean, List<String> ingredients) {
-        if (Objects.equals(bean, "liberica")) {
-            //System.out.println("Isliberica");
-            if (((ingredients.size() == 0) || ingredients.size() == 1 && ingredients.contains("sugar"))) {
-                //System.out.println("ISMOVEMENTSPEED");
-                return MobEffects.JUMP;
-            } else {
-                //System.out.println("ISNTMOVEMENTSPEED");
-                return MobEffects.MOVEMENT_SPEED;
-            }
-        }
-        return null;
+    private int adjustDuration(int base, String bean, String roast) {
+        int duration = base;
+        if ("arabica".equals(bean)) duration += 1200;
+        if ("robusta".equals(bean)) duration -= 0;
+        if("liberica".equals(bean)) duration -= 600;
+        if ("dark".equals(roast)) duration += 2400;
+        if ("medium".equals(roast)) duration += 1200;
+        return duration;
     }
 
-    private int getSecodaryEffectDuration(MobEffect secondaryEffect, List<String> ingredients) {
-        if (secondaryEffect == MobEffects.MOVEMENT_SPEED) {
-            return 1200;
-        }
-        else return 2400;
+    private int getBeanAmplifier(@Nullable String bean) {
+        if (bean == null) return 0; // 🩹 safe default
+        return switch (bean) {
+            case "robusta" -> 1;
+            default -> 0;
+        };
     }
+
+    private int getRoastDelay(@Nullable String roast) {
+        if (roast == null) return 0;
+        return switch (roast) {
+            case "light" -> 0;
+            case "medium" -> 200;
+            case "dark" -> 500;
+            default -> 0;
+        };
+    }
+
+
 
 
     @Override
     public @NotNull Component getName(ItemStack stack) {
+
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
         String roast = stack.get(ModDataComponents.ROAST);
 
-        Component coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.notype");
+        Component coffeeComponent = Component.translatable(CoffeeRecipeRegistry.getName(ingredients));
         Component roastComponent = Component.translatable("coffeeroast.zcoffeecraft2.noroast");
 
-        Holder<MobEffect> effect = getEffect(ingredients);
-
-        if (effect == MobEffects.MOVEMENT_SPEED) {
-            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.espresso");
-        } else if (effect == MobEffects.JUMP) {
-            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.macchiato");
-        } else if (effect == MobEffects.ABSORPTION) {
-            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.con_panna");
-        } else if (effect == MobEffects.DAMAGE_RESISTANCE) {
-            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.flat_white");
-        } else if (effect == MobEffects.REGENERATION) {
-            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.latte");
-        } else if (effect == MobEffects.HEALTH_BOOST) {
-            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.honey_raf");
-        } else if (effect == MobEffects.DAMAGE_BOOST) {
-            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.mocha");
-        } else if (effect == MobEffects.NIGHT_VISION) {
-            coffeeComponent = Component.translatable("coffeetype.zcoffeecraft2.marocchino");
-        }
 
         if (roast != null) {
             if (Objects.equals(roast, "light")) {
@@ -189,84 +158,89 @@ public class CoffeeItem extends Item {
                 .anyMatch(element -> element.getClassName().contains("mezz.jei"));
     }
 
-    private int getDelay(String roast) {
-        return switch (roast) {
-            case "light" -> 0;
-            case "medium" -> 200;
-            case "dark" -> 500;
-            case null -> 0;
-            default -> throw new IllegalStateException("Unexpected value: " + roast);
-        };
-    }
-
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        // Show detailed info if Shift is held or in JEI
-        if (Screen.hasShiftDown() && Minecraft.getInstance().screen instanceof CoffeeMachineScreen || isInJEIContext()) {
-            if(Screen.hasShiftDown() && Minecraft.getInstance().screen instanceof CoffeeMachineScreen || isInJEIContext()) {
+        boolean inJEI = isInJEIContext();
+        boolean inCoffeeMachine = Minecraft.getInstance().screen instanceof CoffeeMachineScreen;
+        boolean showDetails = (Screen.hasShiftDown() && inCoffeeMachine) || inJEI;
 
-                tooltipComponents.add(Component.literal("Beans:").withStyle(ChatFormatting.BLUE));
-                if(stack.get(ModDataComponents.BEAN) == null) {
-                    tooltipComponents.add(Component.literal("   -Depends on Bean type").withStyle(ChatFormatting.GRAY));
-                } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "arabica")) {
-                    tooltipComponents.add(Component.literal("   -Arabica").withStyle(ChatFormatting.GRAY));
-                } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "robusta")) {
-                    tooltipComponents.add(Component.literal("   -Robusta").withStyle(ChatFormatting.GRAY));
-                } else if (Objects.equals(stack.get(ModDataComponents.BEAN), "liberica")) {
-                    tooltipComponents.add(Component.literal("   -Liberica").withStyle(ChatFormatting.GRAY));
+        // --- Detailed info: Beans, Roast, Ingredients ---
+        if (showDetails) {
+            tooltipComponents.add(Component.literal("Beans:").withStyle(ChatFormatting.BLUE));
+            String bean = stack.get(ModDataComponents.BEAN);
+            if (bean == null) {
+                tooltipComponents.add(Component.literal("   -Depends on Bean type").withStyle(ChatFormatting.GRAY));
+            } else {
+                switch (bean) {
+                    case "arabica" -> tooltipComponents.add(Component.literal("   -Arabica").withStyle(ChatFormatting.GRAY));
+                    case "robusta" -> tooltipComponents.add(Component.literal("   -Robusta").withStyle(ChatFormatting.GRAY));
+                    case "liberica" -> tooltipComponents.add(Component.literal("   -Liberica").withStyle(ChatFormatting.GRAY));
+                    default -> tooltipComponents.add(Component.literal("   -Unknown Bean").withStyle(ChatFormatting.GRAY));
                 }
-
-                tooltipComponents.add(Component.literal("Roast:").withStyle(ChatFormatting.BLUE));
-                if(stack.get(ModDataComponents.ROAST) == null) {
-                    tooltipComponents.add(Component.literal("   -Depends on Bean roast").withStyle(ChatFormatting.GRAY));
-                } else {
-                    switch (stack.get(ModDataComponents.ROAST)) {
-                        case "light" -> tooltipComponents.add(Component.literal("   -Light").withStyle(ChatFormatting.GRAY));
-                        case "medium" -> tooltipComponents.add(Component.literal("   -Medium").withStyle(ChatFormatting.GRAY));
-                        case "dark" -> tooltipComponents.add(Component.literal("   -Dark").withStyle(ChatFormatting.GRAY));
-                    }
-                }
-
-                if (stack.get(ModDataComponents.INGREDIENTS) == null) {
-                }
-                else if (stack.get(ModDataComponents.INGREDIENTS).isEmpty()) {
-                }
-                else {
-                    tooltipComponents.add(Component.literal("Ingredients:").withStyle(ChatFormatting.BLUE));
-                    for (String item : Objects.requireNonNull(stack.get(ModDataComponents.INGREDIENTS))) {
-                        switch (item) {
-                            case "sugar" -> tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
-                            case "milk" -> tooltipComponents.add(Component.literal("   -Milk").withStyle(ChatFormatting.GRAY));
-                            case "honey" -> tooltipComponents.add(Component.literal("   -Honey").withStyle(ChatFormatting.GRAY));
-                            case "chocolate" -> tooltipComponents.add(Component.literal("   -Chocolate").withStyle(ChatFormatting.GRAY));
-                            case "milk_foam" -> tooltipComponents.add(Component.literal("   -Milk Foam").withStyle(ChatFormatting.GRAY));
-                            case "steamed_milk" -> tooltipComponents.add(Component.literal("   -Steamed Milk").withStyle(ChatFormatting.GRAY));
-                            case "whipped_cream" -> tooltipComponents.add(Component.literal("   -Whipped Cream").withStyle(ChatFormatting.GRAY));
-                        }
-                    }
-                }
-                //tooltipComponents.add(Component.literal("YEEEEEAH"));
-
-
-            } else if (Minecraft.getInstance().screen instanceof CoffeeMachineScreen ) {
-                tooltipComponents.add(Component.translatable("§7Hold §eShift§7 for more Information"));
             }
-        } else if (Minecraft.getInstance().screen instanceof CoffeeMachineScreen) {
+
+            tooltipComponents.add(Component.literal("Roast:").withStyle(ChatFormatting.BLUE));
+            String roast = stack.get(ModDataComponents.ROAST);
+            if (roast == null) {
+                tooltipComponents.add(Component.literal("   -Depends on Bean roast").withStyle(ChatFormatting.GRAY));
+            } else {
+                switch (roast) {
+                    case "light" -> tooltipComponents.add(Component.literal("   -Light").withStyle(ChatFormatting.GRAY));
+                    case "medium" -> tooltipComponents.add(Component.literal("   -Medium").withStyle(ChatFormatting.GRAY));
+                    case "dark" -> tooltipComponents.add(Component.literal("   -Dark").withStyle(ChatFormatting.GRAY));
+                    default -> tooltipComponents.add(Component.literal("   -Unknown Roast").withStyle(ChatFormatting.GRAY));
+                }
+            }
+
+            List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
+            if (ingredients != null && !ingredients.isEmpty()) {
+                tooltipComponents.add(Component.literal("Ingredients:").withStyle(ChatFormatting.BLUE));
+                for (String item : ingredients) {
+                    switch (item) {
+                        case "sugar" -> tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
+                        case "milk" -> tooltipComponents.add(Component.literal("   -Milk").withStyle(ChatFormatting.GRAY));
+                        case "honey" -> tooltipComponents.add(Component.literal("   -Honey").withStyle(ChatFormatting.GRAY));
+                        case "chocolate" -> tooltipComponents.add(Component.literal("   -Chocolate").withStyle(ChatFormatting.GRAY));
+                        case "milk_foam" -> tooltipComponents.add(Component.literal("   -Milk Foam").withStyle(ChatFormatting.GRAY));
+                        case "steamed_milk" -> tooltipComponents.add(Component.literal("   -Steamed Milk").withStyle(ChatFormatting.GRAY));
+                        case "whipped_cream" -> tooltipComponents.add(Component.literal("   -Whipped Cream").withStyle(ChatFormatting.GRAY));
+                        default -> tooltipComponents.add(Component.literal("   -" + item).withStyle(ChatFormatting.GRAY));
+                    }
+                }
+            }
+        }
+        else if (inCoffeeMachine) {
             tooltipComponents.add(Component.translatable("§7Hold §eShift§7 for more Information"));
         }
 
+        // --- Recipe & Effects ---
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
-        Holder<MobEffect> effect = getEffect(ingredients);
-        int duration = getDuration(stack.get(ModDataComponents.BEAN), stack.get(ModDataComponents.ROAST), ingredients);
-        int amplifier = getAmplifier(stack.get(ModDataComponents.BEAN));
-        int delay = getDelay(stack.get(ModDataComponents.ROAST));
+        Optional<CoffeeRecipe> recipeOpt = getRecipe(ingredients != null ? ingredients : List.of());
+        if (recipeOpt.isEmpty()) {
+            super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+            return;
+        }
 
-        // Main effect tooltip
+        CoffeeRecipe recipe = recipeOpt.get();
+        String bean = stack.get(ModDataComponents.BEAN);
+        String roast = stack.get(ModDataComponents.ROAST);
+
+        int duration = adjustDuration(recipe.baseDuration(), bean, roast);
+        int amplifier = recipe.baseAmplifier() + getBeanAmplifier(bean);
+        int delay = recipe.baseDelay() + getRoastDelay(roast);
+        Holder<MobEffect> effect = recipe.effect();
+
+        // --- Primary Effect ---
         Component effectName = getEffectNameComponent(effect);
-        Component potency = amplifier != 0 ? Component.translatable("potion.potency." + amplifier) : effect != null ? Component.literal("I") : Component.literal("");
-        Component durationComponent = !getFormattedDuration(duration).isEmpty() ? Component.literal(" (" + getFormattedDuration(duration) + ")") : Component.literal("");
-        Component delayComponent = !getFormattedDuration(delay).isEmpty() ? Component.literal(" [" + getFormattedDuration(delay) + "]") : Component.literal("");
+        Component potency = amplifier != 0 ? Component.translatable("potion.potency." + amplifier)
+                : (effect != null ? Component.literal("I") : Component.literal(""));
+        Component durationComponent = !getFormattedDuration(duration).isEmpty()
+                ? Component.literal(" (" + getFormattedDuration(duration) + ")")
+                : Component.literal("");
+        Component delayComponent = !getFormattedDuration(delay).isEmpty()
+                ? Component.literal(" [" + getFormattedDuration(delay) + "]")
+                : Component.literal("");
 
         tooltipComponents.add(Component.literal("")
                 .append(effectName.copy().withStyle(ChatFormatting.BLUE))
@@ -276,11 +250,13 @@ public class CoffeeItem extends Item {
                 .append(delayComponent.copy().withStyle(ChatFormatting.GOLD))
         );
 
-        // Secondary effect tooltip (safe null check)
-        Holder<MobEffect> sEffect = getSecodaryEffect(stack.get(ModDataComponents.BEAN), ingredients);
+        // --- Secondary Effect ---
+        Holder<MobEffect> sEffect = recipe.secondaryEffect();
         if (sEffect != null) {
-            String sFormattedDuration = getFormattedDuration(getSecodaryEffectDuration(sEffect.value(), ingredients));
-            Component sDurationComponent = !sFormattedDuration.isEmpty() ? Component.literal(" (" + sFormattedDuration + ")") : Component.literal("");
+            String sFormattedDuration = getFormattedDuration(recipe.secondaryDuration());
+            Component sDurationComponent = !sFormattedDuration.isEmpty()
+                    ? Component.literal(" (" + sFormattedDuration + ")")
+                    : Component.literal("");
             Component sPotency = Component.literal("I");
             Component sEffectName = getEffectNameComponent(sEffect);
 
@@ -308,105 +284,6 @@ public class CoffeeItem extends Item {
         if (effect == MobEffects.DAMAGE_BOOST) return Component.translatable("effect.minecraft.strength");
         if (effect == MobEffects.NIGHT_VISION) return Component.translatable("effect.minecraft.night_vision");
         return Component.literal("");
-    }
-
-    private Holder<MobEffect> getEffect( List<String> ingredients ) {
-        Holder<MobEffect> effect = null;
-        if (ingredients != null) {
-            if ((ingredients.size() == 0) || ingredients.size() == 1 && ingredients.contains("sugar")) { //Espresso
-                effect = MobEffects.MOVEMENT_SPEED;
-            } else if (ingredients.size() == 1 && ingredients.contains("milk_foam") ||
-                    ingredients.size() == 2 && ingredients.contains("milk_foam)") && ingredients.contains("sugar")) { //Macchiato
-                effect = MobEffects.JUMP;
-            } else if (ingredients.size() == 1 && ingredients.contains("whipped_cream") ||
-                    ingredients.size() == 2 && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) { //Con Panna
-                effect = MobEffects.ABSORPTION;
-            } else if (ingredients.size() == 1 && ingredients.contains("steamed_milk") ||
-                    ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("sugar")) { //Flat White
-                effect = MobEffects.DAMAGE_RESISTANCE;
-            } else if (ingredients.size() == 2 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") ||
-                    ingredients.size() == 3 && ingredients.contains("steamed_milk") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) { //Flat White
-                effect = MobEffects.REGENERATION;
-            } else if (ingredients.size() == 2 && ingredients.contains("honey") && ingredients.contains("milk_foam") ||
-                    ingredients.size() == 3 && ingredients.contains("honey") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) { //Honey Raf
-                effect = MobEffects.HEALTH_BOOST;
-            } else if (ingredients.size() == 3 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream") || //Mocha
-                    ingredients.size() == 4 && ingredients.contains("chocolate") && ingredients.contains("steamed_milk") && ingredients.contains("whipped_cream") && ingredients.contains("sugar")) {
-                effect = MobEffects.DAMAGE_BOOST;
-            } else if (ingredients.size() == 2 && ingredients.contains("chocolate") && ingredients.contains("milk_foam") ||
-                    ingredients.size() == 3 && ingredients.contains("chocolate") && ingredients.contains("milk_foam") && ingredients.contains("sugar")) {  //Marocchino
-                effect = MobEffects.NIGHT_VISION;
-            }
-        }
-        return effect;
-    }
-
-    private int getDuration(@Nullable String bean, @Nullable String roast, @Nullable List<String> ingredients) {
-        int duration = 0;
-
-        switch (bean) {
-            case "arabica" -> {
-                duration = 4800;
-            }
-            case "robusta" -> {
-                duration = 3000;
-            } case "liberica" -> {
-                duration = 2400;
-            }
-
-            case null -> {}
-            default -> throw new IllegalStateException("Unexpected value: " + bean);
-        }
-
-        switch (roast) {
-            case "light" -> duration = duration;
-            case "medium" -> {
-                if (duration == 3000) {
-                    duration = 4800;
-                } else if (duration == 4800) {
-                    duration = 6600;
-                } else if (duration == 2400) {
-                    duration = 3600;
-                }
-            }
-            case "dark" -> {
-                if (duration == 3000) {
-                    duration = 5400;
-                } else if (duration == 4800) {
-                    duration = 7200;
-                } else if (duration == 2400) {
-                    duration = 4800;
-                }
-            }
-
-            case null -> {}
-            default -> throw new IllegalStateException("Unexpected value: " + roast);
-        }
-        if (ingredients != null) {
-            if (ingredients.contains("sugar")) {
-                duration = duration + 1200;
-            }
-        }
-        return duration;
-    }
-
-    private int getAmplifier(String bean) {
-        int amplifier = 0;
-        switch (bean) {
-            case "arabica" -> {
-                amplifier = 0;
-            }
-            case "robusta" -> {
-                amplifier = 1;
-            }
-            case "liberica" -> {
-                amplifier = 0;
-            }
-
-            case null -> {}
-            default -> throw new IllegalStateException("Unexpected value: " + bean);
-        }
-        return amplifier;
     }
 
     private String getFormattedDuration(int duration) {
