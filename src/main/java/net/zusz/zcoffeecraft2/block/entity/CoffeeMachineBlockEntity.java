@@ -181,7 +181,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
 
     private void resetProgress() {
         progress = 0;
-        maxProgress = 20;
+        maxProgress = 600;
     }
 
     private boolean hasCraftingFinished() {
