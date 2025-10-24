@@ -2,39 +2,15 @@ package net.zusz.zcoffeecraft2.block.entity;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipeRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.item.ModItems;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.ItemStackHandler;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
-import net.zusz.zcoffeecraft2.item.ModItems;
-import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineMenu;
-import org.jetbrains.annotations.Nullable;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class CoffeeMachineMethods {
 
@@ -62,7 +38,12 @@ public class CoffeeMachineMethods {
     }
 
     public static List<String> addToIngredientsList(List<String> ingredients, Item item) {
-        if (item == Items.SUGAR) {
+        Optional<String> stringFromItem = CoffeeIngredientRegistry.getStringFromItem(item);
+        if (stringFromItem.isPresent()) {
+            ingredients.add(stringFromItem.get());
+        }
+
+        /*if (item == Items.SUGAR) {
             ingredients.add("sugar");
         } else if (item == Items.HONEY_BOTTLE) {
             ingredients.add("honey");
@@ -76,7 +57,7 @@ public class CoffeeMachineMethods {
             ingredients.add("milk_foam");
         } else if (item == ModItems.STEAMED_MILK.asItem()) {
             ingredients.add("steamed_milk");
-        }
+        }*/
         return ingredients;
     }
 

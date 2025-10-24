@@ -29,6 +29,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeMachineBlock;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.ModItems;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineMenu;
 import org.jetbrains.annotations.Nullable;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineMethods;
@@ -214,7 +215,13 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     private void decreaseIngredient(int slot) {
         Item item = itemHandler.getStackInSlot(slot).getItem();
         ItemStack remaining = null;
-        if (item == Items.HONEY_BOTTLE) {
+        if (CoffeeIngredientRegistry.getStringFromItem(item).isPresent()) {
+            if (CoffeeIngredientRegistry.getRemaining(CoffeeIngredientRegistry.getStringFromItem(item).get()).isPresent() && CoffeeIngredientRegistry.getRemaining(CoffeeIngredientRegistry.getStringFromItem(item).get()).get() != Items.AIR) {
+                remaining = new ItemStack (CoffeeIngredientRegistry.getRemaining(CoffeeIngredientRegistry.getStringFromItem(item).get()).get());
+            }
+        }
+
+        /*if (item == Items.HONEY_BOTTLE) {
             remaining = new ItemStack(Items.GLASS_BOTTLE);
         } else if (item == Items.MILK_BUCKET) {
             remaining = new ItemStack(Items.BUCKET);
@@ -222,7 +229,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
             remaining = new ItemStack(Items.BUCKET);
         } else if (item == ModItems.MILK_FOAM.asItem()) {
             remaining = new ItemStack(Items.BUCKET);
-        }
+        }*/
 
         itemHandler.extractItem(slot, 1, false);
         if (remaining != null) {

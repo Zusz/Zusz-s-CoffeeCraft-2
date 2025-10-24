@@ -7,7 +7,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
-import net.zusz.zcoffeecraft2.item.custom.CoffeeItem;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.CoffeeItem;
 import net.zusz.zcoffeecraft2.item.custom.ModFoodProperties;
 import net.zusz.zcoffeecraft2.item.custom.WhiskItem;
 import net.zusz.zcoffeecraft2.item.custom.guidebook.GuideBookItem;

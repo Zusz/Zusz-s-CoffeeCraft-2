@@ -1,11 +1,10 @@
-package net.zusz.zcoffeecraft2.item.custom;
+package net.zusz.zcoffeecraft2.item.custom.coffeeitem;
 
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,7 +19,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -30,15 +28,13 @@ import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeCupBlock;
 import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeCupBlockEntity;
-import net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipe;
-import net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipeRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipe;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
-import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
-import org.antlr.v4.runtime.atn.SemanticContext;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -47,7 +43,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import static net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipeRegistry.getRecipe;
+import static net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry.getRecipe;
 
 public class CoffeeItem extends Item {
 

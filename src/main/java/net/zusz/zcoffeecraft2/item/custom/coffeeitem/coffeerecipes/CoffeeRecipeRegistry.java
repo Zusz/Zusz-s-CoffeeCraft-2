@@ -1,12 +1,12 @@
-package net.zusz.zcoffeecraft2.coffeerecipes;
+package net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes;
 
 
 import java.util.*;
 
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.zusz.zcoffeecraft2.item.ModItems;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
 
 public class CoffeeRecipeRegistry {
     private static final List<CoffeeRecipe> RECIPES = new ArrayList<>();
@@ -30,27 +30,18 @@ public class CoffeeRecipeRegistry {
         return recipe.ingredients();
     }
 
-    public static final ItemLike convertStringIngredientToItem(String ingredient) {
-        return switch (ingredient) {
-            case "sugar" -> Items.SUGAR;
-            case "honey" -> Items.HONEY_BOTTLE;
-            case "milk" -> Items.MILK_BUCKET;
-            case "chocolate" -> Items.COCOA_BEANS;
-            case "whipped_cream" -> ModItems.WHIPPED_CREAM;
-            case "milk_foam" -> ModItems.MILK_FOAM;
-            case "steamed_milk" -> ModItems.STEAMED_MILK;
-
-
-            default -> Items.AIR;
-        };
-    }
 
     public static List<ItemLike>getIngredientsAsItems (CoffeeRecipe recipe) {
          List<ItemLike> toReturn = new ArrayList<>(
                  List.of()
          );
          for (String ingredient : recipe.ingredients()) {
-             toReturn.add(convertStringIngredientToItem(ingredient));
+             ItemLike toAdd = null;
+             if (CoffeeIngredientRegistry.getItemFromString(ingredient).isPresent()) {
+                 toAdd = CoffeeIngredientRegistry.getItemFromString(ingredient).get();
+                 toReturn.add(toAdd);
+             }
+
          }
          return toReturn;
     }

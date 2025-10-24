@@ -1,19 +1,17 @@
 package net.zusz.zcoffeecraft2;
 
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
 import net.zusz.zcoffeecraft2.block.entity.renderer.CoffeeMachineBlockEntityRenderer;
-import net.zusz.zcoffeecraft2.coffeerecipes.DefaultCoffeeRecipes;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.DefaultCoffeeRecipes;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModCreativeModeTabs;
 import net.zusz.zcoffeecraft2.item.ModItems;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.DefaultCoffeeIngredients;
 import net.zusz.zcoffeecraft2.loot.ModLootModifiers;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
@@ -28,14 +26,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-
-import java.util.List;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ZCoffeeCraft2.MOD_ID)
@@ -76,6 +71,7 @@ public class ZCoffeeCraft2
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(DefaultCoffeeRecipes::registerCoffeeRecipes);
+        event.enqueueWork(DefaultCoffeeIngredients::registerCoffeeIngredients);
     }
 
     // Add the item to a tab

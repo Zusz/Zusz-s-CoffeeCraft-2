@@ -7,18 +7,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineMethods;
-import net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipe;
-import net.zusz.zcoffeecraft2.coffeerecipes.CoffeeRecipeRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipe;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.ModItems;
-import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CoffeeMachineRecipeManager {
@@ -53,7 +50,9 @@ public class CoffeeMachineRecipeManager {
         for (CoffeeRecipe recipe : CoffeeRecipeRegistry.getAll()) {
             List<ItemLike> itemIngredients = new ArrayList<>(List.of());
             for (String ingredient : CoffeeRecipeRegistry.getIngredients(recipe)) {
-               itemIngredients.add(CoffeeRecipeRegistry.convertStringIngredientToItem(ingredient));
+                if (CoffeeIngredientRegistry.getItemFromString(ingredient).isPresent()) {
+                    itemIngredients.add(CoffeeIngredientRegistry.getItemFromString(ingredient).get());
+                }
             }
             ingredientSets.add(itemIngredients);
         }
