@@ -76,6 +76,14 @@
   "coffeeroast.zcoffeecraft2.medium": "Medium",
   "coffeeroast.zcoffeecraft2.dark": "Dark",
 
+  "coffeeingredient.zcoffeecraft2.sugar": "   -Sugar",
+  "coffeeingredient.zcoffeecraft2.milk": "   -Milk",
+  "coffeeingredient.zcoffeecraft2.chocolate": "   -Chocolate",
+  "coffeeingredient.zcoffeecraft2.honey": "   -Honey",
+  "coffeeingredient.zcoffeecraft2.whipped_cream": "   -Whipped Cream",
+  "coffeeingredient.zcoffeecraft2.steamed_milk": "   -Steamed Milk",
+  "coffeeingredient.zcoffeecraft2.milk_foam": "   -Milk Foam",
+
   "guide.zcoffeecraft2.title1": "The Coffee Guide",
   "guide.zcoffeecraft2.title2": "Table of Contents",
   "guide.zcoffeecraft2.title3": "Coffee & Beans",

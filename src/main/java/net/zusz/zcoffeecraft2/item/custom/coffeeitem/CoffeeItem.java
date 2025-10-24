@@ -34,6 +34,7 @@ import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
 
@@ -192,8 +193,13 @@ public class CoffeeItem extends Item {
             List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
             if (ingredients != null && !ingredients.isEmpty()) {
                 tooltipComponents.add(Component.literal("Ingredients:").withStyle(ChatFormatting.BLUE));
+
                 for (String item : ingredients) {
-                    switch (item) {
+
+                    if(CoffeeIngredientRegistry.getTooltip(item).isPresent()) {
+                        tooltipComponents.add(CoffeeIngredientRegistry.getTooltip(item).get().withStyle(ChatFormatting.GRAY));
+                    }
+                    /*switch (item) {
                         case "sugar" -> tooltipComponents.add(Component.literal("   -Sugar").withStyle(ChatFormatting.GRAY));
                         case "milk" -> tooltipComponents.add(Component.literal("   -Milk").withStyle(ChatFormatting.GRAY));
                         case "honey" -> tooltipComponents.add(Component.literal("   -Honey").withStyle(ChatFormatting.GRAY));
@@ -202,7 +208,7 @@ public class CoffeeItem extends Item {
                         case "steamed_milk" -> tooltipComponents.add(Component.literal("   -Steamed Milk").withStyle(ChatFormatting.GRAY));
                         case "whipped_cream" -> tooltipComponents.add(Component.literal("   -Whipped Cream").withStyle(ChatFormatting.GRAY));
                         default -> tooltipComponents.add(Component.literal("   -" + item).withStyle(ChatFormatting.GRAY));
-                    }
+                    }*/
                 }
             }
         }

@@ -1,5 +1,6 @@
 package net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients;
 
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.ArrayList;
@@ -40,6 +41,17 @@ public class CoffeeIngredientRegistry {
             for (CoffeeIngredient coffeeIngredient : INGREDIENTS) {
                 if (coffeeIngredient.string().equals(ingredient)) {
                     return Optional.of(coffeeIngredient.remaining().asItem());
+                }
+            }
+        }
+        return Optional.empty();
+    }
+
+    public static Optional<MutableComponent> getTooltip(String ingredient) {
+        if (ingredient != null) {
+            for (CoffeeIngredient coffeeIngredient : INGREDIENTS) {
+                if (coffeeIngredient.string().equals(ingredient)) {
+                    return Optional.of(coffeeIngredient.toolTip());
                 }
             }
         }
