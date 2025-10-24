@@ -18,6 +18,8 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineBlockEntity;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredient;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.item.ModItems;
 
@@ -148,13 +150,17 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
 
     private boolean isValidForIngredient(ItemStack sourceStack) {
         List<Item> validItems = new ArrayList<>(List.of(
-                ModItems.WHIPPED_CREAM.asItem(),
+                /*ModItems.WHIPPED_CREAM.asItem(),
                 ModItems.STEAMED_MILK.asItem(),
                 ModItems.MILK_FOAM.asItem(),
                 Items.SUGAR,
                 Items.HONEY_BOTTLE,
-                Items.COCOA_BEANS
+                Items.COCOA_BEANS*/
         ));
+
+        for (CoffeeIngredient coffeeIngredient : CoffeeIngredientRegistry.INGREDIENTS) {
+            validItems.add(coffeeIngredient.item().asItem());
+        }
 
         return validItems.contains(sourceStack.getItem());
     }

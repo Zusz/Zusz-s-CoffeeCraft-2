@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class CoffeeIngredientRegistry {
-    private static final List<CoffeeIngredient> INGREDIENTS = new ArrayList<>();
+    public static final List<CoffeeIngredient> INGREDIENTS = new ArrayList<>();
 
     public static void register(CoffeeIngredient ingredient) {
         INGREDIENTS.add(ingredient);
