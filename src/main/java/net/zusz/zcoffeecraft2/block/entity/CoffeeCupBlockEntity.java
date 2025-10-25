@@ -3,6 +3,7 @@ package net.zusz.zcoffeecraft2.block.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -52,7 +53,6 @@ public class CoffeeCupBlockEntity extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
-
         super.saveAdditional(pTag, pRegistries);
     }
 
@@ -60,7 +60,6 @@ public class CoffeeCupBlockEntity extends BlockEntity {
     @Override
     protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         super.loadAdditional(pTag, pRegistries);
-
         itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
 
     }
@@ -80,8 +79,6 @@ public class CoffeeCupBlockEntity extends BlockEntity {
         itemHandler.setStackInSlot(0, new ItemStack(itemHandler.getStackInSlot(0).getItem(), itemHandler.getStackInSlot(0).getCount()-1));
         coffeeStack = itemHandler.getStackInSlot(0);
     }
-
-
 
 
     //ChatGPT told me to put this here, don't touch
