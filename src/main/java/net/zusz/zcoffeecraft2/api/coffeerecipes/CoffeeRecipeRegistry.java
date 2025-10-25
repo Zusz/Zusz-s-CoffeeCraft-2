@@ -3,8 +3,11 @@ package net.zusz.zcoffeecraft2.api.coffeerecipes;
 
 import java.util.*;
 
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.ItemLike;
 import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.api.secondaryeffect.SecondaryEffect;
 
 public class CoffeeRecipeRegistry {
     private static final List<CoffeeRecipe> RECIPES = new ArrayList<>();
@@ -59,6 +62,15 @@ public class CoffeeRecipeRegistry {
             }
         }
         return "coffeetype.zcoffeecraft2.notype";
+    }
+
+    public static SecondaryEffect getSecondaryEffect(CoffeeRecipe recipe, String bean) {
+        for (SecondaryEffect secondaryEffect : recipe.secondaryEffects()) {
+            if (secondaryEffect.bean().equals(bean)) {
+                return secondaryEffect;
+            }
+        }
+        return null;
     }
 
     public static List<CoffeeRecipe> getAll() {

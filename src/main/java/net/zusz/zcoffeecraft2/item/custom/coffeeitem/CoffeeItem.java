@@ -71,9 +71,23 @@ public class CoffeeItem extends Item {
         int amplifier = recipe.baseAmplifier() + getBeanAmplifier(bean);
         int delay = recipe.baseDelay() + getRoastDelay(roast);
         Holder<MobEffect> secondaryEffect = null;
+        int secondaryDuration = 0;
+        int secondaryAmplifier = 0;
         if (CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).isPresent()) {
             if (CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).get().hasSecondaryEffect()) {
-                secondaryEffect = recipe.secondaryEffect();
+                if (CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean) != null) {
+                    if (CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryEffect().isPresent()) {
+                        secondaryEffect = CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryEffect().get();
+                    }
+                    if (CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryDuration().isPresent()) {
+                        secondaryDuration = CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryDuration().get();
+                    }
+                    if (CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryAmplifier().isPresent()) {
+                        secondaryAmplifier = CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryAmplifier().get();
+                    }
+                }
+
+
             }
         }
         //if (bean.equals("liberica")) {secondaryEffect = recipe.secondaryEffect();}
@@ -84,8 +98,8 @@ public class CoffeeItem extends Item {
                 amplifier,
                 delay,
                 secondaryEffect,
-                recipe.secondaryDuration(),
-                0
+                secondaryDuration,
+                secondaryAmplifier
         );
 
         CoffeeEffectData.addEffect(player, ceffect);
@@ -264,9 +278,18 @@ public class CoffeeItem extends Item {
         );
 
         // --- Secondary Effect ---
-        Holder<MobEffect> sEffect = recipe.secondaryEffect();
+        Holder<MobEffect> sEffect = null;
+        int secondaryDuration = 0;
+        if (CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean) != null) {
+            if (CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryEffect().isPresent()) {
+                sEffect = CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryEffect().get();
+            }
+            if (CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryDuration().isPresent()){
+                secondaryDuration = CoffeeRecipeRegistry.getSecondaryEffect(recipe, bean).secondaryDuration().get();
+            }
+        }
         if (sEffect != null) {
-            String sFormattedDuration = getFormattedDuration(recipe.secondaryDuration());
+            String sFormattedDuration = getFormattedDuration(secondaryDuration);
             Component sDurationComponent = !sFormattedDuration.isEmpty()
                     ? Component.literal(" (" + sFormattedDuration + ")")
                     : Component.literal("");

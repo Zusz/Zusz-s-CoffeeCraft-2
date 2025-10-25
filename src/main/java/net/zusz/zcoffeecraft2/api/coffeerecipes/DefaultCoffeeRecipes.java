@@ -5,8 +5,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
+import net.zusz.zcoffeecraft2.api.secondaryeffect.SecondaryEffect;
 
 import java.util.List;
+import java.util.Optional;
 
 public class DefaultCoffeeRecipes {
     static Holder<MobEffect> speed = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("speed")).get();
@@ -26,8 +28,7 @@ public class DefaultCoffeeRecipes {
                 3600,
                 0,
                 0,
-                jump,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(jump), Optional.of(1200), Optional.of(0)))
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.espresso",
@@ -36,8 +37,7 @@ public class DefaultCoffeeRecipes {
                 4800,
                 0,
                 0,
-                jump,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(jump), Optional.of(1200), Optional.of(0)))
         ));
         //Macchiato
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -47,8 +47,7 @@ public class DefaultCoffeeRecipes {
                 3600,
                 0,
                 0,
-                speed,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)))
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.macchiato",
@@ -57,8 +56,7 @@ public class DefaultCoffeeRecipes {
                 4800,
                 0,
                 0,
-                speed,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)))
         ));
         //Con Panna
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -68,8 +66,7 @@ public class DefaultCoffeeRecipes {
                 3600,
                 0,
                 0,
-                strength,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(strength), Optional.of(1200), Optional.of(0)))
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.con_panna",
@@ -78,8 +75,7 @@ public class DefaultCoffeeRecipes {
                 4800,
                 0,
                 0,
-                strength,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(strength), Optional.of(1200), Optional.of(0)))
         ));
         //Flat White
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -89,8 +85,7 @@ public class DefaultCoffeeRecipes {
                 3600,
                 0,
                 0,
-                strength,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(strength), Optional.of(1200), Optional.of(0)))
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.flat_white",
@@ -99,8 +94,7 @@ public class DefaultCoffeeRecipes {
                 4800,
                 0,
                 0,
-                strength,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(strength), Optional.of(1200), Optional.of(0)))
         ));
         //Latte
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -110,8 +104,7 @@ public class DefaultCoffeeRecipes {
                 3600,
                 0,
                 0,
-                speed,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)))
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.latte",
@@ -120,8 +113,7 @@ public class DefaultCoffeeRecipes {
                 4800,
                 0,
                 0,
-                speed,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)))
         ));
         //Marocchino
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -131,8 +123,7 @@ public class DefaultCoffeeRecipes {
                 3600,
                 0,
                 0,
-                speed,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)))
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.marocchino",
@@ -141,8 +132,7 @@ public class DefaultCoffeeRecipes {
                 4800,
                 0,
                 0,
-                speed,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)))
         ));
         //Mocha
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -152,8 +142,7 @@ public class DefaultCoffeeRecipes {
                 3600,
                 0,
                 0,
-                absorption,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(absorption), Optional.of(1200), Optional.of(0)))
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.mocha",
@@ -162,8 +151,7 @@ public class DefaultCoffeeRecipes {
                 4800,
                 0,
                 0,
-                absorption,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(absorption), Optional.of(1200), Optional.of(0)))
         ));
         //Honey Raf
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -173,8 +161,7 @@ public class DefaultCoffeeRecipes {
                 3600,
                 0,
                 0,
-                regeneration,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(regeneration), Optional.of(1200), Optional.of(0)))
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.honey_raf",
@@ -183,8 +170,7 @@ public class DefaultCoffeeRecipes {
                 4800,
                 0,
                 0,
-                regeneration,
-                1200
+                List.of(new SecondaryEffect("liberica", Optional.of(regeneration), Optional.of(1200), Optional.of(0)))
         ));
 
     }
