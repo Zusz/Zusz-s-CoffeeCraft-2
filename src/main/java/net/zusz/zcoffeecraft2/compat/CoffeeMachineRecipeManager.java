@@ -7,6 +7,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineMethods;
 import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipe;
 import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
@@ -119,6 +120,8 @@ public class CoffeeMachineRecipeManager {
 
     //methods from CoffeeMachineMethods, slightly modified (now null inputs don't set output to null, just don't do anything)
     public static List<String> addToIngredientsList(List<String> ingredients, Item item) {
+        CoffeeMachineMethods.addToIngredientsList(ingredients, item);
+        /*
         if (item == Items.SUGAR) {
             ingredients.add("sugar");
         } else if (item == Items.HONEY_BOTTLE) {
@@ -133,38 +136,13 @@ public class CoffeeMachineRecipeManager {
             ingredients.add("milk_foam");
         } else if (item == ModItems.STEAMED_MILK.asItem()) {
             ingredients.add("steamed_milk");
-        }
+        }*/
         return ingredients;
     }
 
     public static ItemStack addBeanAndRoastToOutput(ItemStack output, Item bean) {
-        if (bean == ModItems.LIGHT_ARABICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "light");
-            output.set(ModDataComponents.BEAN, "arabica");
-        } else if (bean == ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "medium");
-            output.set(ModDataComponents.BEAN, "arabica");
-        } else if (bean == ModItems.DARK_ARABICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "dark");
-            output.set(ModDataComponents.BEAN, "arabica");
-        } else if (bean == ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "light");
-            output.set(ModDataComponents.BEAN, "robusta");
-        } else if (bean == ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "medium");
-            output.set(ModDataComponents.BEAN, "robusta");
-        }  else if (bean == ModItems.DARK_ROBUSTA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "dark");
-            output.set(ModDataComponents.BEAN, "robusta");
-        } else if (bean == ModItems.LIGHT_LIBERICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "light");
-            output.set(ModDataComponents.BEAN, "liberica");
-        } else if (bean == ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "medium");
-            output.set(ModDataComponents.BEAN, "liberica");
-        } else if (bean == ModItems.DARK_LIBERICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "dark");
-            output.set(ModDataComponents.BEAN, "liberica");
+        if (CoffeeMachineMethods.addBeanAndRoastToOutput(output, bean) != null) {
+            output = CoffeeMachineMethods.addBeanAndRoastToOutput(output, bean);
         }
         return output;
     }
