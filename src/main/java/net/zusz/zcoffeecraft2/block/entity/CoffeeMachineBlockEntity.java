@@ -22,18 +22,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeMachineBlock;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
-import net.zusz.zcoffeecraft2.item.ModItems;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineMenu;
 import org.jetbrains.annotations.Nullable;
-import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineMethods;
-import java.io.Console;
+
 import java.util.*;
 
 public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvider {

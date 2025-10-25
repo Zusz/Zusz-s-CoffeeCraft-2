@@ -3,10 +3,8 @@ package net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes;
 
 import java.util.*;
 
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.zusz.zcoffeecraft2.item.ModItems;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
 
 public class CoffeeRecipeRegistry {
     private static final List<CoffeeRecipe> RECIPES = new ArrayList<>();

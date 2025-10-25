@@ -11,7 +11,7 @@ import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModCreativeModeTabs;
 import net.zusz.zcoffeecraft2.item.ModItems;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.DefaultCoffeeIngredients;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.DefaultCoffeeIngredients;
 import net.zusz.zcoffeecraft2.loot.ModLootModifiers;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;

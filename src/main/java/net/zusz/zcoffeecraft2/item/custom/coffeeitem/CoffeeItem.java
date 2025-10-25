@@ -34,7 +34,7 @@ import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
 

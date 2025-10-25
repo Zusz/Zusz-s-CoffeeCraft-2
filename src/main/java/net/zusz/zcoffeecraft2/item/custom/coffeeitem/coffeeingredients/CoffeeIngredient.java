@@ -1,9 +1,7 @@
-package net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients;
+package net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients;
 
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.level.ItemLike;
-
-import java.awt.*;
 
 public record CoffeeIngredient (
         ItemLike item,

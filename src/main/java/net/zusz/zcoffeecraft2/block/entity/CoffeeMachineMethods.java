@@ -6,7 +6,7 @@ import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeR
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.minecraft.world.item.ItemStack;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
 
 import java.util.ArrayList;
 import java.util.List;

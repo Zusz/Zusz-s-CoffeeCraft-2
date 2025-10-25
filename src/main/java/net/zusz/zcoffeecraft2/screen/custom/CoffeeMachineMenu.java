@@ -1,6 +1,5 @@
 package net.zusz.zcoffeecraft2.screen.custom;
 
-import net.minecraft.commands.arguments.SlotsArgument;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,13 +12,12 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.fml.ISystemReportExtender;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineBlockEntity;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredient;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.ingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredient;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.item.ModItems;
 
