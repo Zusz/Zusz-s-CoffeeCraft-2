@@ -8,12 +8,12 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineMethods;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipe;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry;
+import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipe;
+import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.minecraft.world.item.alchemy.Potions;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
 
 
 import java.util.ArrayList;

@@ -1,14 +1,13 @@
 package net.zusz.zcoffeecraft2.block.entity;
 
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry;
+import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.minecraft.world.item.ItemStack;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.groundcoffee.GroundCoffee;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.groundcoffee.GroundCoffeeRegistry;
+import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.api.groundcoffee.GroundCoffee;
+import net.zusz.zcoffeecraft2.api.groundcoffee.GroundCoffeeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;

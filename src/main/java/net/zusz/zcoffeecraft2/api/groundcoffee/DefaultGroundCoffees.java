@@ -1,4 +1,4 @@
-package net.zusz.zcoffeecraft2.item.custom.coffeeitem.groundcoffee;
+package net.zusz.zcoffeecraft2.api.groundcoffee;
 
 import net.zusz.zcoffeecraft2.item.ModItems;
 

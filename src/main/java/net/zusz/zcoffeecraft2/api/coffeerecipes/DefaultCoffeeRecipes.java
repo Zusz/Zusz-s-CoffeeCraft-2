@@ -1,4 +1,4 @@
-package net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes;
+package net.zusz.zcoffeecraft2.api.coffeerecipes;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;

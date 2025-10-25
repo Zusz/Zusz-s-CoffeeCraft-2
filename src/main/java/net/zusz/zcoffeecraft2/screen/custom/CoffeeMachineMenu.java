@@ -16,8 +16,8 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineBlockEntity;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredient;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredient;
+import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.item.ModItems;
 

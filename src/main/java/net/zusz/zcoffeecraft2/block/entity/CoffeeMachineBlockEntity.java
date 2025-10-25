@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeMachineBlock;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineMenu;
 import org.jetbrains.annotations.Nullable;
 

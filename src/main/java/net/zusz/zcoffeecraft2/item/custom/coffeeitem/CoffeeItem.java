@@ -28,14 +28,14 @@ import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeCupBlock;
 import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeCupBlockEntity;
-import net.zusz.zcoffeecraft2.coffeebeantypes.CoffeeBeanTypeRegistry;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipe;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry;
+import net.zusz.zcoffeecraft2.api.coffeebeantypes.CoffeeBeanTypeRegistry;
+import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipe;
+import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
-import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,7 +45,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import static net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry.getRecipe;
+import static net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry.getRecipe;
 
 public class CoffeeItem extends Item {
 

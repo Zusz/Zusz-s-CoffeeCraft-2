@@ -1,4 +1,4 @@
-package net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients;
+package net.zusz.zcoffeecraft2.api.coffeeingredients;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;

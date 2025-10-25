@@ -1,4 +1,4 @@
-package net.zusz.zcoffeecraft2.coffeebeantypes;
+package net.zusz.zcoffeecraft2.api.coffeebeantypes;
 
 
 import net.minecraft.network.chat.MutableComponent;

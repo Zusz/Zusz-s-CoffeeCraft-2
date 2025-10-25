@@ -1,4 +1,4 @@
-package net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients;
+package net.zusz.zcoffeecraft2.api.coffeeingredients;
 
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.level.ItemLike;
