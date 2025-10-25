@@ -7,6 +7,8 @@ import net.zusz.zcoffeecraft2.item.ModItems;
 import net.minecraft.world.item.ItemStack;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.CoffeeIngredientRegistry;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.groundcoffee.GroundCoffee;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.groundcoffee.GroundCoffeeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.Optional;
 
 public class CoffeeMachineMethods {
 
-    public static boolean isIngredientValid(Item ingredient, String inputType) {
+    /*public static boolean isIngredientValid(Item ingredient, String inputType) {
 
         List<Item> validIngredients = new ArrayList<>(List.of());
 
@@ -35,7 +37,7 @@ public class CoffeeMachineMethods {
             validIngredients.add(ModItems.DARK_ROBUSTA_GROUND_COFFEE.get());
         }
         return validIngredients.contains(ingredient);
-    }
+    }*/
 
     public static List<String> addToIngredientsList(List<String> ingredients, Item item) {
         Optional<String> stringFromItem = CoffeeIngredientRegistry.getStringFromItem(item);
@@ -62,38 +64,51 @@ public class CoffeeMachineMethods {
     }
 
 
-    public static ItemStack addBeanAndRoastToOutput(ItemStack output, Item bean) {
-        if (bean == ModItems.LIGHT_ARABICA_GROUND_COFFEE.get()) {
+    public static ItemStack addBeanAndRoastToOutput(ItemStack output, Item ground) {
+        String bean= null;
+        String roast = null;
+        Optional<GroundCoffee> optGroundCoffee = GroundCoffeeRegistry.getGroundCoffee(ground);
+        if (optGroundCoffee.isPresent()) {
+            bean = optGroundCoffee.get().bean();
+            roast = optGroundCoffee.get().roast();
+            output.set(ModDataComponents.BEAN, bean);
+            output.set(ModDataComponents.ROAST, roast);
+            return output;
+        }
+        output = null;
+
+        /*
+        if (ground == ModItems.LIGHT_ARABICA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "light");
             output.set(ModDataComponents.BEAN, "arabica");
-        } else if (bean == ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get()) {
+        } else if (ground == ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "medium");
             output.set(ModDataComponents.BEAN, "arabica");
-        } else if (bean == ModItems.DARK_ARABICA_GROUND_COFFEE.get()) {
+        } else if (ground == ModItems.DARK_ARABICA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "dark");
             output.set(ModDataComponents.BEAN, "arabica");
-        } else if (bean == ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get()) {
+        } else if (ground == ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "light");
             output.set(ModDataComponents.BEAN, "robusta");
-        } else if (bean == ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get()) {
+        } else if (ground == ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "medium");
             output.set(ModDataComponents.BEAN, "robusta");
-        }  else if (bean == ModItems.DARK_ROBUSTA_GROUND_COFFEE.get()) {
+        }  else if (ground == ModItems.DARK_ROBUSTA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "dark");
             output.set(ModDataComponents.BEAN, "robusta");
-        } else if (bean == ModItems.LIGHT_LIBERICA_GROUND_COFFEE.get()) {
+        } else if (ground == ModItems.LIGHT_LIBERICA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "light");
             output.set(ModDataComponents.BEAN, "liberica");
-        } else if (bean == ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.get()) {
+        } else if (ground == ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "medium");
             output.set(ModDataComponents.BEAN, "liberica");
-        } else if (bean == ModItems.DARK_LIBERICA_GROUND_COFFEE.get()) {
+        } else if (ground == ModItems.DARK_LIBERICA_GROUND_COFFEE.get()) {
             output.set(ModDataComponents.ROAST, "dark");
             output.set(ModDataComponents.BEAN, "liberica");
         } else {
             //System.out.println("OUtput nulled at bean");
             output = null;
-        }
+        }*/
         return output;
     }
 

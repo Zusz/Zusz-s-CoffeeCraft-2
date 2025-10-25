@@ -12,6 +12,7 @@ import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.item.ModCreativeModeTabs;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeeingredients.DefaultCoffeeIngredients;
+import net.zusz.zcoffeecraft2.item.custom.coffeeitem.groundcoffee.DefaultGroundCoffees;
 import net.zusz.zcoffeecraft2.loot.ModLootModifiers;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
@@ -72,6 +73,7 @@ public class ZCoffeeCraft2
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(DefaultCoffeeRecipes::registerCoffeeRecipes);
         event.enqueueWork(DefaultCoffeeIngredients::registerCoffeeIngredients);
+        event.enqueueWork(DefaultGroundCoffees::registerGroundCoffees);
     }
 
     // Add the item to a tab
