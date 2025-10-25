@@ -28,6 +28,7 @@ import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeCupBlock;
 import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeCupBlockEntity;
+import net.zusz.zcoffeecraft2.coffeebeantypes.CoffeeBeanTypeRegistry;
 import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipe;
 import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
@@ -70,7 +71,12 @@ public class CoffeeItem extends Item {
         int amplifier = recipe.baseAmplifier() + getBeanAmplifier(bean);
         int delay = recipe.baseDelay() + getRoastDelay(roast);
         Holder<MobEffect> secondaryEffect = null;
-        if (bean.equals("liberica")) {secondaryEffect = recipe.secondaryEffect();}
+        if (CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).isPresent()) {
+            if (CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).get().hasSecondaryEffect()) {
+                secondaryEffect = recipe.secondaryEffect();
+            }
+        }
+        //if (bean.equals("liberica")) {secondaryEffect = recipe.secondaryEffect();}
 
         CoffeeEffectInstance ceffect = new CoffeeEffectInstance(
                 recipe.effect().value(),
@@ -91,20 +97,19 @@ public class CoffeeItem extends Item {
 
     private int adjustDuration(int base, String bean, String roast) {
         int duration = base;
-        if ("arabica".equals(bean)) duration += 1200;
-        if ("robusta".equals(bean)) duration -= 0;
-        if("liberica".equals(bean)) duration -= 600;
+        if (CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).isPresent()) {
+            duration += CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).get().coffeeDurationModifier();
+        }
         if ("dark".equals(roast)) duration += 2400;
         if ("medium".equals(roast)) duration += 1200;
         return duration;
     }
 
     private int getBeanAmplifier(@Nullable String bean) {
-        if (bean == null) return 0; // 🩹 safe default
-        return switch (bean) {
-            case "robusta" -> 1;
-            default -> 0;
-        };
+        if (CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).isPresent()) {
+            return CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).get().coffeeAmplifierModifier();
+        }
+        return 0;
     }
 
     private int getRoastDelay(@Nullable String roast) {
@@ -164,9 +169,12 @@ public class CoffeeItem extends Item {
 
         // --- Detailed info: Beans, Roast, Ingredients ---
         if (showDetails) {
-            tooltipComponents.add(Component.literal("Beans:").withStyle(ChatFormatting.BLUE));
+            tooltipComponents.add(Component.translatable("coffeedescription.zcoffeecraft2.beans").withStyle(ChatFormatting.BLUE));
             String bean = stack.get(ModDataComponents.BEAN);
-            if (bean == null) {
+            if (CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).isPresent()) {
+                tooltipComponents.add(CoffeeBeanTypeRegistry.getBeanTypeFromString(bean).get().toolTip().withStyle(ChatFormatting.GRAY));
+            }
+            /*if (bean == null) {
                 tooltipComponents.add(Component.literal("   -Depends on Bean type").withStyle(ChatFormatting.GRAY));
             } else {
                 switch (bean) {
@@ -175,24 +183,27 @@ public class CoffeeItem extends Item {
                     case "liberica" -> tooltipComponents.add(Component.literal("   -Liberica").withStyle(ChatFormatting.GRAY));
                     default -> tooltipComponents.add(Component.literal("   -Unknown Bean").withStyle(ChatFormatting.GRAY));
                 }
-            }
+            }*/
 
-            tooltipComponents.add(Component.literal("Roast:").withStyle(ChatFormatting.BLUE));
+            tooltipComponents.add(Component.translatable("coffeedescription.zcoffeecraft2.roast").withStyle(ChatFormatting.BLUE));
             String roast = stack.get(ModDataComponents.ROAST);
+
+
+
             if (roast == null) {
                 tooltipComponents.add(Component.literal("   -Depends on Bean roast").withStyle(ChatFormatting.GRAY));
             } else {
                 switch (roast) {
-                    case "light" -> tooltipComponents.add(Component.literal("   -Light").withStyle(ChatFormatting.GRAY));
-                    case "medium" -> tooltipComponents.add(Component.literal("   -Medium").withStyle(ChatFormatting.GRAY));
-                    case "dark" -> tooltipComponents.add(Component.literal("   -Dark").withStyle(ChatFormatting.GRAY));
+                    case "light" -> tooltipComponents.add(Component.translatable("coffeedescription.zcoffeecraft2.light").withStyle(ChatFormatting.GRAY));
+                    case "medium" -> tooltipComponents.add(Component.translatable("coffeedescription.zcoffeecraft2.medium").withStyle(ChatFormatting.GRAY));
+                    case "dark" -> tooltipComponents.add(Component.translatable("coffeedescription.zcoffeecraft2.dark").withStyle(ChatFormatting.GRAY));
                     default -> tooltipComponents.add(Component.literal("   -Unknown Roast").withStyle(ChatFormatting.GRAY));
                 }
             }
 
             List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
             if (ingredients != null && !ingredients.isEmpty()) {
-                tooltipComponents.add(Component.literal("Ingredients:").withStyle(ChatFormatting.BLUE));
+                tooltipComponents.add(Component.translatable("coffeedescription.zcoffeecraft2.ingredients").withStyle(ChatFormatting.BLUE));
 
                 for (String item : ingredients) {
 
@@ -213,7 +224,7 @@ public class CoffeeItem extends Item {
             }
         }
         else if (inCoffeeMachine) {
-            tooltipComponents.add(Component.translatable("§7Hold §eShift§7 for more Information"));
+            tooltipComponents.add(Component.translatable("coffeedescription.zcoffeecraft2.shifttoseemoreinfo"));
         }
 
         // --- Recipe & Effects ---

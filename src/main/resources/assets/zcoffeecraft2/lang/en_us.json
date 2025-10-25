@@ -83,6 +83,17 @@
   "coffeeingredient.zcoffeecraft2.whipped_cream": "   -Whipped Cream",
   "coffeeingredient.zcoffeecraft2.steamed_milk": "   -Steamed Milk",
   "coffeeingredient.zcoffeecraft2.milk_foam": "   -Milk Foam",
+  "coffeeingredient.zcoffeecraft2.arabica":  "   -Arabica",
+  "coffeeingredient.zcoffeecraft2.robusta": "   -Robusta",
+  "coffeeingredient.zcoffeecraft2.liberica":  "   -Liberica",
+
+  "coffeedescription.zcoffeecraft2.beans": "Beans:",
+  "coffeedescription.zcoffeecraft2.roast": "Roast:",
+  "coffeedescription.zcoffeecraft2.ingredients": "Ingredients:",
+  "coffeedescription.zcoffeecraft2.light": "   -Light",
+  "coffeedescription.zcoffeecraft2.medium": "   -Medium",
+  "coffeedescription.zcoffeecraft2.dark": "   -Dark",
+  "coffeedescription.zcoffeecraft2.shifttoseemoreinfo": "§7Hold §eShift§7 for more Information",
 
   "guide.zcoffeecraft2.title1": "The Coffee Guide",
   "guide.zcoffeecraft2.title2": "Table of Contents",
