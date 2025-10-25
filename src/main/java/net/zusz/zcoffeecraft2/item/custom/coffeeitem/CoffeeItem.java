@@ -368,14 +368,9 @@ public class CoffeeItem extends Item {
         }
         //System.out.println(state.getValue(CoffeeCupBlock.ROAST));
 
-
         // Place the block
         if (!level.isClientSide) {
             level.setBlock(placePos, state, Block.UPDATE_ALL_IMMEDIATE);
-
-            if (!player.isCreative()) {
-                stack.shrink(1);
-            }
         }
 
         if (level.getBlockEntity(placePos) instanceof CoffeeCupBlockEntity cupEntity) {
@@ -386,6 +381,11 @@ public class CoffeeItem extends Item {
 
             cupEntity.setCoffeeStack(toSet);
         }
+
+        if (!player.isCreative()) {
+            stack.shrink(1);
+        }
+
 
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
