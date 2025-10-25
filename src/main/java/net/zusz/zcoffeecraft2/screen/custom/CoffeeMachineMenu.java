@@ -220,7 +220,7 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
     }
 
     public ItemStackHandler getItemHandler() {
-        System.out.println(blockEntity.itemHandler.getSlots());
+        //System.out.println(blockEntity.itemHandler.getSlots());
         return blockEntity.itemHandler;
     }
 }
