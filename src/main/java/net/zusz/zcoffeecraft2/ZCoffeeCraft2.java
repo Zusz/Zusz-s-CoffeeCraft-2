@@ -6,6 +6,7 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
 import net.zusz.zcoffeecraft2.block.entity.renderer.CoffeeMachineBlockEntityRenderer;
+import net.zusz.zcoffeecraft2.coffeebeantypes.DefaultCoffeeBeanTypes;
 import net.zusz.zcoffeecraft2.item.custom.coffeeitem.coffeerecipes.DefaultCoffeeRecipes;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
@@ -74,6 +75,7 @@ public class ZCoffeeCraft2
         event.enqueueWork(DefaultCoffeeRecipes::registerCoffeeRecipes);
         event.enqueueWork(DefaultCoffeeIngredients::registerCoffeeIngredients);
         event.enqueueWork(DefaultGroundCoffees::registerGroundCoffees);
+        event.enqueueWork(DefaultCoffeeBeanTypes::registerCoffeeBeanTypes);
     }
 
     // Add the item to a tab
