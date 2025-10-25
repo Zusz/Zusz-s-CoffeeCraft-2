@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.MutableDataComponentHolder;
@@ -117,6 +118,22 @@ public class CoffeeCupBlock extends BaseEntityBlock {
     }
 
     @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof CoffeeCupBlockEntity coffeeCupBlockEntity) {
+            ItemStack coffeeStack = coffeeCupBlockEntity.getCoffeeStack();
+            if (coffeeStack.isEmpty()) {
+                System.out.println("COFFEESTACKISEMPTYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+                // Return the coffee-filled cup item as the "picked" block
+            } else {
+                return coffeeStack;
+            }
+        }
+        // Fallback: return a new block item if the cup is empty
+        return new ItemStack(this);
+    }
+
+    @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
                                               Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide()) {
@@ -126,9 +143,11 @@ public class CoffeeCupBlock extends BaseEntityBlock {
 
                 if (!coffeeStack.isEmpty()) {
                     // Try to give to player
-                    if (!player.addItem(coffeeStack.copy())) {
-                        // Drop if inventory full
-                        player.drop(coffeeStack.copy(), false);
+                    if (!player.isCreative()) {
+                        if (!player.addItem(coffeeStack.copy())) {
+                            // Drop if inventory full
+                            player.drop(coffeeStack.copy(), false);
+                        }
                     }
                     // Remove block from world
                     coffeeCupBlockEntity.decreaseCoffeeStack(1);

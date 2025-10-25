@@ -3,6 +3,9 @@ package net.zusz.zcoffeecraft2.block.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
@@ -37,13 +40,13 @@ public class CoffeeCupBlockEntity extends BlockEntity {
     }
 
     public void setCoffeeStack(@NotNull ItemStack stack) {
-        this.coffeeStack = stack.copy();
+        coffeeStack = stack;
         itemHandler.setStackInSlot(0, coffeeStack);
         setChanged();
     }
 
     public ItemStack getCoffeeStack() {
-        return coffeeStack;
+        return itemHandler.getStackInSlot(0);
     }
 
     @Override
@@ -76,5 +79,25 @@ public class CoffeeCupBlockEntity extends BlockEntity {
     public void decreaseCoffeeStack(int i) {
         itemHandler.setStackInSlot(0, new ItemStack(itemHandler.getStackInSlot(0).getItem(), itemHandler.getStackInSlot(0).getCount()-1));
         coffeeStack = itemHandler.getStackInSlot(0);
+    }
+
+
+
+
+    //ChatGPT told me to put this here, don't touch
+    //This is so the creative pick works on the block, removing it would make the cloneitemstack return the coffeecupblock itself
+    @Override
+    public @NotNull CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        return saveWithoutMetadata(provider);
+    }
+
+    @Override
+    public void handleUpdateTag(@NotNull CompoundTag tag, HolderLookup.Provider provider) {
+        loadAdditional(tag, provider);
+    }
+
+    @Override
+    public @NotNull Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 }
