@@ -304,11 +304,12 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
         Direction facing = getBlockState().getValue(CoffeeMachineBlock.FACING);
 
         return switch (facing) {
-            case NORTH -> 180f;
-            case SOUTH -> 0f;
+            case NORTH -> 0f;
+            case SOUTH -> 180f;
             case WEST  -> 90f;
             case EAST  -> -90f;
             default -> 0f;
+
         };
     }
 }
