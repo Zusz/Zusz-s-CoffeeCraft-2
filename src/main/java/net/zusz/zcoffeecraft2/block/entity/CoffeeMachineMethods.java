@@ -14,6 +14,31 @@ import java.util.List;
 import java.util.Optional;
 
 public class CoffeeMachineMethods {
+    public static List<String> addToIngredientsList(List<String> ingredients, Item item) {
+        Optional<String> stringFromItem = CoffeeIngredientRegistry.getStringFromItem(item);
+        if (stringFromItem.isPresent()) {
+            ingredients.add(stringFromItem.get());
+        }
+        return ingredients;
+    }
+
+    public static ItemStack addBeanAndRoastToOutput(ItemStack output, Item ground) {
+        String bean= null;
+        String roast = null;
+        Optional<GroundCoffee> optGroundCoffee = GroundCoffeeRegistry.getGroundCoffee(ground);
+        if (optGroundCoffee.isPresent()) {
+            bean = optGroundCoffee.get().bean();
+            roast = optGroundCoffee.get().roast();
+            output.set(ModDataComponents.BEAN, bean);
+            output.set(ModDataComponents.ROAST, roast);
+            return output;
+        }
+        return ItemStack.EMPTY;
+    }
+
+    public static boolean isValidCoffeeCombination(List<String>ingredients) {
+        return CoffeeRecipeRegistry.isValid(ingredients);
+    }
 
     /*public static boolean isIngredientValid(Item ingredient, String inputType) {
 
@@ -37,79 +62,6 @@ public class CoffeeMachineMethods {
         }
         return validIngredients.contains(ingredient);
     }*/
-
-    public static List<String> addToIngredientsList(List<String> ingredients, Item item) {
-        Optional<String> stringFromItem = CoffeeIngredientRegistry.getStringFromItem(item);
-        if (stringFromItem.isPresent()) {
-            ingredients.add(stringFromItem.get());
-        }
-
-        /*if (item == Items.SUGAR) {
-            ingredients.add("sugar");
-        } else if (item == Items.HONEY_BOTTLE) {
-            ingredients.add("honey");
-        } else if (item == Items.MILK_BUCKET) {
-            ingredients.add("milk");
-        } else if (item == Items.COCOA_BEANS) {
-            ingredients.add("chocolate");
-        } else if (item == ModItems.WHIPPED_CREAM.asItem()) {
-            ingredients.add("whipped_cream");
-        } else if (item == ModItems.MILK_FOAM.asItem()) {
-            ingredients.add("milk_foam");
-        } else if (item == ModItems.STEAMED_MILK.asItem()) {
-            ingredients.add("steamed_milk");
-        }*/
-        return ingredients;
-    }
-
-
-    public static ItemStack addBeanAndRoastToOutput(ItemStack output, Item ground) {
-        String bean= null;
-        String roast = null;
-        Optional<GroundCoffee> optGroundCoffee = GroundCoffeeRegistry.getGroundCoffee(ground);
-        if (optGroundCoffee.isPresent()) {
-            bean = optGroundCoffee.get().bean();
-            roast = optGroundCoffee.get().roast();
-            output.set(ModDataComponents.BEAN, bean);
-            output.set(ModDataComponents.ROAST, roast);
-            return output;
-        }
-        output = null;
-
-        /*
-        if (ground == ModItems.LIGHT_ARABICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "light");
-            output.set(ModDataComponents.BEAN, "arabica");
-        } else if (ground == ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "medium");
-            output.set(ModDataComponents.BEAN, "arabica");
-        } else if (ground == ModItems.DARK_ARABICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "dark");
-            output.set(ModDataComponents.BEAN, "arabica");
-        } else if (ground == ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "light");
-            output.set(ModDataComponents.BEAN, "robusta");
-        } else if (ground == ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "medium");
-            output.set(ModDataComponents.BEAN, "robusta");
-        }  else if (ground == ModItems.DARK_ROBUSTA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "dark");
-            output.set(ModDataComponents.BEAN, "robusta");
-        } else if (ground == ModItems.LIGHT_LIBERICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "light");
-            output.set(ModDataComponents.BEAN, "liberica");
-        } else if (ground == ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "medium");
-            output.set(ModDataComponents.BEAN, "liberica");
-        } else if (ground == ModItems.DARK_LIBERICA_GROUND_COFFEE.get()) {
-            output.set(ModDataComponents.ROAST, "dark");
-            output.set(ModDataComponents.BEAN, "liberica");
-        } else {
-            //System.out.println("OUtput nulled at bean");
-            output = null;
-        }*/
-        return output;
-    }
 
     public static ItemStack setOutputItemBasedOnContainer(Item containter) {
         ItemStack output = null;
@@ -136,15 +88,14 @@ public class CoffeeMachineMethods {
             } /*else {
                 System.out.println("Output null at assigning ingredients");
             } */
+            if (isValidCoffeeCombination(output.get(ModDataComponents.INGREDIENTS))) {
+                return output;
+            }
         }
-
-        return output;
+        return ItemStack.EMPTY;
     }
 
-    public static boolean isValidCoffeeCombination(ItemStack output) {
-        List<String> ingredients = output.get(ModDataComponents.INGREDIENTS);
-        return CoffeeRecipeRegistry.isValid(ingredients);
-    }
+
 
 /*    public static boolean isValidCoffeeCombination(ItemStack output) {
         List<String> ingredients = output.get(ModDataComponents.INGREDIENTS);

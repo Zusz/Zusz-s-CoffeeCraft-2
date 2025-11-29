@@ -25,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeMachineBlock;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
@@ -136,6 +137,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     }
 
 
+    //start rewriting from here
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if(hasRecipe()) {
             //System.out.println("HASRECIPE");
@@ -202,7 +204,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
         if (output != null) {
             return canInsertAmountIntoSlot(output.getCount(), OUTPUT_SLOT) &&
                     canInsertItemIntoSlot(output, OUTPUT_SLOT) &&
-                    isFluidValid() && CoffeeMachineMethods.isValidCoffeeCombination(output);
+                    isFluidValid() && CoffeeMachineMethods.isValidCoffeeCombination(output.get(ModDataComponents.INGREDIENTS));
         } else {
             return false;
         }
@@ -233,6 +235,8 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
             itemHandler.setStackInSlot(slot, remaining);
         }
     }
+
+    //Dont rewrite from here
 
     private boolean isFluidValid() {
         ItemStack input = itemHandler.getStackInSlot(FLUID_INPUT_SLOT);

@@ -2,6 +2,7 @@ package net.zusz.zcoffeecraft2.api.coffeerecipes;
 
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.level.ItemLike;
 import net.zusz.zcoffeecraft2.api.secondaryeffect.SecondaryEffect;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
@@ -13,6 +14,8 @@ public record CoffeeRecipe(
         int baseDuration,
         int baseAmplifier,
         int baseDelay,
-        List<SecondaryEffect> secondaryEffects
+        List<SecondaryEffect> secondaryEffects,
+        ItemLike inputItem,
+        ItemLike outputItem
 
 ) {}

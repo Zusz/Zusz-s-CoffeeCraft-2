@@ -48,7 +48,7 @@ public class CoffeeRecipeRegistry {
     }
 
 
-
+    public static ItemLike getOutputItem(CoffeeRecipe recipe) {return recipe.outputItem();}
     public static boolean isValid(List<String> ingredients) {
         return getRecipe(ingredients).isPresent();
     }

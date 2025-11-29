@@ -14,7 +14,6 @@ public class ModItemProperties {
                     if ("light".equals(roast)) {return 0.0f; };
                     if ("medium".equals(roast)) {return 1.0f;}
                     if ("dark".equals(roast)) {return 2.0f;}
-
                     return -1.0f;
                 }
         );

@@ -80,23 +80,23 @@ public class CoffeeCupBlock extends BaseEntityBlock {
 
     @Override
     public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
-        if (!level.isClientSide()) {
+        /*if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if (entity instanceof CoffeeCupBlockEntity coffeeCupBlockEntity) {
                 ItemStack coffeeStack = coffeeCupBlockEntity.getCoffeeStack();
-                if (!coffeeStack.isEmpty()) {
+                /*if (!coffeeStack.isEmpty()) {
                     name = coffeeStack.getDisplayName(); // literal
                 } else {
                     name = Component.translatable("block.zcoffeecraft2.coffee_cup_block"); // fallback translatable
-                }
+                /*}
             }
-        }
+        }*/
         super.onBlockStateChange(level, pos, oldState, newState);
     }
 
     @Override
     public MutableComponent getName() {
-        return name.copy();
+        return Component.translatable("block.zcoffeecraft2.coffee_cup_block");
     }
 
     @Nullable
