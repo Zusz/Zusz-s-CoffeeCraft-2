@@ -6,6 +6,7 @@ import net.minecraft.world.level.ItemLike;
 import net.zusz.zcoffeecraft2.api.secondaryeffect.SecondaryEffect;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 public record CoffeeRecipe(
         String name,
@@ -16,6 +17,7 @@ public record CoffeeRecipe(
         int baseDelay,
         List<SecondaryEffect> secondaryEffects,
         ItemLike inputItem,
-        ItemLike outputItem
-
+        ItemLike outputItem,
+        boolean requiresBean
 ) {}
+

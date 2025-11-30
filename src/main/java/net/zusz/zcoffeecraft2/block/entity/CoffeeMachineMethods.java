@@ -1,6 +1,8 @@
 package net.zusz.zcoffeecraft2.block.entity;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipe;
 import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.item.ModItems;
 import net.minecraft.world.item.ItemStack;
@@ -63,36 +65,39 @@ public class CoffeeMachineMethods {
         return validIngredients.contains(ingredient);
     }*/
 
-    public static ItemStack setOutputItemBasedOnContainer(Item containter) {
+    public static ItemStack setOutputItemBasedOnContainer(Item container) {
         ItemStack output = null;
-        if (containter == ModItems.COFFEE_CUP.get()){
+        if (container == ModItems.COFFEE_CUP.get()){
             output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
         }
         return output;
     }
     public static ItemStack getOutput(Item input, Item container, Item fluidInputItem, Item ingredient1, Item ingredient2, Item ingredient3, Item ingredient4) {
 
-        ItemStack output = setOutputItemBasedOnContainer(container);
-        if(output != null) {
-            output = addBeanAndRoastToOutput(output, input);
+        List<String> ingredients = new ArrayList<>(List.of());
 
-            List<String> ingredients = new ArrayList<>(List.of());
+        ingredients = addToIngredientsList(ingredients, ingredient1);
+        ingredients = addToIngredientsList(ingredients, ingredient2);
+        ingredients = addToIngredientsList(ingredients, ingredient3);
+        ingredients = addToIngredientsList(ingredients, ingredient4);
 
-            ingredients = addToIngredientsList(ingredients, ingredient1);
-            ingredients = addToIngredientsList(ingredients, ingredient2);
-            ingredients = addToIngredientsList(ingredients, ingredient3);
-            ingredients = addToIngredientsList(ingredients, ingredient4);
+        Optional<CoffeeRecipe> recipeOpt = CoffeeRecipeRegistry.getRecipe(ingredients);
+        if (recipeOpt.isPresent()) {
+            CoffeeRecipe recipe = recipeOpt.get();
 
-            if(output != null) {
-                output.set(ModDataComponents.INGREDIENTS, ingredients);
-            } /*else {
-                System.out.println("Output null at assigning ingredients");
-            } */
-            if (isValidCoffeeCombination(output.get(ModDataComponents.INGREDIENTS))) {
+            ItemStack output = new ItemStack(recipe.outputItem());
+
+            output.set(ModDataComponents.INGREDIENTS, ingredients);
+
+            if(recipe.requiresBean()) {
+                output = addBeanAndRoastToOutput(output, input);
+            } else if(input == Items.AIR) {
                 return output;
             }
+
         }
         return ItemStack.EMPTY;
+        }
     }
 
 
@@ -118,4 +123,3 @@ public class CoffeeMachineMethods {
         }
         return false;
     }; */
-}

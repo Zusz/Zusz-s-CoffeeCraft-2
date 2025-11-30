@@ -5,6 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.Items;
 import net.zusz.zcoffeecraft2.api.secondaryeffect.SecondaryEffect;
 import net.zusz.zcoffeecraft2.item.ModItems;
 
@@ -31,7 +32,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(jump), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.espresso",
@@ -42,7 +44,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(jump), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         //Macchiato
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -54,7 +57,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.macchiato",
@@ -65,7 +69,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         //Con Panna
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -77,7 +82,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(strength), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.con_panna",
@@ -88,7 +94,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(strength), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         //Flat White
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -100,7 +107,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(strength), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.flat_white",
@@ -111,7 +119,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(strength), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         //Latte
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -123,7 +132,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.latte",
@@ -134,7 +144,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         //Marocchino
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -146,7 +157,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.marocchino",
@@ -157,7 +169,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         //Mocha
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -169,7 +182,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(absorption), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.mocha",
@@ -180,7 +194,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(absorption), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         //Honey Raf
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -192,7 +207,8 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(regeneration), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
         ));
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.honey_raf",
@@ -203,7 +219,21 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(new SecondaryEffect("liberica", Optional.of(regeneration), Optional.of(1200), Optional.of(0))),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.CUP_OF_COFFEE.asItem()
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.hot_chocolate",
+                List.of("chocolate"),
+                health_boost,
+                4800,
+                0,
+                0,
+                List.of(),
+                ModItems.COFFEE_CUP.asItem(),
+                ModItems.LIBERICA_COFFEE_CHERRY.asItem(),
+                false
         ));
 
     }
