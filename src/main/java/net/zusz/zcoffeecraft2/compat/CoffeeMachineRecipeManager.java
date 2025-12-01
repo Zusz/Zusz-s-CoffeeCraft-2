@@ -48,14 +48,23 @@ public class CoffeeMachineRecipeManager {
         ));
         List<List<ItemLike>> ingredientSets = new ArrayList<>(List.of(
         ));
+        List<List<ItemLike>> beanLessIngredientSets = new ArrayList<>(List.of(
+        ));
+
+        /*
         for (CoffeeRecipe recipe : CoffeeRecipeRegistry.getAll()) {
             List<ItemLike> itemIngredients = new ArrayList<>(List.of());
+
             for (String ingredient : CoffeeRecipeRegistry.getIngredients(recipe)) {
                 if (CoffeeIngredientRegistry.getItemFromString(ingredient).isPresent()) {
                     itemIngredients.add(CoffeeIngredientRegistry.getItemFromString(ingredient).get());
                 }
             }
-            ingredientSets.add(itemIngredients);
+            if (recipe.requiresBean()) {
+                ingredientSets.add(itemIngredients);
+            } else {
+                beanLessIngredientSets.add(itemIngredients);
+            }
         }
 
         for(ItemLike ground : groundCoffees){
@@ -95,15 +104,65 @@ public class CoffeeMachineRecipeManager {
         }
 
 
-        return CoffeeMachineRecipes;
+        return CoffeeMachineRecipes;*/
 
+
+        for (CoffeeRecipe recipe: CoffeeRecipeRegistry.getAll()) {
+            List<String> ingredients = recipe.ingredients();
+            List<ItemLike> itemIngredients = new ArrayList<>();
+            List<ItemLike> itemGrounds = List.of(Items.AIR);
+            for (String ingredient : ingredients) {
+                if (CoffeeIngredientRegistry.getItemFromString(ingredient).isPresent()) {
+                    itemIngredients.add(CoffeeIngredientRegistry.getItemFromString(ingredient).get());
+                }
+            }
+            Ingredient ingredient1 = ingredients.size() > 0 ? Ingredient.of(itemIngredients.get(0)) : Ingredient.EMPTY;
+            Ingredient ingredient2 = ingredients.size() > 1 ? Ingredient.of(itemIngredients.get(1)) : Ingredient.EMPTY;
+            Ingredient ingredient3 = ingredients.size() > 2 ? Ingredient.of(itemIngredients.get(2)) : Ingredient.EMPTY;
+            Ingredient ingredient4 = ingredients.size() > 3 ? Ingredient.of(itemIngredients.get(3)) : Ingredient.EMPTY;
+            Item ing1 = ingredients.size() > 0 ? itemIngredients.get(0).asItem() : null;
+            Item ing2 = ingredients.size() > 1 ? itemIngredients.get(1).asItem() : null;
+            Item ing3 = ingredients.size() > 2 ? itemIngredients.get(2).asItem() : null;
+            Item ing4 = ingredients.size() > 3 ? itemIngredients.get(3).asItem() : null;
+
+            if (recipe.requiresBean()) {
+                itemGrounds = groundCoffees;
+            }
+
+            for (ItemLike ground: itemGrounds) {
+                for (Ingredient fluid : fluidItems) {
+                    Ingredient fluidOutput = Ingredient.EMPTY;
+                    if (fluid == water) {
+                        fluidOutput = water_output;
+                    }
+                    CoffeeMachineRecipes.add(
+                            new CoffeeMachineRecipe(
+                                    Ingredient.of(ground),
+                                    Ingredient.of(recipe.inputItem()),
+                                    fluid,
+                                    ingredient1,
+                                    ingredient2,
+                                    ingredient3,
+                                    ingredient4,
+                                    getResult(recipe, ground.asItem(), recipe.inputItem().asItem(), null, ing1, ing2, ing3, ing4),
+                                    fluidOutput
+                            )
+                    );
+
+                }
+            }
+        }
+
+        return CoffeeMachineRecipes;
 
     }
 
-    public static ItemStack getResult(Item input, Item container, Item fluidInputItem, Item ingredient1, Item ingredient2, Item ingredient3, Item ingredient4) {
-        ItemStack output = setOutputItemBasedOnContainer(container);
+    public static ItemStack getResult(CoffeeRecipe recipe, Item input, Item container, Item fluidInputItem, Item ingredient1, Item ingredient2, Item ingredient3, Item ingredient4) {
+        ItemStack output = new ItemStack(recipe.outputItem());
 
-        output = addBeanAndRoastToOutput(output, input);
+        if (recipe.requiresBean()) {
+            output = addBeanAndRoastToOutput(output, input);
+        }
 
         List<String> ingredients = new ArrayList<>(List.of());
 
@@ -147,11 +206,4 @@ public class CoffeeMachineRecipeManager {
         return output;
     }
 
-    public static ItemStack setOutputItemBasedOnContainer(Item containter) {
-        ItemStack output = null;
-        if (containter == ModItems.COFFEE_CUP.get()){
-            output = new ItemStack(ModItems.CUP_OF_COFFEE.get(), 1);
-        }
-        return output;
-    }
 }

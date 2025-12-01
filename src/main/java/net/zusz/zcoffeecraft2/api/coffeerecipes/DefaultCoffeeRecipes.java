@@ -21,6 +21,7 @@ public class DefaultCoffeeRecipes {
     static Holder<MobEffect> strength = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("strength")).get();
     static Holder<MobEffect> night_vision = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("night_vision")).get();
     static Holder<MobEffect> health_boost = MobEffects.HEALTH_BOOST;
+    static Holder<MobEffect> heal = MobEffects.HEAL;
     public static void registerCoffeeRecipes() {
         //Espresso
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -226,13 +227,25 @@ public class DefaultCoffeeRecipes {
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.hot_chocolate",
                 List.of("chocolate"),
-                health_boost,
-                4800,
+                heal,
+                1,
                 0,
                 0,
                 List.of(),
                 ModItems.COFFEE_CUP.asItem(),
-                ModItems.LIBERICA_COFFEE_CHERRY.asItem(),
+                ModItems.HOT_CHOCOLATE.asItem(),
+                false
+        ));
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.hot_chocolate",
+                List.of("chocolate", "sugar"),
+                heal,
+                1,
+                1,
+                0,
+                List.of(),
+                ModItems.COFFEE_CUP.asItem(),
+                ModItems.HOT_CHOCOLATE.asItem(),
                 false
         ));
 

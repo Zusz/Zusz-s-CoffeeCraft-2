@@ -70,6 +70,7 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModItems.COFFEE_CUP);
                         output.accept(ModItems.CUP_OF_COFFEE);
+                        output.accept(ModItems.HOT_CHOCOLATE);
 
                         output.accept(ModItems.COFFEE_GUIDE);
 

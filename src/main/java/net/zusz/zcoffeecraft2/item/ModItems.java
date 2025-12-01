@@ -11,6 +11,7 @@ import net.zusz.zcoffeecraft2.item.custom.coffeeitem.CoffeeItem;
 import net.zusz.zcoffeecraft2.item.custom.ModFoodProperties;
 import net.zusz.zcoffeecraft2.item.custom.WhiskItem;
 import net.zusz.zcoffeecraft2.item.custom.guidebook.GuideBookItem;
+import net.zusz.zcoffeecraft2.item.custom.hot_chocolate.HotChocolate;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ZCoffeeCraft2.MOD_ID);
@@ -80,6 +81,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",//unique items
             () -> new CoffeeItem(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));
+    public static final DeferredItem<Item> HOT_CHOCOLATE = ITEMS.register("hot_chocolate",
+            () -> new HotChocolate(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));
 
     public static final DeferredItem<Item> COFFEE_GUIDE = ITEMS.register("coffee_guide_book",
             () -> new GuideBookItem(new Item.Properties().stacksTo(1)));

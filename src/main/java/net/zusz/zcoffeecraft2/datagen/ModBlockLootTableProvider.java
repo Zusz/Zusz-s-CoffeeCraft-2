@@ -46,6 +46,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf((ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK.get()));
 
         this.dropSelf(ModBlocks.COFFEE_MACHINE.get());
+        this.add(ModBlocks.COFFEE_CUP_BLOCK.get(), LootTable.lootTable());
 
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
