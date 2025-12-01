@@ -91,6 +91,7 @@ public class CoffeeMachineMethods {
 
             if(recipe.requiresBean()) {
                 output = addBeanAndRoastToOutput(output, input);
+                return output;
             } else if(input == Items.AIR) {
                 return output;
             }
