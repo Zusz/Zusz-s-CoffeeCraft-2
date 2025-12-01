@@ -8,13 +8,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.item.ModItems;
 
 public class GuideBookScreen extends Screen {
     public int currentPage = 0;
-    private final int maxPage = 7; //actually 1 less than the last page
+    private final int maxPage = 8; //actually 1 less than the last page
     private static final ResourceLocation BACKGROUND_TEXTURE =
             ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/gui/guidebook_bg.png");
 
@@ -80,6 +81,9 @@ public class GuideBookScreen extends Screen {
             } case 7 -> {
                 stack1 = new ItemStack(ModItems.WHISK.asItem());
                 stack2 = new ItemStack(ModItems.WHIPPED_CREAM.asItem());
+            } case 8 -> {
+                stack1 = new ItemStack(ModItems.HOT_CHOCOLATE.asItem());
+                stack2 = new ItemStack(Items.COCOA_BEANS.asItem());
             }
         }
         if (stack1 != null) {
