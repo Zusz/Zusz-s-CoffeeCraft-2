@@ -40,15 +40,8 @@ public class CoffeeMachineRecipeManager {
                 ModItems.DARK_LIBERICA_GROUND_COFFEE
 
         ));
-        List<ItemLike> containers = new ArrayList<>(List.of(
-                ModItems.COFFEE_CUP
-        ));
         List<Ingredient> fluidItems = new ArrayList<>(List.of(
                 water
-        ));
-        List<List<ItemLike>> ingredientSets = new ArrayList<>(List.of(
-        ));
-        List<List<ItemLike>> beanLessIngredientSets = new ArrayList<>(List.of(
         ));
 
         /*
