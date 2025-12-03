@@ -19,7 +19,7 @@ public class CoffeeRecipeRegistry {
     public static Optional<CoffeeRecipe> getRecipe(List<String> ingredients) {
         if (ingredients != null) {
             for (CoffeeRecipe recipe : RECIPES) {
-                if (recipe.ingredients().equals(ingredients)) {
+                if (compareListIgnoreOrder(recipe.ingredients(), ingredients)) {
                     return Optional.of(recipe);
                 }
             }
@@ -79,5 +79,17 @@ public class CoffeeRecipeRegistry {
 
     public static void clear() {
         RECIPES.clear();
+    }
+
+    public static boolean compareListIgnoreOrder(List<String> a, List<String> b) {
+        if (a.size() != b.size()) return false;
+
+        List<String> aCopy = new ArrayList<>(a);
+        List<String> bCopy = new ArrayList<>(b);
+
+        Collections.sort(aCopy);
+        Collections.sort(bCopy);
+
+        return aCopy.equals(bCopy);
     }
 }
