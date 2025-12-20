@@ -61,6 +61,23 @@ public class ModItems {
     public static final DeferredItem<Item> DARK_LIBERICA_GROUND_COFFEE = ITEMS.register("dark_liberica_ground_coffee",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> RAW_EXCELSA_COFFEE_BEAN = ITEMS.register("raw_excelsa_coffee_bean", //robusta
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LIGHT_ROASTED_EXCELSA_COFFEE_BEAN = ITEMS.register("light_roasted_excelsa_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN = ITEMS.register("medium_roasted_excelsa_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DARK_ROASTED_EXCELSA_COFFEE_BEAN = ITEMS.register("dark_roasted_excelsa_coffee_bean",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LIGHT_EXCELSA_GROUND_COFFEE = ITEMS.register("light_excelsa_ground_coffee",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MEDIUM_EXCELSA_GROUND_COFFEE = ITEMS.register("medium_excelsa_ground_coffee",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DARK_EXCELSA_GROUND_COFFEE = ITEMS.register("dark_excelsa_ground_coffee",
+            () -> new Item(new Item.Properties()));
+
+
+
     public static final DeferredItem<Item> COFFEE_CUP = ITEMS.register("coffee_cup",//other items
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> WHISK = ITEMS.register("whisk",
@@ -78,6 +95,8 @@ public class ModItems {
             () -> new ItemNameBlockItem(ModBlocks.ROBUSTA_COFFEE_BUSH.get(), new Item.Properties()));
     public static final DeferredItem<Item> LIBERICA_COFFEE_CHERRY = ITEMS.register("liberica_coffee_cherry",
             () -> new ItemNameBlockItem(ModBlocks.LIBERICA_COFFEE_BUSH.get(), new Item.Properties()));
+    public static final DeferredItem<Item> EXCELSA_COFFEE_CHERRY = ITEMS.register("excelsa_coffee_cherry",
+            () -> new ItemNameBlockItem(ModBlocks.EXCELSA_COFFEE_BUSH.get(), new Item.Properties()));
 
     public static final DeferredItem<Item> CUP_OF_COFFEE = ITEMS.register("cup_of_coffee",//unique items
             () -> new CoffeeItem(new Item.Properties().food(ModFoodProperties.CUP_OF_COFFEE)));

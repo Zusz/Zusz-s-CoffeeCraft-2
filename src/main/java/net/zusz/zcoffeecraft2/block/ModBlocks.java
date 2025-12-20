@@ -66,6 +66,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> LIBERICA_COFFEE_BUSH = BLOCKS.register("liberica_coffee_bush",
             () -> new LibericaCoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+    public static final DeferredBlock<Block> EXCELSA_COFFEE_BUSH = BLOCKS.register("excelsa_coffee_bush",
+            () -> new ExcelsaCoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
     public static final DeferredBlock<Block> COFFEE_MACHINE = registerBlock("coffee_machine",
             () -> new CoffeeMachineBlock(BlockBehaviour.Properties.of()));

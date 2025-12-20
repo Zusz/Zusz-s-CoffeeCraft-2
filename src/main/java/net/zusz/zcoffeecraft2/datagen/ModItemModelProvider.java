@@ -37,6 +37,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.LIGHT_LIBERICA_GROUND_COFFEE.asItem());
         basicItem(ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.asItem());
         basicItem(ModItems.DARK_LIBERICA_GROUND_COFFEE.asItem());
+        basicItem(ModItems.EXCELSA_COFFEE_CHERRY.asItem());
+        basicItem(ModItems.RAW_EXCELSA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN.asItem());
+        basicItem(ModItems.LIGHT_EXCELSA_GROUND_COFFEE.asItem());
+        basicItem(ModItems.MEDIUM_EXCELSA_GROUND_COFFEE.asItem());
+        basicItem(ModItems.DARK_EXCELSA_GROUND_COFFEE.asItem());
         basicItem(ModItems.COFFEE_CUP.asItem());
         basicItem(ModItems.WHISK.asItem());
         basicItem(ModItems.STEAMED_MILK.asItem());

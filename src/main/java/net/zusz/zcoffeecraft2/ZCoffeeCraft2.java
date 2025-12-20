@@ -1,5 +1,7 @@
 package net.zusz.zcoffeecraft2;
 
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -107,6 +109,12 @@ public class ZCoffeeCraft2
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModItemProperties.addCustomItemProperties();
             /*ItemBlockRenderTypes.setRenderLayer(ModBlocks.COFFEE_MACHINE.get(), RenderType.translucent());*/ //this adds half-transparent textures
+           event.enqueueWork(() -> {
+               ItemBlockRenderTypes.setRenderLayer(
+                       ModBlocks.EXCELSA_COFFEE_BUSH.get(),
+                       RenderType.cutout()
+               );
+           });
         }
 
         @SubscribeEvent
