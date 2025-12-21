@@ -101,7 +101,7 @@ public class ExcelsaCoffeeBushBlock extends BushBlock implements BonemealableBlo
         boolean flag = i == 7;
         if (i > 5) {
             int j = 1 + level.random.nextInt(2);
-            popResource(level, pos, new ItemStack((Holder<Item>) ModItems.COFFEE_CUP, j + (flag ? 1 : 0)));
+            popResource(level, pos, new ItemStack((Holder<Item>) ModItems.EXCELSA_COFFEE_CHERRY, j + (flag ? 1 : 0)));
             level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             BlockState blockstate = (BlockState)state.setValue(AGE, 4);
             level.setBlock(pos, blockstate, 2);
