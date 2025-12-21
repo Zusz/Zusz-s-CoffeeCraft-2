@@ -32,5 +32,14 @@ public class DefaultCoffeeBeanTypes {
                 0,
                 0
         ));
+        CoffeeBeanTypeRegistry.register(new CoffeeBeanType(
+                "excelsa",
+                Component.translatable("coffeeingredient.zcoffeecraft2.excelsa"),
+                1800,
+                1,
+                true,
+                0,
+                0
+        ));
     }
 }

@@ -63,5 +63,24 @@ public class DefaultGroundCoffees {
                         "liberica",
                         "dark")
         );
+        //Excelsa
+        GroundCoffeeRegistry.register(
+                new GroundCoffee(
+                        ModItems.LIGHT_EXCELSA_GROUND_COFFEE,
+                        "excelsa",
+                        "light")
+        );
+        GroundCoffeeRegistry.register(
+                new GroundCoffee(
+                        ModItems.MEDIUM_EXCELSA_GROUND_COFFEE,
+                        "excelsa",
+                        "medium")
+        );
+        GroundCoffeeRegistry.register(
+                new GroundCoffee(
+                        ModItems.DARK_EXCELSA_GROUND_COFFEE,
+                        "excelsa",
+                        "dark")
+        );
     }
 }
