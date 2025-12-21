@@ -58,6 +58,19 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
+    public static final DeferredBlock<Block> RAW_EXCELSA_COFFEE_BEAN_SACK  = registerBlock("raw_excelsa_coffee_bean_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK  = registerBlock("light_roasted_excelsa_coffee_bean_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK  = registerBlock("medium_roasted_excelsa_coffee_bean_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK  = registerBlock("dark_roasted_excelsa_coffee_bean_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+
 
     public static final DeferredBlock<Block> ARABICA_COFFEE_BUSH = BLOCKS.register("arabica_coffee_bush",
             () -> new ArabicaCoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));

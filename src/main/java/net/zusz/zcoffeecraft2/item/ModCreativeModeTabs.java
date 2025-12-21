@@ -55,6 +55,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN);
                         output.accept(ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN);
                         output.accept(ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN);
+                        output.accept(ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK);
 
                         output.accept(ModBlocks.COFFEE_MACHINE);
 

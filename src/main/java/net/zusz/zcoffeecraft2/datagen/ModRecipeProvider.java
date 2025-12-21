@@ -189,6 +189,50 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModItems.EXCELSA_COFFEE_CHERRY)
                 .unlockedBy("has_excelsa_coffee_cherry", has(ModItems.EXCELSA_COFFEE_CHERRY)).save(recipeOutput, "raw_excelsa_coffee_bean_from_cherry");
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', ModItems.RAW_EXCELSA_COFFEE_BEAN.get())
+                .unlockedBy("has_raw_excelsa_coffee_bean", has(ModItems.RAW_EXCELSA_COFFEE_BEAN)).save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RAW_EXCELSA_COFFEE_BEAN.get(), 9)
+                .requires(ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK)
+                .unlockedBy("has_raw_excelsa_coffee_bean_sack", has(ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK)).save(recipeOutput, "raw_excelsa_coffee_bean_from_sack");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN.get())
+                .unlockedBy("has_light_roasted_excelsa_coffee_bean", has(ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN)).save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN.get(), 9)
+                .requires(ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK)
+                .unlockedBy("has_light_roasted_excelsa_coffee_bean_sack", has(ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK)).save(recipeOutput, "light_roasted_excelsa_coffee_bean_from_sack");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN.get())
+                .unlockedBy("has_medium_roasted_excelsa_coffee_bean", has(ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN)).save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN.get(), 9)
+                .requires(ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK)
+                .unlockedBy("has_medium_roasted_excelsa_coffee_bean_sack", has(ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK)).save(recipeOutput, "medium_roasted_excelsa_coffee_bean_from_sack");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN.get())
+                .unlockedBy("has_dark_roasted_excelsa_coffee_bean", has(ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN)).save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN.get(), 9)
+                .requires(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK)
+                .unlockedBy("has_dark_roasted_excelsa_coffee_bean_sack", has(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK)).save(recipeOutput, "dark_roasted_excelsa_coffee_bean_from_sack");
+
         //Ground Coffees
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ARABICA_GROUND_COFFEE.get(), 1)
                 .requires(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN, 6)
@@ -293,22 +337,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         //Smelting
-        oreSmelting(recipeOutput, RAW_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
-        oreSmelting(recipeOutput, LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
-        oreSmelting(recipeOutput, MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
+        oreSmelting(recipeOutput, RAW_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "arabica");
+        oreSmelting(recipeOutput, LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "arabica");
+        oreSmelting(recipeOutput, MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN.get(), 0.25f, 200, "arabica");
 
-        oreSmelting(recipeOutput, RAW_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
-        oreSmelting(recipeOutput, LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
-        oreSmelting(recipeOutput, MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
+        oreSmelting(recipeOutput, RAW_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "robusta");
+        oreSmelting(recipeOutput, LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "robusta");
+        oreSmelting(recipeOutput, MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_ROBUSTA_COFFEE_BEAN.get(), 0.25f, 200, "robusta");
 
-        oreSmelting(recipeOutput, RAW_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
-        oreSmelting(recipeOutput, LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
-        oreSmelting(recipeOutput, MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
+        oreSmelting(recipeOutput, RAW_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "liberica");
+        oreSmelting(recipeOutput, LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "liberica");
+        oreSmelting(recipeOutput, MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN.get(), 0.25f, 200, "liberica");
 
-        oreSmelting(recipeOutput, RAW_EXCELSA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
-        oreSmelting(recipeOutput, LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
-        oreSmelting(recipeOutput, MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN.get(), 0.25f, 200, "coffee");
+        oreSmelting(recipeOutput, RAW_EXCELSA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN.get(), 0.25f, 200, "excelsa");
+        oreSmelting(recipeOutput, LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN.get(), 0.25f, 200, "excelsa");
+        oreSmelting(recipeOutput, MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SMELT, RecipeCategory.MISC, ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN.get(), 0.25f, 200, "excelsa");
 
-        oreSmelting(recipeOutput, MILK_BUCKET_SMELT, RecipeCategory.MISC, ModItems.STEAMED_MILK.get(), 0.25f, 2400, "coffee");
+        oreSmelting(recipeOutput, MILK_BUCKET_SMELT, RecipeCategory.MISC, ModItems.STEAMED_MILK.get(), 0.25f, 2400, "steamed_milk");
     }
 }

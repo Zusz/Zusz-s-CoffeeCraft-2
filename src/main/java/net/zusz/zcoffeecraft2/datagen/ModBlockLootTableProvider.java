@@ -44,6 +44,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf((ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK.get()));
         dropSelf((ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK.get()));
         dropSelf((ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK.get()));
+        dropSelf((ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK.get()));
+        dropSelf((ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get()));
+        dropSelf((ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get()));
+        dropSelf((ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get()));
 
         this.dropSelf(ModBlocks.COFFEE_MACHINE.get());
         this.add(ModBlocks.COFFEE_CUP_BLOCK.get(), LootTable.lootTable());
