@@ -14,6 +14,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.zusz.zcoffeecraft2.block.custom.ArabicaCoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
+import net.zusz.zcoffeecraft2.block.custom.ExcelsaCoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.custom.LibericaCoffeeBushBlock;
 import net.zusz.zcoffeecraft2.block.custom.RobustaCoffeeBushBlock;
 
@@ -24,6 +25,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ARABICA_COFFEE_BUSH_KEY = registerKey("arabica_coffee_bush");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROBUSTA_COFFEE_BUSH_KEY = registerKey("robusta_coffee_bush");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LIBERICA_COFFEE_BUSH_KEY = registerKey("liberica_coffee_bush");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> EXCELSA_COFFEE_BUSH_KEY = registerKey("excelsa_coffee_bush");
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
         register(context, ARABICA_COFFEE_BUSH_KEY, Feature.RANDOM_PATCH,
@@ -44,6 +46,13 @@ public class ModConfiguredFeatures {
                 FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.LIBERICA_COFFEE_BUSH.get()
                                 .defaultBlockState().setValue(LibericaCoffeeBushBlock.AGE, Integer.valueOf(6)))
+                        ), List.of(Blocks.GRASS_BLOCK)
+                )
+        );
+        register(context, EXCELSA_COFFEE_BUSH_KEY, Feature.RANDOM_PATCH,
+                FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.EXCELSA_COFFEE_BUSH.get()
+                                .defaultBlockState().setValue(ExcelsaCoffeeBushBlock.AGE, Integer.valueOf(6)))
                         ), List.of(Blocks.GRASS_BLOCK)
                 )
         );

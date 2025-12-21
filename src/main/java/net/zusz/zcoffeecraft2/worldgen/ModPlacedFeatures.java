@@ -18,6 +18,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ARABICA_COFFEE_BUSH_PLACED_KEY = registerKey("arabica_coffee_bush_placed");
     public static final ResourceKey<PlacedFeature> ROBUSTA_COFFEE_BUSH_PLACED_KEY = registerKey("robusta_coffee_bush_placed");
     public static final ResourceKey<PlacedFeature> LIBERICA_COFFEE_BUSH_PLACED_KEY = registerKey("liberica_coffee_bush_placed");
+    public static final ResourceKey<PlacedFeature> EXCELSA_COFFEE_BUSH_PLACED_KEY = registerKey("excelsa_coffee_bush_placed");
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -27,6 +28,8 @@ public class ModPlacedFeatures {
                 List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, LIBERICA_COFFEE_BUSH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LIBERICA_COFFEE_BUSH_KEY),
                 List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, EXCELSA_COFFEE_BUSH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.EXCELSA_COFFEE_BUSH_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
