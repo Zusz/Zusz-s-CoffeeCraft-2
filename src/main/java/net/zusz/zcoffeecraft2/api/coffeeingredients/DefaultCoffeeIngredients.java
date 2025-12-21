@@ -38,7 +38,7 @@ public class DefaultCoffeeIngredients {
         ));
         CoffeeIngredientRegistry.register(new CoffeeIngredient(
                 ModItems.MILK_FOAM.asItem(), "milk_foam",
-                Items.BUCKET,
+                Items.AIR,
                 Component.translatable("coffeeingredient.zcoffeecraft2.milk_foam")
         ));
     }

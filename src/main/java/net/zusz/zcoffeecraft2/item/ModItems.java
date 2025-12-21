@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
+import net.zusz.zcoffeecraft2.item.custom.SteamedMilkItem;
 import net.zusz.zcoffeecraft2.item.custom.coffeeitem.CoffeeItem;
 import net.zusz.zcoffeecraft2.item.custom.ModFoodProperties;
 import net.zusz.zcoffeecraft2.item.custom.WhiskItem;
@@ -83,7 +84,7 @@ public class ModItems {
     public static final DeferredItem<Item> WHISK = ITEMS.register("whisk",
             () -> new WhiskItem(new Item.Properties()));
     public static final DeferredItem<Item> STEAMED_MILK = ITEMS.register("steamed_milk",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+            () -> new SteamedMilkItem(new Item.Properties()));
     public static final DeferredItem<Item> MILK_FOAM = ITEMS.register("milk_foam",
             () -> new Item(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> WHIPPED_CREAM = ITEMS.register("whipped_cream",
