@@ -15,7 +15,7 @@ import net.zusz.zcoffeecraft2.item.ModItems;
 
 public class GuideBookScreen extends Screen {
     public int currentPage = 0;
-    private final int maxPage = 8; //actually 1 less than the last page
+    private final int maxPage = 9; //actually 1 less than the last page
     private static final ResourceLocation BACKGROUND_TEXTURE =
             ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/gui/guidebook_bg.png");
 
@@ -56,6 +56,8 @@ public class GuideBookScreen extends Screen {
         ItemStack stack1 = null;
         ItemStack stack2 = null;
         ResourceLocation textureToDraw = null;
+        boolean isTextureToDrawExcelsa = false;
+
         switch (currentPage) {
             case 0 -> {
                 stack1 = new ItemStack(ModItems.CUP_OF_COFFEE.asItem());
@@ -79,9 +81,13 @@ public class GuideBookScreen extends Screen {
                 stack1 = new ItemStack(ModItems.LIBERICA_COFFEE_CHERRY.asItem());
                 textureToDraw = ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/block/liberica_coffee_bush_stage7.png");
             } case 7 -> {
+                stack1 = new ItemStack(ModItems.EXCELSA_COFFEE_CHERRY.asItem());
+                textureToDraw = ResourceLocation.fromNamespaceAndPath("zcoffeecraft2", "textures/block/excelsa_coffee_bush_stage7.png");
+                isTextureToDrawExcelsa = true;
+            } case 8 -> {
                 stack1 = new ItemStack(ModItems.WHISK.asItem());
                 stack2 = new ItemStack(ModItems.WHIPPED_CREAM.asItem());
-            } case 8 -> {
+            } case 9 -> {
                 stack1 = new ItemStack(ModItems.HOT_CHOCOLATE.asItem());
                 stack2 = new ItemStack(Items.COCOA_BEANS.asItem());
             }
@@ -95,7 +101,12 @@ public class GuideBookScreen extends Screen {
         } else if (textureToDraw == null && stack2 != null) {
             drawItemStack(graphics, stack2, x + bgWidth - 25 - 32, y + 20);
         } else if (textureToDraw != null && stack2 == null) {
-            graphics.blit(textureToDraw, x + bgWidth - 25 - 32, y + 20, 0, 0, 32, 32, 32, 32);
+            if (!isTextureToDrawExcelsa) {
+                graphics.blit(textureToDraw, x + bgWidth - 25 - 32, y + 20, 0, 0, 32, 32, 32, 32);
+            } else {
+                graphics.blit(textureToDraw, x + bgWidth - 25 - 48, y + 20, 0, 0, 48, 40, 48, 40);
+            }
+
         }
 
         // --- Title ---

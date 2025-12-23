@@ -120,15 +120,17 @@
   "guide.zcoffeecraft2.title5": "Arabica",
   "guide.zcoffeecraft2.title6": "Robusta",
   "guide.zcoffeecraft2.title7": "Liberica",
-  "guide.zcoffeecraft2.title8": "Extra Ingredients",
-  "guide.zcoffeecraft2.title9": "Hot Chocolate",
+  "guide.zcoffeecraft2.title8": "Excelsa",
+  "guide.zcoffeecraft2.title9": "Extra Ingredients",
+  "guide.zcoffeecraft2.title10": "Hot Chocolate",
   "guide.zcoffeecraft2.page1": "Welcome to The Coffee Guide!\n \nThis book will teach you how to make\ncoffee with Zusz's CoffeeCraft2!",
-  "guide.zcoffeecraft2.page2": "-Table of Contents 2\n\n-Coffee & Beans 3-7\n   -Strength & Length 4\n   -Arabica 5\n   -Robusta 6\n   -Liberica 7\n\n-Extra Ingredients 8\n\n-Hot Chocolate 9",
+  "guide.zcoffeecraft2.page2": "-Table of Contents 2\n\n-Coffee & Beans 3-8\n   -Strength & Length 4\n   -Arabica 5\n   -Robusta 6\n   -Liberica 7\n   -Excelsa 8\n\n-Extra Ingredients 9\n\n-Hot Chocolate 10",
   "guide.zcoffeecraft2.page3": "The first step to making coffee is the \nbeans, either §3Arabica §0or §3Robusta\n§0\nCoffee plants are very similar to sweet \nberry bushes. §3They grow in 8 stages,§0 \nof which §3stages 7&8 can be harvested.§0\nStage 8 provides more beans than \nstage 7. After harvesting, the bushes \nreturn to stage 6.\n",
   "guide.zcoffeecraft2.page4": "Strength depends only on the type of\nbeans used. Stronger beans give a\nshorter duration. \n\nLength depends on the type of beans\nused and the roast of the beans.\nMore powerful beans give a shorter\nduration, while weaker ones last longer.\n\nLength can be increased by roasting \nbeans, but this also introduces a \ndelay that increases with the roast:\n\n§6-Light roast: no delay\n§c-Medium roast: 10 seconds of delay\n§4-Dark roast: 25 seconds of delay\n\n§0The amount of time added depends on\nthe bean type.",
   "guide.zcoffeecraft2.page5": "Where to find?\n\n-§3Arabica §0Coffee Bushes are found in \n§aPlains §0and §aJungle §0Biomes\n\n§0Provides:\n\n-§64§0/§c5§0/§46 §0minutes of level §11 §0effect",
   "guide.zcoffeecraft2.page6": "Where to find?\n\n-§3Robusta §0Coffee Bushes are found in \n§9Taigas§0, §9Old Growth Pine Taigas§0 and \n§9Old Growth Spruce Taigas\n\n§0Provides:\n\n-§63§0/§c4§0/§45 §0minutes of level §12 §0effect",
   "guide.zcoffeecraft2.page7": "Where to find?\n\n-§3Liberica §0Coffee Bushes are found in \n§6Savannas§0, §6Windswept Savannas§0 and \n§6Savanna Plateaus\n\n§0Provides:\n\n-§62,5§0/§c3,5§0/§44,5 §0minutes of level §11 §0effect\n-§41§0 minute of level §11§0 secondary effect",
-  "guide.zcoffeecraft2.page8": "Adding extra ingredient(s) to your\ncoffee can either change or extend\nthe effect, depending on the\ningredient(s) used.\n§7(Recipes can be seen in JEI)\n\n§0Some vanilla items can be used as\ningredients, along with some added by\nthe mod. The mod's ingredients are:\n\n§3-Whipped cream\n§3(Whisk+Sugar+Milk)\n\n§1-Steamed Milk\n§1(Heating Milk)\n\n§5-Milk Foam\n§5(Steamed Milk+Sugar+Whisk)",
-  "guide.zcoffeecraft2.page9": "Hot Chocolate is brewed without ground\ncoffee, using cocoa beans\n\nProvides:\n\n-Level §11§0/§92§0 Instant Health"
+  "guide.zcoffeecraft2.page8": "Where to find?\n\n-§3Excelsa §0Coffee Bushes are found in \n§aJungle§0, §aBamboo Jungle§0 and \n§aSparse Jungle§0 biomes\n\nProvides:\n\n-§64,5§0/§c5,5§0/§46,5§0 minutes of level §11§0 effect\n-level §11 §4instant damage§0\n\nExcelsa is an exceptionally strong\ncoffee, giving the best effects but\nalso having a negative one",
+  "guide.zcoffeecraft2.page9": "Adding extra ingredient(s) to your\ncoffee can either change or extend\nthe effect, depending on the\ningredient(s) used.\n§7(Recipes can be seen in JEI)\n\n§0Some vanilla items can be used as\ningredients, along with some added by\nthe mod. The mod's ingredients are:\n\n§3-Whipped cream\n§3(Whisk+Sugar+Milk)\n\n§1-Steamed Milk\n§1(Heating Milk)\n\n§5-Milk Foam\n§5(Steamed Milk+Sugar+Whisk)",
+  "guide.zcoffeecraft2.page10": "Hot Chocolate is brewed without ground\ncoffee, using cocoa beans\n\nProvides:\n\n-Level §11§0/§92§0 Instant Health"
 }
