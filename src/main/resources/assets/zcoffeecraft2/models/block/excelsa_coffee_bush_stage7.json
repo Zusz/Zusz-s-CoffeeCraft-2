@@ -1,7 +1,8 @@
 {
   "ambientocclusion": false,
   "textures": {
-    "cross": "zcoffeecraft2:block/excelsa_coffee_bush_stage0"
+    "cross": "zcoffeecraft2:block/excelsa_coffee_bush_stage7",
+    "particle": "zcoffeecraft2:block/excelsa_coffee_bush_stage7"
   },
   "elements": [
     {   "from": [ -4, 0, 8 ],
