@@ -58,9 +58,14 @@ public class ModEvents {
                 ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.asItem(),
                 ModItems.DARK_LIBERICA_GROUND_COFFEE.asItem(),
 
+                ModItems.LIGHT_EXCELSA_GROUND_COFFEE.asItem(),
+                ModItems.MEDIUM_EXCELSA_GROUND_COFFEE.asItem(),
+                ModItems.DARK_EXCELSA_GROUND_COFFEE.asItem(),
+
                 ModItems.MILK_FOAM.asItem(),
                 ModItems.WHIPPED_CREAM.asItem(),
                 ModItems.STEAMED_MILK.asItem(),
+
 
                 Items.HONEY_BOTTLE.asItem(),
                 Items.COCOA_BEANS.asItem()
