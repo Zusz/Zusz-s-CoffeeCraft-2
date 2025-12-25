@@ -84,18 +84,19 @@ public class CoffeeMachineMethods {
         Optional<CoffeeRecipe> recipeOpt = CoffeeRecipeRegistry.getRecipe(ingredients);
         if (recipeOpt.isPresent()) {
             CoffeeRecipe recipe = recipeOpt.get();
+            if (recipe.inputItem() == container) {
 
-            ItemStack output = new ItemStack(recipe.outputItem());
+                ItemStack output = new ItemStack(recipe.outputItem());
 
-            output.set(ModDataComponents.INGREDIENTS, ingredients);
+                output.set(ModDataComponents.INGREDIENTS, ingredients);
 
-            if(recipe.requiresBean()) {
-                output = addBeanAndRoastToOutput(output, input);
-                return output;
-            } else if(input == Items.AIR) {
-                return output;
+                if(recipe.requiresBean()) {
+                    output = addBeanAndRoastToOutput(output, input);
+                    return output;
+                } else if(input == Items.AIR) {
+                    return output;
+                }
             }
-
         }
         return ItemStack.EMPTY;
         }
