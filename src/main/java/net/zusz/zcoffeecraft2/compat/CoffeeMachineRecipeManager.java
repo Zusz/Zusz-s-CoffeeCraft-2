@@ -37,7 +37,10 @@ public class CoffeeMachineRecipeManager {
                 ModItems.DARK_ROBUSTA_GROUND_COFFEE,
                 ModItems.LIGHT_LIBERICA_GROUND_COFFEE,
                 ModItems.MEDIUM_LIBERICA_GROUND_COFFEE,
-                ModItems.DARK_LIBERICA_GROUND_COFFEE
+                ModItems.DARK_LIBERICA_GROUND_COFFEE,
+                ModItems.LIGHT_EXCELSA_GROUND_COFFEE,
+                ModItems.MEDIUM_EXCELSA_GROUND_COFFEE,
+                ModItems.DARK_EXCELSA_GROUND_COFFEE
 
         ));
         List<Ingredient> fluidItems = new ArrayList<>(List.of(
