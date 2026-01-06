@@ -127,16 +127,33 @@ public class CoffeeMachineBlock extends BaseEntityBlock {
     }
 
     private static final VoxelShape COFFEE_MACHINE_SHAPE = Block.box(2, 0, 2, 14, 12, 14);
+    private static final VoxelShape COFFEE_MACHINE_SHAPE_EAST = Block.box(0, 0, 4, 12, 12, 12);
+    private static final VoxelShape COFFEE_MACHINE_SHAPE_NORTH = Block.box(4, 0, 4, 12, 12, 16);
+    private static final VoxelShape COFFEE_MACHINE_SHAPE_WEST = Block.box(4, 0, 4, 16, 12, 12);
+    private static final VoxelShape COFFEE_MACHINE_SHAPE_SOUTH = Block.box(4, 0, 0, 12, 12, 12);
+
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         Direction facing = state.getValue(FACING);
-        return COFFEE_MACHINE_SHAPE;
+        return switch (facing) {
+            case DOWN, UP -> COFFEE_MACHINE_SHAPE;
+            case NORTH -> COFFEE_MACHINE_SHAPE_NORTH;
+            case SOUTH -> COFFEE_MACHINE_SHAPE_SOUTH;
+            case WEST -> COFFEE_MACHINE_SHAPE_WEST;
+            case EAST -> COFFEE_MACHINE_SHAPE_EAST;
+        };
     }
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         Direction facing = state.getValue(FACING);
-        return COFFEE_MACHINE_SHAPE;
+        return switch (facing) {
+            case DOWN, UP -> COFFEE_MACHINE_SHAPE;
+            case NORTH -> COFFEE_MACHINE_SHAPE_NORTH;
+            case SOUTH -> COFFEE_MACHINE_SHAPE_SOUTH;
+            case WEST -> COFFEE_MACHINE_SHAPE_WEST;
+            case EAST -> COFFEE_MACHINE_SHAPE_EAST;
+        };
     }
 }
