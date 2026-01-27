@@ -9,6 +9,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
@@ -18,6 +19,7 @@ import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 
 import java.util.List;
 import static net.zusz.zcoffeecraft2.compat.CoffeeMachineRecipeCategory.COFFEE_MACHINE_RECIPE_RECIPE_TYPE;
+import static net.zusz.zcoffeecraft2.compat.CoffeeGrinderRecipeCategory.COFFEE_GRINDER_RECIPE_RECIPE_TYPE;
 
 @JeiPlugin
 public class JEIZCoffeeCraft2Plugin implements IModPlugin {
@@ -31,14 +33,20 @@ public class JEIZCoffeeCraft2Plugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
-       registration.addRecipeCategories((new CoffeeMachineRecipeCategory(
-               registration.getJeiHelpers().getGuiHelper())));
+       registration.addRecipeCategories(new CoffeeMachineRecipeCategory(
+               registration.getJeiHelpers().getGuiHelper()));
+
+       registration.addRecipeCategories(new CoffeeGrinderRecipeCategory(
+               registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
             List<CoffeeMachineRecipe> coffeeMachineRecipes = CoffeeMachineRecipeManager.getAllRecipes();
             registration.addRecipes(COFFEE_MACHINE_RECIPE_RECIPE_TYPE, coffeeMachineRecipes);
+
+            List<CoffeeGrinderRecipe> coffeeGrinderRecipes = CoffeeGrinderRecipeManager.getAllRecipes();
+            registration.addRecipes(COFFEE_GRINDER_RECIPE_RECIPE_TYPE, coffeeGrinderRecipes);
     }
 
     @Override
@@ -50,6 +58,8 @@ public class JEIZCoffeeCraft2Plugin implements IModPlugin {
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.COFFEE_MACHINE.asItem()),
                 COFFEE_MACHINE_RECIPE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.COFFEE_GRINDER.asItem()),
+                COFFEE_GRINDER_RECIPE_RECIPE_TYPE);
     }
 }
 

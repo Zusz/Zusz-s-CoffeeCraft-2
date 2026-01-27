@@ -84,6 +84,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> COFFEE_MACHINE = registerBlock("coffee_machine",
             () -> new CoffeeMachineBlock(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> COFFEE_GRINDER = registerBlock("coffee_grinder",
+            () -> new CoffeeGrinderBlock(BlockBehaviour.Properties.of()));
 
     public static final DeferredBlock<Block> COFFEE_CUP_BLOCK = registerBlock("coffee_cup_block",
             () -> new CoffeeCupBlock(BlockBehaviour.Properties.of()));

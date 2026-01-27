@@ -72,7 +72,12 @@ public class CoffeeMachineMenu extends AbstractContainerMenu {
         int maxProgress = this.data.get(1);
         int arrowPixelSize = 24;
 
-        return maxProgress != 0 && progress!= 0 ? progress * arrowPixelSize / maxProgress : 0;
+        if (progress <= 0 || maxProgress <= 0) {
+            return 0;
+        }
+
+        int scaled = progress * arrowPixelSize / maxProgress;
+        return Math.max(2, scaled);
     }
 
 

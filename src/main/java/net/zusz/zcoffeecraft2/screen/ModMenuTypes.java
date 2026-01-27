@@ -9,6 +9,7 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zusz.zcoffeecraft2.ZCoffeeCraft2;
+import net.zusz.zcoffeecraft2.screen.custom.CoffeeGrinderMenu;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineMenu;
 
 public class ModMenuTypes {
@@ -17,6 +18,8 @@ public class ModMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<CoffeeMachineMenu>> COFFEE_MACHINE_MENU =
             registerMenuType("coffee_machine_menu", CoffeeMachineMenu::new);
+    public static final DeferredHolder<MenuType<?>, MenuType<CoffeeGrinderMenu>> COFFEE_GRINDER_MENU =
+            registerMenuType("coffee_grinder_menu", CoffeeGrinderMenu::new);
 
     private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name,
                                                                                                               IContainerFactory<T> factory) {

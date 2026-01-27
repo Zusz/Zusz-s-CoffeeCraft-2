@@ -7,6 +7,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
+import net.zusz.zcoffeecraft2.block.entity.renderer.CoffeeGrinderBlockEntityRenderer;
 import net.zusz.zcoffeecraft2.block.entity.renderer.CoffeeMachineBlockEntityRenderer;
 import net.zusz.zcoffeecraft2.api.coffeebeantypes.DefaultCoffeeBeanTypes;
 import net.zusz.zcoffeecraft2.api.coffeerecipes.DefaultCoffeeRecipes;
@@ -18,6 +19,7 @@ import net.zusz.zcoffeecraft2.api.coffeeingredients.DefaultCoffeeIngredients;
 import net.zusz.zcoffeecraft2.api.groundcoffee.DefaultGroundCoffees;
 import net.zusz.zcoffeecraft2.loot.ModLootModifiers;
 import net.zusz.zcoffeecraft2.screen.ModMenuTypes;
+import net.zusz.zcoffeecraft2.screen.custom.CoffeeGrinderScreen;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import net.zusz.zcoffeecraft2.util.ModItemProperties;
 import org.slf4j.Logger;
@@ -103,12 +105,13 @@ public class ZCoffeeCraft2
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @SuppressWarnings({"removal"})
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
        @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModItemProperties.addCustomItemProperties();
-            /*ItemBlockRenderTypes.setRenderLayer(ModBlocks.COFFEE_MACHINE.get(), RenderType.translucent());*/ //this adds half-transparent textures
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.COFFEE_GRINDER.get(), RenderType.translucent()); //this adds half-transparent textures
            event.enqueueWork(() -> {
                ItemBlockRenderTypes.setRenderLayer(
                        ModBlocks.EXCELSA_COFFEE_BUSH.get(),
@@ -120,11 +123,13 @@ public class ZCoffeeCraft2
         @SubscribeEvent
         public static void registerScreens( RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.COFFEE_MACHINE_MENU.get(), CoffeeMachineScreen::new);
+            event.register(ModMenuTypes.COFFEE_GRINDER_MENU.get(), CoffeeGrinderScreen::new);
         }
 
         @SubscribeEvent
         public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.COFFEE_MACHINE_BE.get(), CoffeeMachineBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.COFFEE_GRINDER_BE.get(), CoffeeGrinderBlockEntityRenderer::new);
         }
     }
 }

@@ -5,5 +5,6 @@ import net.minecraft.world.level.ItemLike;
 public record GroundCoffee (
         ItemLike item,
         String bean,
-        String roast
+        String roast,
+        ItemLike beanItem
 ){}

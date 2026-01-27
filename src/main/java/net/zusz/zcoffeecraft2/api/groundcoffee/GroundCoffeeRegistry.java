@@ -21,4 +21,17 @@ public class GroundCoffeeRegistry {
         }
         return Optional.empty();
     }
+
+    public static Optional<ItemLike> getGroundCoffeeItemFromBeanItem(ItemLike beanItem) {
+        for (GroundCoffee groundCoffee : GROUND_COFFEE_LIST) {
+            if (groundCoffee.beanItem().asItem() == beanItem.asItem()) {
+                return  Optional.of(groundCoffee.item());
+            }
+        }
+        return Optional.empty();
+    }
+
+    public static List<GroundCoffee> getAll() {
+        return  GROUND_COFFEE_LIST;
+    }
 }

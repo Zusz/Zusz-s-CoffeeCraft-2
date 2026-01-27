@@ -9,78 +9,91 @@ public class DefaultGroundCoffees {
                 new GroundCoffee(
                         ModItems.LIGHT_ARABICA_GROUND_COFFEE,
                         "arabica",
-                        "light")
-        );
+                        "light",
+                        ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN
+                ));
+
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.MEDIUM_ARABICA_GROUND_COFFEE,
                         "arabica",
-                        "medium")
-        );
+                        "medium",
+                        ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN
+                ));
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.DARK_ARABICA_GROUND_COFFEE,
                         "arabica",
-                        "dark")
-        );
+                        "dark",
+                        ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN
+                ));
 
         //Robusta
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.LIGHT_ROBUSTA_GROUND_COFFEE,
                         "robusta",
-                        "light")
-        );
+                        "light",
+                        ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN
+                ));
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE,
                         "robusta",
-                        "medium")
-        );
+                        "medium",
+                        ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN
+                ));
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.DARK_ROBUSTA_GROUND_COFFEE,
                         "robusta",
-                        "dark")
-        );
+                        "dark",
+                        ModItems.DARK_ROASTED_ROBUSTA_COFFEE_BEAN
+                ));
 
         //Liberica
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.LIGHT_LIBERICA_GROUND_COFFEE,
                         "liberica",
-                        "light")
-        );
+                        "light",
+                        ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN
+                ));
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.MEDIUM_LIBERICA_GROUND_COFFEE,
                         "liberica",
-                        "medium")
-        );
+                        "medium",
+                        ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN
+                ));
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.DARK_LIBERICA_GROUND_COFFEE,
                         "liberica",
-                        "dark")
-        );
+                        "dark",
+                        ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN
+                ));
         //Excelsa
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.LIGHT_EXCELSA_GROUND_COFFEE,
                         "excelsa",
-                        "light")
-        );
+                        "light",
+                        ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN
+                ));
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.MEDIUM_EXCELSA_GROUND_COFFEE,
                         "excelsa",
-                        "medium")
-        );
+                        "medium",
+                        ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN
+                ));
         GroundCoffeeRegistry.register(
                 new GroundCoffee(
                         ModItems.DARK_EXCELSA_GROUND_COFFEE,
                         "excelsa",
-                        "dark")
-        );
+                        "dark",
+                        ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN
+                ));
     }
 }

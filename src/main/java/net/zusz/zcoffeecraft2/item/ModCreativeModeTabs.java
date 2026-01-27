@@ -77,6 +77,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DARK_EXCELSA_GROUND_COFFEE);
 
                         output.accept(ModBlocks.COFFEE_MACHINE);
+                        output.accept(ModBlocks.COFFEE_GRINDER);
 
                         output.accept(ModItems.WHISK);
 

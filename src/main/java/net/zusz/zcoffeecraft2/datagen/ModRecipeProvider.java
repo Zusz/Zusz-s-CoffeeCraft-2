@@ -234,7 +234,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_dark_roasted_excelsa_coffee_bean_sack", has(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK)).save(recipeOutput, "dark_roasted_excelsa_coffee_bean_from_sack");
 
         //Ground Coffees
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ARABICA_GROUND_COFFEE.get(), 1)
+        /*ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ARABICA_GROUND_COFFEE.get(), 1)
                 .requires(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN, 6)
                 .unlockedBy("has_light_roasted_arabica_coffee_bean", has(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "light_arabica_ground_coffee");
 
@@ -283,7 +283,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_EXCELSA_GROUND_COFFEE.get(), 1)
                 .requires(ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN, 6)
-                .unlockedBy("has_dark_roasted_excelsa_coffee_bean", has(ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN)).save(recipeOutput, "dark_excelsa_ground_coffee");
+                .unlockedBy("has_dark_roasted_excelsa_coffee_bean", has(ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN)).save(recipeOutput, "dark_excelsa_ground_coffee");*/
 
         //Whisk
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WHISK.get())
@@ -327,6 +327,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('R', Items.REDSTONE)
                 .unlockedBy("has_coffee_cup", has(ModItems.COFFEE_CUP))
                 .save(recipeOutput);
+
+        //Coffee Grinder
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COFFEE_GRINDER.get())
+                .pattern("IRI")
+                .pattern(" G ")
+                .pattern("III")
+                .define('G', Items.GLASS_BOTTLE)
+                .define('I', Items.IRON_INGOT)
+                .define('R', Items.REDSTONE)
+                .unlockedBy("has_coffee_cup", has(ModItems.COFFEE_CUP))
+                .save(recipeOutput);
+
 
         //Guide book
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.COFFEE_GUIDE.get(), 1)

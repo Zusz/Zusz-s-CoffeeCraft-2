@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dark_roasted_arabica_coffee_bean": {
+    "has_coffee_cup": {
       "conditions": {
         "items": [
           {
-            "items": "zcoffeecraft2:dark_roasted_arabica_coffee_bean"
+            "items": "zcoffeecraft2:coffee_cup"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:dark_arabica_ground_coffee"
+        "recipe": "zcoffeecraft2:coffee_grinder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_dark_roasted_arabica_coffee_bean"
+      "has_coffee_cup"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:dark_arabica_ground_coffee"
+      "zcoffeecraft2:coffee_grinder"
     ]
   }
 }
