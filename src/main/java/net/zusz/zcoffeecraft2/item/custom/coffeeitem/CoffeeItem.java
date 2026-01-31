@@ -320,6 +320,7 @@ public class CoffeeItem extends Item {
         if (effect == MobEffects.DAMAGE_BOOST) return Component.translatable("effect.minecraft.strength");
         if (effect == MobEffects.NIGHT_VISION) return Component.translatable("effect.minecraft.night_vision");
         if (effect == MobEffects.HARM) return Component.translatable("effect.minecraft.instant_damage");
+        if (effect == MobEffects.DIG_SPEED) return Component.translatable("effect.minecraft.haste");
         return Component.literal("");
     }
 

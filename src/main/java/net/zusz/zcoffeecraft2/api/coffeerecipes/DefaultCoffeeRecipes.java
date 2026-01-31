@@ -23,6 +23,9 @@ public class DefaultCoffeeRecipes {
     static Holder<MobEffect> health_boost = MobEffects.HEALTH_BOOST;
     static Holder<MobEffect> heal = MobEffects.HEAL;
     static Holder<MobEffect> harm = MobEffects.HARM;
+    static Holder<MobEffect> haste = MobEffects.DIG_SPEED;
+
+
     public static void registerCoffeeRecipes() {
         //Espresso
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
@@ -266,6 +269,40 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(
                         new SecondaryEffect("liberica", Optional.of(regeneration), Optional.of(1200), Optional.of(0)),
+                        new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
+                ),
+                ModItems.COFFEE_CUP.asItem(),
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+
+        //Espresso Laccino
+
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.espresso_laccino",
+                List.of("ice"),
+                haste,
+                3600,
+                0,
+                0,
+                List.of(
+                        new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)),
+                        new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
+                ),
+                ModItems.COFFEE_CUP.asItem(),
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.espresso_laccino",
+                List.of("ice", "sugar"),
+                haste,
+                4800,
+                0,
+                0,
+                List.of(
+                        new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)),
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),

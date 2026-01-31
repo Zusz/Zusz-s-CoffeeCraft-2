@@ -41,5 +41,10 @@ public class DefaultCoffeeIngredients {
                 Items.AIR,
                 Component.translatable("coffeeingredient.zcoffeecraft2.milk_foam")
         ));
+        CoffeeIngredientRegistry.register(new CoffeeIngredient(
+                Items.ICE.asItem(), "ice",
+                Items.AIR,
+                Component.translatable("coffeeingredient.zcoffeecraft2.ice")
+        ));
     }
 }

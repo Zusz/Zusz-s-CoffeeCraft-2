@@ -87,6 +87,7 @@
   "coffeetype.zcoffeecraft2.mocha": "Mocha",
   "coffeetype.zcoffeecraft2.marocchino": "Marocchino",
   "coffeetype.zcoffeecraft2.hot_chocolate": "Hot Chocolate",
+  "coffeetype.zcoffeecraft2.espresso_laccino": "Espresso Laccino",
   "coffeetype.zcoffeecraft2.notype" : "Coffee",
 
   "coffeeroast.zcoffeecraft2.noroast": "",
@@ -105,6 +106,7 @@
   "coffeeingredient.zcoffeecraft2.robusta": "   -Robusta",
   "coffeeingredient.zcoffeecraft2.liberica":  "   -Liberica",
   "coffeeingredient.zcoffeecraft2.excelsa": "   -Excelsa",
+  "coffeeingredient.zcoffeecraft2.ice": "   -Ice",
 
   "coffeedescription.zcoffeecraft2.beans": "Beans:",
   "coffeedescription.zcoffeecraft2.roast": "Roast:",
