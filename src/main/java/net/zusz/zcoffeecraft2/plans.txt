@@ -2,6 +2,7 @@
 -Cooking Milk Bucket = Steamed Milk done
 -Steamed Milk + Whisk = Milk Foam done
 
+/coffee system done
 New Roast and Coffee system
 -Arabica: time 2 strength 1 done
 -Robusta time 1 strength 2 done
@@ -16,8 +17,8 @@ Time 2 is 4 minutes
 -Dark Roast: 4 -> 4.5 | 5.5 - > 6, 25 sec delay
 
 -Adding sugar provides an extra minute of time (max 1)
--The extra effect of liberica is Speed for 2 minutes. In case of Speed being the base effect, 1 minute gets added to it
--The negative effect of Excelsa is 1 heart of damage on light, 1,5 on medium, and 2 on dark roast
+-The extra effect of liberica is Speed for 2 minutes. In case of Speed being the base effect, 1 minute gets added to it /done but different
+-The negative effect of Excelsa is 1 heart of damage on light, 1,5 on medium, and 2 on dark roast /done
 
 -Espresso:          no extra ingredients,                               Speed effect done
 -Macchiato:         extra milk foam,                                    Jump Boost done
@@ -29,7 +30,7 @@ Time 2 is 4 minutes
 -Mocha:             extra chocolate, steamed milk and whipped cream,    Strength done
 -Honey Raf:         extra honey and milk foam,                          Health Boost done
 -Capuccino Freddo:  extra ice, steamed milk and whipped cream,          Dolphins Grace
--Espresso Laccino:  extra ice,                                          Haste
+-Espresso Laccino:  extra ice,                                          Haste done
 
 -Advancements
 -Villager trades
