@@ -24,6 +24,7 @@ public class DefaultCoffeeRecipes {
     static Holder<MobEffect> heal = MobEffects.HEAL;
     static Holder<MobEffect> harm = MobEffects.HARM;
     static Holder<MobEffect> haste = MobEffects.DIG_SPEED;
+    static Holder<MobEffect> dolphins_grace = MobEffects.DOLPHINS_GRACE;
 
 
     public static void registerCoffeeRecipes() {
@@ -310,6 +311,32 @@ public class DefaultCoffeeRecipes {
                 true
         ));
 
+        //Cappuccino Freddo
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.cappuccino_freddo",
+                List.of("ice","steamed_milk","whipped_cream"),
+                dolphins_grace,
+                1,
+                0,
+                0,
+                List.of(),
+                ModItems.COFFEE_CUP.asItem(),
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.cappuccino_freddo",
+                List.of("ice", "steamed_milk","whipped_cream", "sugar"),
+                dolphins_grace,
+                1,
+                0,
+                0,
+                List.of(),
+                ModItems.COFFEE_CUP.asItem(),
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+
         //Hot Chocolate
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.hot_chocolate",
@@ -335,6 +362,8 @@ public class DefaultCoffeeRecipes {
                 ModItems.HOT_CHOCOLATE.asItem(),
                 false
         ));
+
+
 
     }
 

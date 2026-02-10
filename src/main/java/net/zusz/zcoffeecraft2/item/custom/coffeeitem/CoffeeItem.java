@@ -321,6 +321,8 @@ public class CoffeeItem extends Item {
         if (effect == MobEffects.NIGHT_VISION) return Component.translatable("effect.minecraft.night_vision");
         if (effect == MobEffects.HARM) return Component.translatable("effect.minecraft.instant_damage");
         if (effect == MobEffects.DIG_SPEED) return Component.translatable("effect.minecraft.haste");
+        if (effect == MobEffects.DOLPHINS_GRACE) return Component.translatable("effect.minecraft.dolphins_grace");
+
         return Component.literal("");
     }
 
