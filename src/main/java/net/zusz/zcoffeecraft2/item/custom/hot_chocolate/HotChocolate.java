@@ -58,7 +58,10 @@ public class HotChocolate extends Item {
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, @NotNull LivingEntity entity) {
         if (!(entity instanceof ServerPlayer player) || level.isClientSide) return stack;
 
-        Optional<CoffeeRecipe> recipeOpt = getRecipe(stack.get(ModDataComponents.INGREDIENTS));
+        String fluid;
+        try {fluid = stack.get(ModDataComponents.FLUID);} catch (Exception e) {fluid = "water";}
+
+        Optional<CoffeeRecipe> recipeOpt = getRecipe(stack.get(ModDataComponents.INGREDIENTS), fluid);
         if (recipeOpt.isEmpty()) return stack;
 
         CoffeeRecipe recipe = recipeOpt.get();
@@ -128,8 +131,11 @@ public class HotChocolate extends Item {
         }
 
         // --- Recipe & Effects ---
+        String fluid;
+        try {fluid = stack.get(ModDataComponents.FLUID);} catch (Exception e) {fluid = "water";}
+
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
-        Optional<CoffeeRecipe> recipeOpt = getRecipe(ingredients != null ? ingredients : List.of());
+        Optional<CoffeeRecipe> recipeOpt = getRecipe(ingredients != null ? ingredients : List.of(), fluid);
         if (recipeOpt.isEmpty()) {
             super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
             return;

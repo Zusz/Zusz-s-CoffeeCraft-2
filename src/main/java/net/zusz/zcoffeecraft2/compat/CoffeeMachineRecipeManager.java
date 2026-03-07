@@ -7,6 +7,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.zusz.zcoffeecraft2.api.coffeefluids.CoffeeFluid;
+import net.zusz.zcoffeecraft2.api.coffeefluids.CoffeeFluidRegistry;
 import net.zusz.zcoffeecraft2.block.entity.CoffeeMachineMethods;
 import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipe;
 import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry;
@@ -23,8 +25,6 @@ public class CoffeeMachineRecipeManager {
     public static List<CoffeeMachineRecipe> getAllRecipes() {
         ItemStack waterBottleStack = new ItemStack(Items.POTION);
         waterBottleStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
-        Ingredient water = Ingredient.of(waterBottleStack, new ItemStack(Items.WATER_BUCKET));
-        Ingredient water_output = Ingredient.of(Items.GLASS_BOTTLE, Items.BUCKET);
         //Ingredient allGrounds = Ingredient.of(ModItems.LIGHT_ARABICA_GROUND_COFFEE, ModItems.MEDIUM_ARABICA_GROUND_COFFEE, ModItems.DARK_ARABICA_GROUND_COFFEE);
 
         List<CoffeeMachineRecipe>CoffeeMachineRecipes = new ArrayList<>();
@@ -42,9 +42,6 @@ public class CoffeeMachineRecipeManager {
                 ModItems.MEDIUM_EXCELSA_GROUND_COFFEE,
                 ModItems.DARK_EXCELSA_GROUND_COFFEE
 
-        ));
-        List<Ingredient> fluidItems = new ArrayList<>(List.of(
-                water
         ));
 
         /*
@@ -126,11 +123,21 @@ public class CoffeeMachineRecipeManager {
             }
 
             for (ItemLike ground: itemGrounds) {
-                for (Ingredient fluid : fluidItems) {
-                    Ingredient fluidOutput = Ingredient.EMPTY;
-                    if (fluid == water) {
-                        fluidOutput = water_output;
+                List<ItemLike> validFluidItems = new ArrayList<>();
+                List<ItemLike> validRemainingItems = new ArrayList<>();
+
+                for (CoffeeFluid coffeeFluid : CoffeeFluidRegistry.getAll()) {
+                    if (coffeeFluid.fluidName().equals(recipe.fluid())) {
+                        validFluidItems.add(coffeeFluid.item());
+                        validRemainingItems.add(coffeeFluid.remainingItem());
                     }
+                }
+
+                if (!validFluidItems.isEmpty()) {
+
+                    Ingredient fluid = Ingredient.of(validFluidItems.toArray(new ItemLike[0]));
+                    Ingredient fluidOutput = Ingredient.of(validRemainingItems.toArray(new ItemLike[0]));
+
                     CoffeeMachineRecipes.add(
                             new CoffeeMachineRecipe(
                                     Ingredient.of(ground),
@@ -140,12 +147,17 @@ public class CoffeeMachineRecipeManager {
                                     ingredient2,
                                     ingredient3,
                                     ingredient4,
-                                    getResult(recipe, ground.asItem(), recipe.inputItem().asItem(), null, ing1, ing2, ing3, ing4),
+                                    getResult(recipe,
+                                            ground.asItem(),
+                                            recipe.inputItem().asItem(),
+                                            null,
+                                            ing1, ing2, ing3, ing4),
                                     fluidOutput
                             )
                     );
-
                 }
+
+
             }
         }
 

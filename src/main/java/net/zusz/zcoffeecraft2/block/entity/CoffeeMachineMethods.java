@@ -2,6 +2,8 @@ package net.zusz.zcoffeecraft2.block.entity;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.zusz.zcoffeecraft2.api.coffeefluids.CoffeeFluid;
+import net.zusz.zcoffeecraft2.api.coffeefluids.CoffeeFluidRegistry;
 import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipe;
 import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry;
 import net.zusz.zcoffeecraft2.item.ModItems;
@@ -38,8 +40,8 @@ public class CoffeeMachineMethods {
         return ItemStack.EMPTY;
     }
 
-    public static boolean isValidCoffeeCombination(List<String>ingredients) {
-        return CoffeeRecipeRegistry.isValid(ingredients);
+    public static boolean isValidCoffeeCombination(List<String>ingredients, String fluid) {
+        return CoffeeRecipeRegistry.isValid(ingredients, fluid);
     }
 
     /*public static boolean isIngredientValid(Item ingredient, String inputType) {
@@ -72,7 +74,7 @@ public class CoffeeMachineMethods {
         }
         return output;
     }
-    public static ItemStack getOutput(Item input, Item container, Item fluidInputItem, Item ingredient1, Item ingredient2, Item ingredient3, Item ingredient4) {
+    public static ItemStack getOutput(Item input, Item container, Item fluidInputItem, Item ingredient1, Item ingredient2, Item ingredient3, Item ingredient4, Item fluidItem) {
 
         List<String> ingredients = new ArrayList<>(List.of());
 
@@ -81,23 +83,31 @@ public class CoffeeMachineMethods {
         ingredients = addToIngredientsList(ingredients, ingredient3);
         ingredients = addToIngredientsList(ingredients, ingredient4);
 
-        Optional<CoffeeRecipe> recipeOpt = CoffeeRecipeRegistry.getRecipe(ingredients);
-        if (recipeOpt.isPresent()) {
-            CoffeeRecipe recipe = recipeOpt.get();
-            if (recipe.inputItem() == container) {
+        Optional<CoffeeFluid> cFluid = CoffeeFluidRegistry.getFluid(fluidItem);
+        if (cFluid.isPresent()) {
 
-                ItemStack output = new ItemStack(recipe.outputItem());
+            String fluid = cFluid.toString();
 
-                output.set(ModDataComponents.INGREDIENTS, ingredients);
+                Optional<CoffeeRecipe> recipeOpt = CoffeeRecipeRegistry.getRecipe(ingredients, fluid);
+                if (recipeOpt.isPresent()) {
+                    CoffeeRecipe recipe = recipeOpt.get();
+                    if (recipe.inputItem() == container) {
 
-                if(recipe.requiresBean()) {
-                    output = addBeanAndRoastToOutput(output, input);
-                    return output;
-                } else if(input == Items.AIR) {
-                    return output;
+                        ItemStack output = new ItemStack(recipe.outputItem());
+
+                        output.set(ModDataComponents.INGREDIENTS, ingredients);
+                        output.set(ModDataComponents.FLUID, fluid);
+
+                        if (recipe.requiresBean()) {
+                            output = addBeanAndRoastToOutput(output, input);
+                            return output;
+                        } else if (input == Items.AIR) {
+                            return output;
+                        }
+                    }
                 }
+
             }
-        }
         return ItemStack.EMPTY;
         }
     }

@@ -17,6 +17,7 @@ public record CoffeeRecipe(
         int baseDelay,
         List<SecondaryEffect> secondaryEffects,
         ItemLike inputItem,
+        String fluid,
         ItemLike outputItem,
         boolean requiresBean
 ) {}

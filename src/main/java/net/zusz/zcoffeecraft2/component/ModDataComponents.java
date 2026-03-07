@@ -20,6 +20,8 @@ public class ModDataComponents {
             builder -> builder.persistent(Codec.STRING));
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<List<String>>> INGREDIENTS = register("ingredients",
             builder -> builder.persistent(Codec.STRING.listOf()));
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> FLUID = register("fluid",
+            builder -> builder.persistent(Codec.STRING));
 
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name,
                                                                                           UnaryOperator<DataComponentType.Builder<T>> builderOperator) {

@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.zusz.zcoffeecraft2.api.coffeefluids.DefaultCoffeeFluids;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.entity.ModBlockEntities;
 import net.zusz.zcoffeecraft2.block.entity.renderer.CoffeeGrinderBlockEntityRenderer;
@@ -80,6 +81,7 @@ public class ZCoffeeCraft2
         event.enqueueWork(DefaultCoffeeIngredients::registerCoffeeIngredients);
         event.enqueueWork(DefaultGroundCoffees::registerGroundCoffees);
         event.enqueueWork(DefaultCoffeeBeanTypes::registerCoffeeBeanTypes);
+        event.enqueueWork(DefaultCoffeeFluids::registerCoffeeFluids);
     }
 
     // Add the item to a tab

@@ -24,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.zusz.zcoffeecraft2.api.coffeefluids.CoffeeFluidRegistry;
 import net.zusz.zcoffeecraft2.block.ModBlocks;
 import net.zusz.zcoffeecraft2.block.custom.CoffeeCupBlock;
 import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
@@ -60,7 +61,7 @@ public class CoffeeItem extends Item {
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, @NotNull LivingEntity entity) {
         if (!(entity instanceof ServerPlayer player) || level.isClientSide) return stack;
 
-        Optional<CoffeeRecipe> recipeOpt = getRecipe(stack.get(ModDataComponents.INGREDIENTS));
+        Optional<CoffeeRecipe> recipeOpt = getRecipe(stack.get(ModDataComponents.INGREDIENTS), stack.get(ModDataComponents.FLUID));
         if (recipeOpt.isEmpty()) return stack;
 
         CoffeeRecipe recipe = recipeOpt.get();
@@ -242,8 +243,12 @@ public class CoffeeItem extends Item {
         }
 
         // --- Recipe & Effects ---
+        String fluid;
+        try {fluid = stack.get(ModDataComponents.FLUID);} catch (Exception e) {fluid = "water";}
+
+
         List<String> ingredients = stack.get(ModDataComponents.INGREDIENTS);
-        Optional<CoffeeRecipe> recipeOpt = getRecipe(ingredients != null ? ingredients : List.of());
+        Optional<CoffeeRecipe> recipeOpt = getRecipe(ingredients != null ? ingredients : List.of(), fluid);
         if (recipeOpt.isEmpty()) {
             super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
             return;

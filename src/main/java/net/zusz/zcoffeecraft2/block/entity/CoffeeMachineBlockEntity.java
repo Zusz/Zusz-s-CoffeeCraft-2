@@ -140,7 +140,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     //start rewriting from here
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if(hasRecipe()) {
-            //System.out.println("HASRECIPE");
+            System.out.println("HASRECIPE");
            increaseCraftingProgress();
            setChanged(level, blockPos, blockState);
 
@@ -160,7 +160,8 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
                 itemHandler.getStackInSlot(INGREDIENT_SLOT_1).getItem(),
                 itemHandler.getStackInSlot(INGREDIENT_SLOT_2).getItem(),
                 itemHandler.getStackInSlot(INGREDIENT_SLOT_3).getItem(),
-                itemHandler.getStackInSlot(INGREDIENT_SLOT_4).getItem());
+                itemHandler.getStackInSlot(INGREDIENT_SLOT_4).getItem(),
+                itemHandler.getStackInSlot(FLUID_INPUT_SLOT).getItem());
 
         output = output.copyWithCount(itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + 1);
 
@@ -199,13 +200,16 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
                 itemHandler.getStackInSlot(INGREDIENT_SLOT_1).getItem(),
                 itemHandler.getStackInSlot(INGREDIENT_SLOT_2).getItem(),
                 itemHandler.getStackInSlot(INGREDIENT_SLOT_3).getItem(),
-                itemHandler.getStackInSlot(INGREDIENT_SLOT_4).getItem());
+                itemHandler.getStackInSlot(INGREDIENT_SLOT_4).getItem(),
+                itemHandler.getStackInSlot(FLUID_INPUT_SLOT).getItem());
 
         if (output != null) {
             return canInsertAmountIntoSlot(output.getCount(), OUTPUT_SLOT) &&
                     canInsertItemIntoSlot(output, OUTPUT_SLOT) &&
-                    isFluidValid() && CoffeeMachineMethods.isValidCoffeeCombination(output.get(ModDataComponents.INGREDIENTS));
+                    isFluidValid() && CoffeeMachineMethods.isValidCoffeeCombination(output.get(ModDataComponents.INGREDIENTS), output.get(ModDataComponents.FLUID));
         } else {
+            System.out.println("NOOOOOO OUTPUTTTT");
+            System.out.println(output);
             return false;
         }
     }

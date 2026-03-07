@@ -41,6 +41,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -56,6 +57,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -72,6 +74,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -87,6 +90,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -103,6 +107,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -118,6 +123,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -134,6 +140,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -149,6 +156,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -165,6 +173,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -180,6 +189,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -196,6 +206,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -211,6 +222,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -227,6 +239,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -242,6 +255,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -258,6 +272,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -273,6 +288,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -291,6 +307,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -307,6 +324,7 @@ public class DefaultCoffeeRecipes {
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -319,8 +337,12 @@ public class DefaultCoffeeRecipes {
                 1,
                 0,
                 0,
-                List.of(),
+                List.of(
+                        new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)),
+                        new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
+                ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -331,8 +353,12 @@ public class DefaultCoffeeRecipes {
                 1,
                 0,
                 0,
-                List.of(),
+                List.of(
+                        new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)),
+                        new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
+                ),
                 ModItems.COFFEE_CUP.asItem(),
+                "water",
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
@@ -347,6 +373,7 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(),
                 ModItems.COFFEE_CUP.asItem(),
+                "milk",
                 ModItems.HOT_CHOCOLATE.asItem(),
                 false
         ));
@@ -359,6 +386,7 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(),
                 ModItems.COFFEE_CUP.asItem(),
+                "milk",
                 ModItems.HOT_CHOCOLATE.asItem(),
                 false
         ));

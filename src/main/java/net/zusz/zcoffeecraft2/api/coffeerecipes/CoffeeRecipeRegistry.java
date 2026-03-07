@@ -16,7 +16,8 @@ public class CoffeeRecipeRegistry {
         RECIPES.add(recipe);
     }
 
-    public static Optional<CoffeeRecipe> getRecipe(List<String> ingredients) {
+    public static Optional<CoffeeRecipe> getRecipe(List<String> ingredients, String fluid) {
+        if (fluid == null) {fluid = "water";}
         if (ingredients != null) {
             for (CoffeeRecipe recipe : RECIPES) {
                 if (compareListIgnoreOrder(recipe.ingredients(), ingredients)) {
@@ -49,8 +50,8 @@ public class CoffeeRecipeRegistry {
 
 
     public static ItemLike getOutputItem(CoffeeRecipe recipe) {return recipe.outputItem();}
-    public static boolean isValid(List<String> ingredients) {
-        return getRecipe(ingredients).isPresent();
+    public static boolean isValid(List<String> ingredients, String fluid) {
+        return getRecipe(ingredients, fluid).isPresent();
     }
 
     public static String getName(List<String> ingredients) {
