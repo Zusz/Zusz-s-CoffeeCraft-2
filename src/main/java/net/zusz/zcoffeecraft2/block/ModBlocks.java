@@ -71,6 +71,46 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
+    public static final DeferredBlock<Block> LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK  = registerBlock("light_roasted_arabica_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK  = registerBlock("medium_roasted_arabica_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK  = registerBlock("dark_roasted_arabica_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+
+    public static final DeferredBlock<Block> LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK  = registerBlock("light_roasted_robusta_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK  = registerBlock("medium_roasted_robusta_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK  = registerBlock("dark_roasted_robusta_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+
+    public static final DeferredBlock<Block> LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK  = registerBlock("light_roasted_liberica_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK  = registerBlock("medium_roasted_liberica_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK  = registerBlock("dark_roasted_liberica_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+
+    public static final DeferredBlock<Block> LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK  = registerBlock("light_roasted_excelsa_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK  = registerBlock("medium_roasted_excelsa_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK  = registerBlock("dark_roasted_excelsa_ground_coffee_sack",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+
 
     public static final DeferredBlock<Block> ARABICA_COFFEE_BUSH = BLOCKS.register("arabica_coffee_bush",
             () -> new ArabicaCoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));

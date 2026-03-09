@@ -48,6 +48,18 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf((ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get()));
         dropSelf((ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get()));
         dropSelf((ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK.get()));
+        dropSelf(ModBlocks.LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK.get());
+        dropSelf(ModBlocks.DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK.get());
         dropSelf(ModBlocks.COFFEE_GRINDER.get());
 
         this.dropSelf(ModBlocks.COFFEE_MACHINE.get());

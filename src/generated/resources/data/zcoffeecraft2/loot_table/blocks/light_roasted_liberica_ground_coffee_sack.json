@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "zcoffeecraft2:light_roasted_liberica_ground_coffee_sack"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "zcoffeecraft2:blocks/light_roasted_liberica_ground_coffee_sack"
+}

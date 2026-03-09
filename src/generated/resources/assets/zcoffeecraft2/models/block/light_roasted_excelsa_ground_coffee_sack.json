@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "zcoffeecraft2:block/coffee_bean_sack_bottom",
+    "east": "zcoffeecraft2:block/coffee_bean_sack_side",
+    "north": "zcoffeecraft2:block/coffee_bean_sack_side",
+    "particle": "zcoffeecraft2:block/light_roasted_excelsa_ground_coffee_sack_top",
+    "south": "zcoffeecraft2:block/coffee_bean_sack_side",
+    "up": "zcoffeecraft2:block/light_roasted_excelsa_ground_coffee_sack_top",
+    "west": "zcoffeecraft2:block/coffee_bean_sack_side"
+  }
+}

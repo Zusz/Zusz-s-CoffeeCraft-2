@@ -30,26 +30,44 @@ public class ModBlockStateProvider extends BlockStateProvider {
         coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK, "light_roasted_arabica_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK, "medium_roasted_arabica_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK, "dark_roasted_arabica_coffee_bean_sack_top");
+
         coffeeBeanSack(ModBlocks.RAW_ROBUSTA_COFFEE_BEAN_SACK, "raw_robusta_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "light_roasted_robusta_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "medium_roasted_robusta_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.DARK_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "dark_roasted_robusta_coffee_bean_sack_top");
+
         coffeeBeanSack(ModBlocks.RAW_LIBERICA_COFFEE_BEAN_SACK, "raw_liberica_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "light_roasted_liberica_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "medium_roasted_liberica_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "dark_roasted_liberica_coffee_bean_sack_top");
+
         coffeeBeanSack(ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK, "raw_excelsa_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "light_roasted_excelsa_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "medium_roasted_excelsa_coffee_bean_sack_top");
         coffeeBeanSack(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "dark_roasted_excelsa_coffee_bean_sack_top");
 
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK, "light_roasted_arabica_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK, "medium_roasted_arabica_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK, "dark_roasted_arabica_ground_coffee_sack_top");
+
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "light_roasted_robusta_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "medium_roasted_robusta_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "dark_roasted_robusta_ground_coffee_sack_top");
+
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "light_roasted_liberica_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "medium_roasted_liberica_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "dark_roasted_liberica_ground_coffee_sack_top");
+
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "light_roasted_excelsa_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "medium_roasted_excelsa_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "dark_roasted_excelsa_ground_coffee_sack_top");
 
         makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), ArabicaCoffeeBushBlock.AGE, "arabica_coffee_bush_stage", "arabica_coffee_bush_stage");
         makeBush(((BushBlock) ModBlocks.ROBUSTA_COFFEE_BUSH.get()), RobustaCoffeeBushBlock.AGE, "robusta_coffee_bush_stage", "robusta_coffee_bush_stage");
         makeBush(((BushBlock) ModBlocks.LIBERICA_COFFEE_BUSH.get()), LibericaCoffeeBushBlock.AGE, "liberica_coffee_bush_stage", "liberica_coffee_bush_stage");
     }
 
-    //not absolute, but magic. please dont touch
+    //not absolute, but magic. please don't touch
     public void makeBush(BushBlock block, IntegerProperty ageProperty, String modelName, String textureName) {
         Function<BlockState, ConfiguredModel[]> function = state -> states(state, ageProperty, modelName, textureName);
         getVariantBuilder(block).forAllStates(function);
@@ -75,14 +93,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ));
     }
 
-    //this is just a cubebottomtop for coffee bean sacks, because the sides and bottom stay the same
+    //this is just a cube for coffee bean sacks, because the sides and bottom stay the same
     private void coffeeBeanSack(DeferredBlock<?> deferredBlock, String topTextureName) {
-        simpleBlockWithItem(deferredBlock.get(), models().cubeBottomTop(
+        simpleBlockWithItem(deferredBlock.get(), models().cube(
                 name(deferredBlock),
-                modLoc("block/coffee_bean_sack_side"),   // shared side texture
-                modLoc("block/coffee_bean_sack_bottom"), // shared bottom texture
-                modLoc("block/" + topTextureName)        // unique top texture
-        ));
+                modLoc("block/coffee_bean_sack_bottom"),  // shared bottom texture
+                modLoc("block/" + topTextureName) ,       // unique top texture
+                modLoc("block/coffee_bean_sack_side"),
+                modLoc("block/coffee_bean_sack_side"),
+                modLoc("block/coffee_bean_sack_side"),
+                modLoc("block/coffee_bean_sack_side") // shared side textures
+        ).texture("particle", modLoc("block/" + topTextureName)));//particle
     }
 
 
