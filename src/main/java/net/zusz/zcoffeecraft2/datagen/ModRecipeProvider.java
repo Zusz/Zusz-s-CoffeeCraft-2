@@ -338,6 +338,35 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModItems.DARK_EXCELSA_GROUND_COFFEE, 9)
                 .unlockedBy("has_dark_excelsa_ground_coffee", has(ModItems.DARK_EXCELSA_GROUND_COFFEE)).save(recipeOutput, "dark_excelsa_ground_coffee_sack");
 
+        //Coffee Cherry Sacks
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.ARABICA_COFFEE_CHERRY_SACK.get(), 1)
+                .requires(ModItems.ARABICA_COFFEE_CHERRY, 9)
+                .unlockedBy("has_arabica_coffee_cherry", has(ModItems.ARABICA_COFFEE_CHERRY)).save(recipeOutput, "arabica_coffee_cherry_sack");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ARABICA_COFFEE_CHERRY.get(), 9)
+                .requires(ModBlocks.ARABICA_COFFEE_CHERRY_SACK, 1)
+                .unlockedBy("has_arabica_coffee_cherry_sack", has(ModBlocks.ARABICA_COFFEE_CHERRY_SACK)).save(recipeOutput, "arabica_coffee_cherry");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.ROBUSTA_COFFEE_CHERRY_SACK.get(), 1)
+                .requires(ModItems.ROBUSTA_COFFEE_CHERRY, 9)
+                .unlockedBy("has_robusta_coffee_cherry", has(ModItems.ROBUSTA_COFFEE_CHERRY)).save(recipeOutput, "robusta_coffee_cherry_sack");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ROBUSTA_COFFEE_CHERRY.get(), 9)
+                .requires(ModBlocks.ROBUSTA_COFFEE_CHERRY_SACK, 1)
+                .unlockedBy("has_robusta_coffee_cherry_sack", has(ModBlocks.ROBUSTA_COFFEE_CHERRY_SACK)).save(recipeOutput, "robusta_coffee_cherry");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.LIBERICA_COFFEE_CHERRY_SACK.get(), 1)
+                .requires(ModItems.LIBERICA_COFFEE_CHERRY, 9)
+                .unlockedBy("has_liberica_coffee_cherry", has(ModItems.LIBERICA_COFFEE_CHERRY)).save(recipeOutput, "liberica_coffee_cherry_sack");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ARABICA_COFFEE_CHERRY.get(), 9)
+                .requires(ModBlocks.LIBERICA_COFFEE_CHERRY_SACK, 1)
+                .unlockedBy("has_liberica_coffee_cherry_sack", has(ModBlocks.LIBERICA_COFFEE_CHERRY_SACK)).save(recipeOutput, "liberica_coffee_cherry");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.EXCELSA_COFFEE_CHERRY_SACK.get(), 1)
+                .requires(ModItems.EXCELSA_COFFEE_CHERRY, 9)
+                .unlockedBy("has_excelsa_coffee_cherry", has(ModItems.EXCELSA_COFFEE_CHERRY)).save(recipeOutput, "excelsa_coffee_cherry_sack");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.EXCELSA_COFFEE_CHERRY.get(), 9)
+                .requires(ModBlocks.EXCELSA_COFFEE_CHERRY_SACK, 1)
+                .unlockedBy("has_excelsa_coffee_cherry_sack", has(ModBlocks.EXCELSA_COFFEE_CHERRY_SACK)).save(recipeOutput, "excelsa_coffee_cherry");
+
 
 
         //Whisk

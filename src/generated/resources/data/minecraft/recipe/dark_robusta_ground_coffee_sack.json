@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    },
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    },
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    },
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    },
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    },
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    },
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    },
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    },
+    {
+      "item": "zcoffeecraft2:dark_robusta_ground_coffee"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:dark_roasted_robusta_ground_coffee_sack"
+  }
+}

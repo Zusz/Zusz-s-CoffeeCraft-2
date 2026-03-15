@@ -112,6 +112,21 @@ public class ModBlocks {
                     .strength(0.5f).sound(SoundType.WOOL)));
 
 
+    public static final DeferredBlock<Block> ARABICA_COFFEE_CHERRY_SACK  = registerBlock("arabica_coffee_cherry_sack",
+            () -> new SackBlock(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> ROBUSTA_COFFEE_CHERRY_SACK  = registerBlock("robusta_coffee_cherry_sack",
+            () -> new SackBlock(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> LIBERICA_COFFEE_CHERRY_SACK  = registerBlock("liberica_coffee_cherry_sack",
+            () -> new SackBlock(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> EXCELSA_COFFEE_CHERRY_SACK  = registerBlock("excelsa_coffee_cherry_sack",
+            () -> new SackBlock(BlockBehaviour.Properties.of()
+                    .strength(0.5f).sound(SoundType.WOOL)));
+
+
+
     public static final DeferredBlock<Block> ARABICA_COFFEE_BUSH = BLOCKS.register("arabica_coffee_bush",
             () -> new ArabicaCoffeeBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
     public static final DeferredBlock<Block> ROBUSTA_COFFEE_BUSH = BLOCKS.register("robusta_coffee_bush",

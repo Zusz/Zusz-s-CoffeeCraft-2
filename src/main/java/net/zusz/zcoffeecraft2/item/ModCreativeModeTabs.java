@@ -57,7 +57,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DARK_EXCELSA_GROUND_COFFEE);
 
 
-
+                        output.accept(ModBlocks.ARABICA_COFFEE_CHERRY_SACK);
                         output.accept(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK);
@@ -66,6 +66,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK);
                         output.accept(ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK);
 
+                        output.accept(ModBlocks.ROBUSTA_COFFEE_CHERRY_SACK);
                         output.accept(ModBlocks.RAW_ROBUSTA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
@@ -74,6 +75,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK);
                         output.accept(ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK);
 
+                        output.accept(ModBlocks.LIBERICA_COFFEE_CHERRY_SACK);
                         output.accept(ModBlocks.RAW_LIBERICA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
@@ -82,6 +84,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK);
                         output.accept(ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK);
 
+                        output.accept(ModBlocks.EXCELSA_COFFEE_CHERRY_SACK);
                         output.accept(ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK);

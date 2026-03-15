@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    },
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    },
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    },
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    },
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    },
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    },
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    },
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    },
+    {
+      "item": "zcoffeecraft2:arabica_coffee_cherry"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "zcoffeecraft2:arabica_coffee_cherry_sack"
+  }
+}

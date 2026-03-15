@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "zcoffeecraft2:block/arabica_coffee_cherry_sack",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "zcoffeecraft2:block/arabica_coffee_cherry_sack"
+    },
+    "facing=south": {
+      "model": "zcoffeecraft2:block/arabica_coffee_cherry_sack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "zcoffeecraft2:block/arabica_coffee_cherry_sack",
+      "y": 270
+    }
+  }
+}
