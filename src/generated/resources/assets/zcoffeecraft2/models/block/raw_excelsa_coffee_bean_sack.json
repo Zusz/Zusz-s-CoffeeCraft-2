@@ -2,7 +2,7 @@
   "parent": "minecraft:block/cube",
   "textures": {
     "down": "zcoffeecraft2:block/coffee_bean_sack_bottom",
-    "east": "zcoffeecraft2:block/coffee_bean_sack_side",
+    "east": "zcoffeecraft2:block/raw_excelsa_coffee_bean_sack_side",
     "north": "zcoffeecraft2:block/coffee_bean_sack_side",
     "particle": "zcoffeecraft2:block/raw_excelsa_coffee_bean_sack_top",
     "south": "zcoffeecraft2:block/coffee_bean_sack_side",

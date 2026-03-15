@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "zcoffeecraft2:block/medium_roasted_arabica_coffee_bean_sack",
+      "y": 90
+    },
+    "facing=north": {
       "model": "zcoffeecraft2:block/medium_roasted_arabica_coffee_bean_sack"
+    },
+    "facing=south": {
+      "model": "zcoffeecraft2:block/medium_roasted_arabica_coffee_bean_sack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "zcoffeecraft2:block/medium_roasted_arabica_coffee_bean_sack",
+      "y": 270
     }
   }
 }

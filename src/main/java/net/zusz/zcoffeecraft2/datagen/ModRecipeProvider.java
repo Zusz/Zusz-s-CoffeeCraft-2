@@ -233,57 +233,112 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK)
                 .unlockedBy("has_dark_roasted_excelsa_coffee_bean_sack", has(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK)).save(recipeOutput, "dark_roasted_excelsa_coffee_bean_from_sack");
 
-        //Ground Coffees
-        /*ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ARABICA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN, 6)
-                .unlockedBy("has_light_roasted_arabica_coffee_bean", has(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "light_arabica_ground_coffee");
+        //Ground Coffees from Sacks
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ARABICA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_light_roasted_arabica_ground_coffee_sack", has(ModBlocks.LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK)).save(recipeOutput, "light_arabica_ground_coffee");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN, 6)
-                .unlockedBy("has_medium_roasted_arabica_coffee_bean", has(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "medium_arabica_ground_coffee");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_ARABICA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_medium_roasted_arabica_ground_coffee_sack", has(ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK)).save(recipeOutput, "medium_arabica_ground_coffee");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_ARABICA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN, 6)
-                .unlockedBy("has_dark_roasted_arabica_coffee_bean", has(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN)).save(recipeOutput, "dark_arabica_ground_coffee");
-
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN, 6)
-                .unlockedBy("has_light_roasted_robusta_coffee_bean", has(ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN)).save(recipeOutput, "light_robusta_ground_coffee");
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN, 6)
-                .unlockedBy("has_medium_roasted_robusta_coffee_bean", has(ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN)).save(recipeOutput, "medium_robusta_ground_coffee");
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_ROBUSTA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.DARK_ROASTED_ROBUSTA_COFFEE_BEAN, 6)
-                .unlockedBy("has_dark_roasted_robusta_coffee_bean", has(ModItems.DARK_ROASTED_ROBUSTA_COFFEE_BEAN)).save(recipeOutput, "dark_robusta_ground_coffee");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_ARABICA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_dark_roasted_arabica_ground_coffee_sack", has(ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK)).save(recipeOutput, "dark_arabica_ground_coffee");
 
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_LIBERICA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN, 6)
-                .unlockedBy("has_light_roasted_liberica_coffee_bean", has(ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN)).save(recipeOutput, "light_liberica_ground_coffee");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_ROBUSTA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_light_roasted_robusta_ground_coffee_sack", has(ModBlocks.LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK)).save(recipeOutput, "light_robusta_ground_coffee");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN, 6)
-                .unlockedBy("has_medium_roasted_liberica_coffee_bean", has(ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN)).save(recipeOutput, "medium_liberica_ground_coffee");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_medium_roasted_robusta_ground_coffee_sack", has(ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK)).save(recipeOutput, "medium_robusta_ground_coffee");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_LIBERICA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN, 6)
-                .unlockedBy("has_dark_roasted_liberica_coffee_bean", has(ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN)).save(recipeOutput, "dark_liberica_ground_coffee");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_ROBUSTA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_dark_roasted_robusta_ground_coffee_sack", has(ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK)).save(recipeOutput, "dark_robusta_ground_coffee");
 
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_EXCELSA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN, 6)
-                .unlockedBy("has_light_roasted_excelsa_coffee_bean", has(ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN)).save(recipeOutput, "light_excelsa_ground_coffee");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_LIBERICA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_light_roasted_liberica_ground_coffee_sack", has(ModBlocks.LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK)).save(recipeOutput, "light_liberica_ground_coffee");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_EXCELSA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN, 6)
-                .unlockedBy("has_medium_roasted_excelsa_coffee_bean", has(ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN)).save(recipeOutput, "medium_excelsa_ground_coffee");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_LIBERICA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_medium_roasted_liberica_ground_coffee_sack", has(ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK)).save(recipeOutput, "medium_liberica_ground_coffee");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_EXCELSA_GROUND_COFFEE.get(), 1)
-                .requires(ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN, 6)
-                .unlockedBy("has_dark_roasted_excelsa_coffee_bean", has(ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN)).save(recipeOutput, "dark_excelsa_ground_coffee");*/
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_LIBERICA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_dark_roasted_liberica_ground_coffee_sack", has(ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK)).save(recipeOutput, "dark_liberica_ground_coffee");
+
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_EXCELSA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_light_roasted_excelsa_ground_coffee_sack", has(ModBlocks.LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK)).save(recipeOutput, "light_excelsa_ground_coffee");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MEDIUM_EXCELSA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_medium_roasted_excelsa_ground_coffee_sack", has(ModBlocks.MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK)).save(recipeOutput, "medium_excelsa_ground_coffee");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DARK_EXCELSA_GROUND_COFFEE.get(), 9)
+                .requires(ModBlocks.DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK, 1)
+                .unlockedBy("has_dark_roasted_excelsa_ground_coffee_sack", has(ModBlocks.DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK)).save(recipeOutput, "dark_excelsa_ground_coffee");
+
+
+        //Sacks from Ground Coffees
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.LIGHT_ARABICA_GROUND_COFFEE, 9)
+                .unlockedBy("has_light_arabica_ground_coffee", has(ModItems.LIGHT_ARABICA_GROUND_COFFEE)).save(recipeOutput, "light_arabica_ground_coffee_sack");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.MEDIUM_ARABICA_GROUND_COFFEE, 9)
+                .unlockedBy("has_medium_arabica_ground_coffee", has(ModItems.MEDIUM_ARABICA_GROUND_COFFEE)).save(recipeOutput, "medium_arabica_ground_coffee_sack");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.DARK_ARABICA_GROUND_COFFEE, 9)
+                .unlockedBy("has_dark_arabica_ground_coffee", has(ModItems.DARK_ARABICA_GROUND_COFFEE)).save(recipeOutput, "dark_arabica_ground_coffee_sack");
+
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE, 9)
+                .unlockedBy("has_light_robusta_ground_coffee", has(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE)).save(recipeOutput, "light_robusta_ground_coffee_sack");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE, 9)
+                .unlockedBy("has_medium_robusta_ground_coffee", has(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE)).save(recipeOutput, "medium_robusta_ground_coffee_sack");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.DARK_ROBUSTA_GROUND_COFFEE, 9)
+                .unlockedBy("has_dark_robusta_ground_coffee", has(ModItems.DARK_ROBUSTA_GROUND_COFFEE)).save(recipeOutput, "dark_robusta_ground_coffee_sack");
+
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.LIGHT_LIBERICA_GROUND_COFFEE, 9)
+                .unlockedBy("has_light_liberica_ground_coffee", has(ModItems.LIGHT_LIBERICA_GROUND_COFFEE)).save(recipeOutput, "light_liberica_ground_coffee_sack");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.MEDIUM_LIBERICA_GROUND_COFFEE, 9)
+                .unlockedBy("has_medium_liberica_ground_coffee", has(ModItems.MEDIUM_LIBERICA_GROUND_COFFEE)).save(recipeOutput, "medium_liberica_ground_coffee_sack");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.DARK_LIBERICA_GROUND_COFFEE, 9)
+                .unlockedBy("has_dark_liberica_ground_coffee", has(ModItems.DARK_LIBERICA_GROUND_COFFEE)).save(recipeOutput, "dark_liberica_ground_coffee_sack");
+
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.LIGHT_EXCELSA_GROUND_COFFEE, 9)
+                .unlockedBy("has_light_excelsa_ground_coffee", has(ModItems.LIGHT_EXCELSA_GROUND_COFFEE)).save(recipeOutput, "light_excelsa_ground_coffee_sack");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.MEDIUM_EXCELSA_GROUND_COFFEE, 9)
+                .unlockedBy("has_medium_excelsa_ground_coffee", has(ModItems.MEDIUM_EXCELSA_GROUND_COFFEE)).save(recipeOutput, "medium_excelsa_ground_coffee_sack");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK.get(), 1)
+                .requires(ModItems.DARK_EXCELSA_GROUND_COFFEE, 9)
+                .unlockedBy("has_dark_excelsa_ground_coffee", has(ModItems.DARK_EXCELSA_GROUND_COFFEE)).save(recipeOutput, "dark_excelsa_ground_coffee_sack");
+
+
 
         //Whisk
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WHISK.get())

@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "zcoffeecraft2:block/dark_roasted_excelsa_ground_coffee_sack",
+      "y": 90
+    },
+    "facing=north": {
       "model": "zcoffeecraft2:block/dark_roasted_excelsa_ground_coffee_sack"
+    },
+    "facing=south": {
+      "model": "zcoffeecraft2:block/dark_roasted_excelsa_ground_coffee_sack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "zcoffeecraft2:block/dark_roasted_excelsa_ground_coffee_sack",
+      "y": 270
     }
   }
 }

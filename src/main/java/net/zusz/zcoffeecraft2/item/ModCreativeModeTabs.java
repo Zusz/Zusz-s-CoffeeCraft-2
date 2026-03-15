@@ -25,56 +25,72 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LIGHT_ROASTED_ARABICA_COFFEE_BEAN);
                         output.accept(ModItems.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN);
                         output.accept(ModItems.DARK_ROASTED_ARABICA_COFFEE_BEAN);
-                        output.accept(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK);
+                        output.accept(ModItems.LIGHT_ARABICA_GROUND_COFFEE);
+                        output.accept(ModItems.MEDIUM_ARABICA_GROUND_COFFEE);
+                        output.accept(ModItems.DARK_ARABICA_GROUND_COFFEE);
 
                         output.accept(ModItems.ROBUSTA_COFFEE_CHERRY);
                         output.accept(ModItems.RAW_ROBUSTA_COFFEE_BEAN);
                         output.accept(ModItems.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN);
                         output.accept(ModItems.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN);
                         output.accept(ModItems.DARK_ROASTED_ROBUSTA_COFFEE_BEAN);
-                        output.accept(ModBlocks.RAW_ROBUSTA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.DARK_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
+                        output.accept(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE);
+                        output.accept(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE);
+                        output.accept(ModItems.DARK_ROBUSTA_GROUND_COFFEE);
 
                         output.accept(ModItems.LIBERICA_COFFEE_CHERRY);
                         output.accept(ModItems.RAW_LIBERICA_COFFEE_BEAN);
                         output.accept(ModItems.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN);
                         output.accept(ModItems.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN);
                         output.accept(ModItems.DARK_ROASTED_LIBERICA_COFFEE_BEAN);
-                        output.accept(ModBlocks.RAW_LIBERICA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
-                        output.accept(ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
-
+                        output.accept(ModItems.LIGHT_LIBERICA_GROUND_COFFEE);
+                        output.accept(ModItems.MEDIUM_LIBERICA_GROUND_COFFEE);
+                        output.accept(ModItems.DARK_LIBERICA_GROUND_COFFEE);
+                        
                         output.accept(ModItems.EXCELSA_COFFEE_CHERRY);
                         output.accept(ModItems.RAW_EXCELSA_COFFEE_BEAN);
                         output.accept(ModItems.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN);
                         output.accept(ModItems.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN);
                         output.accept(ModItems.DARK_ROASTED_EXCELSA_COFFEE_BEAN);
+                        output.accept(ModItems.LIGHT_EXCELSA_GROUND_COFFEE);
+                        output.accept(ModItems.MEDIUM_EXCELSA_GROUND_COFFEE);
+                        output.accept(ModItems.DARK_EXCELSA_GROUND_COFFEE);
+
+
+
+                        output.accept(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK);
+
+                        output.accept(ModBlocks.RAW_ROBUSTA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_ROBUSTA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK);
+
+                        output.accept(ModBlocks.RAW_LIBERICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK);
+
                         output.accept(ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK);
                         output.accept(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK);
+                        output.accept(ModBlocks.LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK);
+                        output.accept(ModBlocks.MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK);
+                        output.accept(ModBlocks.DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK);
 
-                        output.accept(ModItems.LIGHT_ARABICA_GROUND_COFFEE);
-                        output.accept(ModItems.MEDIUM_ARABICA_GROUND_COFFEE);
-                        output.accept(ModItems.DARK_ARABICA_GROUND_COFFEE);
 
-                        output.accept(ModItems.LIGHT_ROBUSTA_GROUND_COFFEE);
-                        output.accept(ModItems.MEDIUM_ROBUSTA_GROUND_COFFEE);
-                        output.accept(ModItems.DARK_ROBUSTA_GROUND_COFFEE);
-
-                        output.accept(ModItems.LIGHT_LIBERICA_GROUND_COFFEE);
-                        output.accept(ModItems.MEDIUM_LIBERICA_GROUND_COFFEE);
-                        output.accept(ModItems.DARK_LIBERICA_GROUND_COFFEE);
-
-                        output.accept(ModItems.LIGHT_EXCELSA_GROUND_COFFEE);
-                        output.accept(ModItems.MEDIUM_EXCELSA_GROUND_COFFEE);
-                        output.accept(ModItems.DARK_EXCELSA_GROUND_COFFEE);
 
                         output.accept(ModBlocks.COFFEE_MACHINE);
                         output.accept(ModBlocks.COFFEE_GRINDER);

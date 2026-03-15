@@ -3,6 +3,7 @@ package net.zusz.zcoffeecraft2.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -26,41 +27,43 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-        coffeeBeanSack(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK, "raw_arabica_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK, "light_roasted_arabica_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK, "medium_roasted_arabica_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK, "dark_roasted_arabica_coffee_bean_sack_top");
+        coffeeBeanSack(ModBlocks.RAW_ARABICA_COFFEE_BEAN_SACK, "raw_arabica_coffee_bean_sack_top", "raw_arabica_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK, "light_roasted_arabica_coffee_bean_sack_top", "light_roasted_arabica_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK, "medium_roasted_arabica_coffee_bean_sack_top", "medium_roasted_arabica_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK, "dark_roasted_arabica_coffee_bean_sack_top", "dark_roasted_arabica_coffee_bean_sack_side");
 
-        coffeeBeanSack(ModBlocks.RAW_ROBUSTA_COFFEE_BEAN_SACK, "raw_robusta_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "light_roasted_robusta_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "medium_roasted_robusta_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.DARK_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "dark_roasted_robusta_coffee_bean_sack_top");
+        coffeeBeanSack(ModBlocks.RAW_ROBUSTA_COFFEE_BEAN_SACK, "raw_robusta_coffee_bean_sack_top", "raw_robusta_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "light_roasted_robusta_coffee_bean_sack_top", "light_roasted_robusta_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "medium_roasted_robusta_coffee_bean_sack_top", "medium_roasted_robusta_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_ROBUSTA_COFFEE_BEAN_SACK, "dark_roasted_robusta_coffee_bean_sack_top", "dark_roasted_robusta_coffee_bean_sack_side");
 
-        coffeeBeanSack(ModBlocks.RAW_LIBERICA_COFFEE_BEAN_SACK, "raw_liberica_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "light_roasted_liberica_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "medium_roasted_liberica_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "dark_roasted_liberica_coffee_bean_sack_top");
+        coffeeBeanSack(ModBlocks.RAW_LIBERICA_COFFEE_BEAN_SACK, "raw_liberica_coffee_bean_sack_top", "raw_liberica_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "light_roasted_liberica_coffee_bean_sack_top", "light_roasted_liberica_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "medium_roasted_liberica_coffee_bean_sack_top", "medium_roasted_liberica_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK, "dark_roasted_liberica_coffee_bean_sack_top", "dark_roasted_liberica_coffee_bean_sack_side");
 
-        coffeeBeanSack(ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK, "raw_excelsa_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "light_roasted_excelsa_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "medium_roasted_excelsa_coffee_bean_sack_top");
-        coffeeBeanSack(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "dark_roasted_excelsa_coffee_bean_sack_top");
+        coffeeBeanSack(ModBlocks.RAW_EXCELSA_COFFEE_BEAN_SACK, "raw_excelsa_coffee_bean_sack_top", "raw_excelsa_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "light_roasted_excelsa_coffee_bean_sack_top", "light_roasted_excelsa_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "medium_roasted_excelsa_coffee_bean_sack_top", "medium_roasted_excelsa_coffee_bean_sack_side");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK, "dark_roasted_excelsa_coffee_bean_sack_top", "dark_roasted_excelsa_coffee_bean_sack_side");
 
-        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK, "light_roasted_arabica_ground_coffee_sack_top");
-        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK, "medium_roasted_arabica_ground_coffee_sack_top");
-        coffeeBeanSack(ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK, "dark_roasted_arabica_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK, "light_roasted_arabica_ground_coffee_sack_top", "light_arabica_ground_coffee_sack_side");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK, "medium_roasted_arabica_ground_coffee_sack_top", "medium_arabica_ground_coffee_sack_side");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK, "dark_roasted_arabica_ground_coffee_sack_top", "dark_arabica_ground_coffee_sack_side");
 
-        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "light_roasted_robusta_ground_coffee_sack_top");
-        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "medium_roasted_robusta_ground_coffee_sack_top");
-        coffeeBeanSack(ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "dark_roasted_robusta_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "light_roasted_robusta_ground_coffee_sack_top", "light_robusta_ground_coffee_sack_side");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "medium_roasted_robusta_ground_coffee_sack_top", "medium_robusta_ground_coffee_sack_side");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK, "dark_roasted_robusta_ground_coffee_sack_top", "dark_robusta_ground_coffee_sack_side");
 
-        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "light_roasted_liberica_ground_coffee_sack_top");
-        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "medium_roasted_liberica_ground_coffee_sack_top");
-        coffeeBeanSack(ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "dark_roasted_liberica_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "light_roasted_liberica_ground_coffee_sack_top", "light_liberica_ground_coffee_sack_side");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "medium_roasted_liberica_ground_coffee_sack_top", "medium_liberica_ground_coffee_sack_side");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK, "dark_roasted_liberica_ground_coffee_sack_top", "dark_liberica_ground_coffee_sack_side");
 
-        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "light_roasted_excelsa_ground_coffee_sack_top");
-        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "medium_roasted_excelsa_ground_coffee_sack_top");
-        coffeeBeanSack(ModBlocks.DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "dark_roasted_excelsa_ground_coffee_sack_top");
+        coffeeBeanSack(ModBlocks.LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "light_roasted_excelsa_ground_coffee_sack_top", "light_excelsa_ground_coffee_sack_side");
+        coffeeBeanSack(ModBlocks.MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "medium_roasted_excelsa_ground_coffee_sack_top", "medium_excelsa_ground_coffee_sack_side");
+        coffeeBeanSack(ModBlocks.DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK, "dark_roasted_excelsa_ground_coffee_sack_top", "dark_excelsa_ground_coffee_sack_side");
+
+
 
         makeBush(((BushBlock) ModBlocks.ARABICA_COFFEE_BUSH.get()), ArabicaCoffeeBushBlock.AGE, "arabica_coffee_bush_stage", "arabica_coffee_bush_stage");
         makeBush(((BushBlock) ModBlocks.ROBUSTA_COFFEE_BUSH.get()), RobustaCoffeeBushBlock.AGE, "robusta_coffee_bush_stage", "robusta_coffee_bush_stage");
@@ -93,17 +96,21 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ));
     }
 
-    //this is just a cube for coffee bean sacks, because the sides and bottom stay the same
-    private void coffeeBeanSack(DeferredBlock<?> deferredBlock, String topTextureName) {
-        simpleBlockWithItem(deferredBlock.get(), models().cube(
+    //this is just a custom method for coffee bean sacks, because some sides and bottom stay the same
+    private void coffeeBeanSack(DeferredBlock<?> deferredBlock, String topTextureName, String sideTextureName) {
+
+        var model = models().cube(
                 name(deferredBlock),
-                modLoc("block/coffee_bean_sack_bottom"),  // shared bottom texture
-                modLoc("block/" + topTextureName) ,       // unique top texture
+                modLoc("block/coffee_bean_sack_bottom"),
+                modLoc("block/" + topTextureName),
                 modLoc("block/coffee_bean_sack_side"),
                 modLoc("block/coffee_bean_sack_side"),
-                modLoc("block/coffee_bean_sack_side"),
-                modLoc("block/coffee_bean_sack_side") // shared side textures
-        ).texture("particle", modLoc("block/" + topTextureName)));//particle
+                modLoc("block/" + sideTextureName),
+                modLoc("block/coffee_bean_sack_side")
+        ).texture("particle", modLoc("block/" + topTextureName));
+
+        horizontalBlock(deferredBlock.get(), model);
+        simpleBlockItem(deferredBlock.get(), model);
     }
 
 

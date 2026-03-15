@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "zcoffeecraft2:dark_roasted_liberica_ground_coffee_sack"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "zcoffeecraft2:dark_liberica_ground_coffee"
+  }
+}

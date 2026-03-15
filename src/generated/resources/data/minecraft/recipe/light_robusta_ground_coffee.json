@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "zcoffeecraft2:light_roasted_robusta_ground_coffee_sack"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "zcoffeecraft2:light_robusta_ground_coffee"
+  }
+}

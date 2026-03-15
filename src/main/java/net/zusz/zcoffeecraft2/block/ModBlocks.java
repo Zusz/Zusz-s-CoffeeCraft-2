@@ -20,95 +20,95 @@ public class ModBlocks {
             DeferredRegister.createBlocks(ZCoffeeCraft2.MOD_ID);
 
     public static final DeferredBlock<Block> RAW_ARABICA_COFFEE_BEAN_SACK  = registerBlock("raw_arabica_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> LIGHT_ROASTED_ARABICA_COFFEE_BEAN_SACK  = registerBlock("light_roasted_arabica_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> MEDIUM_ROASTED_ARABICA_COFFEE_BEAN_SACK  = registerBlock("medium_roasted_arabica_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> DARK_ROASTED_ARABICA_COFFEE_BEAN_SACK  = registerBlock("dark_roasted_arabica_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> RAW_ROBUSTA_COFFEE_BEAN_SACK  = registerBlock("raw_robusta_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> LIGHT_ROASTED_ROBUSTA_COFFEE_BEAN_SACK  = registerBlock("light_roasted_robusta_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> MEDIUM_ROASTED_ROBUSTA_COFFEE_BEAN_SACK  = registerBlock("medium_roasted_robusta_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> DARK_ROASTED_ROBUSTA_COFFEE_BEAN_SACK  = registerBlock("dark_roasted_robusta_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> RAW_LIBERICA_COFFEE_BEAN_SACK  = registerBlock("raw_liberica_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> LIGHT_ROASTED_LIBERICA_COFFEE_BEAN_SACK  = registerBlock("light_roasted_liberica_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> MEDIUM_ROASTED_LIBERICA_COFFEE_BEAN_SACK  = registerBlock("medium_roasted_liberica_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> DARK_ROASTED_LIBERICA_COFFEE_BEAN_SACK  = registerBlock("dark_roasted_liberica_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> RAW_EXCELSA_COFFEE_BEAN_SACK  = registerBlock("raw_excelsa_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> LIGHT_ROASTED_EXCELSA_COFFEE_BEAN_SACK  = registerBlock("light_roasted_excelsa_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> MEDIUM_ROASTED_EXCELSA_COFFEE_BEAN_SACK  = registerBlock("medium_roasted_excelsa_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> DARK_ROASTED_EXCELSA_COFFEE_BEAN_SACK  = registerBlock("dark_roasted_excelsa_coffee_bean_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> LIGHT_ROASTED_ARABICA_GROUND_COFFEE_SACK  = registerBlock("light_roasted_arabica_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> MEDIUM_ROASTED_ARABICA_GROUND_COFFEE_SACK  = registerBlock("medium_roasted_arabica_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> DARK_ROASTED_ARABICA_GROUND_COFFEE_SACK  = registerBlock("dark_roasted_arabica_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> LIGHT_ROASTED_ROBUSTA_GROUND_COFFEE_SACK  = registerBlock("light_roasted_robusta_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> MEDIUM_ROASTED_ROBUSTA_GROUND_COFFEE_SACK  = registerBlock("medium_roasted_robusta_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> DARK_ROASTED_ROBUSTA_GROUND_COFFEE_SACK  = registerBlock("dark_roasted_robusta_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> LIGHT_ROASTED_LIBERICA_GROUND_COFFEE_SACK  = registerBlock("light_roasted_liberica_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> MEDIUM_ROASTED_LIBERICA_GROUND_COFFEE_SACK  = registerBlock("medium_roasted_liberica_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> DARK_ROASTED_LIBERICA_GROUND_COFFEE_SACK  = registerBlock("dark_roasted_liberica_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> LIGHT_ROASTED_EXCELSA_GROUND_COFFEE_SACK  = registerBlock("light_roasted_excelsa_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> MEDIUM_ROASTED_EXCELSA_GROUND_COFFEE_SACK  = registerBlock("medium_roasted_excelsa_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> DARK_ROASTED_EXCELSA_GROUND_COFFEE_SACK  = registerBlock("dark_roasted_excelsa_ground_coffee_sack",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new SackBlock(BlockBehaviour.Properties.of()
                     .strength(0.5f).sound(SoundType.WOOL)));
 
 

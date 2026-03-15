@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_medium_roasted_arabica_ground_coffee_sack": {
+      "conditions": {
+        "items": [
+          {
+            "items": "zcoffeecraft2:medium_roasted_arabica_ground_coffee_sack"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:medium_arabica_ground_coffee"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_medium_roasted_arabica_ground_coffee_sack"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:medium_arabica_ground_coffee"
+    ]
+  }
+}
