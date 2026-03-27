@@ -46,5 +46,15 @@ public class DefaultCoffeeIngredients {
                 Items.AIR,
                 Component.translatable("coffeeingredient.zcoffeecraft2.ice")
         ));
+        CoffeeIngredientRegistry.register(new CoffeeIngredient(
+                Items.WATER_BUCKET.asItem(), "water",
+                Items.BUCKET.asItem(),
+                Component.translatableEscape("coffeeingredient.zcoffeecraft2.water")
+        ));
+        CoffeeIngredientRegistry.register(new CoffeeIngredient(
+                Items.POTION.asItem(), "water",
+                Items.GLASS_BOTTLE.asItem(),
+                Component.translatableEscape("coffeeingredient.zcoffeecraft2.water")
+        ));
     }
 }

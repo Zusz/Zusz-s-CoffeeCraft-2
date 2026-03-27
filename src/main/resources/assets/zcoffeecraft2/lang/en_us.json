@@ -81,8 +81,8 @@
 
   "block.zcoffeecraft2.arabica_coffee_cherry_sack": "Sack of Arabica Coffee Cherries",
   "block.zcoffeecraft2.robusta_coffee_cherry_sack": "Sack of Robusta Coffee Cherries",
-  "block.zcoffeecraft2.liberica_coffee_cherry_sack": "Sack of Arabica Coffee Cherries",
-  "block.zcoffeecraft2.excelsa_coffee_cherry_sack": "Sack of Arabica Coffee Cherries",
+  "block.zcoffeecraft2.liberica_coffee_cherry_sack": "Sack of Liberica Coffee Cherries",
+  "block.zcoffeecraft2.excelsa_coffee_cherry_sack": "Sack of Excelsa Coffee Cherries",
 
 
   "block.zcoffeecraft2.arabica_coffee_bush": "Arabica Coffee Bush",
@@ -111,6 +111,7 @@
   "coffeetype.zcoffeecraft2.hot_chocolate": "Hot Chocolate",
   "coffeetype.zcoffeecraft2.espresso_laccino": "Espresso Laccino",
   "coffeetype.zcoffeecraft2.cappuccino_freddo": "Cappuccino Freddo",
+  "coffeetype.zcoffeecraft2.americano" : "Americano",
   "coffeetype.zcoffeecraft2.notype" : "Coffee",
 
   "coffeeroast.zcoffeecraft2.noroast": "",
@@ -130,6 +131,7 @@
   "coffeeingredient.zcoffeecraft2.liberica":  "   -Liberica",
   "coffeeingredient.zcoffeecraft2.excelsa": "   -Excelsa",
   "coffeeingredient.zcoffeecraft2.ice": "   -Ice",
+  "coffeeingredient.zcoffeecraft2.water": "   -Water",
 
   "coffeedescription.zcoffeecraft2.beans": "Beans:",
   "coffeedescription.zcoffeecraft2.roast": "Roast:",

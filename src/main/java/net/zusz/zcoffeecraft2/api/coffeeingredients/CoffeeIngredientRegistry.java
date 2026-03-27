@@ -1,6 +1,8 @@
 package net.zusz.zcoffeecraft2.api.coffeeingredients;
 
+import com.google.common.io.LittleEndianDataInputStream;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.ArrayList;
@@ -20,6 +22,21 @@ public class CoffeeIngredientRegistry {
                 if (ingredient.equals(coffeeIngredient.string())) {
                     return Optional.of(coffeeIngredient.item().asItem());
                 }
+            }
+        }
+        return Optional.empty();
+    }
+
+    public static Optional<List<ItemLike>> getItemsFromString(String ingredient) {
+        List<ItemLike> toReturn = new ArrayList<>();
+        if (ingredient != null) {
+            for (CoffeeIngredient coffeeIngredient : INGREDIENTS) {
+                if (ingredient.equals(coffeeIngredient.string())) {
+                     toReturn.add(coffeeIngredient.item().asItem());
+                }
+            }
+            if (!toReturn.isEmpty()) {
+                return Optional.of(toReturn);
             }
         }
         return Optional.empty();

@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -274,11 +275,19 @@ public class CoffeeItem extends Item {
                 ? Component.literal(" [" + getFormattedDuration(delay) + "]")
                 : Component.literal("");
 
+        ChatFormatting effectColor = ChatFormatting.BLUE;
+
+        effectColor = switch (effect.value().getCategory()) {
+            case BENEFICIAL -> ChatFormatting.BLUE;
+            case HARMFUL -> ChatFormatting.RED;
+            case NEUTRAL -> ChatFormatting.GRAY;
+        };
+
         tooltipComponents.add(Component.literal("")
-                .append(effectName.copy().withStyle(ChatFormatting.BLUE))
-                .append(Component.literal(" ").withStyle(ChatFormatting.BLUE))
-                .append(potency.copy().withStyle(ChatFormatting.BLUE))
-                .append(durationComponent.copy().withStyle(ChatFormatting.BLUE))
+                .append(effectName.copy().withStyle(effectColor))
+                .append(Component.literal(" ").withStyle(effectColor))
+                .append(potency.copy().withStyle(effectColor))
+                .append(durationComponent.copy().withStyle(effectColor))
                 .append(delayComponent.copy().withStyle(ChatFormatting.GOLD))
         );
 
@@ -301,11 +310,19 @@ public class CoffeeItem extends Item {
             Component sPotency = Component.literal("I");
             Component sEffectName = getEffectNameComponent(sEffect);
 
+            ChatFormatting sEffectColor = ChatFormatting.BLUE;
+
+            sEffectColor = switch (sEffect.value().getCategory()) {
+                case BENEFICIAL -> ChatFormatting.BLUE;
+                case HARMFUL -> ChatFormatting.RED;
+                case NEUTRAL -> ChatFormatting.GRAY;
+            };
+
             tooltipComponents.add(Component.literal("")
-                    .append(sEffectName.copy().withStyle(ChatFormatting.BLUE))
-                    .append(Component.literal(" ").withStyle(ChatFormatting.BLUE))
-                    .append(sPotency.copy().withStyle(ChatFormatting.BLUE))
-                    .append(sDurationComponent.copy().withStyle(ChatFormatting.BLUE))
+                    .append(sEffectName.copy().withStyle(sEffectColor))
+                    .append(Component.literal(" ").withStyle(sEffectColor))
+                    .append(sPotency.copy().withStyle(sEffectColor))
+                    .append(sDurationComponent.copy().withStyle(sEffectColor))
                     .append(delayComponent.copy().withStyle(ChatFormatting.GOLD))
             );
         }
@@ -313,22 +330,10 @@ public class CoffeeItem extends Item {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
-    // Helper to get effect name
+    // Helper to get effect name, using built-in function
     private Component getEffectNameComponent(Holder<MobEffect> effect) {
-        if (effect == null) return Component.literal("");
-        if (effect == MobEffects.MOVEMENT_SPEED) return Component.translatable("effect.minecraft.speed");
-        if (effect == MobEffects.JUMP) return Component.translatable("effect.minecraft.jump_boost");
-        if (effect == MobEffects.ABSORPTION) return Component.translatable("effect.minecraft.absorption");
-        if (effect == MobEffects.DAMAGE_RESISTANCE) return Component.translatable("effect.minecraft.resistance");
-        if (effect == MobEffects.REGENERATION) return Component.translatable("effect.minecraft.regeneration");
-        if (effect == MobEffects.HEALTH_BOOST) return Component.translatable("effect.minecraft.health_boost");
-        if (effect == MobEffects.DAMAGE_BOOST) return Component.translatable("effect.minecraft.strength");
-        if (effect == MobEffects.NIGHT_VISION) return Component.translatable("effect.minecraft.night_vision");
-        if (effect == MobEffects.HARM) return Component.translatable("effect.minecraft.instant_damage");
-        if (effect == MobEffects.DIG_SPEED) return Component.translatable("effect.minecraft.haste");
-        if (effect == MobEffects.DOLPHINS_GRACE) return Component.translatable("effect.minecraft.dolphins_grace");
-
-        return Component.literal("");
+        if (effect == null) return Component.empty();
+        return Component.translatable(effect.value().getDescriptionId());
     }
 
     private String getFormattedDuration(int duration) {

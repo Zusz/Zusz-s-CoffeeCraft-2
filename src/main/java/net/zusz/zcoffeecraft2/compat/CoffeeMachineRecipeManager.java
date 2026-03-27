@@ -1,6 +1,7 @@
 package net.zusz.zcoffeecraft2.compat;
 
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.util.datafix.fixes.StriderGravityFix;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -20,6 +21,7 @@ import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CoffeeMachineRecipeManager {
     public static List<CoffeeMachineRecipe> getAllRecipes() {
@@ -109,10 +111,18 @@ public class CoffeeMachineRecipeManager {
                     itemIngredients.add(CoffeeIngredientRegistry.getItemFromString(ingredient).get());
                 }
             }
-            Ingredient ingredient1 = ingredients.size() > 0 ? Ingredient.of(itemIngredients.get(0)) : Ingredient.EMPTY;
-            Ingredient ingredient2 = ingredients.size() > 1 ? Ingredient.of(itemIngredients.get(1)) : Ingredient.EMPTY;
-            Ingredient ingredient3 = ingredients.size() > 2 ? Ingredient.of(itemIngredients.get(2)) : Ingredient.EMPTY;
-            Ingredient ingredient4 = ingredients.size() > 3 ? Ingredient.of(itemIngredients.get(3)) : Ingredient.EMPTY;
+            List<Ingredient> ingredientIngredients = new ArrayList<>();
+            for (String ingredient : ingredients) {
+
+                Optional<List<ItemLike>> listOpt = CoffeeIngredientRegistry.getItemsFromString(ingredient);
+                if (listOpt.isPresent()) {
+                    ingredientIngredients.add(Ingredient.of(listOpt.get().toArray(new ItemLike[0])));
+                }
+            }
+            Ingredient ingredient1 = ingredients.size() > 0 ? ingredientIngredients.get(0) : Ingredient.EMPTY;
+            Ingredient ingredient2 = ingredients.size() > 1 ? ingredientIngredients.get(1) : Ingredient.EMPTY;
+            Ingredient ingredient3 = ingredients.size() > 2 ? ingredientIngredients.get(2) : Ingredient.EMPTY;
+            Ingredient ingredient4 = ingredients.size() > 3 ? ingredientIngredients.get(3) : Ingredient.EMPTY;
             Item ing1 = ingredients.size() > 0 ? itemIngredients.get(0).asItem() : null;
             Item ing2 = ingredients.size() > 1 ? itemIngredients.get(1).asItem() : null;
             Item ing3 = ingredients.size() > 2 ? itemIngredients.get(2).asItem() : null;

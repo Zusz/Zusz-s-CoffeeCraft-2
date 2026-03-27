@@ -25,6 +25,7 @@ public class DefaultCoffeeRecipes {
     static Holder<MobEffect> harm = MobEffects.HARM;
     static Holder<MobEffect> haste = MobEffects.DIG_SPEED;
     static Holder<MobEffect> dolphins_grace = MobEffects.DOLPHINS_GRACE;
+    static Holder<MobEffect> water_breathing = MobEffects.WATER_BREATHING;
 
 
     public static void registerCoffeeRecipes() {
@@ -351,6 +352,40 @@ public class DefaultCoffeeRecipes {
                 List.of("ice", "steamed_milk","whipped_cream", "sugar"),
                 dolphins_grace,
                 1,
+                0,
+                0,
+                List.of(
+                        new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)),
+                        new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
+                ),
+                ModItems.COFFEE_CUP.asItem(),
+                "water",
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+
+        //Americano
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.americano",
+                List.of("water"),
+                water_breathing,
+                3600,
+                0,
+                0,
+                List.of(
+                        new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)),
+                        new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
+                ),
+                ModItems.COFFEE_CUP.asItem(),
+                "water",
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.americano",
+                List.of("water", "sugar"),
+                water_breathing,
+                4800,
                 0,
                 0,
                 List.of(

@@ -356,7 +356,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.LIBERICA_COFFEE_CHERRY_SACK.get(), 1)
                 .requires(ModItems.LIBERICA_COFFEE_CHERRY, 9)
                 .unlockedBy("has_liberica_coffee_cherry", has(ModItems.LIBERICA_COFFEE_CHERRY)).save(recipeOutput, "liberica_coffee_cherry_sack");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ARABICA_COFFEE_CHERRY.get(), 9)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIBERICA_COFFEE_CHERRY.get(), 9)
                 .requires(ModBlocks.LIBERICA_COFFEE_CHERRY_SACK, 1)
                 .unlockedBy("has_liberica_coffee_cherry_sack", has(ModBlocks.LIBERICA_COFFEE_CHERRY_SACK)).save(recipeOutput, "liberica_coffee_cherry");
 
