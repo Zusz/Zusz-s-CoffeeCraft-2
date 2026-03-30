@@ -4,9 +4,7 @@
   "cookingtime": 2400,
   "experience": 0.25,
   "group": "steamed_milk",
-  "ingredient": {
-    "item": "minecraft:milk_bucket"
-  },
+  "ingredient": "minecraft:milk_bucket",
   "result": {
     "count": 1,
     "id": "zcoffeecraft2:steamed_milk"

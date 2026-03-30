@@ -14,16 +14,16 @@ public class ModBlockEntities {
             DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, ZCoffeeCraft2.MOD_ID);
 
     public static final Supplier<BlockEntityType<CoffeeMachineBlockEntity>> COFFEE_MACHINE_BE =
-            BLOCK_ENTITIES.register("coffee_machine_be", () -> BlockEntityType.Builder.of(
-                    CoffeeMachineBlockEntity::new, ModBlocks.COFFEE_MACHINE.get()).build(null));
+            BLOCK_ENTITIES.register("coffee_machine_be", () -> new BlockEntityType<>(
+                    CoffeeMachineBlockEntity::new, ModBlocks.COFFEE_MACHINE.get()));
 
     public static final Supplier<BlockEntityType<CoffeeGrinderBlockEntity>> COFFEE_GRINDER_BE =
-            BLOCK_ENTITIES.register("coffee_grinder_be", () -> BlockEntityType.Builder.of(
-                    CoffeeGrinderBlockEntity::new, ModBlocks.COFFEE_GRINDER.get()).build(null));
+            BLOCK_ENTITIES.register("coffee_grinder_be", () -> new BlockEntityType<>(
+                    CoffeeGrinderBlockEntity::new, ModBlocks.COFFEE_GRINDER.get()));
 
     public static final Supplier<BlockEntityType<CoffeeCupBlockEntity>> COFFEE_CUP_BE =
-            BLOCK_ENTITIES.register("coffee_cup_be", () -> BlockEntityType.Builder.of(
-                    CoffeeCupBlockEntity::new, ModBlocks.COFFEE_CUP_BLOCK.get()).build(null));
+            BLOCK_ENTITIES.register("coffee_cup_be", () -> new BlockEntityType<>(
+                    CoffeeCupBlockEntity::new, ModBlocks.COFFEE_CUP_BLOCK.get()));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

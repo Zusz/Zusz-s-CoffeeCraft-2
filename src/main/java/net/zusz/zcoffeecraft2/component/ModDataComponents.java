@@ -3,6 +3,7 @@ package net.zusz.zcoffeecraft2.component;
 import java.util.List;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -12,7 +13,7 @@ import java.util.function.UnaryOperator;
 
 public class ModDataComponents {
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPES =
-            DeferredRegister.createDataComponents(ZCoffeeCraft2.MOD_ID);
+            DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, ZCoffeeCraft2.MOD_ID);
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> ROAST = register("roast",
             builder -> builder.persistent(Codec.STRING));

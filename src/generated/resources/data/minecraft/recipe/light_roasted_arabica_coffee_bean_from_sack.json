@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "zcoffeecraft2:light_roasted_arabica_coffee_bean_sack"
-    }
+    "zcoffeecraft2:light_roasted_arabica_coffee_bean_sack"
   ],
   "result": {
     "count": 9,

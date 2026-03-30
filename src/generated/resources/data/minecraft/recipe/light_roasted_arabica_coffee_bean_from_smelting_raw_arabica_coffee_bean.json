@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.25,
   "group": "arabica",
-  "ingredient": {
-    "item": "zcoffeecraft2:raw_arabica_coffee_bean"
-  },
+  "ingredient": "zcoffeecraft2:raw_arabica_coffee_bean",
   "result": {
     "count": 1,
     "id": "zcoffeecraft2:light_roasted_arabica_coffee_bean"

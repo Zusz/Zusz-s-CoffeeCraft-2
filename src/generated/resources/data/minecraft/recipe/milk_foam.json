@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "zcoffeecraft2:steamed_milk"
-    },
-    {
-      "item": "zcoffeecraft2:whisk"
-    }
+    "zcoffeecraft2:steamed_milk",
+    "zcoffeecraft2:whisk"
   ],
   "result": {
     "count": 1,

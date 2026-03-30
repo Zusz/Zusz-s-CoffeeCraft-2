@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:milk_bucket"
-    },
-    {
-      "item": "zcoffeecraft2:whisk"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "minecraft:milk_bucket",
+    "zcoffeecraft2:whisk",
+    "minecraft:sugar"
   ],
   "result": {
     "count": 2,

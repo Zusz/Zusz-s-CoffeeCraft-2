@@ -4,6 +4,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
@@ -51,7 +52,7 @@ public class GuideBookScreen extends Screen {
         int y = (this.height - bgHeight) / 2;
 
         // --- Render background ---
-        graphics.blit(BACKGROUND_TEXTURE, x, y, 0, 0, bgWidth, bgHeight, bgWidth, bgHeight);
+        graphics.blit(RenderType.GUI_TEXTURED, BACKGROUND_TEXTURE, x, y, 0, 0, bgWidth, bgHeight, bgWidth, bgHeight, bgWidth, bgHeight);
 
         ItemStack stack1 = null;
         ItemStack stack2 = null;
@@ -105,9 +106,9 @@ public class GuideBookScreen extends Screen {
             drawItemStack(graphics, stack2, x + bgWidth - 25 - 32, y + 20);
         } else if (textureToDraw != null && stack2 == null) {
             if (!isTextureToDrawExcelsa) {
-                graphics.blit(textureToDraw, x + bgWidth - 25 - 32, y + 20, 0, 0, 32, 32, 32, 32);
+                graphics.blit(RenderType.GUI_TEXTURED, textureToDraw, x + bgWidth - 25 - 32, y + 20, 0, 0, 32, 32, 32, 32, 24, 20);
             } else {
-                graphics.blit(textureToDraw, x + bgWidth - 25 - 48, y + 20, 0, 0, 48, 40, 48, 40);
+                graphics.blit(RenderType.GUI_TEXTURED,textureToDraw, x + bgWidth - 25 - 48, y + 20, 0, 0, 48, 40, 48, 40, 24, 20);
             }
 
         }

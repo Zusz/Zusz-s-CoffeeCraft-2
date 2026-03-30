@@ -8,6 +8,5 @@ public class ModFoodProperties {
             .nutrition(2)
             .saturationModifier(0.5f)
             .alwaysEdible()
-            .usingConvertsTo(ModItems.COFFEE_CUP)
             .build();
 }

@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class DefaultCoffeeRecipes {
-    static Holder<MobEffect> speed = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("speed")).get();
-    static Holder<MobEffect> jump = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("jump_boost")).get();
-    static Holder<MobEffect> absorption = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("absorption")).get();
-    static Holder<MobEffect> resistance = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("resistance")).get();
-    static Holder<MobEffect> regeneration = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("regeneration")).get();
-    static Holder<MobEffect> strength = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("strength")).get();
-    static Holder<MobEffect> night_vision = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("night_vision")).get();
+    static Holder<MobEffect> speed = MobEffects.MOVEMENT_SPEED;
+    static Holder<MobEffect> jump = MobEffects.JUMP;
+    static Holder<MobEffect> absorption = MobEffects.ABSORPTION;
+    static Holder<MobEffect> resistance = MobEffects.DAMAGE_RESISTANCE;
+    static Holder<MobEffect> regeneration = MobEffects.REGENERATION;
+    static Holder<MobEffect> strength = MobEffects.DAMAGE_BOOST;
+    static Holder<MobEffect> night_vision = MobEffects.NIGHT_VISION;
     static Holder<MobEffect> health_boost = MobEffects.HEALTH_BOOST;
     static Holder<MobEffect> heal = MobEffects.HEAL;
     static Holder<MobEffect> harm = MobEffects.HARM;

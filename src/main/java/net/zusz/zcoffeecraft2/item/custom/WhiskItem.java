@@ -9,11 +9,7 @@ public class WhiskItem extends Item {
     }
 
     @Override
-    public boolean hasCraftingRemainingItem(ItemStack stack) {
-        return true;
-    }
-    @Override
-    public ItemStack getCraftingRemainingItem(ItemStack stack) {
-        return new ItemStack(this); // Or another item if it degrades or changes
+    public ItemStack getCraftingRemainder(ItemStack itemStack) {
+        return new ItemStack(this);
     }
 }

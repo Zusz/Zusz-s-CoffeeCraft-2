@@ -11,12 +11,7 @@ public class SteamedMilkItem extends Item {
     public SteamedMilkItem(Properties properties) {super(properties.stacksTo(1));}
 
     @Override
-    public boolean hasCraftingRemainingItem(ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
+    public ItemStack getCraftingRemainder(ItemStack itemStack) {
         return new ItemStack(Items.BUCKET);
     }
 }

@@ -2,33 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    },
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    },
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    },
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    },
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    },
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    },
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    },
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    },
-    {
-      "item": "zcoffeecraft2:robusta_coffee_cherry"
-    }
+    "zcoffeecraft2:robusta_coffee_cherry",
+    "zcoffeecraft2:robusta_coffee_cherry",
+    "zcoffeecraft2:robusta_coffee_cherry",
+    "zcoffeecraft2:robusta_coffee_cherry",
+    "zcoffeecraft2:robusta_coffee_cherry",
+    "zcoffeecraft2:robusta_coffee_cherry",
+    "zcoffeecraft2:robusta_coffee_cherry",
+    "zcoffeecraft2:robusta_coffee_cherry",
+    "zcoffeecraft2:robusta_coffee_cherry"
   ],
   "result": {
     "count": 1,

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "zcoffeecraft2:arabica_coffee_cherry_sack"
-    }
+    "zcoffeecraft2:arabica_coffee_cherry_sack"
   ],
   "result": {
     "count": 9,

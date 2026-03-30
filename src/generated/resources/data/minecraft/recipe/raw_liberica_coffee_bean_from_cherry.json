@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "zcoffeecraft2:liberica_coffee_cherry"
-    }
+    "zcoffeecraft2:liberica_coffee_cherry"
   ],
   "result": {
     "count": 1,

@@ -3,45 +3,28 @@ package net.zusz.zcoffeecraft2.item.custom.hot_chocolate;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.zusz.zcoffeecraft2.api.coffeebeantypes.CoffeeBeanTypeRegistry;
 import net.zusz.zcoffeecraft2.api.coffeeingredients.CoffeeIngredientRegistry;
 import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipe;
-import net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry;
-import net.zusz.zcoffeecraft2.block.ModBlocks;
-import net.zusz.zcoffeecraft2.block.custom.CoffeeCupBlock;
-import net.zusz.zcoffeecraft2.block.custom.enums.RoastType;
-import net.zusz.zcoffeecraft2.block.entity.CoffeeCupBlockEntity;
 import net.zusz.zcoffeecraft2.component.ModDataComponents;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectData;
 import net.zusz.zcoffeecraft2.effect.CoffeeEffectInstance;
 import net.zusz.zcoffeecraft2.effect.ModEffects;
 import net.zusz.zcoffeecraft2.screen.custom.CoffeeMachineScreen;
 import org.jetbrains.annotations.NotNull;
-
-import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import static net.zusz.zcoffeecraft2.api.coffeerecipes.CoffeeRecipeRegistry.getRecipe;
@@ -94,10 +77,9 @@ public class HotChocolate extends Item {
     }
 
 
-
     @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.DRINK;
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return ItemUseAnimation.DRINK;
     }
 
     private boolean isInJEIContext() {

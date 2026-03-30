@@ -2,33 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    },
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    },
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    },
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    },
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    },
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    },
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    },
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    },
-    {
-      "item": "zcoffeecraft2:light_excelsa_ground_coffee"
-    }
+    "zcoffeecraft2:light_excelsa_ground_coffee",
+    "zcoffeecraft2:light_excelsa_ground_coffee",
+    "zcoffeecraft2:light_excelsa_ground_coffee",
+    "zcoffeecraft2:light_excelsa_ground_coffee",
+    "zcoffeecraft2:light_excelsa_ground_coffee",
+    "zcoffeecraft2:light_excelsa_ground_coffee",
+    "zcoffeecraft2:light_excelsa_ground_coffee",
+    "zcoffeecraft2:light_excelsa_ground_coffee",
+    "zcoffeecraft2:light_excelsa_ground_coffee"
   ],
   "result": {
     "count": 1,
