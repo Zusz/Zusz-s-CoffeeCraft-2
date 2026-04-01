@@ -34,7 +34,15 @@ public class CoffeeMachineScreen extends AbstractContainerScreen<CoffeeMachineMe
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(RenderType.GUI_TEXTURED, ARROW_TEXTURE,x + 93, y + 35, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16, 24, 16);
+            int progress = menu.getScaledArrowProgress();
+
+            guiGraphics.blit(RenderType.GUI_TEXTURED,
+                    ARROW_TEXTURE,
+                    x + 93, y + 35,   // screen position
+                    0, 0,             // texture start (u, v)
+                    progress, 16,     // width grows, height stays fixed
+                    24, 16            // full texture size
+            );
         }
     }
 

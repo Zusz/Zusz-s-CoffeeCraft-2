@@ -106,9 +106,19 @@ public class GuideBookScreen extends Screen {
             drawItemStack(graphics, stack2, x + bgWidth - 25 - 32, y + 20);
         } else if (textureToDraw != null && stack2 == null) {
             if (!isTextureToDrawExcelsa) {
-                graphics.blit(RenderType.GUI_TEXTURED, textureToDraw, x + bgWidth - 25 - 32, y + 20, 0, 0, 32, 32, 32, 32, 24, 20);
+                graphics.blit(RenderType.GUI_TEXTURED, textureToDraw,
+                        x + bgWidth - 25 - 32, y + 20,
+                        0, 0,
+                        32, 32,   // draw size (on screen)
+                        32, 32    // texture size (REAL size!)
+                );
             } else {
-                graphics.blit(RenderType.GUI_TEXTURED,textureToDraw, x + bgWidth - 25 - 48, y + 20, 0, 0, 48, 40, 48, 40, 24, 20);
+                graphics.blit(RenderType.GUI_TEXTURED, textureToDraw,
+                        x + bgWidth - 25 - 48, y + 20,
+                        0, 0,
+                        48, 40,   // draw size
+                        48, 40    // texture size (REAL size!)
+                );
             }
 
         }
