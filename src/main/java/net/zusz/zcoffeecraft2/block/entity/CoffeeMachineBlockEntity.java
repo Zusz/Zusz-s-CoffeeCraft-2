@@ -140,7 +140,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity implements MenuProvide
     //start rewriting from here
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if(hasRecipe()) {
-            System.out.println("HASRECIPE");
+            //System.out.println("HASRECIPE");
            increaseCraftingProgress();
            setChanged(level, blockPos, blockState);
 
