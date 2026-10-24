@@ -104,6 +104,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MILK_FOAM);
                         output.accept(ModItems.WHIPPED_CREAM);
 
+                        output.accept(ModItems.PUMPKIN_SPICE);
+
                         output.accept(ModItems.COFFEE_CUP);
                         output.accept(ModItems.CUP_OF_COFFEE);
                         output.accept(ModItems.HOT_CHOCOLATE);

@@ -52,6 +52,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.WHIPPED_CREAM.asItem());
         basicItem(ModItems.COFFEE_GUIDE.asItem());
         basicItem(ModItems.HOT_CHOCOLATE.asItem());
+        basicItem(ModItems.PUMPKIN_SPICE.get());
     }
 
 }

@@ -107,6 +107,9 @@ public class ModItems {
     public static final DeferredItem<Item> COFFEE_GUIDE = ITEMS.register("coffee_guide_book",
             () -> new GuideBookItem(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> PUMPKIN_SPICE = ITEMS.register("pumpkin_spice",
+            ()-> new Item(new Item.Properties()));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

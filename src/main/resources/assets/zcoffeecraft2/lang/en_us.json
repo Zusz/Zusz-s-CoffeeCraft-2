@@ -42,6 +42,7 @@
   "item.zcoffeecraft2.steamed_milk": "Steamed Milk",
   "item.zcoffeecraft2.milk_foam": "Milk Foam",
   "item.zcoffeecraft2.whipped_cream": "Whipped Cream",
+  "item.zcoffeecraft2.pumpkin_spice": "Pumpkin Spice",
 
   "block.zcoffeecraft2.raw_arabica_coffee_bean_sack": "Sack of Raw Arabica Coffee Beans",
   "block.zcoffeecraft2.light_roasted_arabica_coffee_bean_sack": "Sack of Light Roasted Arabica Coffee Beans",
@@ -112,6 +113,7 @@
   "coffeetype.zcoffeecraft2.espresso_laccino": "Espresso Laccino",
   "coffeetype.zcoffeecraft2.cappuccino_freddo": "Cappuccino Freddo",
   "coffeetype.zcoffeecraft2.americano" : "Americano",
+  "coffeetype.zcoffeecraft2.pumpkin_spice_latte": "Pumpkin Spice Latte",
   "coffeetype.zcoffeecraft2.notype" : "Coffee",
 
   "coffeeroast.zcoffeecraft2.noroast": "",
@@ -132,6 +134,7 @@
   "coffeeingredient.zcoffeecraft2.excelsa": "   -Excelsa",
   "coffeeingredient.zcoffeecraft2.ice": "   -Ice",
   "coffeeingredient.zcoffeecraft2.water": "   -Water",
+  "coffeeingredient.zcoffeecraft2.pumpkin_spice": "   -Pumpkin Spice",
 
   "coffeedescription.zcoffeecraft2.beans": "Beans:",
   "coffeedescription.zcoffeecraft2.roast": "Roast:",

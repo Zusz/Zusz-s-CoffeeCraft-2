@@ -11,9 +11,12 @@ public class ModItemProperties {
         ItemProperties.register(ModItems.CUP_OF_COFFEE.get(), ResourceLocation.fromNamespaceAndPath(ZCoffeeCraft2.MOD_ID,"roast"),
                 (stack, level, entity, seed) -> {
                     String roast = stack.get(ModDataComponents.ROAST);
+                    if (stack.get(ModDataComponents.INGREDIENTS) != null && stack.get(ModDataComponents.INGREDIENTS).contains("pumpkin_spice")) {return 3.0f;}
+
                     if ("light".equals(roast)) {return 0.0f; };
                     if ("medium".equals(roast)) {return 1.0f;}
                     if ("dark".equals(roast)) {return 2.0f;}
+
                     return -1.0f;
                 }
         );

@@ -15,6 +15,12 @@
         "zcoffeecraft2:roast": 2.0
       },
       "model": "zcoffeecraft2:item/cup_of_coffee_dark"
+    },
+    {
+      "predicate": {
+        "zcoffeecraft2:roast": 3.0
+      },
+      "model": "zcoffeecraft2:item/cup_of_coffee_pumpkin_spice"
     }
   ]
 }

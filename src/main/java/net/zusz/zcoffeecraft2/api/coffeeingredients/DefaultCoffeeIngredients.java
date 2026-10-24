@@ -56,5 +56,10 @@ public class DefaultCoffeeIngredients {
                 Items.GLASS_BOTTLE.asItem(),
                 Component.translatableEscape("coffeeingredient.zcoffeecraft2.water")
         ));
+        CoffeeIngredientRegistry.register(new CoffeeIngredient(
+                ModItems.PUMPKIN_SPICE.asItem(), "pumpkin_spice",
+                Items.AIR,
+                Component.translatableEscape("coffeeingredient.zcoffeecraft2.pumpkin_spice")
+        ));
     }
 }

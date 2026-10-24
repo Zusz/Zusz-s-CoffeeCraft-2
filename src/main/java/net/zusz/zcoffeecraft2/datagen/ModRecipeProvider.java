@@ -430,6 +430,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModItems.COFFEE_CUP, 1)
                 .unlockedBy("has_coffee_cup", has(ModItems.COFFEE_CUP)).save(recipeOutput, "coffee_guide");
 
+        //Pumpkin Spice
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PUMPKIN_SPICE.get(), 4)
+                .requires(Items.HONEY_BOTTLE)
+                .requires(Items.PUMPKIN)
+                .requires(Items.COCOA_BEANS)
+                .unlockedBy("has_coffee_cup", has(ModItems.COFFEE_CUP))
+                .save(recipeOutput, "pumpkin_spice");
 
 
         //Smelting

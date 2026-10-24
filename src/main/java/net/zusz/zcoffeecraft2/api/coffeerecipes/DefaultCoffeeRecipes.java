@@ -26,6 +26,7 @@ public class DefaultCoffeeRecipes {
     static Holder<MobEffect> haste = MobEffects.DIG_SPEED;
     static Holder<MobEffect> dolphins_grace = MobEffects.DOLPHINS_GRACE;
     static Holder<MobEffect> water_breathing = MobEffects.WATER_BREATHING;
+    static Holder<MobEffect> slow_falling = MobEffects.SLOW_FALLING;
 
 
     public static void registerCoffeeRecipes() {
@@ -293,9 +294,7 @@ public class DefaultCoffeeRecipes {
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
-
         //Espresso Laccino
-
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.espresso_laccino",
                 List.of("ice"),
@@ -312,7 +311,6 @@ public class DefaultCoffeeRecipes {
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
-
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.espresso_laccino",
                 List.of("ice", "sugar"),
@@ -329,7 +327,6 @@ public class DefaultCoffeeRecipes {
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
-
         //Cappuccino Freddo
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.cappuccino_freddo",
@@ -363,7 +360,6 @@ public class DefaultCoffeeRecipes {
                 ModItems.CUP_OF_COFFEE.asItem(),
                 true
         ));
-
         //Americano
         CoffeeRecipeRegistry.register(new CoffeeRecipe(
                 "coffeetype.zcoffeecraft2.americano",
@@ -390,6 +386,39 @@ public class DefaultCoffeeRecipes {
                 0,
                 List.of(
                         new SecondaryEffect("liberica", Optional.of(speed), Optional.of(1200), Optional.of(0)),
+                        new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
+                ),
+                ModItems.COFFEE_CUP.asItem(),
+                "water",
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+        //Pumpkin Spice Latte
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.pumpkin_spice_latte",
+                List.of("steamed_milk", "milk_foam", "pumpkin_spice"),
+                slow_falling,
+                3600,
+                0,
+                0,
+                List.of(
+                        new SecondaryEffect("liberica", Optional.of(jump), Optional.of(1200), Optional.of(0)),
+                        new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
+                ),
+                ModItems.COFFEE_CUP.asItem(),
+                "water",
+                ModItems.CUP_OF_COFFEE.asItem(),
+                true
+        ));
+        CoffeeRecipeRegistry.register(new CoffeeRecipe(
+                "coffeetype.zcoffeecraft2.pumpkin_spice_latte",
+                List.of("steamed_milk", "milk_foam","pumpkin_spice", "sugar"),
+                slow_falling,
+                4800,
+                0,
+                0,
+                List.of(
+                        new SecondaryEffect("liberica", Optional.of(jump), Optional.of(1200), Optional.of(0)),
                         new SecondaryEffect("excelsa", Optional.of(harm), Optional.of(1), Optional.of(0))
                 ),
                 ModItems.COFFEE_CUP.asItem(),
